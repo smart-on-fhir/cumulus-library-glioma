@@ -1,0 +1,34 @@
+[project]
+name = "pccd-cancer-demo-2026"
+version = "0.1.0"
+requires-python = ">= 3.11"
+# If you need python libraries, add them here
+dependencies = [
+    "pandas",
+    "pydantic"
+]
+
+description = "PCCD Pediatric Oncology Demonstration Feb 2026"
+readme = "README.md"
+license = { text="Apache License 2.0" }
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Home = "https://github.com/smart-on-fhir/pccd-cancer-demo-2026"
+Documentation = "https://github.com/smart-on-fhir/pccd-cancer-demo-2026"
+Source = "https://github.com/smart-on-fhir/pccd-cancer-demo-2026"
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "pylint",    
+]
