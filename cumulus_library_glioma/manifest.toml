@@ -24,15 +24,15 @@ study_prefix = "ibd"
 "Glioma study population" = [
     "athena/glioma__cohort_study_population.sql",
 ]
-#"Glioma study population (dx, rx, lab, doc, diag, GIC)" = [
-#    "athena/glioma__cohort_study_population_dx.sql",
-#    "athena/glioma__cohort_study_population_rx.sql",
-#    "athena/glioma__cohort_study_population_lab.sql",
-#    "athena/glioma__cohort_study_population_doc.sql",
-#    "athena/glioma__cohort_study_population_diag.sql",
-#    "athena/glioma__cohort_study_population_proc.sql",
-#    "athena/glioma__cohort_study_population_gic.sql",
-#]
+"Glioma study population (dx, rx, lab, doc, diag)" = [
+    "athena/glioma__cohort_study_population_dx.sql",
+    "athena/glioma__cohort_study_population_rx.sql",
+    "athena/glioma__cohort_study_population_lab.sql",
+    "athena/glioma__cohort_study_population_doc.sql",
+    "athena/glioma__cohort_study_population_diag.sql",
+    "athena/glioma__cohort_study_population_proc.sql",
+    "athena/glioma__cohort_study_population_gic.sql",
+]
 #"Glioma cohorts (dx, rx, doc, diag)" = [
 #    "athena/glioma__cohort_dx.sql",
 #    "athena/glioma__cohort_rx.sql"
