@@ -12,7 +12,7 @@ version = "0.1.0"
 requires-python = ">= 3.11"
 # If you need python libraries, add them here
 dependencies = [
-    "cumulus-library >= 5.2b1",
+    "cumulus-library >= 5.2b2",
     "sqlfluff >= 2.3.4",
     "fhirclient >= 4.3.2"
 ]

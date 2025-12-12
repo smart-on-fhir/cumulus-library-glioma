@@ -39,6 +39,12 @@ def path_parent(filename=None) -> Path:
 # Valueset(s)
 #
 ###############################################################################
+def path_resources(filename: Path | str) -> Path:
+    """
+    :param filename: name of JSON file
+    :return: Path to JSON valueset
+    """
+    return Path(os.path.join(path_parent(), '..', 'resources', filename))
 
 def path_valueset(filename: Path | str) -> Path:
     """
