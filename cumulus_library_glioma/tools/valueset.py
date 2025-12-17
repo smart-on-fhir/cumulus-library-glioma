@@ -53,6 +53,7 @@ def make() -> list[Path]:
     make_valueset_morphology()
     return [
         csv_to_sql('valueset_casedef.csv'),
+        csv_to_sql('valueset_casedef_candidates.csv'),
         csv_to_sql('valueset_morphology.csv')
     ]
 
