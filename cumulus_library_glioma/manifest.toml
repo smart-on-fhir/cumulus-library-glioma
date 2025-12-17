@@ -33,22 +33,22 @@ study_prefix = "glioma"
     "athena/glioma__cohort_study_population_diag.sql",
     "athena/glioma__cohort_study_population_proc.sql",
 ]
-"COHORT matching glioma case definition" = [
+"cohort matching glioma case definition" = [
     "athena/glioma__cohort_casedef.sql",
 ]
-"COHORT glioma case definition (pre, index, index_post, post)" = [
+"cohort glioma case definition (pre, index, index_post, post)" = [
     "athena/glioma__cohort_casedef_pre.sql",
     "athena/glioma__cohort_casedef_index.sql",
     "athena/glioma__cohort_casedef_index_post.sql",
     "athena/glioma__cohort_casedef_post.sql",
 ]
-"SAMPLE glioma case definition (pre, index, index_post, post)" = [
+"sample glioma case definition (pre, index, index_post, post)" = [
     "athena/glioma__sample_casedef_pre.sql",
     "athena/glioma__sample_casedef_index.sql",
     "athena/glioma__sample_casedef_index_post.sql",
     "athena/glioma__sample_casedef_post.sql",
 ]
-"COMORBIDITIES of glioma cohort" = [
+"comorbidities of glioma cohort" = [
     "athena/glioma__cohort_casedef_comorbidity.sql",
 ]
 "cube counts" = [
