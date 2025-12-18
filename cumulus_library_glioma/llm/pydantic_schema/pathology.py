@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field, StringConstraints
 from .mention import SpanAugmentedMention
 
 ###############################################################################
-# Topology
+# Topography
 ###############################################################################
 ICDOTopographyCode = Annotated[
     str,

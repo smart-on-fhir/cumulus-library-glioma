@@ -10,39 +10,6 @@ from .mention import SpanAugmentedMention
 # NCBI Genetic Testing Registry
 #   https://www.ncbi.nlm.nih.gov/gtr/conditions/C0017638/
 ###############################################################################
-
-###############################################################################
-# Genetic Variants
-###############################################################################
-class VariantInterpretation(StrEnum):
-    B = 'BENIGN'
-    LB = 'LIKELY BENIGN'
-    VUS = 'VARIANT OF UNKNOWN SIGNIFICANCE'
-    P = 'PATHOGENIC'
-    LP = 'LIKELY PATHOGENIC'
-    NOT_MENTIONED = 'NOT MENTIONED'
-
-class VariantMention(SpanAugmentedMention):
-    """
-    Clinical interpretation of genetic variant
-    """
-    hgnc_name: str = Field(
-        default=None,
-        description="HGNC hugo gene naming convention")
-
-    interpretation: VariantInterpretation = Field(
-        VariantInterpretation.NOT_MENTIONED,
-        description='Clinical interpretation of genetic variant or genetic test result'
-    )
-
-    hgvs_variant:str = Field(
-        str,
-        description="Human Genome Variation Society (HGVS) variant"
-    )
-
-###############################################################################
-# Known
-###############################################################################
 class TargetGeneticTestMention(SpanAugmentedMention):
     """
     Minimal set of clinically actionable genetic alterations for glioma.
@@ -84,4 +51,33 @@ class TargetGeneticTestMention(SpanAugmentedMention):
     cdkn2a_deleted: Optional[bool] = Field(
         None,
         description="Whether CDKN2A deletion is reported."
+    )
+
+###############################################################################
+# Genetic Variants
+###############################################################################
+class VariantInterpretation(StrEnum):
+    B = 'BENIGN'
+    LB = 'LIKELY BENIGN'
+    VUS = 'VARIANT OF UNKNOWN SIGNIFICANCE'
+    P = 'PATHOGENIC'
+    LP = 'LIKELY PATHOGENIC'
+    NOT_MENTIONED = 'NOT MENTIONED'
+
+class VariantMention(SpanAugmentedMention):
+    """
+    Clinical interpretation of genetic variant
+    """
+    hgnc_name: str = Field(
+        default=None,
+        description="HGNC hugo gene naming convention")
+
+    interpretation: VariantInterpretation = Field(
+        VariantInterpretation.NOT_MENTIONED,
+        description='Clinical interpretation of genetic variant or genetic test result'
+    )
+
+    hgvs_variant:str = Field(
+        str,
+        description="Human Genome Variation Society (HGVS) variant"
     )
