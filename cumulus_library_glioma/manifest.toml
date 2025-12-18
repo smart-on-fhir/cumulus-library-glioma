@@ -55,6 +55,7 @@ study_prefix = "glioma"
 "cube counts" = [
     "athena/glioma__cube_patient_casedef.sql",
     "athena/glioma__cube_encounter_casedef.sql",
+    "athena/glioma__cube_documentreference_sample_casedef_index_post.sql",
 ]
 
 #[export_config]

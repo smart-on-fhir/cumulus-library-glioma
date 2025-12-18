@@ -10,15 +10,15 @@ MIN_SUBJECTS = int(os.environ.get("MIN_SUBJECTS") or 1)
 def cube_fhir_resource(fhir_resource:str, source_table='study_population', table_cols=None, table_name=None, min_subject=MIN_SUBJECTS) -> Path:
     """Generates a counts table using a template
 
-    :param min_subject:
-    :param table_name: The name of the table to create. Must start with study prefix
+    :param fhir_resource: The type of FHIR resource to count
     :param source_table: The table to create counts data from
     :param table_cols: The columns from the source table to add to the count table
-    :keyword fhir_resource: The type of FHIR resource to count
-    :keyword min_subject: Minimum number of patients show results for
+    :param table_name: The name of the table to create. Must start with study prefix
+    :param min_subject: Minimum number of patients to include in result groupings
     """
     if not table_name:
-        table_name = fhir2sql.name_cube(source_table, fhir_resource)
+        suffix = fhir_resource if (fhir_resource != 'documentreference') else 'document'
+        table_name = fhir2sql.name_cube(source_table, suffix)
 
     table_cols = sorted(list(set(table_cols)))
     sql = CountsBuilder(PREFIX).get_count_query(
@@ -35,9 +35,9 @@ def cube_fhir_resource(fhir_resource:str, source_table='study_population', table
 
 def table_as_view(sql:str, table_name:str) -> str:
     """
-    :param sql: Select
-    :param table_name:
-    :return: sql CTAS
+    :param sql: CTAS (create table as)
+    :param table_name: Table name to turn into a view
+    :return: sql CVAS (create view as)
     """
     create_table = f'CREATE TABLE {table_name} AS ('
     replace_view = f'CREATE or replace VIEW {table_name} AS '
