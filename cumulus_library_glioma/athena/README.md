@@ -2,9 +2,26 @@
 
 CUBE(s) are simply the CUBE keyword in a [group by CUBE](https://prestodb.io/docs/current/sql/select.html#group-by-clause) clause resulting in a mathematical [PowerSet](https://en.wikipedia.org/wiki/Power_set).  
 
-## SQL Tables as CSV 
+## SQL Tables as CSV
+
+CSV table naming conventions
+
+| alias             | meaning                                           |
+|-------------------|---------------------------------------------------|
+| glioma__          | cumulus study prefix                              |
+| cube              | powerset counts                                   |
+| patient           | count distinct patients                           |
+| encounter         | count distinct encounters                         |
+| documentreference | count distinct clinical notes                     |
+| casedef           | match case definition for LGG(Low Grade Glioma)   |
+| sample            | sample LGG cohort                                 |
+| index_post        | sample LGG cohort starting at first LGG diagnosis |
 
 ### glioma__cube_patient_casedef
+
+Count distinct **FHIR Patient** in cohort matching LGG case definition.    
+Stratified by demographics (age at diagnosis, gender, race) and diagnosis (code, display, system). 
+
 | column             | type    | description                                                                    |
 |--------------------|---------|--------------------------------------------------------------------------------|
 | `cnt`              | int     | count(distinct `subject`)                                                      |
@@ -18,6 +35,10 @@ CUBE(s) are simply the CUBE keyword in a [group by CUBE](https://prestodb.io/doc
 
 
 ### glioma__cube_encounter_casedef
+
+Count distinct **FHIR encounter** in cohort matching LGG case definition.    
+Stratified by FHIR Encounter class, type, and serviceType.   
+
 | column                     | type     | description                                   |
 |----------------------------|----------|-----------------------------------------------|
 | `cnt`                      | bigint   | count(distinct `encounter`)                   |
@@ -27,6 +48,10 @@ CUBE(s) are simply the CUBE keyword in a [group by CUBE](https://prestodb.io/doc
 | `enc_type_display`         | varchar  | FHIR Encounter.type display                   |
 
 ### glioma__cube_documentreference_sample_casedef_index_post
+
+Count distinct **FHIR DocumentReference** in cohort matching LGG case definition.    
+Stratified by FHIR DocumentReference.type and FHIR Encounter.class.   
+
 | column              | type    | description                                   |
 |---------------------|---------|-----------------------------------------------|
 | `cnt`               | bigint  | count(distinct `subject_ref`)                 |
