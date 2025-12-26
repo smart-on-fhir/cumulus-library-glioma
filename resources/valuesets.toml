@@ -1,5 +1,16 @@
 config_type="file_upload"
-[tables.valueset_casedef_upload]
+
+[tables.valueset_casedef]
 file = "../resources/valueset_casedef.csv"
+delimiter = ","
+col_types = ["STRING","STRING","STRING"]
+
+[tables.valueset_morphology]
+file = "../resources/valueset_morphology.csv"
+delimiter = ","
+col_types = ["STRING","STRING","STRING"]
+
+[tables.valueset_topography]
+file = "../resources/valueset_topography.csv"
 delimiter = ","
 col_types = ["STRING","STRING","STRING"]

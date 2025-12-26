@@ -6,15 +6,10 @@ study_prefix = "glioma"
 
 
 [file_config.file_names]
-"loading tabular data" = [
+"valuesets" = [
     "../resources/valuesets.toml"
 ]
 
-"valuesets" = [
-    "athena/glioma__valueset_casedef.sql",
-    "athena/glioma__valueset_casedef_candidates.sql",
-    "athena/glioma__valueset_morphology.sql",
-]
 "inclusion criteria for study population" = [
     "athena/glioma__include_gender.sql",
     "athena/glioma__include_age_at_visit.sql",
@@ -50,7 +45,7 @@ study_prefix = "glioma"
     "athena/glioma__sample_casedef_index_post.sql",
     "athena/glioma__sample_casedef_post.sql",
 ]
-"Computable phenotypes of glioma casedef cohort" = [
+"computable phenotypes of glioma casedef cohort" = [
     "athena/glioma__cohort_dx.sql",
     "athena/glioma__cohort_rx.sql",
 ]
