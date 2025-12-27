@@ -97,9 +97,43 @@ def make() -> List[Path]:
                                  'morphology_has_mention',
                                  'morphology_display',
                                  'behavior_has_mention',
-                                 'behavior_display',
+                                 'behavior_code',
                                  'grade_has_mention',
-                                 'grade_display'])
+                                 'grade_code']),
+
+        cube_patient(source_table='glioma__llm_surgery',
+                     table_cols=['has_mention',
+                                 'surgical_type',
+                                 'approach',
+                                 'extent_of_resection',
+                                 'anatomical_site',
+                                 'technique_details',
+                                 'complications']),
+
+        cube_patient(source_table='glioma__llm_drug',
+                     table_cols=['has_mention',
+                                 'status',
+                                 'category',
+                                 'route',
+                                 'phase',
+                                 'rx_class']),
+
+        cube_patient(source_table='glioma__llm_variant',
+                     table_cols=['has_mention',
+                                 'hgnc_name',
+                                 'hgvs_variant',
+                                 'interpretation']),
+
+        cube_patient(source_table='glioma__llm_gene',
+                     table_cols=['has_mention',
+                                 'braf_altered',
+                                 'braf_v600e',
+                                 'braf_fusion',
+                                 'idh_mutant',
+                                 'h3k27m_mutant',
+                                 'tp53_altered',
+                                 'cdkn2a_deleted']),
+
     ]
 
 if __name__ == "__main__":
