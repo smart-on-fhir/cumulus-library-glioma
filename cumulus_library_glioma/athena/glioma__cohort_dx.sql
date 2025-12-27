@@ -3,17 +3,17 @@ WITH
 casedef as
 (
     select distinct
-            dx_code,
-            dx_display,
+            coalesce(dx_code, 'NO_CODE')        as dx_code,
+            coalesce(dx_display, 'NO_DISPLAY')  as dx_display,
             dx_system,
             subject_ref,
             encounter_ref
     from    glioma__cohort_casedef
 )
-select  dx.*
+select  distinct
+        dx.*
 from    casedef,
         glioma__cohort_study_population_dx as dx
 where   casedef.subject_ref = dx.subject_ref
-and     casedef.dx_code != dx.dx_code
-and     casedef.dx_system != dx.dx_system
-;
+and     (dx.dx_code, dx.dx_system) not in
+        (select distinct code, system from glioma__valueset_casedef)

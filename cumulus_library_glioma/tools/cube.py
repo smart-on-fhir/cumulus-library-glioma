@@ -79,6 +79,27 @@ def make() -> List[Path]:
                                  'race_display'],
                      min_subject=10),
 
+        cube_patient(source_table='glioma__cohort_dx',
+                     table_cols=['dx_category_code',
+                                 'dx_code',
+                                 'dx_system',
+                                 'dx_display',
+                                 'age_at_visit',
+                                 'gender',
+                                 'race_display'],
+                     min_subject=10),
+
+        cube_patient(source_table='glioma__cohort_rx',
+                     table_cols=['rx_status',
+                                 'rx_category_code',
+                                 'rx_code',
+                                 'rx_system',
+                                 'rx_display',
+                                 'age_at_dx_min',
+                                 'gender',
+                                 'race_display'],
+                     min_subject=10),
+
         cube_encounter(source_table='glioma__cohort_casedef',
                        table_cols=['enc_class_code',
                                    'enc_type_display',
@@ -133,7 +154,6 @@ def make() -> List[Path]:
                                  'h3k27m_mutant',
                                  'tp53_altered',
                                  'cdkn2a_deleted']),
-
     ]
 
 if __name__ == "__main__":
