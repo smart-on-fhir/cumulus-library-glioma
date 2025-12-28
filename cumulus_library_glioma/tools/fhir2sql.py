@@ -119,28 +119,6 @@ def expansion2codelist(valueset_json: dict | str) -> List[Coding]:
     contains = valueset_json.get('expansion').get('contains')
     return [Coding(c) for c in contains]
 
-def filter_expansion(valueset_json: Path | str, search_terms: list) -> List[dict]:
-    """
-    :param valueset_json: source ValueSet that potentially contains thousands of codes
-    :param search_terms: terms to match on either Coding CODE or DISPLAY
-    :return: List[dict] where length is 1 because codes are merged into a single ValueSet entry.
-    List[dict must be presevered as that is expected everywhere per VSAC API
-    """
-    valueset_list = filetool.load_valueset(valueset_json)
-
-    matches = list()
-    for valueset in valueset_list:
-        for code in expansion2codelist(valueset):
-            search_string = f'{code.code.lower()} {code.display.lower()}'
-            for term in search_terms:
-                if term.lower() in search_string:
-                    matches.append(code.as_json())
-
-    filtered = copy.deepcopy(valueset_list[0])
-    filtered['expansion']['contains'] = matches
-    return [filtered]
-
-
 def codelist2view(codelist: List[Coding], view_name) -> str:
     """
     :param codelist: list of concepts

@@ -3,8 +3,6 @@ import csv
 import json
 from pathlib import Path
 from typing import List, Dict, Any, Iterable, Generator
-from cumulus_library_glioma.tools import guard
-
 PREFIX = 'glioma'
 
 ###############################################################################
@@ -51,7 +49,7 @@ def path_valueset(filename: Path | str) -> Path:
     :param filename: name of JSON file
     :return: Path to JSON valueset
     """
-    return Path(os.path.join(path_parent(), 'valueset', filename))
+    return Path(os.path.join(path_parent(), 'valueset_data', filename))
 
 def load_valueset(filename: Path | str) -> dict:
     """
@@ -68,6 +66,10 @@ def save_valueset(filename: Path | str, contents: dict) -> Path:
     :return: Path to JSON filename
     """
     return Path(write_json(contents, path_valueset(filename)))
+
+def list_valueset(pattern:str = '*.*') -> list[Path]:
+    return list(path_valueset('.').glob(pattern))
+
 
 ###############################################################################
 #
@@ -193,7 +195,6 @@ def write_json(contents: Dict[Any, Any], json_file_path: Path | str, encoding: s
 # Read/Write CSV
 #
 ###############################################################################
-
 def write_csv(rows: Iterable[List[str]], file_csv: Path | str, delimiter: str = ',', quote_char: str = '"'):
     """Write csv file.
     :param rows: The contents to write to file.

@@ -1,9 +1,7 @@
-import csv
-import unittest
-import pandas as pd
+from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from cumulus_library_glioma.tools import filetool,fhir2sql
+from cumulus_library_glioma.tools import filetool
 
 UMLS_VOCAB = {
     "SNOMEDCT_US": "http://snomed.info/sct",
@@ -12,50 +10,65 @@ UMLS_VOCAB = {
     "RXNORM": "http://www.nlm.nih.gov/research/umls/rxnorm"
 }
 
-def make_valueset_morphology():
-    file_in = filetool.path_resources('umls_morphology.bsv')
-    file_out = filetool.path_resources('valueset_morphology.csv')
-    make_valueset(file_in, file_out, UMLS_VOCAB)
-
-def make_valueset_topography():
-    file_in = filetool.path_resources('umls_topography.bsv')
-    file_out = filetool.path_resources('valueset_topography.csv')
-    make_valueset(file_in, file_out, UMLS_VOCAB)
-
-def make_valueset(file_in:Path, file_out:Path, umls_vocab:dict):
-    df = pd.read_csv(file_in, sep="|", dtype=str)
-    df = df[df["SAB"].isin(umls_vocab.keys())]
-    df["SAB"] = df["SAB"].replace(UMLS_VOCAB)
-    df_out = df[["SAB", "CODE", "PREF"]]
-    df_out = df_out.drop_duplicates()
-    df_out = df_out.sort_values(["SAB", "CODE"], ascending=[True, True])
-    df_out.to_csv(file_out, header=False, index=False)
-
-def csv_to_sql(filename_csv:str) -> Path:
+def list_coding(valueset_json: dict) -> List[Coding]:
     """
-    :param filename_csv: downloaded CSV results, filtered/curated by Andy@BCH
-    :return: Path to SQL ValueSet
+    Obtain a list of Coding "concepts" from a ValueSet.
+    This method currently supports only "include" of "concept" defined fields.
+    Not supported: recursive fetching of contained ValueSets, which requires UMLS API Key and Wget, etc.
+
+    examples
+    https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.1629/expansion/Latest
+    https://cts.nlm.nih.gov/fhir/res/ValueSet/2.16.840.1.113762.1.4.1146.1629?_format=json
+
+    :param valueset_json: ValueSet file, expecially those provided by NLM/ONC/VSAC
+    :return: list of codeable concepts (system, code, display) to include
     """
-    entries = list()
-    csv_file = filetool.path_resources(filename_csv)
-    for columns in filetool.read_csv(csv_file):
-        c = Coding()
-        c.system = columns[0]
-        c.code = columns[1]
-        c.display = columns[2]
-        entries.append(c)
+    compose = list()
+    for include in valueset_json['compose']['include']:
+        if 'concept' in include.keys():
+            for concept in include['concept']:
+                concept['system'] = include['system']
+                compose.append(Coding(concept))
+    return compose
 
-    viewname = filename_csv.replace('.csv', '')
-    return fhir2sql.define(entries, viewname)
+def list_coding_expansion(valueset_json: dict) -> List[Coding]:
+    contains = valueset_json.get('expansion').get('contains')
+    return [Coding(c) for c in contains]
 
+def escape_string(value: str) -> str:
+    """
+    :return: str special chars removed like tic('), quote("), semi(;), and tab(\t)
+    """
+    for token in ['"', "'", ";", "\t"]:
+        value = value.replace(token, "")
+    return value
+
+def coding_to_tsv(codelist: List[Coding]) -> str:
+    header = f"system\tcode\tdisplay"
+    row = list()
+    for concept in codelist:
+        safe_display = escape_string(concept.display)
+        row.append(f'{concept.system}\t{concept.code}\t{safe_display}')
+    row = '\n'.join(row)
+    return header + '\n' + row + '\n'
+
+def json_to_tsv(valueset_json: Path) -> Path:
+    file_tsv = valueset_json.with_name(valueset_json.name + '.valueset.tsv')
+    valueset_json = filetool.load_valueset(valueset_json)
+    coding_list = list()
+    if isinstance(valueset_json, list):
+        for entry in valueset_json:
+            coding_list+= list_coding_expansion(entry)
+    else:
+        coding_list = list_coding(valueset_json)
+    return Path(filetool.write_text(coding_to_tsv(coding_list), file_tsv))
+
+###############################################################################
+# Make
+###############################################################################
 def make() -> list[Path]:
-    make_valueset_topography()
-    make_valueset_morphology()
-    return [
-        csv_to_sql('valueset_casedef.csv'),
-        csv_to_sql('valueset_casedef_candidates.csv'),
-        csv_to_sql('valueset_morphology.csv')
-    ]
+    return [json_to_tsv(valueset_json) for valueset_json in filetool.list_valueset('*.json')]
 
 if __name__ == '__main__':
-    make()
+    target_files = make()
+    print(target_files)

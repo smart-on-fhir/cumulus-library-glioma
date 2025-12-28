@@ -6,8 +6,11 @@ study_prefix = "glioma"
 
 
 [file_config.file_names]
-"valuesets" = [
-    "../resources/valuesets.toml"
+"file_upload.toml" = [
+    "../resources/file_upload.toml"
+]
+"valueset.toml" = [
+    "../resources/valueset.toml"
 ]
 
 "inclusion criteria for study population" = [

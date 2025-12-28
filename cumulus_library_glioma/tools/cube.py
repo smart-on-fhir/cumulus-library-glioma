@@ -2,7 +2,7 @@ import os
 from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
-from cumulus_library_glioma.tools import filetool, fhir2sql
+from cumulus_library_glioma.tools import filetool
 from cumulus_library_glioma.tools.filetool import PREFIX
 
 MIN_SUBJECTS = int(os.environ.get("MIN_SUBJECTS") or 1)
@@ -17,8 +17,9 @@ def cube_fhir_resource(fhir_resource:str, source_table='study_population', table
     :param min_subject: Minimum number of patients to include in result groupings
     """
     if not table_name:
-        suffix = fhir_resource if (fhir_resource != 'documentreference') else 'document'
-        table_name = fhir2sql.name_cube(source_table, suffix)
+        count_type = fhir_resource if (fhir_resource != 'documentreference') else 'document'
+        table_name = source_table.replace(f"{PREFIX}__", '').replace('cohort_', '')
+        table_name = f"{PREFIX}__cube_{count_type}_{table_name}"
 
     table_cols = sorted(list(set(table_cols)))
     sql = CountsBuilder(PREFIX).get_count_query(

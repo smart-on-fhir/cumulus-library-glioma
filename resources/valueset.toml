@@ -1,0 +1,30 @@
+config_type="valueset"
+
+table_prefix = ""
+keyword_file = ""
+
+[vsac_stewards]
+dx_brain_tumor="2.16.840.1.113883.17.4077.3.1011"
+dx_cancer="2.16.840.1.113883.3.526.3.1010"
+
+dx_focal_deficit="2.16.840.1.113883.17.4077.3.1033"
+dx_neuropathy="2.16.840.1.113762.1.4.1222.1518"
+
+rx_cancer_directed="2.16.840.1.113762.1.4.1260.230"
+rx_chemo_advanced="2.16.840.1.113883.3.7643.2.1046"
+rx_chemo_platinum="2.16.840.1.113762.1.4.1260.71"
+rx_chemo_platinum_carboplatin="2.16.840.1.113762.1.4.1260.441"
+
+rx_checkpoint= "2.16.840.1.113883.3.1444.5.231"
+rx_keytruda= "2.16.840.1.113762.1.4.1260.496"
+
+diag_brain_mri="2.16.840.1.113762.1.4.1222.922"
+diag_head_neck="2.16.840.1.113762.1.4.1222.921"
+
+proc_neurosurgery="2.16.840.1.113883.3.117.1.7.1.260"
+
+obs_abnormal="2.16.840.1.113762.1.4.1146.295"
+obs_low="2.16.840.1.113762.1.4.1146.2019"
+obs_high="2.16.840.1.113762.1.4.1146.2018"
+
+[umls_stewards]
