@@ -1,0 +1,7 @@
+create table glioma__cohort_dx_neuropathy as 
+select * from 
+ glioma__cohort_study_population_dx , 
+glioma__valueset_dx_neuropathy
+WHERE
+glioma__cohort_study_population_dx.dx_code = glioma__valueset_dx_neuropathy.code and 
+glioma__cohort_study_population_dx.dx_system = glioma__valueset_dx_neuropathy.system

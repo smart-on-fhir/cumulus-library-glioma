@@ -1,0 +1,7 @@
+create table glioma__cohort_rx_checkpoint as 
+select * from 
+ glioma__cohort_study_population_rx , 
+glioma__valueset_rx_checkpoint
+WHERE
+glioma__cohort_study_population_rx.rx_code = glioma__valueset_rx_checkpoint.code and 
+glioma__cohort_study_population_rx.rx_system = glioma__valueset_rx_checkpoint.system

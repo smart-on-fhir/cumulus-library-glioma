@@ -1,0 +1,7 @@
+create table glioma__cohort_proc_neurosurgery as 
+select * from 
+ glioma__cohort_study_population_proc , 
+glioma__valueset_proc_neurosurgery
+WHERE
+glioma__cohort_study_population_proc.proc_code = glioma__valueset_proc_neurosurgery.code and 
+glioma__cohort_study_population_proc.proc_system = glioma__valueset_proc_neurosurgery.system
