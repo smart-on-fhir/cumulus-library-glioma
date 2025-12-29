@@ -7,37 +7,28 @@ config_type="file_upload"
 file = "../resources/valueset_casedef.csv"
 
 # ########################################################
-# Source: ICD-O Oncology (not specific to pLGG)
-
-[tables.valueset_morphology]
-file = "../resources/valueset_morphology.csv"
-
-[tables.valueset_topography]
-file = "../resources/valueset_topography.csv"
-
-# ########################################################
 # Drug Keywords
 
 [tables.keywords_drug_class]
-file = "resources/keywords_drug_class.tsv"
+file = "../resources/keywords_drug_class.tsv"
 
 [tables.keywords_drug_ingredient]
-file = "resources/keywords_drug_ingredient.tsv"
+file = "../resources/keywords_drug_ingredient.tsv"
 
 [tables.keywords_drug_brand]
-file = "resources/keywords_drug_brand.tsv"
+file = "../resources/keywords_drug_brand.tsv"
 
 # ########################################################
 # Drug Relationships (Class -> Ingredient -> Brand )
 
 [tables.rel_drug_class]
-file = "resources/rel_drug_class.tsv"
+file = "../resources/rel_drug_class.tsv"
 
 [tables.rel_drug_ingredient]
-file = "resources/rel_drug_ingredient.tsv"
+file = "../resources/rel_drug_ingredient.tsv"
 
 [tables.rel_drug_brand]
-file = "resources/rel_drug_brand.tsv"
+file = "../resources/rel_drug_brand.tsv"
 
 # ########################################################
 # Source: https://vsac.nlm.nih.gov/
@@ -78,4 +69,11 @@ file = "valueset_data/rx_checkpoint.json.valueset.tsv"
 [tables.proc_neurosurgery]
 file = "valueset_data/proc_neurosurgery.json.valueset.tsv"
 
+# ########################################################
+# Source: ICD-O Oncology
 
+# [tables.valueset_morphology]
+# file = "../test/resources/valueset_morphology.csv"
+
+# [tables.valueset_topography]
+# file = "../test/resources/valueset_topography.csv"
