@@ -1,0 +1,52 @@
+config_type="file_upload"
+
+# ########################################################
+# Source: custom
+
+[tables.valueset_casedef]
+file = "../resources/valueset_casedef.csv"
+
+[tables.valueset_morphology]
+file = "../resources/valueset_morphology.csv"
+
+[tables.valueset_topography]
+file = "../resources/valueset_topography.csv"
+
+# ########################################################
+# Source: https://vsac.nlm.nih.gov/
+
+[tables.valueset_diag_brain_mri]
+file = "valueset_data/diag_brain_mri.json.valueset.tsv"
+
+[tables.valueset_diag_head_neck]
+file = "valueset_data/diag_head_neck.json.valueset.tsv"
+
+[tables.valueset_dx_brain_tumor]
+file = "valueset_data/dx_brain_tumor.json.valueset.tsv"
+
+[tables.valueset_dx_cancer]
+file = "valueset_data/dx_cancer.json.valueset.tsv"
+
+[tables.dx_focal_deficit]
+file = "valueset_data/dx_focal_deficit.json.valueset.tsv"
+
+[tables.dx_neuropathy]
+file = "valueset_data/dx_neuropathy.json.valueset.tsv"
+
+[tables.rx_cancer_directed]
+file = "valueset_data/rx_cancer_directed.json.valueset.tsv"
+
+[tables.rx_chemo_advanced]
+file = "valueset_data/rx_chemo_advanced.json.valueset.tsv"
+
+[tables.rx_chemo_platinum]
+file = "valueset_data/rx_chemo_platinum.json.valueset.tsv"
+
+[tables.rx_chemo_platinum_carboplatin]
+file = "valueset_data/rx_chemo_platinum_carboplatin.json.valueset.tsv"
+
+[tables.rx_checkpoint]
+file = "valueset_data/rx_checkpoint.json.valueset.tsv"
+
+[tables.proc_neurosurgery]
+file = "valueset_data/proc_neurosurgery.json.valueset.tsv"

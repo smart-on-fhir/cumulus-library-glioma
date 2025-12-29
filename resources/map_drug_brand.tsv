@@ -1,0 +1,27 @@
+query_string	rxnorm_generic_name	notes
+OJEMDA	tovorafenib	BRAF-altered pLGG targeted therapy (brand per FDA label).
+Temodar	temozolomide	Alkylating agent (brand listed in RxNav/RxNorm).
+Paraplatin	carboplatin	Platinum chemotherapy (brand listed in RxNav/RxNorm).
+Marqibo	vincristine	Liposomal vincristine (brand listed in RxNav/RxNorm).
+Oncovin	vincristine	Common vincristine brand name seen clinically.
+Vincasar	vincristine	Common vincristine brand name seen clinically.
+Velban	vinblastine	Common vinblastine brand name seen clinically.
+Gleostine	lomustine	Nitrosourea alkylator (brand listed in RxNav/RxNorm).
+Matulane	procarbazine	Alkylating agent (brand listed in RxNav/RxNorm).
+Camptosar	irinotecan	Topoisomerase I inhibitor (brand listed in RxNav/RxNorm).
+Avastin	bevacizumab	Anti-VEGF mAb (brand listed in RxNav/RxNorm).
+Mvasi	bevacizumab	Bevacizumab biosimilar (brand listed in RxNav/RxNorm).
+Zirabev	bevacizumab	Bevacizumab biosimilar (brand listed in RxNav/RxNorm).
+Alymsys	bevacizumab	Bevacizumab biosimilar (brand listed in RxNav/RxNorm).
+Vegzelma	bevacizumab	Bevacizumab biosimilar (brand listed in RxNav/RxNorm).
+Avzivi	bevacizumab	Bevacizumab biosimilar (brand listed in RxNav/RxNorm).
+Jobevne	bevacizumab	Bevacizumab biosimilar (brand listed in RxNav/RxNorm).
+Koselugo	selumetinib	MEK inhibitor (brand listed in RxNav/RxNorm).
+Mekinist	trametinib	MEK inhibitor (brand listed in RxNav/RxNorm).
+Tafinlar	dabrafenib	BRAF inhibitor (brand listed in RxNav/RxNorm).
+Zelboraf	vemurafenib	BRAF inhibitor (brand name commonly used).
+Vitrakvi	larotrectinib	TRK inhibitor (brand listed in RxNav/RxNorm).
+Rozlytrek	entrectinib	TRK/ROS1 inhibitor (brand listed in RxNav/RxNorm).
+Xalkori	crizotinib	ALK/ROS1 inhibitor (brand name commonly used).
+Afinitor	everolimus	mTOR inhibitor (brand listed in RxNav/RxNorm).
+Rapamune	sirolimus	mTOR inhibitor (brand listed in RxNav/RxNorm).

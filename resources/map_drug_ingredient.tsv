@@ -1,0 +1,20 @@
+query_string	rationale_bucket	notes
+carboplatin	cytotoxic_chemotherapy	Platinum agent; backbone of classic carboplatin/vincristine regimens in pLGG.
+vincristine	cytotoxic_chemotherapy	Vinca alkaloid; frequently paired with carboplatin in first-line pediatric LGG.
+vinblastine	cytotoxic_chemotherapy	Vinca alkaloid; commonly used as single-agent therapy in pLGG.
+temozolomide	alkylating_agent	Oral alkylating agent; less common than in HGG but appears in some LGG protocols.
+lomustine	alkylating_agent	Nitrosourea; used in select multi-agent or salvage regimens.
+procarbazine	alkylating_agent	Alkylating agent; occasionally appears in combination regimens.
+thioguanine	antimetabolite	Antimetabolite; historical/rare use in CNS tumor regimens.
+bevacizumab	anti_vegf	Anti-VEGF monoclonal antibody; used in recurrent/refractory pLGG.
+irinotecan	topoisomerase_inhibitor	Topoisomerase I inhibitor; often combined with bevacizumab in salvage therapy.
+selumetinib	mek_inhibitor	MEK inhibitor; commonly used in MAPK-altered pLGG.
+trametinib	mek_inhibitor	MEK inhibitor; often paired with or used after BRAF-targeted therapy.
+dabrafenib	braf_inhibitor	BRAF V600 inhibitor; used in BRAF-mutant pLGG.
+vemurafenib	braf_inhibitor	BRAF inhibitor; alternative to dabrafenib in some settings.
+tovorafenib	braf_inhibitor	Pan-RAF inhibitor; FDA-approved for relapsed/refractory pediatric LGG.
+larotrectinib	ntrk_inhibitor	NTRK fusion inhibitor; for NTRK-altered pLGG.
+entrectinib	ntrk_ros1_inhibitor	NTRK/ROS1 inhibitor; fusion-driven pLGG.
+crizotinib	alk_ros1_inhibitor	ALK/ROS1 inhibitor; rare fusion-driven LGG cases.
+everolimus	mtor_inhibitor	mTOR inhibitor; key for SEGA/TSC-associated low-grade tumors.
+sirolimus	mtor_inhibitor	mTOR inhibitor; less common than everolimus but appears in TSC-related workflows.

@@ -1,0 +1,21 @@
+variable    description CDS
+Age at diagnosis	Patient age at initial pLGG diagnosis	Influences urgency of therapy, chemotherapy vs targeted preference, and strong avoidance/delay of radiotherapy in younger children
+Tumor location	Anatomic site (e.g., cerebellum, optic pathway/hypothalamus, thalamus, brainstem, hemispheric)	Determines surgical resectability, risk of neurologic/visual/endocrine deficits, and likelihood of observation vs early systemic therapy
+Tumor size / mass effect	Tumor volume and presence of hydrocephalus or compression	Drives need for urgent neurosurgical intervention and early treatment
+Symptom burden	Neurologic deficits, seizures, headaches, vision loss, endocrine dysfunction	Treatment is often initiated for functional decline rather than imaging progression alone
+NF1 status	Presence or absence of Neurofibromatosis type 1	Strongly affects decision to observe vs treat, especially in optic pathway gliomas; influences targeted therapy selection
+Extent of resection	Gross total, subtotal, partial, biopsy only, or unresectable	One of the strongest predictors of progression risk; GTR often leads to observation only
+Histologic diagnosis	WHO low-grade glioma subtype (e.g., pilocytic astrocytoma)	Confirms low-grade biology and rules out high-grade entities; limited role compared to molecular drivers
+Molecular driver	MAPK-pathway alterations (e.g., BRAF V600E, BRAF fusion, NF1/MAPK activation)	Determines eligibility for targeted therapy and sequencing (BRAF/MEK inhibitors, MEK inhibitors)
+Radiographic progression	Objective tumor growth on serial MRI	Used in combination with symptoms to trigger treatment or line change
+Functional progression	Decline in vision, neurologic function, endocrine status, or quality of life	Primary trigger for starting or escalating therapy
+Visual acuity measures	Quantitative ophthalmologic assessment	Critical endpoint in optic pathway gliomas; may outweigh radiographic findings
+Prior therapy exposure	Previous surgery, chemotherapy, targeted therapy, or radiation	Determines next-line options, cumulative toxicity risk, and resistance considerations
+Treatment toxicity	Acute or cumulative adverse effects (e.g., neuropathy, myelosuppression, MEK inhibitor AEs)	May necessitate dose modification, discontinuation, or therapy switch
+Response to therapy	Radiographic and functional response or stability	Determines continuation, tapering, or escalation of therapy
+Pattern of regrowth	Progression vs rebound after stopping targeted therapy	Affects interpretation of MRI changes and decisions to restart or switch therapy
+Patient age at progression	Age when progression occurs	Influences willingness to introduce radiotherapy or more aggressive local control
+Radiotherapy exposure history	Whether radiation has been given previously	Limits re-irradiation options and increases emphasis on systemic therapies
+Neurocognitive risk	Baseline and evolving cognitive function	Strong factor in delaying radiotherapy and choosing less toxic systemic options
+Endocrine risk	Hypothalamic–pituitary involvement or dysfunction	Influences monitoring intensity and tolerance for local therapies
+Clinical trial availability	Eligibility for ongoing pLGG trials	Often preferred for later lines of therapy or novel targeted approaches

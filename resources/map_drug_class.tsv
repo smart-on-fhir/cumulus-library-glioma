@@ -1,0 +1,29 @@
+class_system	sab	class_type	query_string	identifier	identifier_type	notes
+MED-RT	MEDRT	EPC	vinca alkaloid			High-yield EPC text for vincristine/vinblastine; appears as FDA EPC text label.
+ATC	ATC	ATC	Vinca alkaloids and analogues	L01CA	ATC1-4	Parent class for vinblastine (L01CA01) and vincristine (L01CA02).
+ATC	ATC	ATC	vinblastine	L01CA01	ATC5	Common pLGG agent (often vincristine/vinblastine-family capture).
+ATC	ATC	ATC	vincristine	L01CA02	ATC5	Common pLGG agent (carboplatin/vincristine regimens).
+						
+MED-RT	MEDRT	EPC	platinum compound			Useful EPC-style grouping for carboplatin-class capture (term text varies by source; use as UMLS search string).
+ATC	ATC	ATC	Platinum compounds	L01XA	ATC1-4	Parent class for carboplatin (L01XA02).
+ATC	ATC	ATC	carboplatin	L01XA02	ATC5	Common pLGG agent (e.g., carboplatin/vincristine).
+						
+MED-RT	MEDRT	EPC	alkylating agent			Useful for temozolomide-class capture; may appear as EPC/PE/MoA depending on mapping.
+ATC	ATC	ATC	Other alkylating agents	L01AX	ATC1-4	Parent class for temozolomide (L01AX03).
+ATC	ATC	ATC	temozolomide	L01AX03	ATC5	Sometimes used in LGG pathways; more common in HGG/GBM but still seen.
+						
+MED-RT	MEDRT	MoA	BRAF inhibitor			Targeted therapy class (BRAF-altered gliomas).
+ATC	ATC	ATC	B-Raf serine-threonine kinase (BRAF) inhibitors	L01EC	ATC1-4	Parent class for dabrafenib (L01EC02).
+ATC	ATC	ATC	dabrafenib	L01EC02	ATC5	BRAF inhibitor used in BRAF V600–altered pediatric gliomas.
+						
+MED-RT	MEDRT	MoA	MEK inhibitor			Targeted therapy class (MAPK pathway).
+ATC	ATC	ATC	Mitogen-activated protein kinase (MEK) inhibitors	L01EE	ATC1-4	Parent class for trametinib (L01EE01).
+ATC	ATC	ATC	trametinib	L01EE01	ATC5	MEK inhibitor (often paired/considered in MAPK-altered gliomas).
+						
+MED-RT	MEDRT	MoA	mTOR inhibitor			Key class for SEGA/TSC-spectrum low-grade tumors and some oncology contexts.
+ATC	ATC	ATC	mTOR (mechanistic target of rapamycin) inhibitors	L01EG	ATC1-4	Parent class for everolimus (L01EG02).
+ATC	ATC	ATC	everolimus	L01EG02	ATC5	mTOR inhibitor; central for SEGA/TSC contexts.
+						
+MED-RT	MEDRT	PE	antineoplastic agent			Broad PE-style capture term; use when you want a wide net across oncology drugs.
+ATC	ATC	ATC	Monoclonal antibodies and antibody drug conjugates	L01F	ATC1-4	Parent group; for bevacizumab use L01FG01.
+ATC	ATC	ATC	bevacizumab	L01FG01	ATC5	Anti-VEGF monoclonal antibody; used as salvage/rescue in recurrent pediatric LGG.
