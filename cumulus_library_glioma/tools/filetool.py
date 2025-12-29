@@ -67,9 +67,11 @@ def save_valueset(filename: Path | str, contents: dict) -> Path:
     """
     return Path(write_json(contents, path_valueset(filename)))
 
-def list_valueset(pattern:str = '*.*') -> list[Path]:
+def list_valuesets(pattern:str = '*.*') -> list[Path]:
     return list(path_valueset('.').glob(pattern))
 
+def list_resources(pattern:str = '*.*') -> list[Path]:
+    return list(path_resources('.').glob(pattern))
 
 ###############################################################################
 #

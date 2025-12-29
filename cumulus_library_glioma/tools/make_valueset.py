@@ -67,7 +67,7 @@ def json_to_tsv(valueset_json: Path) -> Path:
 # Make
 ###############################################################################
 def make() -> list[Path]:
-    return [json_to_tsv(valueset_json) for valueset_json in filetool.list_valueset('*.json')]
+    return [json_to_tsv(valueset_json) for valueset_json in filetool.list_valuesets('*.json')]
 
 if __name__ == '__main__':
     target_files = make()

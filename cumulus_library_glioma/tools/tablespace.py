@@ -35,6 +35,13 @@ class Reference(Enum):
         prefix = prefix.split('_')[0]
         return Reference[prefix]
 
+def get_reference(table:str) -> Reference:
+    # lookup = name_trim(table)
+    lookup = table.replace(f'{PREFIX}__', '')
+    lookup = lookup.split('_')[0]
+    return Reference[lookup]
+
+
 ###############################################################################
 # naming conventions
 ###############################################################################
