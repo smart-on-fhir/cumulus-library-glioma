@@ -1,24 +1,23 @@
-Demographics: Male, Not Hispanic or Latino, White. DOB Year 2012, Consent to CBTN year 2014
+Demographics: Male, Not Hispanic or Latino, White. DOB Year 2012, Consent to CBTN year 2014.
 
-Diagnosis: Diagnosed at age 553 days, Low-Grade Glioma,NOS or NEC with comment:
+Diagnosis:      Diagnosed at age 553 days, Low-Grade Glioma,NOS or NEC with comment:
 "Pilomyxoid astrocytoma WHO II band 7q34-KIAA1549-BRAF Fusion"
-
-- HP:0009733,
-- MONDO:0021637,
-- NCIT:C132067
+- HP:0009733    Glioma
+- MONDO:0021637 Low Grade GLioma
+- NCIT:C132067  Low Grade Glioma
 
 Tumor location: Suprasellar/Hypothalamic/Pituitary; Ventricles
-- ICDO: C75.1 : Pituitary gland
-- ICDO: C71.5 : Ventricle, NOS;
+- ICDO: C75.1   Pituitary gland
+- ICDO: C71.5   Ventricle, NOS;
 
 Metastasis location:  no metastasis.
 
-Progressions: 3 total. Diagnosis term Low-Grade Glioma, Pilocytic Astrocytoma.
-Ages in days: [2188, 2878, 3605].
+Progressions:   3 total. Diagnosis term Low-Grade Glioma, Pilocytic Astrocytoma.
+Ages in days:   [2188, 2878, 3605].
 
-Surgeries: 1 partial resections, ages 560 days,  1 total resection age 2188
+Surgeries:      1 partial resections, ages 560 days,  1 total resection age 2188 days.
 
-Chemotherapy, initial treatment: carboplatin;vincristine sulfate
+Chemotherapy, initial treatment: carboplatin;vincristine sulfate.
 Chemotherapy later treatments:
 - trametinib
 - day101 (enrolled on clinical trial)
