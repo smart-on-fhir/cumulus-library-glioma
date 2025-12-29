@@ -2,7 +2,7 @@ import os
 from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
-from cumulus_library_glioma.tools import filetool
+from cumulus_library_glioma.tools import filetool, tablespace
 from cumulus_library_glioma.tools.filetool import PREFIX
 
 MIN_SUBJECTS = int(os.environ.get("MIN_SUBJECTS") or 1)
@@ -18,8 +18,10 @@ def cube_fhir_resource(fhir_resource:str, source_table='study_population', table
     """
     if not table_name:
         count_type = fhir_resource if (fhir_resource != 'documentreference') else 'document'
-        table_name = source_table.replace(f"{PREFIX}__", '').replace('cohort_', '')
-        table_name = f"{PREFIX}__cube_{count_type}_{table_name}"
+        #table_name = source_table.replace(f"{PREFIX}__", '').replace('cohort_', '')
+        #table_name = f"{PREFIX}__cube_{count_type}_{table_name}"
+        table_name = tablespace.name_basic(source_table)
+        table_name = tablespace.name_cube(table_name, count_type)
 
     table_cols = sorted(list(set(table_cols)))
     sql = CountsBuilder(PREFIX).get_count_query(
@@ -31,18 +33,8 @@ def cube_fhir_resource(fhir_resource:str, source_table='study_population', table
             filter_resource=True,
             skip_status_filter=True
     )
-    sql = table_as_view(sql, table_name)
+    sql = tablespace.ctas_as_view(sql, table_name)
     return filetool.save_athena_view(table_name, sql)
-
-def table_as_view(sql:str, table_name:str) -> str:
-    """
-    :param sql: CTAS (create table as)
-    :param table_name: Table name to turn into a view
-    :return: sql CVAS (create view as)
-    """
-    create_table = f'CREATE TABLE {table_name} AS ('
-    replace_view = f'CREATE or replace VIEW {table_name} AS '
-    return sql.replace(create_table, replace_view).replace(');', ';')
 
 def cube_patient(source_table='study_population', table_cols=None, table_name=None, min_subject=MIN_SUBJECTS) -> Path:
     return cube_fhir_resource(

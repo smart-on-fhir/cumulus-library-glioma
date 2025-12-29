@@ -1,9 +1,9 @@
 import os
-import csv
 import json
 from pathlib import Path
-from typing import List, Dict, Any, Iterable, Generator
-PREFIX = 'glioma'
+from typing import Dict, Any
+
+PREFIX = 'glioma' # << Refactor to use `manifest.toml`
 
 ###############################################################################
 # Root
@@ -117,26 +117,6 @@ def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') ->
         file_path.close()
         return file_path.name
 
-def write_bytes(data: str, file_path: str) -> None:
-    """
-    Writes provided bytes to provided file path
-    :param data: bytes contents
-    :param file_path: absolute path to file
-    :return:
-    """
-    with m_open(file=file_path, mode='wb') as bytes_file:
-        bytes_file.write(data.encode('UTF-8'))
-
-def read_bytes(binary_file: str) -> bytes:
-    """
-    Read bytes from binary file
-    :param binary_file: absolute path to file
-    :return: bytes file contents
-    """
-    if file_exists(binary_file):
-        with m_open(file=binary_file, mode='rb') as bin_file:
-            return bytes(bin_file.read())
-
 def file_exists(filename: Path | str) -> bool:
     """
     FAIL FAST if not exists `filename`
@@ -189,36 +169,3 @@ def write_json(contents: Dict[Any, Any], json_file_path: Path | str, encoding: s
         # json.dump(contents, json_file_path, indent=4, cls=jsonifiers.CustomJsonEncoder)
         json.dump(contents, json_file_path, indent=4)
         return Path(json_file_path.name)
-
-###############################################################################
-#
-# Read/Write CSV
-#
-###############################################################################
-def write_csv(rows: Iterable[List[str]], file_csv: Path | str, delimiter: str = ',', quote_char: str = '"'):
-    """Write csv file.
-    :param rows: The contents to write to file.
-    :param file_csv: absolute path to the csv
-    :param delimiter: the delimiter used in the csv
-    :param quote_char: the quote character used in the csv
-    :return: an iterator of row values
-    """
-    with open(file_csv, 'w+') as csvfile:
-        writer = csv.writer(csvfile, delimiter=delimiter, quotechar=quote_char)
-        for row in rows:
-            writer.writerow(row)
-
-
-def read_csv(file_csv: Path | str, delimiter: str = ',', quote_char: str = '"') -> Generator[List[str], None, None]:
-    """
-    Parse csv file
-    :param file_csv: absolute path to the csv
-    :param delimiter: the delimiter used in the csv
-    :param quote_char: the quote character used in the csv
-    :return: an iterator of row values
-    """
-    if file_exists(file_csv):
-        with m_open(file=file_csv) as csv_file:
-            for row in csv.reader(csv_file, delimiter=delimiter, quotechar=quote_char):
-                yield row
-
