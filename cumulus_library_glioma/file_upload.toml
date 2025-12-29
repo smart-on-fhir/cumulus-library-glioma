@@ -65,21 +65,30 @@ file = "valueset_data/dx_neuropathy.json.valueset.tsv"
 
 [tables.valueset_rx_cancer_directed]
 file = "valueset_data/rx_cancer_directed.json.valueset.tsv"
+col_types = ["STRING","STRING","STRING"]
 
 [tables.valueset_rx_chemo_advanced]
 file = "valueset_data/rx_chemo_advanced.json.valueset.tsv"
+col_types = ["STRING","STRING","STRING"]
 
 [tables.valueset_rx_chemo_platinum]
 file = "valueset_data/rx_chemo_platinum.json.valueset.tsv"
+col_types = ["STRING","STRING","STRING"]
 
 [tables.valueset_rx_chemo_platinum_carboplatin]
 file = "valueset_data/rx_chemo_platinum_carboplatin.json.valueset.tsv"
+col_types = ["STRING","STRING","STRING"]
 
 [tables.valueset_rx_checkpoint]
 file = "valueset_data/rx_checkpoint.json.valueset.tsv"
+col_types = ["STRING","STRING","STRING"]
 
-[tables.valueset_proc_neurosurgery]
-file = "valueset_data/proc_neurosurgery.json.valueset.tsv"
+# ########################################################
+# surgery
+# VSAC valueset does not match EHR data
+#
+# [tables.valueset_proc_neurosurgery]
+# file = "valueset_data/proc_neurosurgery.json.valueset.tsv"
 
 # ########################################################
 # Source: ICD-O Oncology

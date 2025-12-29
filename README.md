@@ -18,4 +18,4 @@
 |--------------------------------------|----------------------------------------------------------------------|
 | Chart Review (examples)              | llm / [examples](cumulus_library_glioma/llm/examples)                |
 | Chart Review (LLM)                   | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)  |
-| Chart Review (SQL)                   | llm /  [glioma__llm.sql](cumulus_library_glioma/llm/glioma__llm.sql) |
+| Chart Review (SQL)                   | llm /  [glioma__llm.sql](cumulus_library_glioma/athena/glioma__llm.sql) |
