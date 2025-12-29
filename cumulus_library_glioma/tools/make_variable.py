@@ -19,8 +19,12 @@ def list_variable_names_bug_issue() -> List[str]:
     return variable_list
 
 def list_variable_names() -> List[str]:
-    var_list = [v.name for v in list_valueset_vsac()]
+    var_list = [v.name for v in list_valueset_uploads()]
+    print('files:', '\t', var_list)
+    var_list = [tablespace.name_trim(v) for v in var_list]
+    print('trim:', '\t', var_list)
     var_list = [v.split('.')[0] for v in var_list]
+    print('variables:', '\t', var_list)
     return var_list
 
 ###############################################################################

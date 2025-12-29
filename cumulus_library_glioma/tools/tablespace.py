@@ -7,8 +7,8 @@ class Reference(Enum):
     """
     dx = 'condition'
     rx = 'medicationrequest'
+    lab = 'observation_lab'
     obs = 'observation'
-    lab = 'observation'
     proc = 'procedure'
     doc = 'documentreference'
     diag = 'diagnosticreport'
@@ -21,7 +21,9 @@ class Reference(Enum):
     def reference(self):
         if Reference.pat == self.name:
             return 'subject_ref'
-        return f"{self.name}_ref"
+        if Reference.lab == self.name:
+            return 'observation_ref'
+        return f"{self.value}_ref"
 
     def code(self)-> str:
         if Reference.doc == self.name:
@@ -35,8 +37,7 @@ class Reference(Enum):
 # get Reference Enum
 ###############################################################################
 def get_reference(table:str) -> Reference:
-    # lookup = name_trim(table)
-    lookup = table.replace(f'{PREFIX}__', '')
+    lookup = name_trim(table)
     lookup = lookup.split('_')[0]
     return Reference[lookup]
 
@@ -55,7 +56,7 @@ def name_suffix(name: str, suffix=None) -> str:
 def name_trim(table) -> str:
     simple = table
     for part in ['cohort_', 'cube_', 'valueset_']:
-        simple = simple.replace(name_prefix(part), '')
+        simple = simple.replace(part, '')
     return simple.replace(name_prefix(''), '')
 
 def name_join(part: str, table: str) -> str:
