@@ -1,4 +1,4 @@
-query_string	rxnorm_generic_name	notes
+query_string	rxnorm_generic_name	description
 OJEMDA	tovorafenib	BRAF-altered pLGG targeted therapy (brand per FDA label).
 Temodar	temozolomide	Alkylating agent (brand listed in RxNav/RxNorm).
 Paraplatin	carboplatin	Platinum chemotherapy (brand listed in RxNav/RxNorm).

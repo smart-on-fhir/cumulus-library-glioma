@@ -1,4 +1,4 @@
-query_string	rationale_bucket	notes
+query_string	drug_class	description
 carboplatin	cytotoxic_chemotherapy	Platinum agent; backbone of classic carboplatin/vincristine regimens in pLGG.
 vincristine	cytotoxic_chemotherapy	Vinca alkaloid; frequently paired with carboplatin in first-line pediatric LGG.
 vinblastine	cytotoxic_chemotherapy	Vinca alkaloid; commonly used as single-agent therapy in pLGG.

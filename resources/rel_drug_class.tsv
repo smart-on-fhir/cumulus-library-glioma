@@ -1,4 +1,4 @@
-class_system	sab	class_type	query_string	identifier	identifier_type	notes
+class_system	sab	class_type	query_string	code	code_type	description
 MED-RT	MEDRT	EPC	vinca alkaloid			High-yield EPC text for vincristine/vinblastine; appears as FDA EPC text label.
 ATC	ATC	ATC	Vinca alkaloids and analogues	L01CA	ATC1-4	Parent class for vinblastine (L01CA01) and vincristine (L01CA02).
 ATC	ATC	ATC	vinblastine	L01CA01	ATC5	Common pLGG agent (often vincristine/vinblastine-family capture).
