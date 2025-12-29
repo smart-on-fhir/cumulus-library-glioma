@@ -5,21 +5,23 @@ class Reference(Enum):
     """
     https://docs.smarthealthit.org/cumulus/library/core-study-details.html
     """
-    dx = 'condition_ref'
-    rx = 'medicationrequest_ref'
-    lab = 'observation_ref'
-    proc = 'procedure_ref'
-    doc = 'documentreference_ref'
-    diag = 'diagnosticreport_ref'
-    pat = 'subject_ref'
-    enc = 'encounter_ref'
-    obs = 'observation_ref'
+    dx = 'condition'
+    rx = 'medicationrequest'
+    obs = 'observation'
+    lab = 'observation'
+    proc = 'procedure'
+    doc = 'documentreference'
+    diag = 'diagnosticreport'
+    pat = 'patient'
+    enc = 'encounter'
 
     def aspect(self)-> str:
         return self.name
 
     def reference(self):
-        return self.value
+        if Reference.pat == self.name:
+            return 'subject_ref'
+        return f"{self.name}_ref"
 
     def code(self)-> str:
         if Reference.doc == self.name:

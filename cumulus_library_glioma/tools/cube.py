@@ -18,8 +18,6 @@ def cube_fhir_resource(fhir_resource:str, source_table='study_population', table
     """
     if not table_name:
         count_type = fhir_resource if (fhir_resource != 'documentreference') else 'document'
-        #table_name = source_table.replace(f"{PREFIX}__", '').replace('cohort_', '')
-        #table_name = f"{PREFIX}__cube_{count_type}_{table_name}"
         table_name = tablespace.name_trim(source_table)
         table_name = tablespace.name_cube(table_name, count_type)
 

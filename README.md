@@ -14,8 +14,8 @@
 | File uploads (curated)              | [file_upload.toml](cumulus_library_glioma/file_upload.toml)         |
 
 
-| Chart Review            | FILE                                                                 |
-|-------------------------|----------------------------------------------------------------------|
-| Chart Review (examples) | llm / [examples](cumulus_library_glioma/llm/examples)                |
-| Chart Review (LLM)      | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)  |
-| Chart Review (SQL)      | llm /  [glioma__llm.sql](cumulus_library_glioma/llm/glioma__llm.sql) |
+| Chart Review                         | FILE                                                                 |
+|--------------------------------------|----------------------------------------------------------------------|
+| Chart Review (examples)              | llm / [examples](cumulus_library_glioma/llm/examples)                |
+| Chart Review (LLM)                   | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)  |
+| Chart Review (SQL)                   | llm /  [glioma__llm.sql](cumulus_library_glioma/llm/glioma__llm.sql) |

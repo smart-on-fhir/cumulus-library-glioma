@@ -6,6 +6,15 @@ config_type="file_upload"
 [tables.valueset_casedef]
 file = "../resources/valueset_casedef.csv"
 
+[tables.valueset_rx_everolimus]
+file = "../resources/valueset_rx_everolimus.csv"
+
+[tables.valueset_lab_sirolimus]
+file = "../resources/valueset_lab_sirolimus.csv"
+
+[tables.valueset_rx_sirolimus]
+file = "../resources/valueset_rx_sirolimus.csv"
+
 # ########################################################
 # Drug Keywords
 
@@ -29,6 +38,9 @@ file = "../resources/rel_drug_ingredient.tsv"
 
 [tables.rel_drug_brand]
 file = "../resources/rel_drug_brand.tsv"
+
+[tables.rel_drug_expand_rules]
+file = "../resources/rel_drug_expand_rules.tsv"
 
 # ########################################################
 # Source: https://vsac.nlm.nih.gov/

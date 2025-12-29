@@ -7,7 +7,8 @@ UMLS_VOCAB = {
     "SNOMEDCT_US": "http://snomed.info/sct",
     "ICD10CM": "http://hl7.org/fhir/sid/icd-10-cm",
     "ICD9CM":  "http://hl7.org/fhir/sid/icd-9-cm",
-    "RXNORM": "http://www.nlm.nih.gov/research/umls/rxnorm"
+    "RXNORM": "http://www.nlm.nih.gov/research/umls/rxnorm",
+    "ObservationInterpretation": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"
 }
 
 def list_coding(valueset_json: dict) -> List[Coding]:
