@@ -29,18 +29,14 @@ class Reference(Enum):
     def system(self)-> str:
         return f"{self.name}_system"
 
-    @staticmethod
-    def get(table_name:str):
-        prefix = table_name.replace(f'{PREFIX}__', '')
-        prefix = prefix.split('_')[0]
-        return Reference[prefix]
-
+###############################################################################
+# get Reference Enum
+###############################################################################
 def get_reference(table:str) -> Reference:
     # lookup = name_trim(table)
     lookup = table.replace(f'{PREFIX}__', '')
     lookup = lookup.split('_')[0]
     return Reference[lookup]
-
 
 ###############################################################################
 # naming conventions
