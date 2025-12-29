@@ -22,6 +22,8 @@ class Reference(Enum):
         return self.value
 
     def code(self)-> str:
+        if Reference.doc == self.name:
+            return 'doc_type_code'
         return f"{self.name}_code"
 
     def system(self)-> str:
@@ -66,10 +68,6 @@ def name_study_population(suffix=None) -> str:
     table = name_suffix('study_population', suffix)
     return name_join('cohort', table)
 
-def name_study_variables(suffix=None) -> str:
-    table = name_suffix('study_variables', suffix)
-    return name_join('cohort', table)
-
 def name_cube(table: str, suffix: str = None) -> str:
     part = f'cube_{suffix}' if suffix else 'cube'
     return name_join(part, table)
@@ -95,17 +93,17 @@ def sql_iter(clauses_list, operator=',') -> str:
 ###############################################################################
 # CTAS
 ###############################################################################
-def ctas(cohort: str, variable: str, where: list) -> str:
+def ctas(source: str, variable: str, where: list) -> str:
     """
     CTAS(create table as) will create a COHORT table as a subselection of the
     study population cohort table.
 
-    :param cohort: study population cohort source
+    :param source: study population cohort source
     :param variable: variable cohort target to create
     :param where: JOIN study_population cohort to variable cohort
     :return: str SQL for creating the variable cohort table.
     """
-    from_list = sql_list([cohort, name_valueset(variable)])
+    from_list = sql_list([source, name_valueset(variable)])
     select_from = f'select * from \n {from_list}'
     sql = [f'create table {name_cohort(variable)} as ',
            select_from, 'WHERE', sql_iter(where, 'and')]

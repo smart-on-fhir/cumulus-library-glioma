@@ -45,28 +45,28 @@ file = "valueset_data/dx_brain_tumor.json.valueset.tsv"
 [tables.valueset_dx_cancer]
 file = "valueset_data/dx_cancer.json.valueset.tsv"
 
-[tables.dx_focal_deficit]
+[tables.valueset_dx_focal_deficit]
 file = "valueset_data/dx_focal_deficit.json.valueset.tsv"
 
-[tables.dx_neuropathy]
+[tables.valueset_dx_neuropathy]
 file = "valueset_data/dx_neuropathy.json.valueset.tsv"
 
-[tables.rx_cancer_directed]
+[tables.valueset_rx_cancer_directed]
 file = "valueset_data/rx_cancer_directed.json.valueset.tsv"
 
-[tables.rx_chemo_advanced]
+[tables.valueset_rx_chemo_advanced]
 file = "valueset_data/rx_chemo_advanced.json.valueset.tsv"
 
-[tables.rx_chemo_platinum]
+[tables.valueset_rx_chemo_platinum]
 file = "valueset_data/rx_chemo_platinum.json.valueset.tsv"
 
-[tables.rx_chemo_platinum_carboplatin]
+[tables.valueset_rx_chemo_platinum_carboplatin]
 file = "valueset_data/rx_chemo_platinum_carboplatin.json.valueset.tsv"
 
-[tables.rx_checkpoint]
+[tables.valueset_rx_checkpoint]
 file = "valueset_data/rx_checkpoint.json.valueset.tsv"
 
-[tables.proc_neurosurgery]
+[tables.valueset_proc_neurosurgery]
 file = "valueset_data/proc_neurosurgery.json.valueset.tsv"
 
 # ########################################################

@@ -1,13 +1,6 @@
 from typing import List
 from pathlib import Path
-from cumulus_library_glioma.tools import filetool
-from cumulus_library_glioma.tools.tablespace import (
-    Reference,
-    ctas,
-    name_prefix,
-    name_study_population,
-    name_cohort
-)
+from cumulus_library_glioma.tools import filetool, tablespace
 
 ###############################################################################
 # List variables
@@ -29,10 +22,10 @@ def make_each_study_variable() -> List[Path]:
     """
     group_list = list()
     for variable in list_variable_name():
-        ref = Reference.get(variable)
+        ref = tablespace.Reference.get(variable)
         group_list.append(ref.name)
 
-        cohort_study_population(variable)
+        make_cohort(variable)
 
         # if '__dx' in variable:
         #     group_list.append(cohort_dx(variable))
@@ -51,15 +44,18 @@ def make_each_study_variable() -> List[Path]:
 ###############################################################################
 # Cohort variable JOIN study population
 ###############################################################################
-def cohort_study_population(variable: str) -> Path:
-    key = Reference.get(variable)
-    population = name_study_population(key.name)
-    where = [f'{population}.{key.code()} = {variable}.code',
-             f'{population}.{key.system()} = {variable}.system']
+def make_cohort(variable: str) -> Path:
+    key = tablespace.Reference.get(variable)
 
-    view_name = name_cohort(variable)
-    sql = ctas(population, variable, where)
-    return filetool.save_athena_view(view_name, sql)
+    population = tablespace.name_study_population(key.name)
+    valueset_name = tablespace.name_valueset(variable)
+    cohort_name = tablespace.name_cohort(variable)
+
+    where = [f'{population}.{key.code()} = {valueset_name}.code',
+             f'{population}.{key.system()} = {valueset_name}.system']
+
+    sql = tablespace.ctas(population, variable, where)
+    return filetool.save_athena_view(cohort_name, sql)
 
 ###############################################################################
 # Make

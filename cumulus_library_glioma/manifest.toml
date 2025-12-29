@@ -26,7 +26,7 @@ study_prefix = "glioma"
 "study population" = [
     "athena/glioma__cohort_study_population.sql",
 ]
-"study population (dx, rx, lab, doc, diag)" = [
+"study population (dx, rx, lab, proc, doc, diag)" = [
     "athena/glioma__cohort_study_population_dx.sql",
     "athena/glioma__cohort_study_population_rx.sql",
     "athena/glioma__cohort_study_population_lab.sql",
@@ -49,11 +49,11 @@ study_prefix = "glioma"
     "athena/glioma__sample_casedef_index_post.sql",
     "athena/glioma__sample_casedef_post.sql",
 ]
-"computable phenotypes of glioma casedef cohort" = [
+"cohort casedef co-occurence (dx, rx)" = [
     "athena/glioma__cohort_dx.sql",
     "athena/glioma__cohort_rx.sql",
 ]
-"cube counts (casdef, " = [
+"cube counts (casdef, dx, rx, casedef)" = [
     "athena/glioma__cube_patient_casedef.sql",
     "athena/glioma__cube_patient_dx.sql",
     "athena/glioma__cube_patient_rx.sql",

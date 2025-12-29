@@ -1,7 +1,6 @@
 config_type="valueset"
 
-table_prefix = ""
-keyword_file = ""
+table_prefix = "valueset"
 
 [vsac_stewards]
 dx_brain_tumor="2.16.840.1.113883.17.4077.3.1011"
