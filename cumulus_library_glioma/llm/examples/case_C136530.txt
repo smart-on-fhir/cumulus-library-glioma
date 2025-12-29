@@ -1,0 +1,36 @@
+Demographics: Female, Hispanic or Latino, Black or African American. DOB Year 2012, Consent to CBTN year 2014
+
+Diagnosis: Diagnosed at age 796 days, Low-Grade Glioma, Pilocytic astrocytoma,  
+- HP:0033680, 
+- MONDO:0016691, 
+- NCIT:C4047
+
+Tumor location: Suprasellar/Hypothalamic/Pituitary, 
+- ICDO: C75.1 : Pituitary gland
+
+Metastasis location: Brain;CSF;Leptomeningeal
+
+Progressions: 8 total. No change in diagnosis term.
+Ages in days: [1344, 1528, 1739, 1983, 2512, 2710, 2933, 3540].
+
+Surgeries: 2 partial resections, ages 796 days and 2933 days.
+
+Chemotherapy, initial treatment: carboplatin;vincristine sulfate
+
+Chemotherapy later treatments: 
+- day101 (enrolled on clinical trial)
+- etoposide, 
+- bevacizumab, 
+- trametinib, 
+- ioguanine;procarbazine;lomustine;vincristine
+- temozolomide
+- temozolomide;avastin
+- bevacizumab;irinotecan
+
+CHOP Research Molecular Characterization 
+- targeted seq, normal
+- whole genome seq, normal
+- targeted seq, tumor
+- whole genome seq, tumor
+- rna seq, tumor
+- methylation, tumor
