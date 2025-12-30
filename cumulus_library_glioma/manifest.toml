@@ -5,13 +5,68 @@
 study_prefix = "glioma"
 
 [file_config.file_names]
-"file_upload.toml" = [
-    "file_upload.toml"
-]
+
 
 #    "valueset.toml" = [
 #        "valueset.toml"
 #    ]
+
+    "file_upload.toml" = [
+        "file_upload.toml"
+    ]
+
+#    "study_population.toml" = [
+#        "study_population.toml"
+#    ]
+
+# ########################################################
+# Study population
+
+#    "inclusion criteria for study population" = [
+#        "athena/glioma__include_gender.sql",
+#        "athena/glioma__include_age_at_visit.sql",
+#        "athena/glioma__include_utilization.sql",
+#        "athena/glioma__include_study_period.sql",
+#    ]
+#
+#    "study period" = [
+#        "athena/glioma__cohort_study_period.sql",
+#    ]
+#
+#    "study population" = [
+#        "athena/glioma__cohort_study_population.sql",
+#    ]
+#
+#    "study population (dx, rx, lab, proc, doc, diag)" = [
+#        "athena/glioma__cohort_study_population_dx.sql",
+#        "athena/glioma__cohort_study_population_rx.sql",
+#        "athena/glioma__cohort_study_population_lab.sql",
+#        "athena/glioma__cohort_study_population_doc.sql",
+#        "athena/glioma__cohort_study_population_diag.sql",
+#        "athena/glioma__cohort_study_population_proc.sql",
+#    ]
+
+# ########################################################
+# Variable cohorts
+
+#"variable cohort" = [
+#	"athena/glioma__cohort_rx_chemo_platinum_carboplatin.sql",
+#	"athena/glioma__cohort_rx_chemo_platinum.sql",
+#	"athena/glioma__cohort_rx_checkpoint.sql",
+#	"athena/glioma__cohort_proc_neurosurgery.sql",
+#	"athena/glioma__cohort_diag_brain_mri.sql",
+#	"athena/glioma__cohort_dx_neuropathy.sql",
+#	"athena/glioma__cohort_diag_head_neck.sql",
+#	"athena/glioma__cohort_rx_chemo_advanced.sql",
+#	"athena/glioma__cohort_dx_brain_tumor.sql",
+#	"athena/glioma__cohort_dx_cancer.sql",
+#	"athena/glioma__cohort_rx_cancer_directed.sql",
+#	"athena/glioma__cohort_dx_focal_deficit.sql",
+#	"athena/glioma__cohort_lab_sirolimus.sql",
+#	"athena/glioma__cohort_diag_pathology.sql",
+#	"athena/glioma__cohort_rx_sirolimus.sql",
+#	"athena/glioma__cohort_rx_everolimus.sql",
+#]
 
 #    "cube.toml" = [
 #        "cube.toml"
@@ -21,52 +76,5 @@ study_prefix = "glioma"
 #    "llm.toml" = [
 #        "llm.toml"
 #    ]
-
-"inclusion criteria for study population" = [
-    "athena/glioma__include_gender.sql",
-    "athena/glioma__include_age_at_visit.sql",
-    "athena/glioma__include_utilization.sql",
-    "athena/glioma__include_study_period.sql",
-]
-"study period" = [
-    "athena/glioma__cohort_study_period.sql",
-]
-"study population" = [
-    "athena/glioma__cohort_study_population.sql",
-]
-"study population (dx, rx, lab, proc, doc, diag)" = [
-    "athena/glioma__cohort_study_population_dx.sql",
-    "athena/glioma__cohort_study_population_rx.sql",
-    "athena/glioma__cohort_study_population_lab.sql",
-    "athena/glioma__cohort_study_population_doc.sql",
-    "athena/glioma__cohort_study_population_diag.sql",
-    "athena/glioma__cohort_study_population_proc.sql",
-]
-"cohort matching glioma case definition" = [
-    "athena/glioma__cohort_casedef.sql",
-]
-"cohort glioma case definition (pre, index, index_post, post)" = [
-    "athena/glioma__cohort_casedef_pre.sql",
-    "athena/glioma__cohort_casedef_index.sql",
-    "athena/glioma__cohort_casedef_index_post.sql",
-    "athena/glioma__cohort_casedef_post.sql",
-]
-"sample glioma case definition (pre, index, index_post, post)" = [
-    "athena/glioma__sample_casedef_pre.sql",
-    "athena/glioma__sample_casedef_index.sql",
-    "athena/glioma__sample_casedef_index_post.sql",
-    "athena/glioma__sample_casedef_post.sql",
-]
-"cohort casedef co-occurence (dx, rx)" = [
-    "athena/glioma__cohort_dx.sql",
-    "athena/glioma__cohort_rx.sql",
-]
-"cube counts (casdef, dx, rx, casedef)" = [
-    "athena/glioma__cube_patient_casedef.sql",
-    "athena/glioma__cube_patient_dx.sql",
-    "athena/glioma__cube_patient_rx.sql",
-    "athena/glioma__cube_encounter_casedef.sql",
-    "athena/glioma__cube_document_sample_casedef_index_post.sql",
-]
 
 #[export_config]

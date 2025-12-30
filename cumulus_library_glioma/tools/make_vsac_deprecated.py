@@ -45,7 +45,9 @@ def escape_string(value: str) -> str:
     return value
 
 def coding_to_tsv(codelist: List[Coding]) -> str:
-    header = f"system\tcode\tdisplay"
+    _system = codelist[0].system
+    header = '\n'.join([f"system\tcode\tdisplay",
+                        f"{_system}\tcode\tdisplay"])
     row = list()
     for concept in codelist:
         safe_display = escape_string(concept.display)

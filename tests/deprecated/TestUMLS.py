@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 from pathlib import Path
 from cumulus_library_glioma.tools import filetool
-from cumulus_library_glioma.tools.make_valueset import UMLS_VOCAB
+from cumulus_library_glioma.tools.make_vsac_deprecated import UMLS_VOCAB
 
 def make_valueset_morphology()-> Path:
     file_in = filetool.path_resources('umls_morphology.bsv')

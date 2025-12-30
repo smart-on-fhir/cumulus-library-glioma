@@ -58,6 +58,9 @@ def cube_document(source_table='study_population', table_cols=None, table_name=N
         table_name=table_name,
         min_subject=min_subject)
 
+###############################################################################
+# Make
+###############################################################################
 def make() -> List[Path]:
     return [
         cube_patient(source_table='glioma__cohort_casedef',

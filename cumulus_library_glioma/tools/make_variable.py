@@ -50,6 +50,17 @@ def make_cohort(variable: str) -> Path:
 def make() -> list[Path]:
     return [make_cohort(variable) for variable in list_variable_names()]
 
+def as_toml() -> str:
+    table_list = [tablespace.name_cohort(t) for t in list_variable_names()]
+    key = '"variable cohort"'
+    values = [f'"athena/{table_name}.sql",' for table_name in table_list]
+    return  key + '= [\n\t'+ '\n\t'.join(values) + '\n]'
+
 if __name__ == '__main__':
     target_files = make()
-    print(target_files)
+
+    if VERBOSE:
+        print('#######################################################################')
+        print(target_files)
+        print('#######################################################################')
+        print(as_toml())

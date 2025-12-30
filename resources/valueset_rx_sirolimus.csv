@@ -1,4 +1,5 @@
-system,code,display
+"system","code","display"
+"http://www.nlm.nih.gov/research/umls/rxnorm","CODE","DISPLAY"
 "http://www.nlm.nih.gov/research/umls/rxnorm","1158757","sirolimus Oral Liquid Product"
 "http://www.nlm.nih.gov/research/umls/rxnorm","1158758","sirolimus Oral Product"
 "http://www.nlm.nih.gov/research/umls/rxnorm","1158759","sirolimus Pill"
