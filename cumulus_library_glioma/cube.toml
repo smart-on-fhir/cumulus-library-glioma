@@ -1,5 +1,7 @@
 study_prefix = "glioma"
 
+# See Also llm/cube.toml
+
 [file_config.file_names]
 "cube counts (casdef, dx, rx, casedef)" = [
     "athena/glioma__cube_patient_casedef.sql",
@@ -8,12 +10,3 @@ study_prefix = "glioma"
     "athena/glioma__cube_encounter_casedef.sql",
     "athena/glioma__cube_document_sample_casedef_index_post.sql",
 ]
-"cube counts (LLM)" = [
-    "athena/glioma__cube_patient_llm.sql",
-    "athena/glioma__cube_patient_llm_drug.sql",
-    "athena/glioma__cube_patient_llm_surgery.sql",
-    "athena/glioma__cube_patient_llm_gene.sql",
-    "athena/glioma__cube_patient_llm_variant.sql",
-]
-
-#[export_config]

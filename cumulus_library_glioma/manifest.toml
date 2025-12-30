@@ -4,7 +4,6 @@
 # be the same name as the folder the study definition is in.
 study_prefix = "glioma"
 
-
 [file_config.file_names]
 "file_upload.toml" = [
     "file_upload.toml"
@@ -12,6 +11,15 @@ study_prefix = "glioma"
 
 #    "valueset.toml" = [
 #        "valueset.toml"
+#    ]
+
+#    "cube.toml" = [
+#        "cube.toml"
+#    ]
+
+
+#    "llm.toml" = [
+#        "llm.toml"
 #    ]
 
 "inclusion criteria for study population" = [
@@ -59,13 +67,6 @@ study_prefix = "glioma"
     "athena/glioma__cube_patient_rx.sql",
     "athena/glioma__cube_encounter_casedef.sql",
     "athena/glioma__cube_document_sample_casedef_index_post.sql",
-]
-"cube counts (LLM)" = [
-    "athena/glioma__cube_patient_llm.sql",
-    "athena/glioma__cube_patient_llm_drug.sql",
-    "athena/glioma__cube_patient_llm_surgery.sql",
-    "athena/glioma__cube_patient_llm_gene.sql",
-    "athena/glioma__cube_patient_llm_variant.sql",
 ]
 
 #[export_config]
