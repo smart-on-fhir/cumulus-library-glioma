@@ -1,5 +1,5 @@
 create table glioma__cohort_rx_chemo_platinum_carboplatin as 
-select * from 
+select distinct * from 
  glioma__cohort_study_population_rx , 
 glioma__valueset_rx_chemo_platinum_carboplatin
 WHERE

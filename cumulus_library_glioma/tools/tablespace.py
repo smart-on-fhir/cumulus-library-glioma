@@ -19,27 +19,39 @@ class Reference(Enum):
         return self.name
 
     def reference(self):
-        if Reference.pat == self.name:
+        if Reference.pat.name == self.name:
             return 'subject_ref'
-        if Reference.lab == self.name:
+        if Reference.lab.name == self.name:
             return 'observation_ref'
         return f"{self.value}_ref"
 
     def code(self)-> str:
-        if Reference.doc == self.name:
+        if Reference.doc.name == self.name:
             return 'doc_type_code'
+        if Reference.lab.name == self.name:
+            return 'lab_observation_code'
         return f"{self.name}_code"
 
     def system(self)-> str:
+        if Reference.doc.name == self.name:
+            return 'doc_type_system'
+        if Reference.lab.name == self.name:
+            return 'lab_observation_system'
         return f"{self.name}_system"
 
 ###############################################################################
 # get Reference Enum
 ###############################################################################
+_REF_KEYS = [str(ref.name) for ref in Reference]
 def get_reference(table:str) -> Reference:
     lookup = name_trim(table)
-    lookup = lookup.split('_')[0]
-    return Reference[lookup]
+    tokens = set(lookup.split('_'))
+    match = tokens.intersection(_REF_KEYS)
+    if not match:
+        raise ValueError(f"Reference value {match} not found in table {table}")
+    if len(match) > 1:
+        raise ValueError(f"Reference value {match} multiple match types for table {table}")
+    return Reference[match.pop()]
 
 ###############################################################################
 # naming conventions
@@ -110,9 +122,10 @@ def ctas(source: str, variable: str, where: list) -> str:
     :return: str SQL for creating the variable cohort table.
     """
     from_list = sql_list([source, name_valueset(variable)])
-    select_from = f'select * from \n {from_list}'
-    sql = [f'create table {name_cohort(variable)} as ',
-           select_from, 'WHERE', sql_iter(where, 'and')]
+    cohort_name = name_cohort(variable)
+    select = f"select distinct * from \n {from_list}"
+    sql = [f'create table {cohort_name} as ',
+           select, 'WHERE', sql_and(where)]
     return '\n'.join(sql)
 
 def ctas_as_view(sql:str, table_name:str) -> str:

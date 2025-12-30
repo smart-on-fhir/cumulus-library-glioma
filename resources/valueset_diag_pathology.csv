@@ -1,0 +1,21 @@
+system,code,display
+http://loinc.org,22633-2,Pathology report site of origin
+http://loinc.org,22634-0,Pathology report gross observation
+http://loinc.org,22635-7,Pathology report microscopic observation
+http://loinc.org,22636-5,Pathology report clinical history section
+http://loinc.org,22637-3,Pathology report final diagnosis
+http://loinc.org,22638-1,Pathology report comments
+http://loinc.org,50396-1,Molecular diagnostic major findings
+http://loinc.org,50397-9 Molecular diagnostic overall interpretation
+http://loinc.org,50398-7,Molecular diagnostic report
+http://loinc.org,50595-8,Pathologist interpretation
+http://loinc.org,55228-1,Cytogenetics study
+http://loinc.org,60568-3 Pathology synoptic report
+http://loinc.org,60570-9,Pathology consult note
+http://loinc.org,62365-2,Specimen interpretation
+http://loinc.org,81192-7,Clinical pathology Consult note
+http://loinc.org,90010-0,Clinical pathology procedure note
+http://loinc.org,90011-8,Clinical pathology Progress note
+http://loinc.org,90013-4,Clinical pathology Initial evaluation note
+http://loinc.org,90015-9,Clinical pathology Telephone encounter Note
+http://loinc.org,90371-6,Clinical pathology Note

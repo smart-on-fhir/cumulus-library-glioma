@@ -5,8 +5,6 @@
 study_prefix = "glioma"
 
 [file_config.file_names]
-
-
 #    "valueset.toml" = [
 #        "valueset.toml"
 #    ]
@@ -21,52 +19,51 @@ study_prefix = "glioma"
 
 # ########################################################
 # Study population
+"inclusion criteria for study population" = [
+    "athena/glioma__include_gender.sql",
+    "athena/glioma__include_age_at_visit.sql",
+    "athena/glioma__include_utilization.sql",
+    "athena/glioma__include_study_period.sql",
+]
 
-#    "inclusion criteria for study population" = [
-#        "athena/glioma__include_gender.sql",
-#        "athena/glioma__include_age_at_visit.sql",
-#        "athena/glioma__include_utilization.sql",
-#        "athena/glioma__include_study_period.sql",
-#    ]
-#
-#    "study period" = [
-#        "athena/glioma__cohort_study_period.sql",
-#    ]
-#
-#    "study population" = [
-#        "athena/glioma__cohort_study_population.sql",
-#    ]
-#
-#    "study population (dx, rx, lab, proc, doc, diag)" = [
-#        "athena/glioma__cohort_study_population_dx.sql",
-#        "athena/glioma__cohort_study_population_rx.sql",
-#        "athena/glioma__cohort_study_population_lab.sql",
-#        "athena/glioma__cohort_study_population_doc.sql",
-#        "athena/glioma__cohort_study_population_diag.sql",
-#        "athena/glioma__cohort_study_population_proc.sql",
-#    ]
+"study period" = [
+    "athena/glioma__cohort_study_period.sql",
+]
+
+"study population" = [
+    "athena/glioma__cohort_study_population.sql",
+]
+
+"study population (dx, rx, lab, proc, doc, diag)" = [
+    "athena/glioma__cohort_study_population_dx.sql",
+    "athena/glioma__cohort_study_population_rx.sql",
+    "athena/glioma__cohort_study_population_lab.sql",
+    "athena/glioma__cohort_study_population_doc.sql",
+    "athena/glioma__cohort_study_population_diag.sql",
+    "athena/glioma__cohort_study_population_proc.sql",
+]
 
 # ########################################################
 # Variable cohorts
-
-#"variable cohort" = [
-#	"athena/glioma__cohort_rx_chemo_platinum_carboplatin.sql",
-#	"athena/glioma__cohort_rx_chemo_platinum.sql",
-#	"athena/glioma__cohort_rx_checkpoint.sql",
-#	"athena/glioma__cohort_proc_neurosurgery.sql",
-#	"athena/glioma__cohort_diag_brain_mri.sql",
-#	"athena/glioma__cohort_dx_neuropathy.sql",
-#	"athena/glioma__cohort_diag_head_neck.sql",
-#	"athena/glioma__cohort_rx_chemo_advanced.sql",
-#	"athena/glioma__cohort_dx_brain_tumor.sql",
-#	"athena/glioma__cohort_dx_cancer.sql",
-#	"athena/glioma__cohort_rx_cancer_directed.sql",
-#	"athena/glioma__cohort_dx_focal_deficit.sql",
-#	"athena/glioma__cohort_lab_sirolimus.sql",
-#	"athena/glioma__cohort_diag_pathology.sql",
-#	"athena/glioma__cohort_rx_sirolimus.sql",
-#	"athena/glioma__cohort_rx_everolimus.sql",
-#]
+"variable cohort"= [
+	"athena/glioma__cohort_rx_chemo_platinum_carboplatin.sql",
+	"athena/glioma__cohort_rx_chemo_platinum.sql",
+	"athena/glioma__cohort_rx_checkpoint.sql",
+	"athena/glioma__cohort_proc_neurosurgery.sql",
+	"athena/glioma__cohort_diag_brain_mri.sql",
+	"athena/glioma__cohort_dx_neuropathy.sql",
+	"athena/glioma__cohort_diag_head_neck.sql",
+	"athena/glioma__cohort_rx_chemo_advanced.sql",
+	"athena/glioma__cohort_dx_brain_tumor.sql",
+	"athena/glioma__cohort_dx_cancer.sql",
+	"athena/glioma__cohort_rx_cancer_directed.sql",
+	"athena/glioma__cohort_rx_chemo.sql",
+	"athena/glioma__cohort_dx_focal_deficit.sql",
+	"athena/glioma__cohort_lab_sirolimus.sql",
+	"athena/glioma__cohort_rx_sirolimus.sql",
+	"athena/glioma__cohort_rx_everolimus.sql",
+	"athena/glioma__cohort_diag_pathology.sql",
+]
 
 #    "cube.toml" = [
 #        "cube.toml"

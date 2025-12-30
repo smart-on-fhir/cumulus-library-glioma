@@ -7,3 +7,6 @@ class TestMakeVariable(unittest.TestCase):
         print(make_variable.list_valueset_vsac())
         print(make_variable.list_valueset_uploads())
 
+    def test_make_union(self):
+        _str = make_variable.make_union()
+        print(_str)

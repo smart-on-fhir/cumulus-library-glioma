@@ -1,5 +1,5 @@
 create table glioma__cohort_diag_head_neck as 
-select * from 
+select distinct * from 
  glioma__cohort_study_population_diag , 
 glioma__valueset_diag_head_neck
 WHERE

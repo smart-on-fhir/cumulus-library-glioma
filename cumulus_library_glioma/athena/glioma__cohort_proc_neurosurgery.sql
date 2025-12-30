@@ -1,5 +1,5 @@
 create table glioma__cohort_proc_neurosurgery as 
-select * from 
+select distinct * from 
  glioma__cohort_study_population_proc , 
 glioma__valueset_proc_neurosurgery
 WHERE

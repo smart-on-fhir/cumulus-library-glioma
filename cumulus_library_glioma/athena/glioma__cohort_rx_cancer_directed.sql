@@ -1,5 +1,5 @@
 create table glioma__cohort_rx_cancer_directed as 
-select * from 
+select distinct * from 
  glioma__cohort_study_population_rx , 
 glioma__valueset_rx_cancer_directed
 WHERE
