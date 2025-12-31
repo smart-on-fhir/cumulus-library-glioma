@@ -8,6 +8,8 @@ match_casedef as
             casedef.system      as dx_system,
             dx.category_code    as dx_category_code,            
             sp.age_at_visit,
+            sp.enc_period_start_day,
+            sp.enc_period_ordinal,
             dx.subject_ref,            
             dx.encounter_ref
     from    glioma__valueset_casedef as casedef,
@@ -17,28 +19,29 @@ match_casedef as
     and     casedef.system = dx.system
     and     dx.encounter_ref = sp.encounter_ref
 ),
-calculate_age as
+duration as
 (
-    select  min(age_at_visit) as age_at_dx_min,
+    select  distinct
+            min(age_at_visit) as age_at_dx_min,
             max(age_at_visit) as age_at_dx_max,
-            dx_code,
-            dx_system,
+            min(enc_period_ordinal)  as enc_period_ordinal_min,
+            min(enc_period_start_day) as enc_period_start_day_min,
             subject_ref
     from    match_casedef
-    group by
-            dx_code, dx_system, subject_ref
+    group by subject_ref
 ), 
 cohort as 
 (
-    select  calculate_age.age_at_dx_min,
-            calculate_age.age_at_dx_max,
+    select  distinct
+            duration.age_at_dx_min,
+            duration.age_at_dx_max,
+            duration.enc_period_ordinal_min,
+            duration.enc_period_start_day_min,
             match_casedef.*
     from    match_casedef, 
-            calculate_age 
-    where   calculate_age.subject_ref   = match_casedef.subject_ref
-    and     calculate_age.dx_code       = match_casedef.dx_code
-    and     calculate_age.dx_system     = match_casedef.dx_system
-), 
+            duration 
+    where   duration.subject_ref   = match_casedef.subject_ref
+),
 longitudinal as
 (
     select  distinct
@@ -60,7 +63,9 @@ longitudinal as
 )
 select      distinct
             cohort.age_at_dx_min,
-            cohort.age_at_dx_max, 
+            cohort.age_at_dx_max,
+            cohort.enc_period_ordinal_min,
+            cohort.enc_period_start_day_min,
             cohort.dx_category_code, 
             cohort.dx_code,
             cohort.dx_system,
