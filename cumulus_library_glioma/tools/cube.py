@@ -115,7 +115,8 @@ def make() -> List[Path]:
                                  'behavior_display_best',
                                  'grade_has_mention',
                                  'grade_display_best',
-                                 'category_display_best']),
+                                 'category_display_best'],
+                     min_subject=10),
 
         cube_patient(source_table='glioma__llm_surgery',
                      table_cols=['has_mention',

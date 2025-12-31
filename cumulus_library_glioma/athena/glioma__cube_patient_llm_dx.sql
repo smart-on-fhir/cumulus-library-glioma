@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_patient_llm_dx AS
+CREATE or replace VIEW glioma__cube_patient_llm_dx AS 
     WITH
     filtered_table AS (
         SELECT
@@ -111,5 +111,5 @@ CREATE or replace VIEW glioma__cube_patient_llm_dx AS
         p."topography_has_mention"
     FROM powerset AS p
     WHERE 
-        p.cnt_subject_ref >= 1
+        p.cnt_subject_ref >= 10
 ;

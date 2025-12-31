@@ -8,12 +8,20 @@ raw as
                 result.grade_mention.display            as grade_display,
 
                 result.topography_mention.has_mention   as topography_has_mention,
-                result.topography_mention.code          as topography_code,
-                result.topography_mention.display       as topography_display,
+
+                case    when UPPER(result.topography_mention.display) like 'C0%'
+                        then NULL else result.topography_mention.display end as topography_display,
+
+                case    when UPPER(result.topography_mention.code) like 'C0%'
+                        then NULL else result.topography_mention.code end as topography_code,
 
                 result.morphology_mention.has_mention   as morphology_has_mention,
-                result.morphology_mention.code          as morphology_code,
-                result.morphology_mention.display       as morphology_display,
+
+                case    when UPPER(result.morphology_mention.display) like '0%%'
+                        then NULL else result.morphology_mention.display end as morphology_display,
+
+                case    when UPPER(result.morphology_mention.code) like '0%%'
+                        then NULL else result.morphology_mention.code end as morphology_code,
 
                 element_at(split(result.morphology_mention.code, '/'), 1) AS morphology_histology,
                 element_at(split(result.morphology_mention.code, '/'), 2) AS morphology_behavior,
@@ -67,6 +75,8 @@ clean as
 best as
 (
     select      distinct
+                -- Grade
+                clean.grade_has_mention,
                 coalesce(
                     clean.grade_display_nci,
                     concat(clean.grade_display, ' (?)'),
@@ -76,8 +86,9 @@ best as
                 clean.grade_display_nci,
                 clean.grade_display,
                 clean.grade_code,
-                clean.grade_has_mention,
 
+                -- Topography
+                clean.topography_has_mention,
                 coalesce(
                     clean.topography_display_casdef,
                     concat(clean.topography_display, ' (?)'),
@@ -85,10 +96,10 @@ best as
                     'NONE') as topography_display_best,
 
                 clean.topography_display_casdef,
-                clean.topography_display,
                 clean.topography_code,
-                clean.topography_has_mention,
 
+                -- Morphology
+                clean.morphology_has_mention,
                 coalesce(
                     clean.morphology_display_nci,
                     concat(clean.morphology_display, ' (?)'),
@@ -100,7 +111,9 @@ best as
                 clean.morphology_code,
                 clean.morphology_histology,
                 clean.morphology_behavior,
-                clean.morphology_has_mention,
+
+                -- Behavior
+                clean.behavior_has_mention,
 
                 coalesce(
                     clean.behavior_display_nci,
@@ -111,8 +124,8 @@ best as
                 clean.behavior_display_nci,
                 clean.behavior_display,
                 clean.behavior_code,
-                clean.behavior_has_mention,
 
+                -- Category (Histological)
                 coalesce(
                     clean.category_display_nci,
                     nci.category_display,
@@ -121,6 +134,7 @@ best as
                 clean.category_display_nci,
                 nci.category_display as category_display,
 
+                -- FHIR References
                 note_ref,
                 encounter_ref,
                 subject_ref
