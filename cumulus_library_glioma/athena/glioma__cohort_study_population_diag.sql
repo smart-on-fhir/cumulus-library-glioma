@@ -5,7 +5,7 @@ study_diag as (
             diag.status                     as diag_status,
             diag.category_code              as diag_category_code,
             diag.category_system            as diag_category_system,
-            diag.category_display           as diag_category_display,
+            valueset.display                as diag_category_display,
             diag.code_code                  as diag_code,
             diag.code_system                as diag_system,
             diag.code_display               as diag_display,

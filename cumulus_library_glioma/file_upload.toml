@@ -75,6 +75,9 @@ file = "valueset_data/dx_neuropathy.json.valueset.tsv"
 [tables.valueset_rx_cancer_directed]
 file = "valueset_data/rx_cancer_directed.json.valueset.tsv"
 
+[tables.valueset_rx_chemo]
+file = "valueset_data/rx_chemo.json.valueset.tsv"
+
 [tables.valueset_rx_chemo_advanced]
 file = "valueset_data/rx_chemo_advanced.json.valueset.tsv"
 

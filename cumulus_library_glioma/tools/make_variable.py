@@ -15,7 +15,7 @@ def list_valueset_uploads() -> List[Path]:
     return filetool.list_resources('*valueset*')
 
 def list_variable_names() -> List[str]:
-    var_list = list_valueset_vsac() + list_valueset_uploads()
+    var_list = sorted(list_valueset_vsac() + list_valueset_uploads())
     var_list = [v.name for v in var_list]
     var_list = [v for v in var_list if "casedef" not in v]
     if VERBOSE:
@@ -39,14 +39,14 @@ def select_lookup(variable_list: List[str]) -> str:
     sql = list()
     for variable in variable_list:
         variable = name_trim(variable)
-        sql.append(f"\tIF(lookup.variable='{variable}', lookup.valueset) AS {variable}")
+        sql.append(f"\tIF(lookup.variable='{variable}', True) AS {variable}")
     return ',\n'.join(sql)
 
 def select_lookup_wide(variable_list: List[str]) -> str:
     sql = list()
     for variable in variable_list:
         variable = name_trim(variable)
-        sql.append(f"\tarbitrary({variable})    FILTER (where {variable}  is NOT null) as {variable}")
+        sql.append(f"\tarbitrary({variable})    FILTER (where {variable} ) as {variable}")
     return ',\n'.join(sql)
 
 ###############################################################################
@@ -74,13 +74,11 @@ def make_union() -> Path:
     "see `template/cohort_study_variables.sql`"
     :return: Path to SQL file for each study variable 1+ `valueset`
     """
-    _cohort = tablespace.name_cohort('variable_union')
-    _template = filetool.path_athena('.') / 'template' / f"{_cohort}.sql"
-    _target = filetool.path_athena(f"{_cohort}.sql")
-    _sql = filetool.read_text(_template)
-    _sql = _sql.replace('$prefix__', f"{tablespace.PREFIX}__")
-    _sql =  _sql.replace('$variable_list', select_union(list_variable_names()))
-    return filetool.save_athena(_target, _sql)
+    cohort_name = tablespace.name_cohort('variable_union')
+    target_file = filetool.path_athena(f"{cohort_name}.sql")
+    template_sql = filetool.load_template(f"{cohort_name}.sql")
+    template_sql =  template_sql.replace('$variable_list', select_union(list_variable_names()))
+    return filetool.save_athena(target_file, template_sql)
 
 def make_wide() -> Path:
     """
@@ -91,20 +89,12 @@ def make_wide() -> Path:
     :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
     """
     variable_list = list_variable_names()
-
-    _cohort = tablespace.name_cohort('variable_wide')
-    _template = filetool.path_athena('.') / 'template' / f"{_cohort}.sql"
-    _target = filetool.path_athena(f"{_cohort}.sql")
-    _lookup = select_lookup(variable_list)
-    _wide = select_lookup_wide(variable_list)
-    _sql = filetool.read_text(_template)
-    _sql = _sql.replace('$variable_list_lookup', _lookup)
-    _sql = _sql.replace('$variable_list_wide', _wide)
-    return filetool.save_athena(_target, _sql)
-
-
-
-
+    cohort_name = tablespace.name_cohort('variable_wide')
+    target_file = filetool.path_athena(f"{cohort_name}.sql")
+    template_sql = filetool.load_template(f"{cohort_name}.sql")
+    template_sql = template_sql.replace('$variable_list_lookup', select_lookup(variable_list))
+    template_sql = template_sql.replace('$variable_list_wide', select_lookup_wide(variable_list))
+    return filetool.save_athena(target_file, template_sql)
 
 ###############################################################################
 # Make
@@ -119,7 +109,7 @@ def as_toml() -> str:
     return  key + '= [\n\t'+ '\n\t'.join(values) + '\n]'
 
 if __name__ == '__main__':
-    target_files = make() + [make_union()]
+    target_files = make() + [make_union(), make_wide()]
 
     if VERBOSE:
         print('#######################################################################')

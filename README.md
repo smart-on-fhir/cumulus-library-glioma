@@ -10,7 +10,7 @@
 | Study Builder                       | FILE                                                                |
 |-------------------------------------|---------------------------------------------------------------------|
 | Manifest                            | [manifest.toml](cumulus_library_glioma/manifest.toml)               |
-| Valuesets (National Library Medicine) | [valueset.toml](cumulus_library_glioma/valueset.toml)               |
+| Valuesets (National Library Medicine) | [valueset.toml](cumulus_library_glioma/vsac.toml)               |
 | File uploads (curated)              | [file_upload.toml](cumulus_library_glioma/file_upload.toml)         |
 
 
