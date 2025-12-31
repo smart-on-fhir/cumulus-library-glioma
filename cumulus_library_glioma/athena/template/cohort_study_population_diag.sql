@@ -14,7 +14,7 @@ study_diag as (
             diag.result_ref,
     	    study_population.*
 	from    $prefix__cohort_study_population as study_population,
-	        $prefix__valueset_diag_category  as valueset,
+	        $prefix__fhir_diagnostic_service as valueset,
     	    core__diagnosticreport          as diag
 	where   diag.category_system            = valueset.system
 	and     diag.category_code              = valueset.code

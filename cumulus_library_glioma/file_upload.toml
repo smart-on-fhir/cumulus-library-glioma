@@ -1,6 +1,15 @@
 config_type="file_upload"
 
 # ########################################################
+# VSAC curated by standards orgs (FHIR and NCI)
+
+[tables.fhir_diagnostic_service]
+file = "../resources/fhir_diagnostic_service.csv"
+
+[tables.nci_site_histology]
+file = "../resources/nci_site_histology.csv"
+
+# ########################################################
 # Source: cureated by CHOP+CHIP
 
 [tables.valueset_casedef]
@@ -15,9 +24,6 @@ file = "../resources/valueset_rx_sirolimus.csv"
 [tables.valueset_rx_everolimus]
 file = "../resources/valueset_rx_everolimus.csv"
 
-[tables.valueset_diag_category]
-file = "../resources/valueset_diag_category.csv"
-
 [tables.valueset_diag_pathology]
 file = "../resources/valueset_diag_pathology.csv"
 
@@ -27,78 +33,71 @@ file = "../resources/valueset_diag_pathology.csv"
 # ########################################################
 # Drug Keywords
 
-[tables.keywords_drug_class]
-file = "../resources/keywords_drug_class.tsv"
-
-[tables.keywords_drug_ingredient]
-file = "../resources/keywords_drug_ingredient.tsv"
-
-[tables.keywords_drug_brand]
-file = "../resources/keywords_drug_brand.tsv"
+#    [tables.keywords_drug_class]
+#    file = "../resources/keywords_drug_class.tsv"
+#
+#    [tables.keywords_drug_ingredient]
+#    file = "../resources/keywords_drug_ingredient.tsv"
+#
+#    [tables.keywords_drug_brand]
+#    file = "../resources/keywords_drug_brand.tsv"
 
 # ########################################################
 # Drug Relationships (Class -> Ingredient -> Brand )
 
-[tables.rel_drug_class]
-file = "../resources/rel_drug_class.tsv"
-
-[tables.rel_drug_ingredient]
-file = "../resources/rel_drug_ingredient.tsv"
-
-[tables.rel_drug_brand]
-file = "../resources/rel_drug_brand.tsv"
-
-[tables.rel_drug_expand_rules]
-file = "../resources/rel_drug_expand_rules.tsv"
+#    [tables.rel_drug_class]
+#    file = "../resources/rel_drug_class.tsv"
+#
+#    [tables.rel_drug_ingredient]
+#    file = "../resources/rel_drug_ingredient.tsv"
+#
+#    [tables.rel_drug_brand]
+#    file = "../resources/rel_drug_brand.tsv"
+#
+#    [tables.rel_drug_expand_rules]
+#    file = "../resources/rel_drug_expand_rules.tsv"
 
 # ########################################################
 # Source: https://vsac.nlm.nih.gov/
 
-[tables.valueset_diag_brain_mri]
-file = "valueset_data/diag_brain_mri.json.valueset.tsv"
+#    [tables.valueset_diag_brain_mri]
+#    file = "valueset_data/diag_brain_mri.json.valueset.tsv"
+#
+#    [tables.valueset_diag_head_neck]
+#    file = "valueset_data/diag_head_neck.json.valueset.tsv"
+#
+#    [tables.valueset_dx_brain_tumor]
+#    file = "valueset_data/dx_brain_tumor.json.valueset.tsv"
+#
+#    [tables.valueset_dx_cancer]
+#    file = "valueset_data/dx_cancer.json.valueset.tsv"
+#
+#    [tables.valueset_dx_focal_deficit]
+#    file = "valueset_data/dx_focal_deficit.json.valueset.tsv"
+#
+#    [tables.valueset_dx_neuropathy]
+#    file = "valueset_data/dx_neuropathy.json.valueset.tsv"
+#
+#    [tables.valueset_rx_cancer_directed]
+#    file = "valueset_data/rx_cancer_directed.json.valueset.tsv"
+#
+#    [tables.valueset_rx_chemo]
+#    file = "valueset_data/rx_chemo.json.valueset.tsv"
+#
+#    [tables.valueset_rx_chemo_advanced]
+#    file = "valueset_data/rx_chemo_advanced.json.valueset.tsv"
+#
+#    [tables.valueset_rx_chemo_platinum]
+#    file = "valueset_data/rx_chemo_platinum.json.valueset.tsv"
+#
+#    [tables.valueset_rx_chemo_platinum_carboplatin]
+#    file = "valueset_data/rx_chemo_platinum_carboplatin.json.valueset.tsv"
+#
+#    [tables.valueset_rx_checkpoint]
+#    file = "valueset_data/rx_checkpoint.json.valueset.tsv"
+#
+#    # ########################################################
+#    [tables.valueset_proc_neurosurgery]
+#    file = "valueset_data/proc_neurosurgery.json.valueset.tsv"
 
-[tables.valueset_diag_head_neck]
-file = "valueset_data/diag_head_neck.json.valueset.tsv"
 
-[tables.valueset_dx_brain_tumor]
-file = "valueset_data/dx_brain_tumor.json.valueset.tsv"
-
-[tables.valueset_dx_cancer]
-file = "valueset_data/dx_cancer.json.valueset.tsv"
-
-[tables.valueset_dx_focal_deficit]
-file = "valueset_data/dx_focal_deficit.json.valueset.tsv"
-
-[tables.valueset_dx_neuropathy]
-file = "valueset_data/dx_neuropathy.json.valueset.tsv"
-
-[tables.valueset_rx_cancer_directed]
-file = "valueset_data/rx_cancer_directed.json.valueset.tsv"
-
-[tables.valueset_rx_chemo]
-file = "valueset_data/rx_chemo.json.valueset.tsv"
-
-[tables.valueset_rx_chemo_advanced]
-file = "valueset_data/rx_chemo_advanced.json.valueset.tsv"
-
-[tables.valueset_rx_chemo_platinum]
-file = "valueset_data/rx_chemo_platinum.json.valueset.tsv"
-
-[tables.valueset_rx_chemo_platinum_carboplatin]
-file = "valueset_data/rx_chemo_platinum_carboplatin.json.valueset.tsv"
-
-[tables.valueset_rx_checkpoint]
-file = "valueset_data/rx_checkpoint.json.valueset.tsv"
-
-# ########################################################
-[tables.valueset_proc_neurosurgery]
-file = "valueset_data/proc_neurosurgery.json.valueset.tsv"
-
-# ########################################################
-# Source: ICD-O Oncology
-
-# [tables.valueset_morphology]
-# file = "../test/resources/valueset_morphology.csv"
-
-# [tables.valueset_topography]
-# file = "../test/resources/valueset_topography.csv"
