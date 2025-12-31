@@ -106,7 +106,7 @@ def make() -> List[Path]:
                                    'doc_type_system'],
                       min_subject=10),
 
-        cube_patient(source_table='glioma__llm',
+        cube_patient(source_table='glioma__llm_dx',
                      table_cols=['topography_has_mention',
                                  'topography_display_best',
                                  'morphology_has_mention',

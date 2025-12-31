@@ -1,4 +1,4 @@
-create or replace view glioma__llm as
+create or replace view glioma__llm_dx as
 WITH
 raw as
 (

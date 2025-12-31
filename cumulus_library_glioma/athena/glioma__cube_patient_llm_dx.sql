@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_patient_llm AS 
+CREATE or replace VIEW glioma__cube_patient_llm_dx AS
     WITH
     filtered_table AS (
         SELECT
@@ -14,7 +14,7 @@ CREATE or replace VIEW glioma__cube_patient_llm AS
             s."topography_display_best",
             s."topography_has_mention"
             --noqa: enable=RF03, AL02
-        FROM glioma__llm AS s
+        FROM glioma__llm_dx AS s
     ),
     
     null_replacement AS (
