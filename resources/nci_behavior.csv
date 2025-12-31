@@ -1,0 +1,14 @@
+system,code,display
+system,code,display
+https://seer.cancer.gov/icd-o-3,"/0",/0 Benign
+https://seer.cancer.gov/icd-o-3,"0",/0 Benign
+https://seer.cancer.gov/icd-o-3,"/1",/1 Uncertain
+https://seer.cancer.gov/icd-o-3,"1",/1 Uncertain
+https://seer.cancer.gov/icd-o-3,"/2",/2 In situ
+https://seer.cancer.gov/icd-o-3,"2",/2 In situ
+https://seer.cancer.gov/icd-o-3,"/3",/3 Malignant primary
+https://seer.cancer.gov/icd-o-3,"3",/3 Malignant primary
+https://seer.cancer.gov/icd-o-3,"/6",/6 Malignant metastatic
+https://seer.cancer.gov/icd-o-3,"6",/6 Malignant metastatic
+https://seer.cancer.gov/icd-o-3,"/9",/9 Malignant recurrent
+https://seer.cancer.gov/icd-o-3,"9",/9 Malignant recurrent

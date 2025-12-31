@@ -9,6 +9,12 @@ file = "../resources/fhir_diagnostic_service.csv"
 [tables.nci_site_histology]
 file = "../resources/nci_site_histology.csv"
 
+[tables.nci_grade]
+file = "../resources/nci_grade.csv"
+
+[tables.nci_behavior]
+file = "../resources/nci_behavior.csv"
+
 # ########################################################
 # Source: cureated by CHOP+CHIP
 

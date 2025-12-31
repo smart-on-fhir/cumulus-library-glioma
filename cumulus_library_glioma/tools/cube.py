@@ -108,13 +108,14 @@ def make() -> List[Path]:
 
         cube_patient(source_table='glioma__llm',
                      table_cols=['topography_has_mention',
-                                 'topography_display',
+                                 'topography_display_best',
                                  'morphology_has_mention',
-                                 'morphology_display',
+                                 'morphology_display_best',
                                  'behavior_has_mention',
-                                 'behavior_code',
+                                 'behavior_display_best',
                                  'grade_has_mention',
-                                 'grade_code']),
+                                 'grade_display_best',
+                                 'category_display_best']),
 
         cube_patient(source_table='glioma__llm_surgery',
                      table_cols=['has_mention',

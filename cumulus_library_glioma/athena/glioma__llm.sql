@@ -27,60 +27,104 @@ raw as
                 subject_ref
     from        glioma__nlp_gpt_oss_120b
 ),
-linked as
+clean as
 (
     select      distinct
+                raw.grade_has_mention,
+                nullif(trim(raw.grade_code), '')            as grade_code,
+                nullif(trim(raw.grade_display), '')         as grade_display,
+
                 raw.topography_has_mention,
                 nullif(trim(raw.topography_code), '')       as topography_code,
                 nullif(trim(raw.topography_display), '')    as topography_display,
+                
                 raw.morphology_has_mention,
                 nullif(trim(raw.morphology_code), '')       as morphology_code,
                 nullif(trim(raw.morphology_display), '')    as morphology_display,
-                raw.morphology_histology,
-                raw.morphology_behavior,
+                
+                nullif(trim(raw.morphology_histology), '')  as morphology_histology,
+                nullif(trim(raw.morphology_behavior), '')   as morphology_behavior,
+                
+                raw.behavior_has_mention,                 
+                nullif(trim(raw.behavior_code), '')         as behavior_code,
+                nullif(trim(raw.behavior_display), '')      as behavior_display,
+
+                nci_grade.display           as grade_display_nci,
                 casedef.display             as topography_display_casdef,
                 nci.morphology_display      as morphology_display_nci,
-                nci.category_display        as category_display_nci
+                nci_behave.display          as behavior_display_nci,
+                nci.category_display        as category_display_nci,
+
+                note_ref,
+                encounter_ref,
+                subject_ref
     from        raw
-    left join   glioma__valueset_casedef    as casedef  on raw.topography_code = casedef.code
-    left join   glioma__nci_site_histology  as nci      on raw.morphology_code = nci.morphology_code
+    left join   glioma__valueset_casedef    as casedef   on raw.topography_code = casedef.code
+    left join   glioma__nci_site_histology  as nci       on raw.morphology_code = nci.morphology_code
+    left join   glioma__nci_grade           as nci_grade on raw.grade_code = nci_grade.code
+    left join   glioma__nci_behavior        as nci_behave on raw.behavior_code = nci_behave.code
 ),
-pretty as
+best as
 (
     select      distinct
                 coalesce(
-                    linked.topography_display_casdef,
-                    concat(linked.topography_display, ' (?)'),
-                    concat(cast(linked.topography_code as varchar), ' (#)'),
+                    clean.grade_display_nci,
+                    concat(clean.grade_display, ' (?)'),
+                    concat(cast(clean.grade_code as varchar), ' (#)'),
+                    'NONE') as grade_display_best,
+
+                clean.grade_display_nci,
+                clean.grade_display,
+                clean.grade_code,
+                clean.grade_has_mention,
+
+                coalesce(
+                    clean.topography_display_casdef,
+                    concat(clean.topography_display, ' (?)'),
+                    concat(cast(clean.topography_code as varchar), ' (#)'),
                     'NONE') as topography_display_best,
 
-                linked.topography_display_casdef,
-                linked.topography_display,
-                linked.topography_code,
-                linked.topography_has_mention,
+                clean.topography_display_casdef,
+                clean.topography_display,
+                clean.topography_code,
+                clean.topography_has_mention,
 
                 coalesce(
-                    linked.morphology_display_nci,
-                    concat(linked.morphology_display, ' (?)'),
-                    concat(cast(linked.morphology_code as varchar), ' (#)'),
+                    clean.morphology_display_nci,
+                    concat(clean.morphology_display, ' (?)'),
+                    concat(cast(clean.morphology_code as varchar), ' (#)'),
                     'NONE') as morphology_display_best,
 
-                linked.morphology_display_nci,
-                linked.morphology_display,
-                linked.morphology_code,
-                linked.morphology_histology,
-                linked.morphology_behavior,
-                linked.morphology_has_mention,
+                clean.morphology_display_nci,
+                clean.morphology_display,
+                clean.morphology_code,
+                clean.morphology_histology,
+                clean.morphology_behavior,
+                clean.morphology_has_mention,
 
                 coalesce(
-                    linked.category_display_nci,
+                    clean.behavior_display_nci,
+                    concat(clean.behavior_display, ' (?)'),
+                    concat(cast(clean.behavior_code as varchar), ' (#)'),
+                    'NONE') as behavior_display_best,
+
+                clean.behavior_display_nci,
+                clean.behavior_display,
+                clean.behavior_code,
+                clean.behavior_has_mention,
+
+                coalesce(
+                    clean.category_display_nci,
                     nci.category_display,
                     'NONE') as category_display_best,
 
-                linked.category_display_nci,
-                nci.category_display as category_display
+                clean.category_display_nci,
+                nci.category_display as category_display,
 
-    from        linked
-    left join   glioma__nci_site_histology  as nci    on linked.morphology_histology = nci.histology_code
+                note_ref,
+                encounter_ref,
+                subject_ref
+    from        clean
+    left join   glioma__nci_site_histology  as nci    on clean.morphology_histology = nci.histology_code
 )
-select * from pretty ;
+select * from best ;
