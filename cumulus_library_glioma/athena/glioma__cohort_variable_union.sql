@@ -1,4 +1,4 @@
-create table glioma__cohort_study_variables as
+create table glioma__cohort_variable_union as
 with variable_cohorts as
 (
 	select distinct 'diag_pathology'	 as variable, code, display, system, encounter_ref  from glioma__cohort_diag_pathology UNION ALL

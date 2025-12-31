@@ -1,13 +1,13 @@
-create table glioma__cohort_study_variables_wide as
+create table glioma__cohort_variable_wide as
 with lookup as
 (
     select  distinct variable, encounter_ref
-    from    glioma__cohort_study_variables
+    from    glioma__cohort_variable_union
 ),
 join_study_period as
 (
     select  distinct
-	IF(lookup.variable='diag_pathology', True) AS diag_pathology,
+            	IF(lookup.variable='diag_pathology', True) AS diag_pathology,
 	IF(lookup.variable='lab_sirolimus', True) AS lab_sirolimus,
 	IF(lookup.variable='rx_everolimus', True) AS rx_everolimus,
 	IF(lookup.variable='rx_sirolimus', True) AS rx_sirolimus,
@@ -31,23 +31,23 @@ join_study_period as
 tabular as
 (
     select  distinct
-	arbitrary(diag_pathology)    FILTER (where diag_pathology  is True) as diag_pathology,
-	arbitrary(lab_sirolimus)    FILTER (where lab_sirolimus  is True) as lab_sirolimus,
-	arbitrary(rx_everolimus)    FILTER (where rx_everolimus  is True) as rx_everolimus,
-	arbitrary(rx_sirolimus)    FILTER (where rx_sirolimus  is True) as rx_sirolimus,
-	arbitrary(diag_brain_mri)    FILTER (where diag_brain_mri  is True) as diag_brain_mri,
-	arbitrary(diag_head_neck)    FILTER (where diag_head_neck  is True) as diag_head_neck,
-	arbitrary(dx_brain_tumor)    FILTER (where dx_brain_tumor  is True) as dx_brain_tumor,
-	arbitrary(dx_cancer)    FILTER (where dx_cancer  is True) as dx_cancer,
-	arbitrary(dx_focal_deficit)    FILTER (where dx_focal_deficit  is True) as dx_focal_deficit,
-	arbitrary(dx_neuropathy)    FILTER (where dx_neuropathy  is True) as dx_neuropathy,
-	arbitrary(proc_neurosurgery)    FILTER (where proc_neurosurgery  is True) as proc_neurosurgery,
-	arbitrary(rx_cancer_directed)    FILTER (where rx_cancer_directed  is True) as rx_cancer_directed,
-	arbitrary(rx_checkpoint)    FILTER (where rx_checkpoint  is True) as rx_checkpoint,
-	arbitrary(rx_chemo)    FILTER (where rx_chemo  is True) as rx_chemo,
-	arbitrary(rx_chemo_advanced)    FILTER (where rx_chemo_advanced  is True) as rx_chemo_advanced,
-	arbitrary(rx_chemo_platinum)    FILTER (where rx_chemo_platinum  is True) as rx_chemo_platinum,
-	arbitrary(rx_chemo_platinum_carboplatin)    FILTER (where rx_chemo_platinum_carboplatin  is True) as rx_chemo_platinum_carboplatin,
+            	arbitrary(diag_pathology)    FILTER (where diag_pathology ) as diag_pathology,
+	arbitrary(lab_sirolimus)    FILTER (where lab_sirolimus ) as lab_sirolimus,
+	arbitrary(rx_everolimus)    FILTER (where rx_everolimus ) as rx_everolimus,
+	arbitrary(rx_sirolimus)    FILTER (where rx_sirolimus ) as rx_sirolimus,
+	arbitrary(diag_brain_mri)    FILTER (where diag_brain_mri ) as diag_brain_mri,
+	arbitrary(diag_head_neck)    FILTER (where diag_head_neck ) as diag_head_neck,
+	arbitrary(dx_brain_tumor)    FILTER (where dx_brain_tumor ) as dx_brain_tumor,
+	arbitrary(dx_cancer)    FILTER (where dx_cancer ) as dx_cancer,
+	arbitrary(dx_focal_deficit)    FILTER (where dx_focal_deficit ) as dx_focal_deficit,
+	arbitrary(dx_neuropathy)    FILTER (where dx_neuropathy ) as dx_neuropathy,
+	arbitrary(proc_neurosurgery)    FILTER (where proc_neurosurgery ) as proc_neurosurgery,
+	arbitrary(rx_cancer_directed)    FILTER (where rx_cancer_directed ) as rx_cancer_directed,
+	arbitrary(rx_checkpoint)    FILTER (where rx_checkpoint ) as rx_checkpoint,
+	arbitrary(rx_chemo)    FILTER (where rx_chemo ) as rx_chemo,
+	arbitrary(rx_chemo_advanced)    FILTER (where rx_chemo_advanced ) as rx_chemo_advanced,
+	arbitrary(rx_chemo_platinum)    FILTER (where rx_chemo_platinum ) as rx_chemo_platinum,
+	arbitrary(rx_chemo_platinum_carboplatin)    FILTER (where rx_chemo_platinum_carboplatin ) as rx_chemo_platinum_carboplatin,
             encounter_ref
     from    join_study_period
     group by encounter_ref

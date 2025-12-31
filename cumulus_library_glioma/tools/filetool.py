@@ -94,6 +94,12 @@ def load_template(file_sql: Path | str) -> str:
     text = read_text(path_template(file_sql))
     return text.replace('$prefix__', f"{PREFIX}__")
 
+def copy_template(file_sql: Path | str) -> Path:
+    file_name = file_sql.name if isinstance(file_sql, Path) else file_sql
+    text = load_template(path_template(file_name))
+    target = path_athena(f"{PREFIX}__{file_name}")
+    return save_athena(target, text)
+
 ###############################################################################
 #
 # Read/Write Text

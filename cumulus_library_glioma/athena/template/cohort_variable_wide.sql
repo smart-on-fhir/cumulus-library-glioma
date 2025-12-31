@@ -1,8 +1,8 @@
-create table $prefix__cohort_study_variables_wide as
+create table $prefix__cohort_variable_wide as
 with lookup as
 (
     select  distinct variable, encounter_ref
-    from    $prefix__cohort_study_variables
+    from    $prefix__cohort_variable_union
 ),
 join_study_period as
 (

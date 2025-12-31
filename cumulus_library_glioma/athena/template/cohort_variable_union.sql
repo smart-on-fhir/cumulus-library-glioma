@@ -1,4 +1,4 @@
-create table $prefix__cohort_study_variables as
+create table $prefix__cohort_variable_union as
 with variable_cohorts as
 (
 $variable_list

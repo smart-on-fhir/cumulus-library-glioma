@@ -66,6 +66,15 @@ study_prefix = "glioma"
 	"athena/glioma__cohort_lab_sirolimus.sql",
 ]
 
+"variable union (structured)" = [
+    "athena/glioma__cohort_variable_union.sql"
+]
+
+"variable wide (structured)" = [
+    "athena/glioma__cohort_variable_wide.sql"
+]
+
+
 #    "cube.toml" = [
 #        "cube.toml"
 #    ]
