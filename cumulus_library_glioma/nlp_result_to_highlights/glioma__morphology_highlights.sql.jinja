@@ -1,0 +1,19 @@
+# Morphology information of interest includes the displays for the moment
+# Future iterations could include the codes, but right now the codes are too noisy to rely on
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Morphology' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Morphology' AS sublabel_name,
+    CAST(src.result.morphology_mention.display AS VARCHAR) AS sublabel_value
+FROM 
+    {{ table_name }} AS src, 
+    UNNEST(src.result.morphology_mention.display) AS t3(span)
+WHERE
+    src.result.morphology_mention.display IS NOT NULL
+    AND src.result.morphology_mention.display 

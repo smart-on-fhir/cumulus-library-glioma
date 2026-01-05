@@ -1,0 +1,40 @@
+{%- macro union_all_delineate(loop) -%}
+{%- if not loop.last -%}
+UNION ALL
+{%- endif -%}
+{%- endmacro -%}
+
+CREATE TABLE glioma__highlights AS
+{%- if table_names %}
+{%- for table_name in table_names %}
+    {% include glioma__behavior_highlights.sql.jinja %}
+    UNION ALL
+    {% include glioma__topography_highlights.sql.jinja %}
+    UNION ALL
+    {% include glioma__morphology_highlights.sql.jinja %}
+    UNION ALL
+    {% include glioma__grade_highlights.sql.jinja %}
+    UNION ALL
+    {% include glioma__target_genetic_test.sql.jinja %} 
+    UNION ALL
+    {% include glioma__genetic_variant.sql.jinja %} 
+    UNION ALL
+    {% include glioma__cancer_medication.sql.jinja %}
+    UNION ALL
+    {% include glioma__surgery.sql.jinja %} 
+{{ union_all_delineate(loop) }}
+{%- endfor %}
+{%- else %}
+SELECT
+    'x' AS note_ref,
+    'x' AS subject_ref,
+    'x' AS generated_on,
+    'x' AS task_version,
+    'x' AS system_fingerprint,
+    'x' AS origin,
+    'x' AS label,
+    'x' AS span,
+    'x' AS sublabel_name,
+    'x' AS sublabel_value
+WHERE 1=0 -- empty table
+{%- endif %}

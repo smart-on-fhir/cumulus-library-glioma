@@ -1,0 +1,183 @@
+# Target Genetic Test information of interest includes 
+# - braf_altered: bool | None
+# - braf_v600e: b:ool | None
+# - braf_fusion: bool | None
+# - idh_mutant: bool | None
+# - h3k27m_mutant: bool | None
+# - tp53_altered: bool | None
+# - cdkn2a_deleted: bool | None
+-- Pass to get braf_altered --
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Test Results' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Genetic Test - braf_altered' AS sublabel_name,
+    genetic_test.braf_altered AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
+    UNNEST(
+        COALESCE(
+            genetic_test.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    genetic_test.braf_altered IS NOT NULL
+    AND genetic_test.braf_altered 
+-- Pass to get braf_v600e --
+UNION ALL
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Test Results' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Genetic Test - braf_v600e' AS sublabel_name,
+    genetic_test.braf_v600e AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
+    UNNEST(
+        COALESCE(
+            variant.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    genetic_test.braf_v600e IS NOT NULL
+    AND genetic_test.braf_v600e
+-- Pass to get braf_fusion --
+UNION ALL
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Test Results' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Genetic Test - braf_fusion' AS sublabel_name,
+    genetic_test.braf_fusion AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
+    UNNEST(
+        COALESCE(
+            variant.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    genetic_test.braf_fusion IS NOT NULL
+    AND genetic_test.braf_fusion
+-- Pass to get idh_mutant --
+UNION ALL
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Test Results' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Genetic Test - idh_mutant' AS sublabel_name,
+    genetic_test.idh_mutant AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
+    UNNEST(
+        COALESCE(
+            variant.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    genetic_test.idh_mutant IS NOT NULL
+    AND genetic_test.idh_mutant
+-- Pass to get h3k27m_mutant --
+UNION ALL
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Test Results' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Genetic Test - h3k27m_mutant' AS sublabel_name,
+    genetic_test.h3k27m_mutant AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
+    UNNEST(
+        COALESCE(
+            variant.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    genetic_test.h3k27m_mutant IS NOT NULL
+    AND genetic_test.h3k27m_mutant
+-- Pass to get tp53_altered --
+UNION ALL
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Test Results' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Genetic Test - tp53_altered' AS sublabel_name,
+    genetic_test.tp53_altered AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
+    UNNEST(
+        COALESCE(
+            variant.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    genetic_test.tp53_altered IS NOT NULL
+    AND genetic_test.tp53_altered
+-- Pass to get cdkn2a_deleted --
+UNION ALL
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Test Results' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Genetic Test - cdkn2a_deleted' AS sublabel_name,
+    genetic_test.cdkn2a_deleted AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
+    UNNEST(
+        COALESCE(
+            variant.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    genetic_test.cdkn2a_deleted IS NOT NULL
+    AND genetic_test.cdkn2a_deleted
+    AND variant.interpretation <> 'NOT MENTIONED'

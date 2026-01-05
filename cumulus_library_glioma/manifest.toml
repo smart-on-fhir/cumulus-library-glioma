@@ -67,5 +67,8 @@ study_prefix = "glioma"
     "athena/glioma__cube_patient_llm_gene.sql",
     "athena/glioma__cube_patient_llm_variant.sql",
 ]
+"NLP highlight builders" = [
+    'nlp_result_to_highlights/builder_glioma_highlights.py'
+]
 
 #[export_config]

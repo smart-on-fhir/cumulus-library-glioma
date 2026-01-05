@@ -1,0 +1,50 @@
+# Genetic Variant information of interest includes hgnc_name and interpretation
+-- One pass to get variant hgnc_name --
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Variant' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Variant HGNC Name' AS sublabel_name,
+    variant.hgnc_name AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.variant_mention) AS t1(variant),
+    UNNEST(
+        COALESCE(
+            variant.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    variant.hgnc_name IS NOT NULL
+    AND variant.hgnc_name 
+-- Second pass to get variant interpretation --
+UNION ALL
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Genetic Variant' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Variant Interpretation' AS sublabel_name,
+    variant.interpretation AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.variant_mention) AS t1(variant),
+    UNNEST(
+        COALESCE(
+            variant.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    variant.interpretation IS NOT NULL
+    AND variant.interpretation <> 'NOT MENTIONED'

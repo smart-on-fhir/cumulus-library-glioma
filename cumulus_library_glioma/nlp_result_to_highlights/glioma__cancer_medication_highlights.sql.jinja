@@ -1,0 +1,25 @@
+# Cancer Medication information of interest is the code since we use an internally defined enum
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Cancer Medication' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Med Class' AS sublabel_name,
+    medication.rx_class AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.cancer_medication_mention) AS t1(medication),
+    UNNEST(
+        COALESCE(
+            medication.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    src.task_version = CAST('6' AS INT)
+    AND medication.rx_class IS NOT NULL
+    AND medication.rx_class <> 'None of the above'

@@ -1,0 +1,25 @@
+# Surgery information of interest is just the surgical_type 
+SELECT
+    src.note_ref,
+    src.subject_ref,
+    src.generated_on,
+    src.task_version,
+    src.system_fingerprint,
+    '{{ table_name }}' AS origin,
+    'Surgery' AS label,
+    CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+    'Surgery Type' AS sublabel_name,
+    surgery.surgical_type AS sublabel_value
+FROM 
+    {{ table_name }} AS src,
+    UNNEST(src.result.surgery_mention) AS t1(surgery),
+    UNNEST(
+        COALESCE(
+            surgery.spans, 
+            CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
+        )
+    ) AS t2(span)
+WHERE 
+    src.task_version = CAST('6' AS INT)
+    AND surgery.surgical_type IS NOT NULL
+    AND surgery.surgical_type <> 'NOT_MENTIONED'
