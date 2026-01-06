@@ -16,15 +16,6 @@ class SurgicalType(StrEnum):
     OTHER = "OTHER"
     NOT_MENTIONED = "NOT_MENTIONED"
 
-class SurgicalApproach(StrEnum):
-    OPEN = "OPEN"
-    AWAKE = "AWAKE"
-    ENDOSCOPIC = "ENDOSCOPIC"
-    STEREOTACTIC = "STEREOTACTIC"
-    LASER = "LASER"
-    KEYHOLE = "KEYHOLE"
-    NOT_MENTIONED = "NOT_MENTIONED"
-
 class SurgicalExtentOfResection(StrEnum):
     GROSS_TOTAL = "GROSS_TOTAL"
     SUBTOTAL = "SUBTOTAL"
@@ -32,6 +23,16 @@ class SurgicalExtentOfResection(StrEnum):
     BIOPSY_ONLY = "BIOPSY_ONLY"
     SUPRATOTAL = "SUPRATOTAL"          # used in LGG for seizure control
     NOT_APPLICABLE = "NOT_APPLICABLE"
+    UNRESECTABLE = "UNRESECTABLE"
+    NOT_MENTIONED = "NOT_MENTIONED"
+
+class SurgicalApproach(StrEnum):
+    OPEN = "OPEN"
+    AWAKE = "AWAKE"
+    ENDOSCOPIC = "ENDOSCOPIC"
+    STEREOTACTIC = "STEREOTACTIC"
+    LASER = "LASER"
+    KEYHOLE = "KEYHOLE"
     NOT_MENTIONED = "NOT_MENTIONED"
 
 class SurgeryMention(SpanAugmentedMention):

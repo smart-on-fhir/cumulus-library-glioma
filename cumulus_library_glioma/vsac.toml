@@ -2,8 +2,6 @@ config_type="valueset"
 
 table_prefix = "valueset"
 
-col_types = ["STRING","STRING","STRING"]
-
 [vsac_stewards]
 dx_brain_tumor="2.16.840.1.113883.17.4077.3.1011"
 dx_cancer="2.16.840.1.113883.3.526.3.1010"

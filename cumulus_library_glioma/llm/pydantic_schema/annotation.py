@@ -1,33 +1,38 @@
 from pydantic import BaseModel, Field
-from .pathology import TopographyMention, MorphologyMention, GradeMention, BehaviorMention
-from .genes import TargetGeneticTestMention, VariantMention
-from .drugs import CancerMedicationMention
+from .diagnosis import GliomaDiagnosisMention
+from .genes import MolecularDriverMention, VariantMention
+from .drug_request import GliomaDrugMention
 from .surgery import SurgeryMention
 
 class GliomaCaseAnnotation(BaseModel):
     """
     SCHEMA root of Glioma Case Annotation
     """
-    topography_mention: TopographyMention
-    morphology_mention: MorphologyMention
-    behavior_mention: BehaviorMention
-    grade_mention: GradeMention
-    target_genetic_test_mention: list[TargetGeneticTestMention] = Field(
+    glioma_diagnosis: GliomaDiagnosisMention = Field(
         default_factory=list,
-        description="All mentions of Target Genetic Tests."
+        description="Glioma diagnosis (Age at diagnosis, tumor, location, size, morphology, etc)"
     )
-    variant_mention: list[VariantMention] = Field(
+
+    molecular_driver: list[MolecularDriverMention] = Field(
         default_factory=list,
-        description="All mentions of Genetic Variants."
+        description="All mentions of molecular drivers of glioma."
     )
-    cancer_medication_mention: list[CancerMedicationMention] = Field(
+
+    variant: list[VariantMention] = Field(
         default_factory=list,
-        description="All mentions of Cancer Medications."
+        description="All mentions of genetic variants."
     )
-    surgery_mention: list[SurgeryMention] = Field(
+
+    drug: list[GliomaDrugMention] = Field(
         default_factory=list,
-        description="All mentions of Cancer related surgeries."
+        description="All mentions of cancer drugs."
     )
+
+    surgery: list[SurgeryMention] = Field(
+        default_factory=list,
+        description="All mentions of cancer related surgeries."
+    )
+
 
 
 

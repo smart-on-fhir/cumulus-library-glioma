@@ -11,6 +11,7 @@ file = "../resources/nci_site_histology.csv"
 
 [tables.nci_grade]
 file = "../resources/nci_grade.csv"
+col_types = ["STRING","STRING","STRING"]
 
 [tables.nci_behavior]
 file = "../resources/nci_behavior.csv"
