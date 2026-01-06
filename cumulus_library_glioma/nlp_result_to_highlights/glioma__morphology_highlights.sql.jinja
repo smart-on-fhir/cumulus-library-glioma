@@ -1,5 +1,5 @@
-# Morphology information of interest includes the displays for the moment
-# Future iterations could include the codes, but right now the codes are too noisy to rely on
+-- Morphology information of interest includes the displays for the moment
+-- Future iterations could include the codes, but right now the codes are too noisy to rely on
 SELECT
     src.note_ref,
     src.subject_ref,
@@ -13,7 +13,7 @@ SELECT
     CAST(src.result.morphology_mention.display AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src, 
-    UNNEST(src.result.morphology_mention.display) AS t3(span)
+    UNNEST(src.result.morphology_mention.spans) AS t3(span)
 WHERE
     src.result.morphology_mention.display IS NOT NULL
-    AND src.result.morphology_mention.display 
+    AND src.result.morphology_mention.display  <> ''

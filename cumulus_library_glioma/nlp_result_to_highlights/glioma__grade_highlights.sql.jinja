@@ -1,4 +1,4 @@
-# Grade information of interest is the code since we use an internally defined enum
+-- Grade information of interest is the code since we use an internally defined enum
 SELECT
     src.note_ref,
     src.subject_ref,
@@ -12,10 +12,9 @@ SELECT
     CAST(src.result.grade_mention.code AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src, 
-    UNNEST(src.result.grade_mention.code) AS t3(span)
+    UNNEST(src.result.grade_mention.spans) AS t3(span)
 WHERE
     src.result.grade_mention.code IS NOT NULL
-    AND src.result.grade_mention.code 
-    # Want to ignore our grade_unknown code 
+    -- Want to ignore our grade_unknown code 
     AND src.result.grade_mention.code <> '9' 
 

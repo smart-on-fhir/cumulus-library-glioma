@@ -1,4 +1,4 @@
-# Behavior information of interest is the code since we use an internally defined enum
+-- Behavior information of interest is the code since we use an internally defined enum
 SELECT
     src.note_ref,
     src.subject_ref,
@@ -12,7 +12,6 @@ SELECT
     CAST(src.result.behavior_mention.code AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src, 
-    UNNEST(src.result.behavior_mention.code) AS t3(span)
+    UNNEST(src.result.behavior_mention.spans) AS t3(span)
 WHERE
     src.result.behavior_mention.code IS NOT NULL
-    AND src.result.behavior_mention.code 

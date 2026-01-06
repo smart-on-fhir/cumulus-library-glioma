@@ -1,4 +1,4 @@
-# Genetic Variant information of interest includes hgnc_name and interpretation
+-- Genetic Variant information of interest includes hgnc_name and interpretation
 -- One pass to get variant hgnc_name --
 SELECT
     src.note_ref,
@@ -10,7 +10,7 @@ SELECT
     'Genetic Variant' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Variant HGNC Name' AS sublabel_name,
-    variant.hgnc_name AS sublabel_value
+    CAST(variant.hgnc_name AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.variant_mention) AS t1(variant),
@@ -22,7 +22,7 @@ FROM
     ) AS t2(span)
 WHERE 
     variant.hgnc_name IS NOT NULL
-    AND variant.hgnc_name 
+    AND variant.hgnc_name <> ''
 -- Second pass to get variant interpretation --
 UNION ALL
 SELECT
@@ -35,7 +35,7 @@ SELECT
     'Genetic Variant' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Variant Interpretation' AS sublabel_name,
-    variant.interpretation AS sublabel_value
+    CAST(variant.interpretation AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.variant_mention) AS t1(variant),

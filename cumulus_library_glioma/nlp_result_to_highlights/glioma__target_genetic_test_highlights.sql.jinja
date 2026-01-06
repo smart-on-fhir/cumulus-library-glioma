@@ -1,12 +1,12 @@
-# Target Genetic Test information of interest includes 
-# - braf_altered: bool | None
-# - braf_v600e: b:ool | None
-# - braf_fusion: bool | None
-# - idh_mutant: bool | None
-# - h3k27m_mutant: bool | None
-# - tp53_altered: bool | None
-# - cdkn2a_deleted: bool | None
--- Pass to get braf_altered --
+-- Target Genetic Test information of interest includes 
+-- - braf_altered: bool | None
+-- - braf_v600e: b:ool | None
+-- - braf_fusion: bool | None
+-- - idh_mutant: bool | None
+-- - h3k27m_mutant: bool | None
+-- - tp53_altered: bool | None
+-- - cdkn2a_deleted: bool | None
+--  Pass to get braf_altered --
 SELECT
     src.note_ref,
     src.subject_ref,
@@ -17,7 +17,7 @@ SELECT
     'Genetic Test Results' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Genetic Test - braf_altered' AS sublabel_name,
-    genetic_test.braf_altered AS sublabel_value
+    CAST(genetic_test.braf_altered AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
@@ -42,13 +42,13 @@ SELECT
     'Genetic Test Results' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Genetic Test - braf_v600e' AS sublabel_name,
-    genetic_test.braf_v600e AS sublabel_value
+    CAST(genetic_test.braf_v600e AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
     UNNEST(
         COALESCE(
-            variant.spans, 
+            genetic_test.spans, 
             CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
         )
     ) AS t2(span)
@@ -67,13 +67,13 @@ SELECT
     'Genetic Test Results' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Genetic Test - braf_fusion' AS sublabel_name,
-    genetic_test.braf_fusion AS sublabel_value
+    CAST(genetic_test.braf_fusion AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
     UNNEST(
         COALESCE(
-            variant.spans, 
+            genetic_test.spans, 
             CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
         )
     ) AS t2(span)
@@ -92,13 +92,13 @@ SELECT
     'Genetic Test Results' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Genetic Test - idh_mutant' AS sublabel_name,
-    genetic_test.idh_mutant AS sublabel_value
+    CAST(genetic_test.idh_mutant AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
     UNNEST(
         COALESCE(
-            variant.spans, 
+            genetic_test.spans, 
             CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
         )
     ) AS t2(span)
@@ -117,13 +117,13 @@ SELECT
     'Genetic Test Results' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Genetic Test - h3k27m_mutant' AS sublabel_name,
-    genetic_test.h3k27m_mutant AS sublabel_value
+    CAST(genetic_test.h3k27m_mutant AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
     UNNEST(
         COALESCE(
-            variant.spans, 
+            genetic_test.spans, 
             CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
         )
     ) AS t2(span)
@@ -142,13 +142,13 @@ SELECT
     'Genetic Test Results' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Genetic Test - tp53_altered' AS sublabel_name,
-    genetic_test.tp53_altered AS sublabel_value
+    CAST(genetic_test.tp53_altered AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
     UNNEST(
         COALESCE(
-            variant.spans, 
+            genetic_test.spans, 
             CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
         )
     ) AS t2(span)
@@ -167,17 +167,16 @@ SELECT
     'Genetic Test Results' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Genetic Test - cdkn2a_deleted' AS sublabel_name,
-    genetic_test.cdkn2a_deleted AS sublabel_value
+    CAST(genetic_test.cdkn2a_deleted AS VARCHAR) AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.target_genetic_test_mention) AS t1(genetic_test),
     UNNEST(
         COALESCE(
-            variant.spans, 
+            genetic_test.spans, 
             CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
         )
     ) AS t2(span)
 WHERE 
     genetic_test.cdkn2a_deleted IS NOT NULL
     AND genetic_test.cdkn2a_deleted
-    AND variant.interpretation <> 'NOT MENTIONED'

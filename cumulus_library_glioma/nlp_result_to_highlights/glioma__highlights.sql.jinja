@@ -7,22 +7,22 @@ UNION ALL
 CREATE TABLE glioma__highlights AS
 {%- if table_names %}
 {%- for table_name in table_names %}
-    {% include glioma__behavior_highlights.sql.jinja %}
-    UNION ALL
-    {% include glioma__topography_highlights.sql.jinja %}
-    UNION ALL
-    {% include glioma__morphology_highlights.sql.jinja %}
-    UNION ALL
-    {% include glioma__grade_highlights.sql.jinja %}
-    UNION ALL
-    {% include glioma__target_genetic_test.sql.jinja %} 
-    UNION ALL
-    {% include glioma__genetic_variant.sql.jinja %} 
-    UNION ALL
-    {% include glioma__cancer_medication.sql.jinja %}
-    UNION ALL
-    {% include glioma__surgery.sql.jinja %} 
-{{ union_all_delineate(loop) }}
+    {% include 'glioma__behavior_highlights.sql.jinja' %}
+UNION ALL
+    {% include 'glioma__topography_highlights.sql.jinja' %}
+UNION ALL
+    {% include 'glioma__morphology_highlights.sql.jinja' %}
+UNION ALL
+    {% include 'glioma__grade_highlights.sql.jinja' %}
+UNION ALL
+    {% include 'glioma__target_genetic_test_highlights.sql.jinja' %} 
+UNION ALL
+    {% include 'glioma__genetic_variant_highlights.sql.jinja'%} 
+UNION ALL
+    {% include 'glioma__cancer_medication_highlights.sql.jinja' %}
+UNION ALL
+    {% include 'glioma__surgery_highlights.sql.jinja' %} 
+    {{ union_all_delineate(loop) }}
 {%- endfor %}
 {%- else %}
 SELECT

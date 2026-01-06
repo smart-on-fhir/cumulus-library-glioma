@@ -20,7 +20,7 @@ class GliomaHighlightsBuilder(cumulus_library.BaseTableBuilder):
         )
         return valid
 
-    def _get_valid_irae_nlp_tables(self, database: databases.DatabaseBackend) -> set[str]:
+    def _get_valid_glioma_nlp_tables(self, database: databases.DatabaseBackend) -> set[str]:
         source_tables = [
             "glioma__nlp_gpt4o",
             "glioma__nlp_gpt5",
@@ -46,7 +46,7 @@ class GliomaHighlightsBuilder(cumulus_library.BaseTableBuilder):
         config: cumulus_library.StudyConfig,
         **kwargs,
     ):
-        valid_tables = self._get_valid_irae_nlp_tables(config.db)
+        valid_tables = self._get_valid_glioma_nlp_tables(config.db)
         query = cumulus_library.get_template(
             "glioma__highlights",
             pathlib.Path(__file__).parent,
