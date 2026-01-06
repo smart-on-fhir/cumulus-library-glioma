@@ -3,22 +3,7 @@ from typing import Optional, List
 from pydantic import BaseModel, Field
 from .mention import SpanAugmentedMention
 
-# ----------------------------
-# Shared enums (defaults include NOT_MENTIONED)
-# ----------------------------
-class MentionStatus(StrEnum):
-    NOT_MENTIONED = "NOT_MENTIONED"
-    MENTIONED = "MENTIONED"
-
-
-class YesNoUnknown(StrEnum):
-    NOT_MENTIONED = "NOT_MENTIONED"
-    YES = "YES"
-    NO = "NO"
-    UNKNOWN = "UNKNOWN"
-
-
-class TumorLocationCode(StrEnum):
+class TumorLocation(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     CEREBELLUM = "CEREBELLUM"
     OPTIC_PATHWAY = "OPTIC_PATHWAY"
@@ -29,8 +14,6 @@ class TumorLocationCode(StrEnum):
     CEREBRAL_HEMISPHERE = "CEREBRAL_HEMISPHERE"
     SPINAL = "SPINAL"
     OTHER = "OTHER"
-    UNKNOWN = "UNKNOWN"
-
 
 class ExtentOfResection(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
@@ -39,11 +22,10 @@ class ExtentOfResection(StrEnum):
     PARTIAL = "PARTIAL"
     BIOPSY_ONLY = "BIOPSY_ONLY"
     UNRESECTABLE = "UNRESECTABLE"
-    NOT_APPLICABLE = "NOT_APPLICABLE"
-    UNKNOWN = "UNKNOWN"
+    OTHER = "OTHER"
 
 
-class HistologyCode(StrEnum):
+class Histology(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     PILOCYTIC_ASTROCYTOMA = "PILOCYTIC_ASTROCYTOMA"
     PILOMYXOID_ASTROCYTOMA = "PILOMYXOID_ASTROCYTOMA"
@@ -54,7 +36,7 @@ class HistologyCode(StrEnum):
     UNKNOWN = "UNKNOWN"
 
 
-class MolecularDriverCode(StrEnum):
+class MolecularDriver(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     BRAF_V600E = "BRAF_V600E"
     BRAF_FUSION = "BRAF_FUSION"  # e.g., KIAA1549-BRAF
@@ -66,39 +48,38 @@ class MolecularDriverCode(StrEnum):
     ROS1_FUSION = "ROS1_FUSION"
     UNKNOWN = "UNKNOWN"
 
+class RadiotherapyExposureHistoryStatus(StrEnum):
+    NOT_MENTIONED = "NOT_MENTIONED"
+    YES = "YES"
+    NO = "NO"
 
 class ProgressionType(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     NONE = "NONE"
+    BOTH = "BOTH FUNCTIONAL AND RADIOGRAPHIC"
     RADIOGRAPHIC = "RADIOGRAPHIC"
     FUNCTIONAL = "FUNCTIONAL"
-    BOTH = "BOTH"
     SUSPECTED = "SUSPECTED"
-    UNKNOWN = "UNKNOWN"
 
-
-class VisualStatusCode(StrEnum):
+class VisualStatus(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     STABLE = "STABLE"
     DECLINING = "DECLINING"
     IMPROVING = "IMPROVING"
     SEVERE_LOSS = "SEVERE_LOSS"
-    UNKNOWN = "UNKNOWN"
+    OTHER = "OTHER"
 
-
-class EndocrineStatusCode(StrEnum):
+class EndocrineStatus(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     NORMAL = "NORMAL"
     DYSFUNCTION_PRESENT = "DYSFUNCTION_PRESENT"
     DIABETES_INSIPIDUS = "DIABETES_INSIPIDUS"
     PITUITARY_DEFICIENCY = "PITUITARY_DEFICIENCY"
     HYPOTHALAMIC_DYSFUNCTION = "HYPOTHALAMIC_DYSFUNCTION"
-    UNKNOWN = "UNKNOWN"
+    OTHER = "OTHER"
 
-
-class SymptomBurdenCode(StrEnum):
+class SymptomBurden(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
-    NONE = "NONE"
     SEIZURES = "SEIZURES"
     HEADACHE = "HEADACHE"
     FOCAL_NEURO_DEFICIT = "FOCAL_NEURO_DEFICIT"
@@ -106,20 +87,24 @@ class SymptomBurdenCode(StrEnum):
     ENDOCRINE_SYMPTOMS = "ENDOCRINE_SYMPTOMS"
     INCREASED_ICP = "INCREASED_ICP"
     OTHER = "OTHER"
-    UNKNOWN = "UNKNOWN"
 
+class NF1Status(StrEnum):
+    NOT_MENTIONED = "NOT_MENTIONED"
+    POSITIVE = "POSITIVE"
+    SUSPECTED = "SUSPECTED"
+    NEGATIVE = "NEGATIVE"
+    MENTIONED_BUT_UNKNOWN = "UNKNOWN"
 
-class MassEffectCode(StrEnum):
+class MassEffect(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     NONE = "NONE"
     MASS_EFFECT_PRESENT = "MASS_EFFECT_PRESENT"
     HYDROCEPHALUS = "HYDROCEPHALUS"
     MIDLINE_SHIFT = "MIDLINE_SHIFT"
     IMPENDING_HERNIATION = "IMPENDING_HERNIATION"
-    UNKNOWN = "UNKNOWN"
+    OTHER = "OTHER"
 
-
-class TherapyLineCode(StrEnum):
+class TherapyLine(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     OBSERVATION = "OBSERVATION"
     SURGERY = "SURGERY"
@@ -127,63 +112,53 @@ class TherapyLineCode(StrEnum):
     TARGETED_THERAPY = "TARGETED_THERAPY"
     RADIOTHERAPY = "RADIOTHERAPY"
     CLINICAL_TRIAL = "CLINICAL_TRIAL"
-    UNKNOWN = "UNKNOWN"
 
-
-class ChemoRegimenCode(StrEnum):
+class ChemoRegimen(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     CARBOPLATIN_VINCRISTINE = "CARBOPLATIN_VINCRISTINE"
     VINBLASTINE = "VINBLASTINE"
     TPCV = "TPCV"  # thioguanine/procarbazine/CCNU/vincristine (legacy)
     OTHER = "OTHER"
-    UNKNOWN = "UNKNOWN"
 
-
-class TargetedRegimenCode(StrEnum):
+class TargetedRegimen(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     BRAF_MEK_COMBO = "BRAF_MEK_COMBO"      # e.g., dabrafenib + trametinib
     MEK_INHIBITOR = "MEK_INHIBITOR"        # e.g., selumetinib
     PAN_RAF_INHIBITOR = "PAN_RAF_INHIBITOR"  # e.g., tovorafenib (context-dependent)
     MTOR_INHIBITOR = "MTOR_INHIBITOR"      # e.g., everolimus
     OTHER = "OTHER"
-    UNKNOWN = "UNKNOWN"
 
-
-class ToxicitySeverityCode(StrEnum):
+class ToxicitySeverity(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
-    NONE = "NONE"
     MILD = "MILD"
     MODERATE = "MODERATE"
     SEVERE = "SEVERE"
     DOSE_LIMITING = "DOSE_LIMITING"
-    UNKNOWN = "UNKNOWN"
+    OTHER = "OTHER"
 
-
-class RegrowthPatternCode(StrEnum):
+class RegrowthPattern(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     PROGRESSION = "PROGRESSION"
     REBOUND_AFTER_STOPPING_TARGETED = "REBOUND_AFTER_STOPPING_TARGETED"
     RESISTANCE_ON_TARGETED = "RESISTANCE_ON_TARGETED"
     PSEUDOPROGRESSION_SUSPECTED = "PSEUDOPROGRESSION_SUSPECTED"
-    UNKNOWN = "UNKNOWN"
+    OTHER = "OTHER"
 
-
-class NeurocognitiveRiskCode(StrEnum):
+class NeurocognitiveRisk(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     LOW = "LOW"
     MODERATE = "MODERATE"
     HIGH = "HIGH"
     IMPAIRED_BASELINE = "IMPAIRED_BASELINE"
-    UNKNOWN = "UNKNOWN"
+    OTHER = "OTHER"
 
 
-class ClinicalTrialAvailabilityCode(StrEnum):
+class ClinicalTrialAvailability(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     AVAILABLE_AND_ELIGIBLE = "AVAILABLE_AND_ELIGIBLE"
     AVAILABLE_NOT_ELIGIBLE = "AVAILABLE_NOT_ELIGIBLE"
     NOT_AVAILABLE = "NOT_AVAILABLE"
-    UNKNOWN = "UNKNOWN"
-
+    OTHER = "OTHER"
 
 # ----------------------------
 # Mention models (each extends SpanAugmentedMention)
@@ -196,15 +171,15 @@ class AgeAtDiagnosisMention(SpanAugmentedMention):
 
 
 class TumorLocationMention(SpanAugmentedMention):
-    location: TumorLocationCode = Field(
-        TumorLocationCode.NOT_MENTIONED,
+    location: TumorLocation = Field(
+        TumorLocation.NOT_MENTIONED,
         description="Primary tumor anatomic location."
     )
 
 
 class TumorSizeMassEffectMention(SpanAugmentedMention):
-    mass_effect: MassEffectCode = Field(
-        MassEffectCode.NOT_MENTIONED,
+    mass_effect: MassEffect = Field(
+        MassEffect.NOT_MENTIONED,
         description="Whether MRI/CT describes mass effect or hydrocephalus."
     )
     size_text: Optional[str] = Field(
@@ -214,15 +189,14 @@ class TumorSizeMassEffectMention(SpanAugmentedMention):
 
 
 class SymptomBurdenMention(SpanAugmentedMention):
-    symptom_burden: list[SymptomBurdenCode] = Field(
+    symptom_burden: list[SymptomBurden] = Field(
         default_factory=list,
         description="Symptoms attributed to the tumor; may include multiple."
     )
 
-
 class NF1StatusMention(SpanAugmentedMention):
-    nf1_status: YesNoUnknown = Field(
-        YesNoUnknown.NOT_MENTIONED,
+    nf1_status: NF1Status = Field(
+        NF1Status.NOT_MENTIONED,
         description="Whether NF1 is present."
     )
 
@@ -235,15 +209,15 @@ class ExtentOfResectionMention(SpanAugmentedMention):
 
 
 class HistologyMention(SpanAugmentedMention):
-    histology: HistologyCode = Field(
-        HistologyCode.NOT_MENTIONED,
+    histology: Histology = Field(
+        Histology.NOT_MENTIONED,
         description="Histologic subtype if stated."
     )
 
 
 class MolecularDriverMention(SpanAugmentedMention):
-    driver: MolecularDriverCode = Field(
-        MolecularDriverCode.NOT_MENTIONED,
+    driver: MolecularDriver = Field(
+        MolecularDriver.NOT_MENTIONED,
         description="Key actionable molecular driver."
     )
     gene_or_fusion_text: Optional[str] = Field(
@@ -267,8 +241,8 @@ class FunctionalProgressionMention(SpanAugmentedMention):
 
 
 class VisualAcuityMention(SpanAugmentedMention):
-    visual_status: VisualStatusCode = Field(
-        VisualStatusCode.NOT_MENTIONED,
+    visual_status: VisualStatus = Field(
+        VisualStatus.NOT_MENTIONED,
         description="Directionality of visual function over time."
     )
     visual_acuity_text: Optional[str] = Field(
@@ -278,30 +252,30 @@ class VisualAcuityMention(SpanAugmentedMention):
 
 
 class EndocrineFunctionMention(SpanAugmentedMention):
-    endocrine_status: EndocrineStatusCode = Field(
-        EndocrineStatusCode.NOT_MENTIONED,
+    endocrine_status: EndocrineStatus = Field(
+        EndocrineStatus.NOT_MENTIONED,
         description="Endocrine function/dysfunction signals."
     )
 
 
 class PriorTherapyExposureMention(SpanAugmentedMention):
-    prior_modalities: list[TherapyLineCode] = Field(
+    prior_modalities: list[TherapyLine] = Field(
         default_factory=list,
         description="Previously received modalities (surgery/chemo/targeted/RT/trial)."
     )
-    prior_chemo: list[ChemoRegimenCode] = Field(
+    prior_chemo: list[ChemoRegimen] = Field(
         default_factory=list,
         description="Named prior chemotherapy regimens if stated."
     )
-    prior_targeted: list[TargetedRegimenCode] = Field(
+    prior_targeted: list[TargetedRegimen] = Field(
         default_factory=list,
         description="Named prior targeted regimens if stated."
     )
 
 
 class TreatmentToxicityMention(SpanAugmentedMention):
-    severity: ToxicitySeverityCode = Field(
-        ToxicitySeverityCode.NOT_MENTIONED,
+    severity: ToxicitySeverity = Field(
+        ToxicitySeverity.NOT_MENTIONED,
         description="Overall toxicity severity as described."
     )
     toxicity_text: Optional[str] = Field(
@@ -318,8 +292,8 @@ class ResponseToTherapyMention(SpanAugmentedMention):
 
 
 class RegrowthPatternMention(SpanAugmentedMention):
-    pattern: RegrowthPatternCode = Field(
-        RegrowthPatternCode.NOT_MENTIONED,
+    pattern: RegrowthPattern = Field(
+        RegrowthPattern.NOT_MENTIONED,
         description="Pattern of regrowth on/off therapy (progression vs rebound vs resistance)."
     )
 
@@ -332,8 +306,8 @@ class AgeAtProgressionMention(SpanAugmentedMention):
 
 
 class RadiotherapyExposureHistoryMention(SpanAugmentedMention):
-    has_prior_radiotherapy: YesNoUnknown = Field(
-        YesNoUnknown.NOT_MENTIONED,
+    has_prior_radiotherapy: RadiotherapyExposureHistoryStatus = Field(
+        RadiotherapyExposureHistoryStatus.NOT_MENTIONED,
         description="Whether patient has prior radiotherapy exposure."
     )
     rt_type_text: Optional[str] = Field(
@@ -343,15 +317,15 @@ class RadiotherapyExposureHistoryMention(SpanAugmentedMention):
 
 
 class NeurocognitiveRiskMention(SpanAugmentedMention):
-    risk: NeurocognitiveRiskCode = Field(
-        NeurocognitiveRiskCode.NOT_MENTIONED,
+    risk: NeurocognitiveRisk = Field(
+        NeurocognitiveRisk.NOT_MENTIONED,
         description="Neurocognitive risk/impairment cues (baseline or treatment-related)."
     )
 
 
 class ClinicalTrialAvailabilityMention(SpanAugmentedMention):
-    trial_status: ClinicalTrialAvailabilityCode = Field(
-        ClinicalTrialAvailabilityCode.NOT_MENTIONED,
+    trial_status: ClinicalTrialAvailability = Field(
+        ClinicalTrialAvailability.NOT_MENTIONED,
         description="Whether a clinical trial is available/considered."
     )
 
