@@ -1,7 +1,7 @@
 from enum import StrEnum
 from pydantic import BaseModel, Field, Optional
 from .mention import SpanAugmentedMention, YesNoUnknown
-from .drug_request import RxRegimenChemotherapy
+from .drug_response import RxResponseMention
 
 ###############################################################################
 # Age at Progression
@@ -41,7 +41,7 @@ class RegrowthPattern(StrEnum):
     OTHER = "OTHER"
 
 class RegrowthPatternMention(SpanAugmentedMention):
-    pattern: RegrowthPattern = Field(
+    regrowth_pattern: RegrowthPattern = Field(
         RegrowthPattern.NOT_MENTIONED,
         description="Pattern of regrowth on/off therapy (progression vs rebound vs resistance)."
     )
@@ -80,10 +80,6 @@ class VisualAcuityMention(SpanAugmentedMention):
     visual_status: VisualStatus = Field(
         VisualStatus.NOT_MENTIONED,
         description="Directionality of visual function over time."
-    )
-    visual_acuity_text: Optional[str] = Field(
-        None,
-        description="Free-text VA values (e.g., '20/40 OS') if present."
     )
 
 ###############################################################################
@@ -133,6 +129,11 @@ class TherapyLine(StrEnum):
     RADIOTHERAPY = "RADIOTHERAPY"
     CLINICAL_TRIAL = "CLINICAL_TRIAL"
 
+class TherapyLineMention(SpanAugmentedMention):
+    therapy_line: TherapyLine = Field(
+        TherapyLine.NOT_MENTIONED,
+        description="Line of therapy."
+    )
 
 ###############################################################################
 # Prior Therapy

@@ -22,7 +22,7 @@ class RxFrequency(StrEnum):
     NONE = "None of the above"
 
 ###############################################################################
-# MedicationRequest.status
+# FHIR MedicationRequest.status
 class RxStatus(StrEnum):
     """
     Medication Status (including Intent because chart review is NOT always identical to Med Request)
@@ -38,7 +38,7 @@ class RxStatus(StrEnum):
     NONE = "None of the above"
 
 ###############################################################################
-# MedicationRequest.category
+# FHIR MedicationRequest.category
 
 class RxCategory(StrEnum):
     """
@@ -50,7 +50,7 @@ class RxCategory(StrEnum):
     NONE = "None of the above"
 
 ###############################################################################
-# MedicationRequest.route
+# FHIR MedicationRequest.route
 
 class RxRoute(StrEnum):
     """
@@ -69,9 +69,9 @@ class RxRoute(StrEnum):
 
 
 ###############################################################################
-# MedicationRequest.dispenseRequest
+# FHIR MedicationRequest.dispenseRequest
 #
-# MedicationRequest.dispenseRequest.validityPeriod
+# FHIR MedicationRequest.dispenseRequest.validityPeriod
 
 class RxExpectedSupplyDaysMention(SpanAugmentedMention):
     """
@@ -79,9 +79,10 @@ class RxExpectedSupplyDaysMention(SpanAugmentedMention):
     """
     expected_supply_days: int | None = Field(
         default=None,
-        description='Number of days the medication supply is supposed to last (stale dating the prescription)')
+        description='Number of days the medication supply is supposed to last (stale dating the prescription)'
+    )
 
-# MedicationRequest.dispenseRequest.expectedSupplyDuration
+# FHIR MedicationRequest.dispenseRequest.expectedSupplyDuration
 class RxValidityPeriodMention(SpanAugmentedMention):
     """
     http://hl7.org/fhir/us/core/STU4/StructureDefinition-us-core-medicationrequest-definitions.html#MedicationRequest.dispenseRequest.validityPeriod
@@ -93,7 +94,8 @@ class RxValidityPeriodMention(SpanAugmentedMention):
 
     end_date: str | None = Field(
         default=None,
-        description='End date of the prescribed or administered medication')
+        description='End date of the prescribed or administered medication'
+    )
 
 class RxQuantityUnit(StrEnum):
     # Mass
@@ -129,34 +131,43 @@ class RxQuantityUnit(StrEnum):
     D   = "d"
     NONE = "None of the above"
 
-# MedicationRequest.dispenseRequest.quantity
+# FHIR MedicationRequest.dispenseRequest.quantity
 class RxQuantity(SpanAugmentedMention):
     """
     http://hl7.org/fhir/us/core/STU4/StructureDefinition-us-core-medicationrequest-definitions.html#MedicationRequest.dispenseRequest.quantity
     """
     unit: RxQuantityUnit = Field(
         default=RxQuantityUnit.NONE,
-        description="Medication prescribed unit (examples: 'mg', 'ug/kg/min', 'tablet', etc)")
+        description="Medication prescribed unit (examples: 'mg', 'ug/kg/min', 'tablet', etc)"
+    )
 
     value: str | None = Field(
         default=None,
-        description='Numeric amount of medication prescribed or administered (FHIR Quantity.value)')
+        description='Numeric amount of medication prescribed or administered (FHIR Quantity.value)'
+    )
 
 ###############################################################################
 # Treatment Phase
-class TreatmentPhase(StrEnum):
+class RxTreatmentPhase(StrEnum):
     """
     Treatment Phase
     """
+    NOT_MENTIONED = "NOT_MENTIONED"
     INDUCTION = "Induction therapy"
     MAINTENANCE = "Maintenance therapy"
     RESCUE = "Rescue therapy"
     NONE = "None of the above"
 
+class RxTreatmentPhaseMention(SpanAugmentedMention):
+    treatment_phase: RxTreatmentPhase = Field(
+        default=RxTreatmentPhase.NOT_MENTIONED,
+        description='Treatment phase'
+    )
+
 ###############################################################################
 # Template
 ###############################################################################
-class MedicationMention(SpanAugmentedMention):
+class RxAttributesMention(SpanAugmentedMention):
     """
     https://build.fhir.org/valueset-medicationrequest-status.html
     https://build.fhir.org/valueset-medicationrequest-admin-location.html
@@ -180,8 +191,8 @@ class MedicationMention(SpanAugmentedMention):
         description='What is the the route of administration for this medication?'
     )
 
-    phase: TreatmentPhase = Field(
-        default=TreatmentPhase.NONE,
+    phase: RxTreatmentPhase = Field(
+        default=RxTreatmentPhase.NONE,
         description='What is the treatment phase for this medication?'
     )
 

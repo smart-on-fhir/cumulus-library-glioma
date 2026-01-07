@@ -11,7 +11,7 @@ from .diagnosis import (
 )
 from .genes import MolecularDriverMention
 from .surgery import (SurgicalExtentOfResection)
-from .drug_request import TreatmentToxicityMention
+from .drug_attributes import TreatmentToxicityMention
 from .progression import (
     AgeAtProgressionMention,
     ProgressionTypeMention,

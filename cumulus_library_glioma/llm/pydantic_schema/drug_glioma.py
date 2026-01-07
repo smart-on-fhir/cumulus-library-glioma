@@ -1,6 +1,9 @@
 from enum import StrEnum
-from pydantic import BaseModel, Field, Optional
+from typing import Optional
+from pydantic import BaseModel, Field
 from .mention import SpanAugmentedMention
+from .drug_attributes import RxTreatmentPhase
+from .drug_response import RxResponseMention, RxToxicitySeverityMention
 
 ###############################################################################
 # Glioma Drug RxClass
@@ -25,6 +28,11 @@ class GliomaTargetedTherapyMention(SpanAugmentedMention):
         default=GliomaTargetedTherapy.NOT_MENTIONED,
         description='Glioma targeted therapy class'
     )
+    phase: RxTreatmentPhase = Field(
+        default=RxTreatmentPhase.NONE,
+        description='What is the treatment phase for this therapy?'
+    )
+
 
 class RxClassChemotherapy(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"

@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field, Optional
 from .mention import SpanAugmentedMention
 
 ###############################################################################
-# Negative Responses
+# Therapy Discontinued
 ###############################################################################
 class RxDiscontinued(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
@@ -15,6 +15,14 @@ class RxDiscontinued(StrEnum):
     TRANSITION_TO_TRIAL = "TRANSITION_TO_TRIAL"
     OTHER = "OTHER"
 
+class RxDiscontinuedMention(SpanAugmentedMention):
+    discontinued: RxDiscontinued = Field(
+        RxDiscontinued.NOT_MENTIONED,
+        description="Therapy discontinued reason")
+
+###############################################################################
+# Drug Toxicity
+###############################################################################
 class RxToxicitySeverity(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     MILD = "MILD"
@@ -27,10 +35,6 @@ class RxToxicitySeverityMention(SpanAugmentedMention):
     severity: RxToxicitySeverity = Field(
         RxToxicitySeverity.NOT_MENTIONED,
         description="Overall toxicity severity as described."
-    )
-    toxicity_text: Optional[str] = Field(
-        None,
-        description="Free-text toxicity details (e.g., 'grade 3 rash', 'vincristine neuropathy')."
     )
 
 ###############################################################################
@@ -48,6 +52,7 @@ class RxResponse(StrEnum):
     NOT_EVALUABLE = "NOT_EVALUABLE"
 
 class RxResponseMention(BaseModel):
+
     response: RxResponse = Field(
         RxResponse.NOT_MENTIONED,
         description="Best documented response on therapy."
@@ -82,4 +87,3 @@ class RxResponseMention(BaseModel):
         RxDiscontinued.NOT_MENTIONED,
         description="Reason therapy was stopped."
     )
-

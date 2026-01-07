@@ -1,7 +1,5 @@
 from enum import StrEnum
 from typing import Optional
-
-from diff_cover import DESCRIPTION
 from pydantic import Field
 from .mention import SpanAugmentedMention
 
@@ -90,7 +88,7 @@ class MolecularDriverMention(SpanAugmentedMention):
 ###############################################################################
 # Genetic Variants
 ###############################################################################
-class VariantInterpretation(StrEnum):
+class GeneticVariantInterpretation(StrEnum):
     B = 'BENIGN'
     LB = 'LIKELY BENIGN'
     VUS = 'VARIANT OF UNKNOWN SIGNIFICANCE'
@@ -98,7 +96,7 @@ class VariantInterpretation(StrEnum):
     LP = 'LIKELY PATHOGENIC'
     NOT_MENTIONED = 'NOT MENTIONED'
 
-class VariantMention(SpanAugmentedMention):
+class GeneticVariantMention(SpanAugmentedMention):
     """
     Clinical interpretation of genetic variant
     """
@@ -107,8 +105,8 @@ class VariantMention(SpanAugmentedMention):
         description="HGNC hugo gene naming convention"
     )
 
-    interpretation: VariantInterpretation = Field(
-        VariantInterpretation.NOT_MENTIONED,
+    interpretation: GeneticVariantInterpretation = Field(
+        GeneticVariantInterpretation.NOT_MENTIONED,
         description='Clinical interpretation of genetic variant or genetic test result'
     )
 
