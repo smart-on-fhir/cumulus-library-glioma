@@ -1,7 +1,7 @@
 from typing import List
 from pathlib import Path
 from cumulus_library_glioma.tools import filetool, tablespace
-from tools.tablespace import name_trim
+from cumulus_library_glioma.tools.tablespace import name_trim
 
 #-----------------------------------------------------------------------------
 # List variables
@@ -27,9 +27,15 @@ def list_valueset_variable_names() -> List[str]:
     var_list = [v.name for v in var_list]
     var_list = [v for v in var_list if "casedef" not in v]
     var_list = [v for v in var_list if "diag_category" not in v]
-    var_list = [tablespace.name_trim(v) for v in var_list]
-    var_list = [v.split('.')[0] for v in var_list]
+    var_list = [file_to_variable(v) for v in var_list]
     return sorted(list(set(var_list)))
+
+def file_to_variable(filename:Path|str) -> str:
+    """
+    :return: return simplified variable name for a filepath
+    """
+    name_part = filename.name if isinstance(filename, Path) else filename
+    return tablespace.name_trim(name_part).split('.')[0]
 
 def select_union(variable_list: List[str]) -> str:
     """
@@ -139,5 +145,4 @@ def make() -> list[Path]:
 
 if __name__ == '__main__':
     target_files = make() + [make_union(), make_wide()]
-    print(target_files)
     print(as_toml())

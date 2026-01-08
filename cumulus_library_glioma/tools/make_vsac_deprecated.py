@@ -1,7 +1,7 @@
 from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from cumulus_library_glioma.tools import filetool
+from cumulus_library_glioma.tools import filetool, make_variable
 
 ###############################################################################
 # DEPRECATED NOTICE
@@ -74,6 +74,18 @@ def json_to_tsv(valueset_json: Path) -> Path:
         coding_list = list_coding(valueset_json)
     return Path(filetool.write_text(coding_to_tsv(coding_list), file_tsv))
 
+def as_toml() -> str:
+    """
+    Workaround for https://github.com/smart-on-fhir/cumulus-library/issues/439
+    :return: str content for `manifest.toml`
+    """
+    out = list()
+    for tsv in make_variable.list_valueset_vsac():
+        out.append(f'[tables.valueset_{make_variable.file_to_variable(tsv.name)}]')
+        out.append(f'file = "valueset_data/{tsv.name}"')
+        out.append('')
+    return '\n'.join(out)
+
 #-----------------------------------------------------------------------------
 # Make
 #-----------------------------------------------------------------------------
@@ -82,4 +94,5 @@ def make() -> list[Path]:
 
 if __name__ == '__main__':
     target_files = make()
-    print(target_files)
+    print('################################################################')
+    print(as_toml())

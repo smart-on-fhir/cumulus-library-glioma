@@ -2,7 +2,9 @@ import os
 import json
 from pathlib import Path
 from typing import Dict, Any
-from .settings import CUMULUS_STUDY_PREFIX as PREFIX # << Refactor to use `manifest.toml`
+# from cumulus_library import StudyManifest
+# PREFIX = StudyManifest().get_study_prefix() # << refactor
+PREFIX = 'glioma'
 
 #-----------------------------------------------------------------------------
 # PROJECT HOME

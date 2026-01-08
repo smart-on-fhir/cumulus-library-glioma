@@ -4,18 +4,31 @@ with variable_cohorts as
 	select distinct 'diag_brain_mri'	 as variable, code, display, system, encounter_ref  from glioma__cohort_diag_brain_mri UNION ALL
 	select distinct 'diag_head_neck'	 as variable, code, display, system, encounter_ref  from glioma__cohort_diag_head_neck UNION ALL
 	select distinct 'diag_pathology'	 as variable, code, display, system, encounter_ref  from glioma__cohort_diag_pathology UNION ALL
+	select distinct 'diag_radiology'	 as variable, code, display, system, encounter_ref  from glioma__cohort_diag_radiology UNION ALL
 	select distinct 'dx_brain_tumor'	 as variable, code, display, system, encounter_ref  from glioma__cohort_dx_brain_tumor UNION ALL
 	select distinct 'dx_cancer'	 as variable, code, display, system, encounter_ref  from glioma__cohort_dx_cancer UNION ALL
+	select distinct 'dx_diabetes'	 as variable, code, display, system, encounter_ref  from glioma__cohort_dx_diabetes UNION ALL
 	select distinct 'dx_focal_deficit'	 as variable, code, display, system, encounter_ref  from glioma__cohort_dx_focal_deficit UNION ALL
+	select distinct 'dx_neuro'	 as variable, code, display, system, encounter_ref  from glioma__cohort_dx_neuro UNION ALL
+	select distinct 'dx_neurofibromatosis'	 as variable, code, display, system, encounter_ref  from glioma__cohort_dx_neurofibromatosis UNION ALL
 	select distinct 'dx_neuropathy'	 as variable, code, display, system, encounter_ref  from glioma__cohort_dx_neuropathy UNION ALL
+	select distinct 'lab_gene_alk'	 as variable, code, display, system, encounter_ref  from glioma__cohort_lab_gene_alk UNION ALL
+	select distinct 'lab_gene_braf'	 as variable, code, display, system, encounter_ref  from glioma__cohort_lab_gene_braf UNION ALL
+	select distinct 'lab_gene_ntrk'	 as variable, code, display, system, encounter_ref  from glioma__cohort_lab_gene_ntrk UNION ALL
+	select distinct 'lab_gene_ret'	 as variable, code, display, system, encounter_ref  from glioma__cohort_lab_gene_ret UNION ALL
+	select distinct 'lab_gene_ros1'	 as variable, code, display, system, encounter_ref  from glioma__cohort_lab_gene_ros1 UNION ALL
+	select distinct 'lab_gene_test'	 as variable, code, display, system, encounter_ref  from glioma__cohort_lab_gene_test UNION ALL
 	select distinct 'lab_sirolimus'	 as variable, code, display, system, encounter_ref  from glioma__cohort_lab_sirolimus UNION ALL
 	select distinct 'proc_neurosurgery'	 as variable, code, display, system, encounter_ref  from glioma__cohort_proc_neurosurgery UNION ALL
 	select distinct 'rx_cancer_directed'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_cancer_directed UNION ALL
-	select distinct 'rx_checkpoint'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_checkpoint UNION ALL
 	select distinct 'rx_chemo'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_chemo UNION ALL
 	select distinct 'rx_chemo_advanced'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_chemo_advanced UNION ALL
+	select distinct 'rx_chemo_bevacizumab'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_chemo_bevacizumab UNION ALL
 	select distinct 'rx_chemo_platinum'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_chemo_platinum UNION ALL
 	select distinct 'rx_chemo_platinum_carboplatin'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_chemo_platinum_carboplatin UNION ALL
+	select distinct 'rx_chemo_vincristine'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_chemo_vincristine UNION ALL
+	select distinct 'rx_endo_diabetes'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_endo_diabetes UNION ALL
+	select distinct 'rx_endo_therapy'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_endo_therapy UNION ALL
 	select distinct 'rx_everolimus'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_everolimus UNION ALL
 	select distinct 'rx_sirolimus'	 as variable, code, display, system, encounter_ref  from glioma__cohort_rx_sirolimus
 )
