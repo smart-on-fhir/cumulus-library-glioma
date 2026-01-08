@@ -39,9 +39,9 @@ class Reference(Enum):
             return 'lab_observation_system'
         return f"{self.name}_system"
 
-###############################################################################
+#-----------------------------------------------------------------------------
 # get Reference Enum
-###############################################################################
+#-----------------------------------------------------------------------------
 _REF_KEYS = [str(ref.name) for ref in Reference]
 def get_reference(table:str) -> Reference:
     lookup = name_trim(table)
@@ -53,9 +53,9 @@ def get_reference(table:str) -> Reference:
         raise ValueError(f"Reference value {match} multiple match types for table {table}")
     return Reference[match.pop()]
 
-###############################################################################
+#-----------------------------------------------------------------------------
 # naming conventions
-###############################################################################
+#-----------------------------------------------------------------------------
 def name_prefix(table: list | str) -> list | str:
     if isinstance(table, list):
         return [f'{PREFIX}__{table}' for table in sorted(set(table))]
@@ -94,9 +94,9 @@ def name_valueset(table: str, suffix=None) -> str:
     part = f'valueset_{suffix}' if suffix else 'valueset'
     return name_join(part, table)
 
-###############################################################################
-# Basic SQL to replace with JINJA
-###############################################################################
+#-----------------------------------------------------------------------------
+# Basic SQL to replace with JINJA Templates
+#-----------------------------------------------------------------------------
 def sql_list(clauses_list) -> str:
     return sql_iter(clauses_list, ',')
 
@@ -108,9 +108,9 @@ def sql_iter(clauses_list, operator=',') -> str:
         return sql_iter([clauses_list])
     return f' {operator} \n'.join(sorted(list(set(clauses_list))))
 
-###############################################################################
-# CTAS
-###############################################################################
+#-----------------------------------------------------------------------------
+# CTAS (create table as)
+#-----------------------------------------------------------------------------
 def ctas(source: str, variable: str, where: list) -> str:
     """
     CTAS(create table as) will create a COHORT table as a subselection of the

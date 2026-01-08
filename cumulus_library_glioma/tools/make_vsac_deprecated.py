@@ -3,6 +3,14 @@ from pathlib import Path
 from fhirclient.models.coding import Coding
 from cumulus_library_glioma.tools import filetool
 
+###############################################################################
+# DEPRECATED NOTICE
+#
+# This VSAC helper tool will be replaced in future cumulus-library version
+# https://github.com/smart-on-fhir/cumulus-library/issues/440
+#
+###############################################################################
+
 UMLS_VOCAB = {
     "SNOMEDCT_US": "http://snomed.info/sct",
     "ICD10CM": "http://hl7.org/fhir/sid/icd-10-cm",
@@ -66,9 +74,9 @@ def json_to_tsv(valueset_json: Path) -> Path:
         coding_list = list_coding(valueset_json)
     return Path(filetool.write_text(coding_to_tsv(coding_list), file_tsv))
 
-###############################################################################
+#-----------------------------------------------------------------------------
 # Make
-###############################################################################
+#-----------------------------------------------------------------------------
 def make() -> list[Path]:
     return [json_to_tsv(valueset_json) for valueset_json in filetool.list_valuesets('*.json')]
 

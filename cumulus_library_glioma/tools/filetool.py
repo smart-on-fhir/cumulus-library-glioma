@@ -2,12 +2,11 @@ import os
 import json
 from pathlib import Path
 from typing import Dict, Any
+from .settings import CUMULUS_STUDY_PREFIX as PREFIX # << Refactor to use `manifest.toml`
 
-PREFIX = 'glioma' # << Refactor to use `manifest.toml`
-
-###############################################################################
-# Root
-###############################################################################
+#-----------------------------------------------------------------------------
+# PROJECT HOME
+#-----------------------------------------------------------------------------
 def path_home(filename=None) -> Path:
     """
     Get path to python package home directory
@@ -32,11 +31,9 @@ def path_parent(filename=None) -> Path:
         return parent
 
 
-###############################################################################
-#
-# Valueset(s)
-#
-###############################################################################
+#-----------------------------------------------------------------------------
+# resources dir (user curated files)
+#-----------------------------------------------------------------------------
 def path_resources(filename: Path | str) -> Path:
     """
     :param filename: name of JSON file
@@ -44,6 +41,9 @@ def path_resources(filename: Path | str) -> Path:
     """
     return Path(os.path.join(path_parent(), '..', 'resources', filename))
 
+#-----------------------------------------------------------------------------
+# VSAC Valueset(s)
+#-----------------------------------------------------------------------------
 def path_valueset(filename: Path | str) -> Path:
     """
     :param filename: name of JSON file
@@ -73,11 +73,9 @@ def list_valuesets(pattern:str = '*.*') -> list[Path]:
 def list_resources(pattern:str = '*.*') -> list[Path]:
     return sorted(list(path_resources('.').glob(pattern)))
 
-###############################################################################
-#
+#-----------------------------------------------------------------------------
 # Athena SQL File(s)
-#
-###############################################################################
+#-----------------------------------------------------------------------------
 def path_athena(file_sql: Path | str) -> Path:
     return Path(os.path.join(os.path.dirname(__file__), '../athena', file_sql))
 
@@ -100,11 +98,9 @@ def copy_template(file_sql: Path | str) -> Path:
     target = path_athena(f"{PREFIX}__{file_name}")
     return save_athena(target, text)
 
-###############################################################################
-#
+#-----------------------------------------------------------------------------
 # Read/Write Text
-#
-###############################################################################
+#-----------------------------------------------------------------------------
 def read_text(text_file: Path | str, encoding: str = 'UTF-8') -> str:
     """
     Read text from file
@@ -115,7 +111,6 @@ def read_text(text_file: Path | str, encoding: str = 'UTF-8') -> str:
     if file_exists(text_file):
         with m_open(file=text_file, encoding=encoding) as t_file:
             return t_file.read()
-
 
 def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') -> str:
     """
@@ -152,11 +147,9 @@ def m_open(**kwargs):
         print('m_open raised an exception', exc_info=True)
         raise
 
-###############################################################################
-#
+#-----------------------------------------------------------------------------
 # Read/Write JSON
-#
-###############################################################################
+#-----------------------------------------------------------------------------
 def read_json(json_file: Path | str, encoding: str = 'UTF-8') -> Dict[Any, Any]:
     """
     Read json from file

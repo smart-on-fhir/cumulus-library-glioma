@@ -3,11 +3,14 @@ from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_glioma.tools import filetool, tablespace
+from cumulus_library_glioma.tools.settings import CUMULUS_CUBE_MIN_SUBJECTS
 from cumulus_library_glioma.tools.filetool import PREFIX
 
-MIN_SUBJECTS = int(os.environ.get("MIN_SUBJECTS") or 1)
-
-def cube_fhir_resource(fhir_resource:str, source_table='study_population', table_cols=None, table_name=None, min_subject=MIN_SUBJECTS) -> Path:
+def cube_fhir_resource(fhir_resource:str,
+                       source_table='study_population',
+                       table_cols=None,
+                       table_name=None,
+                       min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
     """Generates a counts table using a template
 
     :param fhir_resource: The type of FHIR resource to count
@@ -34,7 +37,10 @@ def cube_fhir_resource(fhir_resource:str, source_table='study_population', table
     sql = tablespace.ctas_as_view(sql, table_name)
     return filetool.save_athena_view(table_name, sql)
 
-def cube_patient(source_table='study_population', table_cols=None, table_name=None, min_subject=MIN_SUBJECTS) -> Path:
+def cube_patient(source_table='study_population',
+                 table_cols=None,
+                 table_name=None,
+                 min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
     return cube_fhir_resource(
         fhir_resource='patient',
         source_table=source_table,
@@ -42,7 +48,10 @@ def cube_patient(source_table='study_population', table_cols=None, table_name=No
         table_name=table_name,
         min_subject=min_subject)
 
-def cube_encounter(source_table='study_population', table_cols=None, table_name=None, min_subject=MIN_SUBJECTS) -> Path:
+def cube_encounter(source_table='study_population',
+                   table_cols=None,
+                   table_name=None,
+                   min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
     return cube_fhir_resource(
         fhir_resource='encounter',
         source_table=source_table,
@@ -50,7 +59,10 @@ def cube_encounter(source_table='study_population', table_cols=None, table_name=
         table_name=table_name,
         min_subject=min_subject)
 
-def cube_document(source_table='study_population', table_cols=None, table_name=None, min_subject=MIN_SUBJECTS) -> Path:
+def cube_document(source_table='study_population',
+                  table_cols=None,
+                  table_name=None,
+                  min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
     return cube_fhir_resource(
         fhir_resource='documentreference',
         source_table=source_table,
@@ -58,9 +70,9 @@ def cube_document(source_table='study_population', table_cols=None, table_name=N
         table_name=table_name,
         min_subject=min_subject)
 
-###############################################################################
+#-----------------------------------------------------------------------------
 # Make
-###############################################################################
+#-----------------------------------------------------------------------------
 def make() -> List[Path]:
     return [
         cube_patient(source_table='glioma__cohort_casedef',
