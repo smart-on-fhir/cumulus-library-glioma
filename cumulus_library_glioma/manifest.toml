@@ -10,9 +10,20 @@ study_prefix = "glioma"
 #        "vsac.toml"
 #    ]
 
-    "file_upload.toml" = [
-        "file_upload.toml"
-    ]
+"file_upload.toml" = [
+    "file_upload.toml"
+]
+
+[export_config]
+count_list = [
+    "glioma__cube_patient_llm_drug",
+    "glioma__cube_patient_llm_dx"
+]
+
+meta_list = [
+    "glioma__meta_date",
+]
+
 
 #    "study_population.toml" = [
 #        "study_population.toml"
