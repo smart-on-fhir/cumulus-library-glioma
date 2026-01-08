@@ -1,14 +1,4 @@
-from enum import StrEnum
 from pydantic import BaseModel, Field
-
-###############################################################################
-# Yes/No/Unknown (or NOT_MENTIONED)
-###############################################################################
-class YesNoUnknown(StrEnum):
-    NOT_MENTIONED = "NOT_MENTIONED"
-    YES = "YES"
-    NO = "NO"
-    UNKNOWN = "UNKNOWN"
 
 ###############################################################################
 # Evidence citation

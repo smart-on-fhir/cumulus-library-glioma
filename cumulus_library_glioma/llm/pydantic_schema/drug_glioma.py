@@ -1,12 +1,18 @@
 from enum import StrEnum
-from typing import Optional
 from pydantic import BaseModel, Field
 from .mention import SpanAugmentedMention
-from .drug_attributes import RxTreatmentPhase
-from .drug_response import RxResponseMention, RxToxicitySeverityMention
+from .drug_attributes import (
+    RxStatusMention,
+    RxTreatmentPhaseMention
+)
+from .drug_response import (
+    RxResponseMention,
+    RxDiscontinuedMention,
+    RxToxicitySeverityMention
+)
 
 ###############################################################################
-# Glioma Drug RxClass
+# Glioma Targeted Therapy
 ###############################################################################
 class GliomaTargetedTherapy(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
@@ -25,16 +31,41 @@ class GliomaTargetedTherapy(StrEnum):
 
 class GliomaTargetedTherapyMention(SpanAugmentedMention):
     targeted_therapy: GliomaTargetedTherapy = Field(
-        default=GliomaTargetedTherapy.NOT_MENTIONED,
-        description='Glioma targeted therapy class'
+        GliomaTargetedTherapy.NOT_MENTIONED,
+        description="Glioma targeted therapy"
     )
-    phase: RxTreatmentPhase = Field(
-        default=RxTreatmentPhase.NONE,
-        description='What is the treatment phase for this therapy?'
+
+###############################################################################
+# Glioma Targeted Therapy --> Annotation BaseModel
+###############################################################################
+class GliomaTargetedTherapyAnnotation(BaseModel):
+    targeted_therapy: GliomaTargetedTherapyMention
+
+    treatment_phase: RxTreatmentPhaseMention = Field(
+        RxTreatmentPhaseMention.NOT_MENTIONED,
+        description="Glioma targeted therapy treatment phase"
+    )
+
+    treatment_response: RxResponseMention = Field(
+        RxResponseMention.NOT_MENTIONED,
+        description="What was the glioma targeted therapy treatment response?"
+    )
+
+    treatment_discontinued: RxDiscontinuedMention = Field(
+        RxDiscontinuedMention.NOT_MENTIONED,
+        description="What was the toxicity severity of glioma chemotherapy?"
+    )
+
+    toxicity_severity: RxToxicitySeverityMention = Field(
+        RxToxicitySeverityMention.NOT_MENTIONED,
+        description="Was glioma targeted therapy toxic?"
     )
 
 
-class RxClassChemotherapy(StrEnum):
+###############################################################################
+# Glioma Traditional Chemotherapy
+###############################################################################
+class GliomaChemotherapyClass(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     ALKYLATING_AGENT = "ALKYLATING_AGENT"          # e.g., temozolomide, lomustine (protocol-dependent)
     PLATINUM_AGENT = "PLATINUM_AGENT"              # e.g., carboplatin, cisplatin
@@ -44,38 +75,51 @@ class RxClassChemotherapy(StrEnum):
     MULTI_AGENT_CHEMOTHERAPY = "MULTI_AGENT_CHEMOTHERAPY"  # protocol bundle when class not decomposed
     OTHER = "OTHER"
 
-###############################################################################
-# Glioma Drug Chemo Regimen
-###############################################################################
-class RxRegimenChemotherapy(StrEnum):
+class GliomaChemotherapyRegimen(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     CARBOPLATIN_VINCRISTINE = "CARBOPLATIN_VINCRISTINE"
     VINBLASTINE = "VINBLASTINE"
     TPCV = "TPCV"  # thioguanine/procarbazine/CCNU/vincristine (legacy)
     OTHER = "OTHER"
 
+class GliomaChemotherapyMention(SpanAugmentedMention):
+    chemotherapy_class: GliomaChemotherapyClass = Field(
+        GliomaChemotherapyClass.NOT_MENTIONED,
+        description="Glioma chemotherapy drug class"
+    )
+
+    chemotherapy_regimen: GliomaChemotherapyRegimen = Field(
+        GliomaChemotherapyRegimen.NOT_MENTIONED,
+        description="Glioma chemotherapy regimen"
+    )
+
 ###############################################################################
-# Glioma Drug Class Mention
+# Glioma Traditional Chemotherapy --> Annotation BaseModel
 ###############################################################################
-class GliomaDrugMention(MedicationMention):
+class GliomaChemotherapyAnnotation(BaseModel):
+    chemotherapy: GliomaChemotherapyMention
 
-    rx_class_targeted: GliomaTargetedTherapy = Field(
-        default=GliomaTargetedTherapy.NOT_MENTIONED,
-        description='Glioma targeted therapy class'
+    status: RxStatusMention = Field(
+        RxStatusMention.NOT_MENTIONED,
+        description="Glioma chemotherapy status"
     )
 
-    rx_class_chemotherapy: RxClassChemotherapy = Field(
-        default=RxClassChemotherapy.NOT_MENTIONED,
-        description='Glioma chemotherapy class'
+    treatment_phase: RxTreatmentPhaseMention = Field(
+        RxTreatmentPhaseMention.NOT_MENTIONED,
+        description="Glioma chemotherapy treatment phase"
     )
 
-    rx_regimen_chemotherapy: RxRegimenChemotherapy = Field(
-        default=RxRegimenChemotherapy.NOT_MENTIONED,
-        description='Glioma chemotherapy regimen'
+    treatment_response: RxResponseMention = Field(
+        RxResponseMention.NOT_MENTIONED,
+        description="What was the glioma chemotherapy response?"
     )
 
-    rx_toxicity: ToxicitySeverity = Field(
-        default=ToxicitySeverity.NOT_MENTIONED,
-        description='Glioma therapeutic drug Toxicity severity'
+    toxicity_severity: RxToxicitySeverityMention = Field(
+        RxToxicitySeverityMention.NOT_MENTIONED,
+        description="What was the toxicity severity of glioma chemotherapy?"
     )
 
+    treatment_discontinued: RxDiscontinuedMention = Field(
+        RxDiscontinuedMention.NOT_MENTIONED,
+        description="Was glioma chemotherapy discontinued?"
+    )

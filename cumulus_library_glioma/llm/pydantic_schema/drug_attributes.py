@@ -36,6 +36,13 @@ class RxStatus(StrEnum):
     CANCELED = "Medication order was canceled/withdrawn before any doses were administered."
     ON_HOLD = "Medication is temporarily paused (on-hold, suspended, or interrupted)."
     NONE = "None of the above"
+    NOT_MENTIONED = "Medication status was not mentioned."
+
+class RxStatusMention(SpanAugmentedMention):
+    rx_status: RxStatus = Field(
+        RxStatus.NOT_MENTIONED,
+        description="what is the status of this medication?"
+    )
 
 ###############################################################################
 # FHIR MedicationRequest.category
@@ -165,9 +172,9 @@ class RxTreatmentPhaseMention(SpanAugmentedMention):
     )
 
 ###############################################################################
-# Template
+# Annotation BaseModel
 ###############################################################################
-class RxAttributesMention(SpanAugmentedMention):
+class RxAttributesAnnotation(BaseModel):
     """
     https://build.fhir.org/valueset-medicationrequest-status.html
     https://build.fhir.org/valueset-medicationrequest-admin-location.html
@@ -176,8 +183,8 @@ class RxAttributesMention(SpanAugmentedMention):
     http://hl7.org/fhir/us/core/STU4/StructureDefinition-us-core-medicationrequest-definitions.html#MedicationRequest.dispenseRequest.numberOfRepeatsAllowed
     http://hl7.org/fhir/us/core/STU4/StructureDefinition-us-core-medicationrequest-definitions.html#MedicationRequest.dispenseRequest.quantity
     """
-    status: RxStatus = Field(
-        default=RxStatus.NONE,
+    status: RxStatusMention = Field(
+        default=RxStatusMention.NOT_MENTIONED,
         description='What is the status of this medication?'
     )
 
@@ -191,8 +198,8 @@ class RxAttributesMention(SpanAugmentedMention):
         description='What is the the route of administration for this medication?'
     )
 
-    phase: RxTreatmentPhase = Field(
-        default=RxTreatmentPhase.NONE,
+    phase: RxTreatmentPhaseMention = Field(
+        default=RxTreatmentPhaseMention.NONE,
         description='What is the treatment phase for this medication?'
     )
 

@@ -208,12 +208,9 @@ class NF1StatusMention(SpanAugmentedMention):
     )
 
 ###############################################################################
-# ANNOTATION : Glioma Diagnosis
+# Annotation BaseModel
 ###############################################################################
-class GliomaDiagnosisMention(BaseModel):
-    """
-    Glioma Diagnosis Variables
-    """
+class GliomaDiagnosisAnnotation(BaseModel):
     age_at_diagnosis: AgeAtDiagnosisMention
     tumor_location: TumorLocationMention
     tumor_region: TumorRegionMention

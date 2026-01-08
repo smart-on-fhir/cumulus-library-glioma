@@ -51,11 +51,10 @@ class RxResponse(StrEnum):
     PSEUDOPROGRESSION = "PSEUDOPROGRESSION"
     NOT_EVALUABLE = "NOT_EVALUABLE"
 
-class RxResponseMention(BaseModel):
-
+class RxResponseMention(SpanAugmentedMention):
     response: RxResponse = Field(
         RxResponse.NOT_MENTIONED,
-        description="Best documented response on therapy."
+        description="Response to therapy."
     )
 
     response_confidence: Optional[float] = Field(
@@ -76,14 +75,4 @@ class RxResponseMention(BaseModel):
     duration_of_response_days: Optional[int] = Field(
         None,
         description="Duration response was maintained."
-    )
-
-    discontinued: bool = Field(
-        False,
-        description="Whether therapy was stopped."
-    )
-
-    discontinued_reason: RxDiscontinued = Field(
-        RxDiscontinued.NOT_MENTIONED,
-        description="Reason therapy was stopped."
     )

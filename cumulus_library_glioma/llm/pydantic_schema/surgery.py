@@ -1,10 +1,9 @@
 from enum import StrEnum
-from typing import Optional
-from pydantic import Field
+from pydantic import BaseModel, Field
 from .mention import SpanAugmentedMention
 
 ###############################################################################
-# Surgery
+# Surgical Type
 ###############################################################################
 class SurgicalType(StrEnum):
     BIOPSY = "BIOPSY"
@@ -16,6 +15,15 @@ class SurgicalType(StrEnum):
     OTHER = "OTHER"
     NOT_MENTIONED = "NOT_MENTIONED"
 
+class SurgicalTypeMention(SpanAugmentedMention):
+    surgical_type: SurgicalType = Field(
+        default=SurgicalType.NOT_MENTIONED,
+        description="High-level categorization of the surgery (biopsy, resection, ablation, etc.)"
+    )
+
+###############################################################################
+# Extent of Resection
+###############################################################################
 class SurgicalExtentOfResection(StrEnum):
     GROSS_TOTAL = "GROSS_TOTAL"
     SUBTOTAL = "SUBTOTAL"
@@ -26,6 +34,15 @@ class SurgicalExtentOfResection(StrEnum):
     UNRESECTABLE = "UNRESECTABLE"
     NOT_MENTIONED = "NOT_MENTIONED"
 
+class SurgicalExtentOfResectionMention(SpanAugmentedMention):
+    extent_of_resection: SurgicalExtentOfResection = Field(
+        default=SurgicalExtentOfResection.NOT_MENTIONED,
+        description="Reported extent of tumor resection."
+    )
+
+###############################################################################
+# Surgical Approach
+###############################################################################
 class SurgicalApproach(StrEnum):
     OPEN = "OPEN"
     AWAKE = "AWAKE"
@@ -35,38 +52,16 @@ class SurgicalApproach(StrEnum):
     KEYHOLE = "KEYHOLE"
     NOT_MENTIONED = "NOT_MENTIONED"
 
-class SurgeryMention(SpanAugmentedMention):
-    """
-    Structured representation of a surgical procedure performed for a cancer
-    (e.g., low-grade glioma). Includes surgical type, approach, and extent of
-    resection when identifiable from the clinical note.
-    """
-    surgical_type: SurgicalType = Field(
-        default=SurgicalType.NOT_MENTIONED,
-        description="High-level categorization of the surgery (biopsy, resection, ablation, etc.)"
-    )
-
+class SurgicalApproachMention(SpanAugmentedMention):
     approach: SurgicalApproach = Field(
         default=SurgicalApproach.NOT_MENTIONED,
         description="Technical approach used during the surgery (open, awake, stereotactic, laser)."
     )
 
-    extent_of_resection: SurgicalExtentOfResection = Field(
-        default=SurgicalExtentOfResection.NOT_MENTIONED,
-        description="Reported extent of tumor resection."
-    )
-
-    anatomical_site: Optional[str] = Field(
-        default=None,
-        description="Anatomical site of surgery (e.g., 'left frontal lobe', 'right temporal lobe')."
-    )
-
-    technique_details: Optional[str] = Field(
-        default=None,
-        description="Additional operative details (e.g., 'intraoperative mapping', 'iMRI-guided')."
-    )
-
-    complications: Optional[str] = Field(
-        default=None,
-        description="Intraoperative or postoperative complications if mentioned."
-    )
+###############################################################################
+# Annotation BaseModel
+###############################################################################
+class SurgicalAnnotation(BaseModel):
+    surgical_type: SurgicalTypeMention
+    approach: SurgicalApproachMention
+    extent_of_resection: SurgicalExtentOfResectionMention

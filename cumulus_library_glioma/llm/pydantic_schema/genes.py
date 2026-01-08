@@ -1,6 +1,6 @@
 from enum import StrEnum
 from typing import Optional
-from pydantic import Field
+from pydantic import BaseModel, Field
 from .mention import SpanAugmentedMention
 
 ###############################################################################
@@ -114,3 +114,10 @@ class GeneticVariantMention(SpanAugmentedMention):
         str,
         description="Human Genome Variation Society (HGVS) variant"
     )
+
+###############################################################################
+# Annotation BaseModel
+###############################################################################
+class GeneAnnotation(BaseModel):
+    molecular_driver: MolecularDriverMention
+    genetic_variant: GeneticVariantMention

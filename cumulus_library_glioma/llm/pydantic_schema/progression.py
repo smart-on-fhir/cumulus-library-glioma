@@ -1,7 +1,12 @@
 from enum import StrEnum
-from pydantic import BaseModel, Field, Optional
-from .mention import SpanAugmentedMention, YesNoUnknown
-from .drug_response import RxResponseMention
+from typing import Optional
+from pydantic import BaseModel, Field
+from .mention import SpanAugmentedMention
+from .drug_glioma import (
+    GliomaTargetedTherapy,
+    GliomaChemotherapyClass,
+    GliomaChemotherapyRegimen
+)
 
 ###############################################################################
 # Age at Progression
@@ -143,11 +148,18 @@ class PriorTherapyExposureMention(SpanAugmentedMention):
         default_factory=list,
         description="Previously received modalities (surgery/chemo/targeted/RT/trial)."
     )
-    prior_chemo: list[RxRegimenChemotherapy] = Field(
+
+    prior_chemo_class: list[GliomaChemotherapyClass] = Field(
         default_factory=list,
-        description="Named prior chemotherapy regimens if stated."
+        description="Named prior chemotherapy class if stated."
     )
-    prior_targeted: list[TargetedRegimen] = Field(
+
+    prior_chemo_regimen: list[GliomaChemotherapyRegimen] = Field(
+        default_factory=list,
+        description="Named prior chemotherapy regimine if stated."
+    )
+
+    prior_targeted: list[GliomaTargetedTherapy] = Field(
         default_factory=list,
         description="Named prior targeted regimens if stated."
     )
@@ -168,27 +180,30 @@ class ClinicalTrialAvailabilityMention(SpanAugmentedMention):
         description="Whether a clinical trial is available/considered."
     )
 
+class RadiotherapyExposureHistory(StrEnum):
+    NOT_MENTIONED = "NOT_MENTIONED"
+    EXPOSED = "Patient has previous exposure to radiotherapy."
+    NOT_EXPOSED = "Patient has NOT been exposed to radiotherapy."
+
 class RadiotherapyExposureHistoryMention(SpanAugmentedMention):
-    has_prior_radiotherapy: YesNoUnknown = Field(
-        YesNoUnknown.NOT_MENTIONED,
+    has_prior_radiotherapy: RadiotherapyExposureHistory = Field(
+        RadiotherapyExposureHistory.NOT_MENTIONED,
         description="Whether patient has prior radiotherapy exposure."
-    )
-    rt_type_text: Optional[str] = Field(
-        None,
-        description="Free-text RT type (e.g., proton, photon) and/or dose/fractionation if stated."
     )
 
 ###############################################################################
-# Clinical Trial Available
+# Annotation: Glioma Disease Progression
 ###############################################################################
 class GliomaProgressionAnnotation(BaseModel):
-    age_at_progression: AgeAtProgressionMention = Field(default_factory=AgeAtProgressionMention)
-    progression_type: ProgressionTypeMention = Field(default_factory=ProgressionTypeMention)
-    regrowth_pattern: RegrowthPatternMention = Field(default_factory=RegrowthPatternMention)
-    symptom_burden: SymptomBurdenMention = Field(default_factory=SymptomBurdenMention)
-    visual_status: VisualAcuityMention = Field(default_factory=VisualAcuityMention)
-    neurocognitive_risk: NeurocognitiveRiskMention = Field(default_factory=NeurocognitiveRiskMention)
-    endocrine_function: EndocrineFunctionMention = Field(default_factory=EndocrineFunctionMention)
-    therapy_line: TherapyLine = Field(default_factory=TherapyLine)
+    age_at_progression: AgeAtProgressionMention
+    progression_type: ProgressionTypeMention
+    regrowth_pattern: RegrowthPatternMention
+    symptom_burden: SymptomBurdenMention
+    visual_status: VisualAcuityMention
+    neurocognitive_risk: NeurocognitiveRiskMention
+    endocrine_function: EndocrineFunctionMention
+    therapy_line: TherapyLineMention
+    prior_exposure: PriorTherapyExposureMention
+    clinical_trial: ClinicalTrialAvailabilityMention
 
 
