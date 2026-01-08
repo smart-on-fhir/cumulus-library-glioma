@@ -22,7 +22,7 @@ class AgeAtProgressionMention(SpanAugmentedMention):
 ###############################################################################
 class ProgressionType(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
-    BOTH = "BOTH FUNCTIONAL AND RADIOGRAPHIC"
+    BOTH = "BOTH"
     RADIOGRAPHIC = "RADIOGRAPHIC"
     FUNCTIONAL = "FUNCTIONAL"
     SUSPECTED = "SUSPECTED"
@@ -125,7 +125,23 @@ class EndocrineFunctionMention(SpanAugmentedMention):
 ###############################################################################
 # Line of Therapy
 ###############################################################################
-class TherapyLine(StrEnum):
+class TherapyLineNumber(StrEnum):
+    NOT_MENTIONED = "NOT_MENTIONED"
+    FIRST_LINE = "FIRST_LINE"
+    SECOND_LINE = "SECOND_LINE"
+    THIRD_LINE = "THIRD_LINE"
+    FOURTH_LINE_OR_GREATER = "FOURTH_LINE_OR_GREATER"
+
+class TherapyLineNumberMention(SpanAugmentedMention):
+    line_number: TherapyLineNumber = Field(
+        TherapyLineNumber.NOT_MENTIONED,
+        description=(
+            "Line of therapy in the overall treatment sequence "
+            "(first-line, second-line, third-line, etc.)."
+        )
+    )
+
+class TherapyModality(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
     OBSERVATION = "OBSERVATION"
     SURGERY = "SURGERY"
@@ -134,9 +150,9 @@ class TherapyLine(StrEnum):
     RADIOTHERAPY = "RADIOTHERAPY"
     CLINICAL_TRIAL = "CLINICAL_TRIAL"
 
-class TherapyLineMention(SpanAugmentedMention):
-    therapy_line: TherapyLine = Field(
-        TherapyLine.NOT_MENTIONED,
+class TherapyModalityMention(SpanAugmentedMention):
+    therapy_modality: TherapyModality = Field(
+        TherapyModality.NOT_MENTIONED,
         description="Line of therapy."
     )
 
@@ -144,7 +160,7 @@ class TherapyLineMention(SpanAugmentedMention):
 # Prior Therapy
 ###############################################################################
 class PriorTherapyExposureMention(SpanAugmentedMention):
-    prior_modalities: list[TherapyLine] = Field(
+    prior_modalities: list[TherapyModality] = Field(
         default_factory=list,
         description="Previously received modalities (surgery/chemo/targeted/RT/trial)."
     )
@@ -156,7 +172,7 @@ class PriorTherapyExposureMention(SpanAugmentedMention):
 
     prior_chemo_regimen: list[GliomaChemotherapyRegimen] = Field(
         default_factory=list,
-        description="Named prior chemotherapy regimine if stated."
+        description="Named prior chemotherapy regimen if stated."
     )
 
     prior_targeted: list[GliomaTargetedTherapy] = Field(
@@ -182,8 +198,9 @@ class ClinicalTrialAvailabilityMention(SpanAugmentedMention):
 
 class RadiotherapyExposureHistory(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
-    EXPOSED = "Patient has previous exposure to radiotherapy."
-    NOT_EXPOSED = "Patient has NOT been exposed to radiotherapy."
+    EXPOSED = "EXPOSED"
+    NOT_EXPOSED = "NOT_EXPOSED"
+    UNKNOWN = "UNKNOWN"
 
 class RadiotherapyExposureHistoryMention(SpanAugmentedMention):
     has_prior_radiotherapy: RadiotherapyExposureHistory = Field(
@@ -194,7 +211,7 @@ class RadiotherapyExposureHistoryMention(SpanAugmentedMention):
 ###############################################################################
 # Annotation: Glioma Disease Progression
 ###############################################################################
-class GliomaProgressionAnnotation(BaseModel):
+class GliomaProgressionMention(SpanAugmentedMention):
     age_at_progression: AgeAtProgressionMention
     progression_type: ProgressionTypeMention
     regrowth_pattern: RegrowthPatternMention
@@ -202,8 +219,17 @@ class GliomaProgressionAnnotation(BaseModel):
     visual_status: VisualAcuityMention
     neurocognitive_risk: NeurocognitiveRiskMention
     endocrine_function: EndocrineFunctionMention
-    therapy_line: TherapyLineMention
+    therapy_line: TherapyLineNumberMention
+    therapy_modality: TherapyModalityMention
     prior_exposure: PriorTherapyExposureMention
     clinical_trial: ClinicalTrialAvailabilityMention
+    radiotherapy_exposure_history: RadiotherapyExposureHistoryMention
+
+class GliomaProgressionAnnotation(BaseModel):
+    glioma_progression: list[GliomaProgressionMention] = Field(
+        default_factory=list,
+        description="All glioma disease progressions aggregated for each line of therapy"
+    )
+
 
 

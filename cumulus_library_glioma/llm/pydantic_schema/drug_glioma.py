@@ -35,12 +35,10 @@ class GliomaTargetedTherapyMention(SpanAugmentedMention):
         description="Glioma targeted therapy"
     )
 
-###############################################################################
-# Glioma Targeted Therapy --> Annotation BaseModel
-###############################################################################
-class GliomaTargetedTherapyAnnotation(BaseModel):
-    targeted_therapy: GliomaTargetedTherapyMention
-
+    status: RxStatusMention = Field(
+        RxStatusMention.NOT_MENTIONED,
+        description="Glioma targeted therapy status (active/completed/stopped/etc)"
+    )
     treatment_phase: RxTreatmentPhaseMention = Field(
         RxTreatmentPhaseMention.NOT_MENTIONED,
         description="Glioma targeted therapy treatment phase"
@@ -53,14 +51,23 @@ class GliomaTargetedTherapyAnnotation(BaseModel):
 
     treatment_discontinued: RxDiscontinuedMention = Field(
         RxDiscontinuedMention.NOT_MENTIONED,
-        description="What was the toxicity severity of glioma chemotherapy?"
+        description="Was glioma targeted therapy discontinued, and why?"
     )
 
     toxicity_severity: RxToxicitySeverityMention = Field(
         RxToxicitySeverityMention.NOT_MENTIONED,
-        description="Was glioma targeted therapy toxic?"
+        description="What was the toxicity severity of glioma targeted therapy?"
     )
 
+
+###############################################################################
+# Glioma Targeted Therapy --> Annotation BaseModel
+###############################################################################
+class GliomaTargetedTherapyAnnotation(BaseModel):
+    targeted_therapy: list[GliomaTargetedTherapyMention] = Field(
+        default_factory=list,
+        description="All mentions of glioma targeted therapy"
+    )
 
 ###############################################################################
 # Glioma Traditional Chemotherapy
@@ -77,9 +84,12 @@ class GliomaChemotherapyClass(StrEnum):
 
 class GliomaChemotherapyRegimen(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
+    CARBOPLATIN = "CARBOPLATIN"
     CARBOPLATIN_VINCRISTINE = "CARBOPLATIN_VINCRISTINE"
     VINBLASTINE = "VINBLASTINE"
     TPCV = "TPCV"  # thioguanine/procarbazine/CCNU/vincristine (legacy)
+    BEVACIZUMAB_IRINOTECAN = "BEVACIZUMAB_IRINOTECAN"
+    BEVACIZUMAB = "BEVACIZUMAB"
     OTHER = "OTHER"
 
 class GliomaChemotherapyMention(SpanAugmentedMention):
@@ -93,15 +103,9 @@ class GliomaChemotherapyMention(SpanAugmentedMention):
         description="Glioma chemotherapy regimen"
     )
 
-###############################################################################
-# Glioma Traditional Chemotherapy --> Annotation BaseModel
-###############################################################################
-class GliomaChemotherapyAnnotation(BaseModel):
-    chemotherapy: GliomaChemotherapyMention
-
     status: RxStatusMention = Field(
         RxStatusMention.NOT_MENTIONED,
-        description="Glioma chemotherapy status"
+        description="Glioma chemotherapy status (active/completed/stopped/etc)"
     )
 
     treatment_phase: RxTreatmentPhaseMention = Field(
@@ -123,3 +127,13 @@ class GliomaChemotherapyAnnotation(BaseModel):
         RxDiscontinuedMention.NOT_MENTIONED,
         description="Was glioma chemotherapy discontinued?"
     )
+
+###############################################################################
+# Glioma Traditional Chemotherapy --> Annotation BaseModel
+###############################################################################
+class GliomaChemotherapyAnnotation(BaseModel):
+    chemotherapy: list[GliomaChemotherapyMention] = Field(
+        default_factory=list,
+        description="All mentions of pLGG chemotherapy"
+    )
+

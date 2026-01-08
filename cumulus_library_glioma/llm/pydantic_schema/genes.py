@@ -100,9 +100,9 @@ class GeneticVariantMention(SpanAugmentedMention):
     """
     Clinical interpretation of genetic variant
     """
-    hgnc_name: str = Field(
+    hgnc_name: Optional[str] = Field(
         default=None,
-        description="HGNC hugo gene naming convention"
+        description="HGNC/HUGO gene naming convention"
     )
 
     interpretation: GeneticVariantInterpretation = Field(
@@ -110,14 +110,22 @@ class GeneticVariantMention(SpanAugmentedMention):
         description='Clinical interpretation of genetic variant or genetic test result'
     )
 
-    hgvs_variant:str = Field(
-        str,
-        description="Human Genome Variation Society (HGVS) variant"
+    hgvs_variant: Optional[str] = Field(
+        None,
+        description="HGVS variant string (e.g., NM_004333.6(BRAF):c.1799T>A)."
     )
+
 
 ###############################################################################
 # Annotation BaseModel
 ###############################################################################
 class GeneAnnotation(BaseModel):
-    molecular_driver: MolecularDriverMention
-    genetic_variant: GeneticVariantMention
+    molecular_driver: list[MolecularDriverMention] = Field(
+        default_factory=list,
+        description="All mentions of pLGG Molecular drivers"
+    )
+
+    genetic_variant: list[GeneticVariantMention] = Field(
+        default_factory=list,
+        description="All mentions of pLGG genetic variants"
+    )

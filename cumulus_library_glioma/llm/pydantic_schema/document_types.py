@@ -46,16 +46,22 @@ class DocumentTypeMention(SpanAugmentedMention):
         description="What type of document/note is this?"
     )
 
-#------------------------------------------------------------------------------
-# Annotation BaseModel
-#------------------------------------------------------------------------------
-class DocumentTypeAnnotation(BaseModel):
-    doc_type: DocumentTypeMention
+    is_administrative: bool = Field(
+        False,
+        description="Is this document/note administrative and lacking clinical significance relevant to pLGG?"
+    )
 
     doc_type_confidence: Optional[float] = Field(
         None,
         description="LLM confidence score (0–1) for the document type classification."
     )
+
+#------------------------------------------------------------------------------
+# Annotation BaseModel
+#------------------------------------------------------------------------------
+class DocumentTypeAnnotation(BaseModel):
+    doc_type: list[DocumentTypeMention] = Field(default_factory=list, description="All document type mentions")
+
 
 #------------------------------------------------------------------------------
 # List document types for `diagnosis.py`
@@ -86,6 +92,7 @@ DRUG_LIST = [
     DocumentType.CHEMOTHERAPY,
     DocumentType.ADVERSE_EVENT,
     DocumentType.CLINICAL_TRIAL,
+    DocumentType.TUMOR_BOARD_NOTE,
     DocumentType.ADMISSION_NOTE,
     DocumentType.DISCHARGE_SUMMARY,
 ]
