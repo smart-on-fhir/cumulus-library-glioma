@@ -26,16 +26,9 @@ def list_valueset_variable_names() -> List[str]:
     var_list = list_valueset_vsac() + list_valueset_uploads()
     var_list = [v.name for v in var_list]
     var_list = [v for v in var_list if "casedef" not in v]
-    var_list = [v for v in var_list if "diag_category" not in v]
-    var_list = [file_to_variable(v) for v in var_list]
+    var_list = [v for v in var_list if "fhir_diagnostic_service" not in v]
+    var_list = [filetool.file_to_variable(v) for v in var_list]
     return sorted(list(set(var_list)))
-
-def file_to_variable(filename:Path|str) -> str:
-    """
-    :return: return simplified variable name for a filepath
-    """
-    name_part = filename.name if isinstance(filename, Path) else filename
-    return tablespace.name_trim(name_part).split('.')[0]
 
 def select_union(variable_list: List[str]) -> str:
     """

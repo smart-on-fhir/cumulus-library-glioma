@@ -82,6 +82,4 @@ def make() -> list[Path]:
 
 if __name__ == '__main__':
     target_files = make()
-    print(target_files)
-    print('################################################################')
     print(manifest.as_toml_valuesets(target_files))
