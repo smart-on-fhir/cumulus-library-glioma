@@ -2,6 +2,7 @@ from pathlib import Path
 from cumulus_library_glioma.tools import filetool, tablespace
 from cumulus_library_glioma.tools.settings import CUMULUS_CACHE_PREFIX
 from cumulus_library_glioma.tools.tablespace import name_prefix
+from cumulus_library_glioma.tools import manifest
 
 #-----------------------------------------------------------------------------
 # List of study population tables.
@@ -35,7 +36,7 @@ def create_view(table:str, cache='cache') -> Path:
     :return: str SQL to create copy of study population table
     """
     cvas = f"create or replace view {name_prefix(table)} as select * from {cache}__{table};"
-    target = tablespace.name_prefix(table) + '.sql'
+    target = name_prefix(table) + '.sql'
     return filetool.save_athena(target, cvas)
 
 def create_cache(table_list:list, cache='cache') -> list[str]:
@@ -63,4 +64,4 @@ def make_study_population(table_list:list, cache:str|bool =False) -> list[Path]:
 
 if __name__ == '__main__':
     target_list = make_study_population(TABLE_LIST, CUMULUS_CACHE_PREFIX)
-    print(target_list)
+    print(manifest.as_toml(target_list, 'study_population'))

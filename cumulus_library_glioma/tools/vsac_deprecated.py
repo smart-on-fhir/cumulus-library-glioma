@@ -1,7 +1,7 @@
 from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from cumulus_library_glioma.tools import filetool, manifest, make_variable
+from cumulus_library_glioma.tools import filetool, manifest, study_variable
 
 ###############################################################################
 # DEPRECATED NOTICE
