@@ -24,14 +24,14 @@ file = "../resources/valueset_casedef.csv"
 [tables.valueset_dx_neurofibromatosis]
 file = "../resources/valueset_dx_neurofibromatosis.csv"
 
-[tables.valueset_lab_sirolimus]
+[tables.valueset_lab_mtor_sirolimus]
 file = "../resources/valueset_lab_sirolimus.csv"
 
-[tables.valueset_rx_sirolimus]
-file = "../resources/valueset_rx_sirolimus.csv"
+[tables.valueset_rx_mtor_sirolimus]
+file = "../resources/valueset_rx_mtor_sirolimus.csv"
 
-[tables.valueset_rx_everolimus]
-file = "../resources/valueset_rx_everolimus.csv"
+[tables.valueset_rx_mtor_everolimus]
+file = "../resources/valueset_rx_mtor_everolimus.csv"
 
 [tables.valueset_diag_pathology]
 file = "../resources/valueset_diag_pathology.csv"

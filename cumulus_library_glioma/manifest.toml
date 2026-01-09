@@ -5,9 +5,9 @@ study_prefix = "glioma"
 
 # -----------------------------------------------------------------------------
 # Valuesets to download 
-"vsac.toml" = [
-    "vsac.toml"
-]
+#    "vsac.toml" = [
+#        "vsac.toml"
+#    ]
 
 "file_upload.toml" = [
     "file_upload.toml"
