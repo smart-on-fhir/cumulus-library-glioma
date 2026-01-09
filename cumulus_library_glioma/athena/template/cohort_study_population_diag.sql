@@ -32,7 +32,5 @@ select      distinct
             obs.valuequantity_code          as obs_valuequantity_code,
             obs.valuestring                 as obs_valuestring
 from        study_diag
-left join   $prefix__valueset_diag_category  as valueset
-        on  study_diag.diag_category_code = valueset.code
 left join   core__observation as obs
         on  study_diag.result_ref = obs.observation_ref;

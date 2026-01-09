@@ -1,1 +1,36 @@
-create or replace view glioma__cohort_study_population_diag as select * from cache__cohort_study_population_diag;
+create table glioma__cohort_study_population_diag as
+WITH
+study_diag as (
+    select  distinct
+            diag.status                     as diag_status,
+            diag.category_code              as diag_category_code,
+            diag.category_system            as diag_category_system,
+            valueset.display                as diag_category_display,
+            diag.code_code                  as diag_code,
+            diag.code_system                as diag_system,
+            diag.code_display               as diag_display,
+            diag.effectivedatetime_day      as diag_effectivedatetime_day,
+            diag.diagnosticreport_ref       as diagnosticreport_ref,
+            diag.result_ref,
+    	    study_population.*
+	from    glioma__cohort_study_population as study_population,
+	        glioma__fhir_diagnostic_service as valueset,
+    	    core__diagnosticreport          as diag
+	where   diag.category_system            = valueset.system
+	and     diag.category_code              = valueset.code
+    and     study_population.encounter_ref  = diag.encounter_ref
+)
+select      distinct
+            study_diag.*,
+            obs.interpretation_code         as obs_interpretation_code,
+            obs.interpretation_system       as obs_interpretation_system,
+            obs.interpretation_display      as obs_interpretation_display,
+            obs.valuequantity_value         as obs_valuequantity_value,
+            obs.valuequantity_comparator    as obs_valuequantity_comparator,
+            obs.valuequantity_unit          as obs_valuequantity_unit,
+            obs.valuequantity_system        as obs_valuequantity_system,
+            obs.valuequantity_code          as obs_valuequantity_code,
+            obs.valuestring                 as obs_valuestring
+from        study_diag
+left join   core__observation as obs
+        on  study_diag.result_ref = obs.observation_ref;

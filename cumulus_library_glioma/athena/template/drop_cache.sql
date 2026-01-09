@@ -1,0 +1,8 @@
+drop table cache__cohort_study_period;
+drop table cache__cohort_study_population;
+drop table cache__cohort_study_population_dx;
+drop table cache__cohort_study_population_rx;
+drop table cache__cohort_study_population_proc;
+drop table cache__cohort_study_population_lab;
+drop table cache__cohort_study_population_doc;
+drop table cache__cohort_study_population_diag;
