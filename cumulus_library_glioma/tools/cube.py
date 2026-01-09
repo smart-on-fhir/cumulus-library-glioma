@@ -1,10 +1,9 @@
-import os
 from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_glioma.tools import filetool, tablespace
 from cumulus_library_glioma.tools.settings import CUMULUS_CUBE_MIN_SUBJECTS
-from cumulus_library_glioma.tools.filetool import PREFIX
+from cumulus_library_glioma.tools import manifest
 
 def cube_fhir_resource(fhir_resource:str,
                        source_table='study_population',
@@ -25,7 +24,7 @@ def cube_fhir_resource(fhir_resource:str,
         table_name = tablespace.name_cube(table_name, count_type)
 
     table_cols = sorted(list(set(table_cols)))
-    sql = CountsBuilder(PREFIX).get_count_query(
+    sql = CountsBuilder(manifest=manifest.get_manifest()).get_count_query(
             table_name=table_name,
             source_table=source_table,
             table_cols=table_cols,
@@ -166,3 +165,4 @@ def make() -> List[Path]:
 
 if __name__ == "__main__":
     target_files = make()
+    print(manifest.as_toml(target_files, 'CUBE aggregate data'))

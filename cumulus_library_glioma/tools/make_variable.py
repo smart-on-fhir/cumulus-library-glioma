@@ -1,6 +1,6 @@
 from typing import List
 from pathlib import Path
-from cumulus_library_glioma.tools import filetool, tablespace
+from cumulus_library_glioma.tools import filetool, tablespace, manifest
 from cumulus_library_glioma.tools.tablespace import name_trim
 
 #-----------------------------------------------------------------------------
@@ -127,16 +127,6 @@ def make_wide() -> Path:
 
     return filetool.save_athena(target_file, template_sql)
 
-def as_toml() -> str:
-    """
-    Workaround for https://github.com/smart-on-fhir/cumulus-library/issues/439
-    :return: str content for `manifest.toml`
-    """
-    table_list = [tablespace.name_cohort(t) for t in list_valueset_variable_names()]
-    key = '"variable cohort"'
-    values = [f'"athena/{table_name}.sql",' for table_name in table_list]
-    return  key + '= [\n\t'+ '\n\t'.join(values) + '\n]'
-
 #-----------------------------------------------------------------------------
 # Make
 #-----------------------------------------------------------------------------
@@ -145,4 +135,4 @@ def make() -> list[Path]:
 
 if __name__ == '__main__':
     target_files = make() + [make_union(), make_wide()]
-    print(as_toml())
+    print(manifest.as_toml(target_files, 'variable cohorts'))

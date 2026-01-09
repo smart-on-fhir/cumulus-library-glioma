@@ -1,5 +1,7 @@
 from enum import Enum
-from cumulus_library_glioma.tools.filetool import PREFIX
+
+# study prefix is the schema "root" or "tablespace" for tables in this study (glioma)
+PREFIX = 'glioma'
 
 class Reference(Enum):
     """

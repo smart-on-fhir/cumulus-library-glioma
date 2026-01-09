@@ -2,36 +2,16 @@ import os
 import json
 from pathlib import Path
 from typing import Dict, Any
-# from cumulus_library import StudyManifest
-# PREFIX = StudyManifest().get_study_prefix() # << refactor
-PREFIX = 'glioma'
+from cumulus_library_glioma.tools.tablespace import PREFIX, name_trim
 
 #-----------------------------------------------------------------------------
 # PROJECT HOME
 #-----------------------------------------------------------------------------
-def path_home(filename=None) -> Path:
-    """
-    Get path to python package home directory
-    :param filename: optionally with `filename`
-    :return: Path to project home directory, optionally with `filename`
-    """
+def path_project(filename=None) -> Path:
+    project_dir = Path(__file__).resolve().parent.parent
     if filename:
-        return Path(os.path.join(os.path.dirname(__file__), filename))
-    else:
-        return Path(os.path.dirname(__file__))
-
-def path_parent(filename=None) -> Path:
-    """
-    Get path to the "parent" folder where `README.MD` and `pyproject.toml` live
-    :param filename: optional name of file to get path for in parent folder
-    :return: Path to project parent directoy, otionally with `filename`
-    """
-    parent = Path(os.path.abspath(os.path.join(path_home(), os.pardir)))
-    if filename:
-        return Path(os.path.join(parent, filename))
-    else:
-        return parent
-
+        return project_dir/ filename
+    return project_dir
 
 #-----------------------------------------------------------------------------
 # resources dir (user curated files)
@@ -41,7 +21,7 @@ def path_resources(filename: Path | str) -> Path:
     :param filename: name of JSON file
     :return: Path to JSON valueset
     """
-    return Path(os.path.join(path_parent(), '..', 'resources', filename))
+    return Path(os.path.join(path_project(), 'resources', filename))
 
 #-----------------------------------------------------------------------------
 # VSAC Valueset(s)
@@ -51,7 +31,7 @@ def path_valueset(filename: Path | str) -> Path:
     :param filename: name of JSON file
     :return: Path to JSON valueset
     """
-    return Path(os.path.join(path_parent(), 'valueset_data', filename))
+    return Path(os.path.join(path_project(), 'valueset_data', filename))
 
 def load_valueset(filename: Path | str) -> dict:
     """
@@ -110,9 +90,8 @@ def read_text(text_file: Path | str, encoding: str = 'UTF-8') -> str:
     :param encoding: provided file's encoding
     :return: file text contents
     """
-    if file_exists(text_file):
-        with m_open(file=text_file, encoding=encoding) as t_file:
-            return t_file.read()
+    with m_open(file=text_file, encoding=encoding) as t_file:
+        return t_file.read()
 
 def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') -> str:
     """
@@ -126,17 +105,6 @@ def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') ->
         file_path.write(contents)
         file_path.close()
         return file_path.name
-
-def file_exists(filename: Path | str) -> bool:
-    """
-    FAIL FAST if not exists `filename`
-    :param filename: check for existance
-    :return: BOOL True or raise exception (fail fast)
-    """
-    target = Path(filename)
-    if not target.exists():
-        raise Exception('file not found: ' + str(target))
-    return True
 
 def m_open(**kwargs):
     """
@@ -159,9 +127,8 @@ def read_json(json_file: Path | str, encoding: str = 'UTF-8') -> Dict[Any, Any]:
     :param encoding: provided file's encoding
     :return: json file contents
     """
-    if file_exists(json_file):
-        with m_open(file=json_file, encoding=encoding) as j_file:
-            return json.load(j_file)
+    with m_open(file=json_file, encoding=encoding) as j_file:
+        return json.load(j_file)
 
 def write_json(contents: Dict[Any, Any], json_file_path: Path | str, encoding: str = 'UTF-8') -> Path:
     """
@@ -177,3 +144,14 @@ def write_json(contents: Dict[Any, Any], json_file_path: Path | str, encoding: s
         # json.dump(contents, json_file_path, indent=4, cls=jsonifiers.CustomJsonEncoder)
         json.dump(contents, json_file_path, indent=4)
         return Path(json_file_path.name)
+
+#-----------------------------------------------------------------------------
+# filename to variable (tablespace) name
+#-----------------------------------------------------------------------------
+def file_to_variable(filename:Path|str) -> str:
+    """
+    Get variable name for file
+    :return: return simplified variable name for a filepath
+    """
+    name_part = filename.name if isinstance(filename, Path) else filename
+    return name_trim(name_part).split('.')[0]
