@@ -25,7 +25,7 @@ file = "../resources/valueset_casedef.csv"
 file = "../resources/valueset_dx_neurofibromatosis.csv"
 
 [tables.valueset_lab_mtor_sirolimus]
-file = "../resources/valueset_lab_sirolimus.csv"
+file = "../resources/valueset_lab_mtor_sirolimus.csv"
 
 [tables.valueset_rx_mtor_sirolimus]
 file = "../resources/valueset_rx_mtor_sirolimus.csv"

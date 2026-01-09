@@ -4,7 +4,7 @@ study_prefix = "glioma"
 [file_config.file_names]
 
 # -----------------------------------------------------------------------------
-# Valuesets to download 
+## Valuesets to download
 #    "vsac.toml" = [
 #        "vsac.toml"
 #    ]
@@ -70,25 +70,19 @@ study_prefix = "glioma"
 
 # # -----------------------------------------------------------------------------
 # Variable cohorts
-"variable cohort"= [
+"variable cohorts"= [
 	"athena/glioma__cohort_diag_brain_mri.sql",
 	"athena/glioma__cohort_diag_head_neck.sql",
 	"athena/glioma__cohort_diag_pathology.sql",
 	"athena/glioma__cohort_diag_radiology.sql",
 	"athena/glioma__cohort_dx_brain_tumor.sql",
 	"athena/glioma__cohort_dx_cancer.sql",
-	"athena/glioma__cohort_dx_diabetes.sql",
+	"athena/glioma__cohort_dx_endo_diabetes.sql",
 	"athena/glioma__cohort_dx_focal_deficit.sql",
 	"athena/glioma__cohort_dx_neuro.sql",
 	"athena/glioma__cohort_dx_neurofibromatosis.sql",
 	"athena/glioma__cohort_dx_neuropathy.sql",
-	"athena/glioma__cohort_lab_gene_alk.sql",
-	"athena/glioma__cohort_lab_gene_braf.sql",
-	"athena/glioma__cohort_lab_gene_ntrk.sql",
-	"athena/glioma__cohort_lab_gene_ret.sql",
-	"athena/glioma__cohort_lab_gene_ros1.sql",
-	"athena/glioma__cohort_lab_gene_test.sql",
-	"athena/glioma__cohort_lab_sirolimus.sql",
+	"athena/glioma__cohort_lab_mtor_sirolimus.sql",
 	"athena/glioma__cohort_proc_neurosurgery.sql",
 	"athena/glioma__cohort_rx_cancer_directed.sql",
 	"athena/glioma__cohort_rx_chemo.sql",
@@ -99,8 +93,10 @@ study_prefix = "glioma"
 	"athena/glioma__cohort_rx_chemo_vincristine.sql",
 	"athena/glioma__cohort_rx_endo_diabetes.sql",
 	"athena/glioma__cohort_rx_endo_therapy.sql",
-	"athena/glioma__cohort_rx_everolimus.sql",
-	"athena/glioma__cohort_rx_sirolimus.sql",
+	"athena/glioma__cohort_rx_mtor_everolimus.sql",
+	"athena/glioma__cohort_rx_mtor_sirolimus.sql",
+	"athena/glioma__cohort_variable_union.sql",
+	"athena/glioma__cohort_variable_wide.sql",
 ]
 
 "variable union (structured)" = [

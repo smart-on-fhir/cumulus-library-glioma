@@ -15,8 +15,8 @@ file = "valueset_data/dx_brain_tumor.json.valueset.tsv"
 [tables.valueset_dx_cancer]
 file = "valueset_data/dx_cancer.json.valueset.tsv"
 
-[tables.valueset_dx_diabetes]
-file = "valueset_data/dx_diabetes.json.valueset.tsv"
+[tables.valueset_dx_endo_diabetes]
+file = "valueset_data/dx_endo_diabetes.json.valueset.tsv"
 
 [tables.valueset_dx_focal_deficit]
 file = "valueset_data/dx_focal_deficit.json.valueset.tsv"
@@ -26,24 +26,6 @@ file = "valueset_data/dx_neuro.json.valueset.tsv"
 
 [tables.valueset_dx_neuropathy]
 file = "valueset_data/dx_neuropathy.json.valueset.tsv"
-
-[tables.valueset_lab_gene_alk]
-file = "valueset_data/lab_gene_alk.json.valueset.tsv"
-
-[tables.valueset_lab_gene_braf]
-file = "valueset_data/lab_gene_braf.json.valueset.tsv"
-
-[tables.valueset_lab_gene_ntrk]
-file = "valueset_data/lab_gene_ntrk.json.valueset.tsv"
-
-[tables.valueset_lab_gene_ret]
-file = "valueset_data/lab_gene_ret.json.valueset.tsv"
-
-[tables.valueset_lab_gene_ros1]
-file = "valueset_data/lab_gene_ros1.json.valueset.tsv"
-
-[tables.valueset_lab_gene_test]
-file = "valueset_data/lab_gene_test.json.valueset.tsv"
 
 [tables.valueset_proc_neurosurgery]
 file = "valueset_data/proc_neurosurgery.json.valueset.tsv"
