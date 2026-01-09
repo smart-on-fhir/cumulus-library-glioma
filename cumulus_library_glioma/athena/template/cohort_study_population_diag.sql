@@ -10,6 +10,7 @@ join_diag as (
             diag.code_code                  as diag_code,
             diag.code_display               as diag_display,
             diag.effectivedatetime_day      as diag_effectivedatetime_day,
+            diag.effectiveperiod_start_day  as diag_effectiveperiod_start_day,
             diag.diagnosticreport_ref       as diagnosticreport_ref,
             diag.result_ref,
     	    study_population.*
