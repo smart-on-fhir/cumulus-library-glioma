@@ -1,5 +1,5 @@
 import unittest
-from cumulus_library_glioma.tools import make_variable
+from cumulus_library_glioma.tools import study_variable
 
 class TestMakeVariable(unittest.TestCase):
 
