@@ -21,7 +21,7 @@ def path_resources(filename: Path | str) -> Path:
     :param filename: name of JSON file
     :return: Path to JSON valueset
     """
-    return Path(os.path.join(path_project(), 'resources', filename))
+    return Path(os.path.join(path_project(), '..', 'resources', filename))
 
 #-----------------------------------------------------------------------------
 # VSAC Valueset(s)
@@ -31,7 +31,7 @@ def path_valueset(filename: Path | str) -> Path:
     :param filename: name of JSON file
     :return: Path to JSON valueset
     """
-    return Path(os.path.join(path_project(), 'valueset_data', filename))
+    return path_project() / 'valueset_data' / filename
 
 def load_valueset(filename: Path | str) -> dict:
     """
@@ -59,7 +59,7 @@ def list_resources(pattern:str = '*.*') -> list[Path]:
 # Athena SQL File(s)
 #-----------------------------------------------------------------------------
 def path_athena(file_sql: Path | str) -> Path:
-    return Path(os.path.join(os.path.dirname(__file__), '../athena', file_sql))
+    return path_project() / 'athena' / file_sql
 
 def save_athena(file_sql: Path | str, contents: str) -> Path:
     return Path(write_text(contents, path_athena(file_sql)))
@@ -68,7 +68,7 @@ def save_athena_view(view_name: str, contents: str) -> Path:
     return Path(write_text(contents, path_athena(f'{view_name}.sql')))
 
 def path_template(file_sql: Path | str) -> Path:
-    return Path(os.path.join(os.path.dirname(__file__), '../athena/template', file_sql))
+    return path_project() / 'athena' / 'template' / file_sql
 
 def load_template(file_sql: Path | str) -> str:
     text = read_text(path_template(file_sql))
