@@ -1,4 +1,3 @@
-from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_glioma.tools import filetool, tablespace

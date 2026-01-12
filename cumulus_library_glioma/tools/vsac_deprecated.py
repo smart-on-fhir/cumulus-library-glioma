@@ -1,4 +1,3 @@
-from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
 from cumulus_library_glioma.tools import filetool, manifest, study_variable
@@ -19,7 +18,7 @@ UMLS_VOCAB = {
     "ObservationInterpretation": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"
 }
 
-def list_coding(valueset_json: dict) -> List[Coding]:
+def list_coding(valueset_json: dict) -> list[Coding]:
     """
     Obtain a list of Coding "concepts" from a ValueSet.
     This method currently supports only "include" of "concept" defined fields.
@@ -40,7 +39,7 @@ def list_coding(valueset_json: dict) -> List[Coding]:
                 compose.append(Coding(concept))
     return compose
 
-def list_coding_expansion(valueset_json: dict) -> List[Coding]:
+def list_coding_expansion(valueset_json: dict) -> list[Coding]:
     contains = valueset_json.get('expansion').get('contains')
     return [Coding(c) for c in contains]
 

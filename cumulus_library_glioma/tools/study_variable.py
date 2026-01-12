@@ -1,4 +1,3 @@
-from typing import List
 from pathlib import Path
 from cumulus_library_glioma.tools import filetool, tablespace, manifest
 from cumulus_library_glioma.tools.tablespace import name_trim
@@ -6,19 +5,19 @@ from cumulus_library_glioma.tools.tablespace import name_trim
 #-----------------------------------------------------------------------------
 # List variables
 #-----------------------------------------------------------------------------
-def list_valueset_vsac() -> List[Path]:
+def list_valueset_vsac() -> list[Path]:
     """
     :return: list of ValueSet Files from VSAC (source:National Library of Medicine)
     """
     return filetool.list_valuesets('*valueset*')
 
-def list_valueset_uploads() -> List[Path]:
+def list_valueset_uploads() -> list[Path]:
     """
     :return: list of ValueSet Files from upload directory (source= user provided)
     """
     return filetool.list_resources('*valueset*')
 
-def list_valueset_variable_names() -> List[str]:
+def list_valueset_variable_names() -> list[str]:
     """
     List of valueset variable names, excluding special "case definition" and "FHIR diagnostic category".
     :return: sorted list of ValueSet variable names (sources: VSAC and Uploads)
@@ -30,7 +29,7 @@ def list_valueset_variable_names() -> List[str]:
     var_list = [filetool.file_to_variable(v) for v in var_list]
     return sorted(list(set(var_list)))
 
-def select_union(variable_list: List[str]) -> str:
+def select_union(variable_list: list[str]) -> str:
     """
     :param variable_list: variable names (typically list of valuesets)
     :return: str SQL select UNION ALL for the provided variable list
@@ -43,7 +42,7 @@ def select_union(variable_list: List[str]) -> str:
         sql.append(select + from_table)
     return ' UNION ALL\n'.join(sql)
 
-def select_lookup_variable_as_column(variable_list: List[str]) -> str:
+def select_lookup_variable_as_column(variable_list: list[str]) -> str:
     """
     :param variable_list: variable names (typically list of valuesets)
     :return: str SQL select variable table as column name
@@ -54,7 +53,7 @@ def select_lookup_variable_as_column(variable_list: List[str]) -> str:
         sql.append(f"\tIF(lookup.variable='{variable}', True) AS {variable}")
     return ',\n'.join(sql)
 
-def select_lookup_wide(variable_list: List[str]) -> str:
+def select_lookup_wide(variable_list: list[str]) -> str:
     """
     :param variable_list: variable names (typically list of valuesets)
     :return: str SQL select variable for any arbitrary match (typically on the FHIR encounter)
