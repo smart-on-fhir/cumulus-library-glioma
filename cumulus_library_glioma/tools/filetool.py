@@ -70,15 +70,26 @@ def save_athena_view(view_name: str, contents: str) -> Path:
 def path_template(file_sql: Path | str) -> Path:
     return path_project() / 'athena' / 'template' / file_sql
 
-def load_template(file_sql: Path | str) -> str:
-    text = read_text(path_template(file_sql))
-    return text.replace('$prefix__', f"{PREFIX}__")
+def load_template(file_sql: Path | str, replacements:dict = None) -> str:
+    text= replace_text(read_text(path_template(file_sql)))
+    return replace_text(text, replacements)
 
-def copy_template(file_sql: Path | str) -> Path:
+def copy_template(file_sql: Path | str, replacements:dict = None) -> Path:
     file_name = file_sql.name if isinstance(file_sql, Path) else file_sql
     text = load_template(path_template(file_name))
+    text = replace_text(text, replacements)
     target = path_athena(f"{PREFIX}__{file_name}")
     return save_athena(target, text)
+
+def replace_text(original:str, replacements:dict = None) -> str:
+    if not replacements:
+        replacements = dict()
+    if '$prefix' not in replacements:
+        replacements['$prefix']=PREFIX
+    output = original
+    for key, value in replacements.items():
+        output = output.replace(key, value)
+    return output
 
 #-----------------------------------------------------------------------------
 # Read/Write Text
