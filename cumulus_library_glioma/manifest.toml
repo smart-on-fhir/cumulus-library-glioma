@@ -49,20 +49,21 @@ study_prefix = "glioma"
 "cohort matching glioma case definition (casedef)" = [
     "athena/glioma__cohort_casedef.sql",
 ]
-#    "cohort glioma timeline (pre, index, index_post, post)" = [
-#        "athena/glioma__cohort_casedef_pre.sql",
-#        "athena/glioma__cohort_casedef_index.sql",
-#        "athena/glioma__cohort_casedef_index_post.sql",
-#        "athena/glioma__cohort_casedef_post.sql",
-#    ]
-#
-#    "sample glioma timeline (pre, index, index_post, post)" = [
-#        "athena/glioma__sample_casedef_pre.sql",
-#        "athena/glioma__sample_casedef_index.sql",
-#        "athena/glioma__sample_casedef_index_post.sql",
-#        "athena/glioma__sample_casedef_post.sql",
-#    ]
-#
+
+"cohort glioma timeline (pre, index, index_post, post)" = [
+    "athena/glioma__cohort_casedef_pre.sql",
+    "athena/glioma__cohort_casedef_index.sql",
+    "athena/glioma__cohort_casedef_index_post.sql",
+    "athena/glioma__cohort_casedef_post.sql",
+]
+
+"sample glioma timeline (pre, index, index_post, post)" = [
+    "athena/glioma__sample_casedef_pre.sql",
+    "athena/glioma__sample_casedef_index.sql",
+    "athena/glioma__sample_casedef_index_post.sql",
+    "athena/glioma__sample_casedef_post.sql",
+]
+
 #    "cohort glioma co-occurence (dx, rx)" = [
 #        "athena/glioma__cohort_dx.sql",
 #        "athena/glioma__cohort_rx.sql",
@@ -99,13 +100,13 @@ study_prefix = "glioma"
 	"athena/glioma__cohort_variable_wide.sql",
 ]
 
-"variable union (structured)" = [
-    "athena/glioma__cohort_variable_union.sql"
-]
-
-"variable wide (structured)" = [
-    "athena/glioma__cohort_variable_wide.sql"
-]
+#    "variable union (structured)" = [
+#        "athena/glioma__cohort_variable_union.sql"
+#    ]
+#
+#    "variable wide (structured)" = [
+#        "athena/glioma__cohort_variable_wide.sql"
+#    ]
 
 # # -----------------------------------------------------------------------------
 # LLM
