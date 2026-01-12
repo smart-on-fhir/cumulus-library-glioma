@@ -32,6 +32,7 @@ encounter_doc as (
     FROM    encounter_casedef           as casedef,
             $prefix__cohort_study_population_doc as doc
     WHERE   casedef.encounter_ref   = doc.encounter_ref
+    AND     doc.aux_has_text
 ),
 encounter_diag as (
     SELECT  distinct
@@ -52,6 +53,7 @@ encounter_diag as (
     FROM    encounter_casedef               as casedef,
             $prefix__cohort_study_population_diag as diag
     WHERE   casedef.encounter_ref   = diag.encounter_ref
+    AND     diag.aux_has_text
 ),
 encounter_note as
 (
