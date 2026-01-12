@@ -6,6 +6,7 @@ select distinct
     doc.type_system     as doc_type_system,
     doc.author_day      as doc_author_day,
     doc."date"          as doc_date,
+    doc.aux_has_text,
     doc.documentreference_ref,
     study_population.*
 from
