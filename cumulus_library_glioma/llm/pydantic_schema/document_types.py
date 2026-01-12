@@ -10,7 +10,7 @@ Design notes:
 - Defaults are NOT_MENTIONED for the enum, and has_mention=False per SpanAugmentedMention.
 - `document_types` is a list so you can capture multiple doc types in one note set.
 """
-from enum import StrEnum
+from enum import StrEnum, Enum
 from typing import Optional
 from pydantic import BaseModel, Field
 from .mention import SpanAugmentedMention
@@ -64,76 +64,65 @@ class DocumentTypeAnnotation(BaseModel):
 
 
 #------------------------------------------------------------------------------
-# List document types for `diagnosis.py`
+# DocumentType relevant for each "task"
 #------------------------------------------------------------------------------
-DIAGNOSIS_LIST = [
-    DocumentType.NEURO,
-    DocumentType.NEURO_SURGERY,
-    DocumentType.OPHTHALMOLOGY,
-    DocumentType.ONCOLOGY,
-    DocumentType.RADIOLOGY,
-    DocumentType.PATHOLOGY_REPORT_SURGICAL,
-    DocumentType.PATHOLOGY_REPORT_BIOPSY,
-    DocumentType.GENETICS,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.EMERGENCY_DEPARTMENT,
-    DocumentType.ADMISSION_NOTE,
-    DocumentType.DISCHARGE_SUMMARY
-]
+class DocumentTask(Enum):
+    DIAGNOSIS = [
+        DocumentType.NEURO,
+        DocumentType.NEURO_SURGERY,
+        DocumentType.OPHTHALMOLOGY,
+        DocumentType.ONCOLOGY,
+        DocumentType.RADIOLOGY,
+        DocumentType.PATHOLOGY_REPORT_SURGICAL,
+        DocumentType.PATHOLOGY_REPORT_BIOPSY,
+        DocumentType.GENETICS,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.EMERGENCY_DEPARTMENT,
+        DocumentType.ADMISSION_NOTE,
+        DocumentType.DISCHARGE_SUMMARY
+    ]
 
-#------------------------------------------------------------------------------
-# List document types for `drug_glioma.py`
-#------------------------------------------------------------------------------
-DRUG_LIST = [
-    DocumentType.ONCOLOGY,
-    DocumentType.PHARMACY,
-    DocumentType.MEDICATION_ORDER,
-    DocumentType.MEDICATION_ADMIN,
-    DocumentType.CHEMOTHERAPY,
-    DocumentType.ADVERSE_EVENT,
-    DocumentType.CLINICAL_TRIAL,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.ADMISSION_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-]
-
-#------------------------------------------------------------------------------
-# List document types for `gene.py`
-#------------------------------------------------------------------------------
-GENE_LIST = [
-    DocumentType.NEURO,
-    DocumentType.ONCOLOGY,
-    DocumentType.GENETICS,
-    DocumentType.PATHOLOGY_REPORT_SURGICAL,
-    DocumentType.PATHOLOGY_REPORT_BIOPSY,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.ADMISSION_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-]
-
-#------------------------------------------------------------------------------
-# List document types `surgery.py`
-#------------------------------------------------------------------------------
-SURGERY_LIST = [
-    DocumentType.NEURO_SURGERY,
-    DocumentType.RADIOLOGY,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-    DocumentType.PATHOLOGY_REPORT_SURGICAL
-]
+    GENE = [
+        DocumentType.NEURO,
+        DocumentType.ONCOLOGY,
+        DocumentType.GENETICS,
+        DocumentType.PATHOLOGY_REPORT_SURGICAL,
+        DocumentType.PATHOLOGY_REPORT_BIOPSY,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.ADMISSION_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+    ]
 
 
-#------------------------------------------------------------------------------
-# List document types for `progression.py`
-#------------------------------------------------------------------------------
-PROGRESSION_LIST = [
-    DocumentType.NEURO,
-    DocumentType.ONCOLOGY,
-    DocumentType.RADIOLOGY,
-    DocumentType.OPHTHALMOLOGY,
-    DocumentType.ENDOCRINOLOGY,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.EMERGENCY_DEPARTMENT,
-    DocumentType.ADMISSION_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-]
+    SURGERY_LIST = [
+        DocumentType.NEURO_SURGERY,
+        DocumentType.RADIOLOGY,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+        DocumentType.PATHOLOGY_REPORT_SURGICAL
+    ]
+
+    DRUG = [
+        DocumentType.ONCOLOGY,
+        DocumentType.PHARMACY,
+        DocumentType.MEDICATION_ORDER,
+        DocumentType.MEDICATION_ADMIN,
+        DocumentType.CHEMOTHERAPY,
+        DocumentType.ADVERSE_EVENT,
+        DocumentType.CLINICAL_TRIAL,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.ADMISSION_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+    ]
+
+    PROGRESSION = [
+        DocumentType.NEURO,
+        DocumentType.ONCOLOGY,
+        DocumentType.RADIOLOGY,
+        DocumentType.OPHTHALMOLOGY,
+        DocumentType.ENDOCRINOLOGY,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.EMERGENCY_DEPARTMENT,
+        DocumentType.ADMISSION_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+    ]

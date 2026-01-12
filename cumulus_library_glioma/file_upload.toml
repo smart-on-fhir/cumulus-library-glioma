@@ -15,6 +15,12 @@ file = "../resources/nci_grade.csv"
 [tables.nci_behavior]
 file = "../resources/nci_behavior.csv"
 
+[tables.llm_document_type]
+file = "../resources/llm_document_type.csv"
+
+[tables.llm_document_type_task]
+file = "../resources/llm_document_type_task.csv"
+
 # ---------------------------------------------------------
 # Source: cureated by CHOP+CHIP
 
