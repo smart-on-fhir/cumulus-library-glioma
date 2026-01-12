@@ -1,0 +1,21 @@
+"system","code","display"
+https://github.com/smart-on-fhir/cumulus-library-glioma,RADIOLOGY,"Radiology report: MRI brain/spine, CT Head, or MR spectroscopy"
+https://github.com/smart-on-fhir/cumulus-library-glioma,ONCOLOGY,"Oncology consult, oncology progress note, or neuro-oncology note type"
+https://github.com/smart-on-fhir/cumulus-library-glioma,NEURO,"Neurology consult, neurology progress note, or Neuropsychology note type"
+https://github.com/smart-on-fhir/cumulus-library-glioma,NEURO_SURGERY,"Neurosurgery consult, progress note, or operative report"
+https://github.com/smart-on-fhir/cumulus-library-glioma,OPHTHALMOLOGY,Ophthalmology or neuro-ophthalmology consult or progress note
+https://github.com/smart-on-fhir/cumulus-library-glioma,ENDOCRINOLOGY,Endocrinology consult or progress note
+https://github.com/smart-on-fhir/cumulus-library-glioma,GENETICS,"Genetics, molecular pathology, cytogenetics, or sequencing report"
+https://github.com/smart-on-fhir/cumulus-library-glioma,PATHOLOGY_REPORT_SURGICAL,Surgical pathology report
+https://github.com/smart-on-fhir/cumulus-library-glioma,PATHOLOGY_REPORT_BIOPSY,Biopsy pathology report
+https://github.com/smart-on-fhir/cumulus-library-glioma,TUMOR_BOARD_NOTE,Tumor board or multidisciplinary conference note
+https://github.com/smart-on-fhir/cumulus-library-glioma,ADMISSION_NOTE,Admission note
+https://github.com/smart-on-fhir/cumulus-library-glioma,DISCHARGE_SUMMARY,Discharge summary
+https://github.com/smart-on-fhir/cumulus-library-glioma,EMERGENCY_DEPARTMENT,Emergency department note
+https://github.com/smart-on-fhir/cumulus-library-glioma,MEDICATION_ORDER,Medication order
+https://github.com/smart-on-fhir/cumulus-library-glioma,MEDICATION_ADMIN,Medication administration or infusion center note
+https://github.com/smart-on-fhir/cumulus-library-glioma,CHEMOTHERAPY,"Chemotherapy treatment plan, protocol, or regimen"
+https://github.com/smart-on-fhir/cumulus-library-glioma,PHARMACY,Pharmacy note
+https://github.com/smart-on-fhir/cumulus-library-glioma,ADVERSE_EVENT,Adverse event or drug toxicity note
+https://github.com/smart-on-fhir/cumulus-library-glioma,CLINICAL_TRIAL,"Clinical trial consent, enrollment, or protocol"
+https://github.com/smart-on-fhir/cumulus-library-glioma,NONE,None of the above
