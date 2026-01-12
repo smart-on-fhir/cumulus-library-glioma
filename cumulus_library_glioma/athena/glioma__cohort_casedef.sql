@@ -5,14 +5,14 @@ match_casedef as (
             casedef.code        as dx_code,
             casedef.display     as dx_display,
             casedef.system      as dx_system,
-            dx.category_code    as dx_category_code,            
+            dx.category_code    as dx_category_code,
             sp.age_at_visit,
             sp.enc_period_start_day,
             sp.enc_period_ordinal,
-            dx.subject_ref,            
+            dx.subject_ref,
             dx.encounter_ref
     from    glioma__valueset_casedef as casedef,
-            glioma__cohort_study_population_dx as SP,            
+            glioma__cohort_study_population_dx as SP,
             core__condition as dx
     where   casedef.code = dx.code
     and     casedef.system = dx.system
@@ -50,6 +50,7 @@ calc_days_since as (
                 'day',
                 date(calc_duration.enc_period_start_day_min),
                 date(longitudinal.enc_period_start_day)) as days_since,
+            (longitudinal.enc_period_ordinal - enc_period_ordinal_min) as ordinal_since,
             longitudinal.encounter_ref
     from    longitudinal,
             calc_duration
@@ -58,9 +59,11 @@ calc_days_since as (
 calc_ordinal as (
     select  distinct
             days_since,
-            (days_since < 0) as pre,
-            (days_since = 0) as idx,
-            (days_since > 0) as post,
+            ordinal_since,
+            (days_since < 0)    as pre,
+            (days_since = 0)    as peri,
+            (days_since >= 0)   as peri_post,
+            (days_since > 0)    as post,
             calc_days_since.encounter_ref
     from    calc_days_since
 ),
@@ -69,8 +72,10 @@ join_longitudinal as (
             longitudinal.subject_ref,
             longitudinal.encounter_ref,
             calc_ordinal.days_since,
+            calc_ordinal.ordinal_since,
             calc_ordinal.pre,
-            calc_ordinal.idx,
+            calc_ordinal.peri,
+            calc_ordinal.peri_post,
             calc_ordinal.post,
             calc_duration.enc_period_ordinal_min,
             longitudinal.enc_period_ordinal,

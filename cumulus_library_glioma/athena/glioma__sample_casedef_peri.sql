@@ -1,4 +1,4 @@
-create TABLE glioma__sample_casedef_index_post_with_diag as
+create TABLE glioma__sample_casedef_peri as
 WITH
 encounter_casedef as (
     SELECT  distinct
@@ -8,10 +8,11 @@ encounter_casedef as (
             population.enc_period_start_day,
             population.enc_period_ordinal
     FROM    etl__completion_encounters          as etl,
-            glioma__cohort_casedef_index_post   as casedef,
-            glioma__cohort_study_population     as population
+            glioma__cohort_casedef             as casedef,
+            glioma__cohort_study_population    as population
     WHERE   casedef.encounter_ref   = population.encounter_ref
     AND     casedef.encounter_ref   = concat('Encounter/', etl.encounter_id)
+    AND     peri
 ),
 encounter_doc as (
     SELECT  distinct
@@ -32,6 +33,7 @@ encounter_doc as (
     FROM    encounter_casedef           as casedef,
             glioma__cohort_study_population_doc as doc
     WHERE   casedef.encounter_ref   = doc.encounter_ref
+    AND     doc.aux_has_text
 ),
 encounter_diag as (
     SELECT  distinct
@@ -52,6 +54,7 @@ encounter_diag as (
     FROM    encounter_casedef               as casedef,
             glioma__cohort_study_population_diag as diag
     WHERE   casedef.encounter_ref   = diag.encounter_ref
+    AND     diag.aux_has_text
 ),
 encounter_note as
 (
