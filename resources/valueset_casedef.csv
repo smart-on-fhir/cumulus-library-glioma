@@ -73,7 +73,7 @@
 "http://hl7.org/fhir/sid/icd-9-cm","225.1","Benign neoplasm of cranial nerves"
 "http://hl7.org/fhir/sid/icd-9-cm","225.2","Benign neoplasm of cerebral meninges"
 "http://hl7.org/fhir/sid/icd-9-cm","225.3","Benign neoplasm of spinal cord"
-"http://hl7.org/fhir/sid/icd-9-cm","225.4", Benign neoplasm of spinal meninges"
+"http://hl7.org/fhir/sid/icd-9-cm","225.4","Benign neoplasm of spinal meninges"
 "http://hl7.org/fhir/sid/icd-9-cm","225.8","Benign neoplasm of other specified sites of nervous system"
 "http://hl7.org/fhir/sid/icd-9-cm","225.9","Benign neoplasm of nervous system, part unspecified"
 "http://hl7.org/fhir/sid/icd-9-cm","237.5","Neoplasm of uncertain behavior of brain and spinal cord"

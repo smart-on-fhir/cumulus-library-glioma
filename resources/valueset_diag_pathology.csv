@@ -1,4 +1,4 @@
-system,code,display
+"system","code","display"
 http://loinc.org,11526-1,Pathology study
 http://loinc.org,22633-2,Pathology report site of origin
 http://loinc.org,22634-0,Pathology report gross observation
@@ -8,7 +8,7 @@ http://loinc.org,22637-3,Pathology report final diagnosis
 http://loinc.org,22638-1,Pathology report comments
 http://loinc.org,34819-3,Pathology note
 http://loinc.org,50396-1,Molecular diagnostic major findings
-http://loinc.org,50397-9 Molecular diagnostic overall interpretation
+http://loinc.org,50397-9,Molecular diagnostic overall interpretation
 http://loinc.org,50398-7,Molecular diagnostic report
 http://loinc.org,50595-8,Pathologist interpretation
 http://loinc.org,55228-1,Cytogenetics study
