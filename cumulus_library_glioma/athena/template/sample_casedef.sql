@@ -12,7 +12,7 @@ encounter_casedef as (
             $prefix__cohort_study_population    as population
     WHERE   casedef.encounter_ref   = population.encounter_ref
     AND     casedef.encounter_ref   = concat('Encounter/', etl.encounter_id)
-    AND     $temporality
+    AND     casedef.$temporality
 ),
 encounter_doc as (
     SELECT  distinct
