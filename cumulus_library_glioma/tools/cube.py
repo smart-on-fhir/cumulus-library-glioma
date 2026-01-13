@@ -69,9 +69,9 @@ def cube_document(source_table='study_population',
         min_subject=min_subject)
 
 #-----------------------------------------------------------------------------
-# Make
+# Make FHIR variables
 #-----------------------------------------------------------------------------
-def make() -> List[Path]:
+def make_fhir_variables() -> list[Path]:
     return [
         cube_patient(source_table='glioma__cohort_casedef',
                      table_cols=['dx_category_code',
@@ -110,12 +110,19 @@ def make() -> List[Path]:
                                    'enc_servicetype_display',
                                    'enc_period_ordinal']),
 
-        cube_document(source_table='glioma__sample_casedef_index_post',
+        cube_document(source_table='glioma__sample_casedef_peri_post',
                        table_cols=['doc_type_code',
                                    'doc_type_display',
                                    'doc_type_system'],
                       min_subject=10),
 
+    ]
+
+#-----------------------------------------------------------------------------
+# Make LLM variables
+#-----------------------------------------------------------------------------
+def make_cube_llm_variables() -> list[Path]:
+    return [
         cube_patient(source_table='glioma__llm_dx',
                      table_cols=['topography_has_mention',
                                  'topography_display_best',
@@ -159,9 +166,15 @@ def make() -> List[Path]:
                                  'idh_mutant',
                                  'h3k27m_mutant',
                                  'tp53_altered',
-                                 'cdkn2a_deleted']),
+                                 'cdkn2a_deleted'])
     ]
 
+#-----------------------------------------------------------------------------
+# MAIN method
+#-----------------------------------------------------------------------------
 if __name__ == "__main__":
-    target_files = make()
-    print(manifest.as_toml(target_files, 'CUBE aggregate data'))
+    fhir_cube_files = make_fhir_variables()
+    print(manifest.as_toml(fhir_cube_files, 'cube FHIR variables'))
+
+    llm_cube_files = make_cube_llm_variables()
+    print(manifest.as_toml(llm_cube_files, 'cube LLM variables'))
