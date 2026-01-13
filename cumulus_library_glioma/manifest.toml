@@ -2,7 +2,6 @@
 study_prefix = "glioma"
 
 [file_config.file_names]
-
 # -----------------------------------------------------------------------------
 ## Valuesets to download
 #    "vsac.toml" = [
@@ -156,6 +155,11 @@ study_prefix = "glioma"
 	"athena/glioma__cube_patient_llm_drug.sql",
 	"athena/glioma__cube_patient_llm_variant.sql",
 	"athena/glioma__cube_patient_llm_gene.sql",
+]
+
+"meta data" = [
+    "athena/glioma__meta_date.sql",
+    "athena/glioma__meta_version.sql",
 ]
 
 # -----------------------------------------------------------------------------
