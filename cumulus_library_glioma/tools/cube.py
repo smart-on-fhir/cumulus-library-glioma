@@ -151,6 +151,63 @@ def make_casedef() -> list[Path]:
     ]
 
 #-----------------------------------------------------------------------------
+# Make FHIR variables
+#-----------------------------------------------------------------------------
+def make_fhir_variables() -> list[Path]:
+    return [
+        cube_patient(source_table='glioma__cohort_variable_union',
+                     table_cols=['variable',
+                                 'code',
+                                 'system',
+                                 'display'],
+                     min_subject=10),
+
+        cube_encounter(source_table='glioma__cohort_variable_union',
+                       table_cols=['variable',
+                                 'display',
+                                 'enc_class_code',
+                                 'enc_period_ordinal',
+                                 'age_at_visit',
+                                 'gender'],
+                       min_subject=10),
+
+        cube_patient(source_table='glioma__cohort_variable_wide',
+                     table_name='glioma__cube_patient_variable_wide_diag',
+                     table_cols=['diag_brain_mri',
+                                 'diag_head_neck',
+                                 'diag_pathology',
+                                 'diag_radiology'],
+                     min_subject=10),
+
+        cube_patient(source_table='glioma__cohort_variable_wide',
+                     table_name='glioma__cube_patient_variable_wide_dx',
+                     table_cols=['dx_brain_tumor',
+                                 'dx_cancer',
+                                 'dx_endo_diabetes',
+                                 'dx_focal_deficit',
+                                 'dx_neuro',
+                                 'dx_neurofibromatosis',
+                                 'dx_neuropathy'],
+                     min_subject=10),
+
+        cube_patient(source_table='glioma__cohort_variable_wide',
+                     table_name='glioma__cube_patient_variable_wide_rx',
+                     table_cols=['rx_cancer_directed',
+                                 'rx_chemo',
+                                 'rx_chemo_advanced',
+                                 'rx_chemo_bevacizumab',
+                                 'rx_chemo_platinum',
+                                 'rx_chemo_platinum_carboplatin',
+                                 'rx_chemo_vincristine',
+                                 'rx_endo_diabetes',
+                                 'rx_endo_therapy',
+                                 'rx_mtor_everolimus',
+                                 'rx_mtor_sirolimus',
+                                 ],
+                     min_subject=10),
+    ]
+
+#-----------------------------------------------------------------------------
 # Make LLM variables
 #-----------------------------------------------------------------------------
 def make_llm_variables() -> list[Path]:
@@ -207,6 +264,9 @@ def make_llm_variables() -> list[Path]:
 if __name__ == "__main__":
     fhir_cube_files = make_casedef()
     print(manifest.as_toml(fhir_cube_files, 'cube casedef'))
+
+    fhir_cube_files = make_fhir_variables()
+    print(manifest.as_toml(fhir_cube_files, 'cube FHIR'))
 
     llm_cube_files = make_llm_variables()
     print(manifest.as_toml(llm_cube_files, 'cube LLM'))

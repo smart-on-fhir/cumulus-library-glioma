@@ -109,6 +109,15 @@ study_prefix = "glioma"
     "athena/glioma__cohort_variable_wide.sql"
 ]
 
+"cube FHIR"= [
+	"athena/glioma__cube_patient_variable_union.sql",
+	"athena/glioma__cube_encounter_variable_union.sql",
+	"athena/glioma__cube_patient_variable_wide_diag.sql",
+	"athena/glioma__cube_patient_variable_wide_dx.sql",
+	"athena/glioma__cube_patient_variable_wide_rx.sql",
+]
+
+
 # -----------------------------------------------------------------------------
 # LLM note types (dependancy: DocumentTypeAnnotation)
 
@@ -152,11 +161,21 @@ study_prefix = "glioma"
 [export_config]
 
 count_list = [
+    # Case Definition
 	"glioma__cube_patient_casedef",
 	"glioma__cube_patient_dx",
 	"glioma__cube_patient_rx",
 	"glioma__cube_encounter_casedef",
-	"glioma__cube_document_sample_casedef_peri_post",
+	"glioma__cube_note_sample_casedef_peri_post",
+
+    # FHIR variables
+	"glioma__cube_patient_variable_union",
+	"glioma__cube_encounter_variable_union",
+	"glioma__cube_patient_variable_wide_diag",
+	"glioma__cube_patient_variable_wide_dx",
+	"glioma__cube_patient_variable_wide_rx",
+
+    # LLM Variables
 	"glioma__cube_patient_llm_dx",
 	"glioma__cube_patient_llm_surgery",
 	"glioma__cube_patient_llm_drug",
