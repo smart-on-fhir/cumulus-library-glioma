@@ -2,9 +2,15 @@ from pathlib import Path
 from cumulus_library_glioma.tools import filetool, tablespace, manifest
 
 def make_cohort() -> list[Path]:
+    """
+    Make case definition cohort(s)
+    """
     return [filetool.copy_template('cohort_casedef.sql')]
 
-def make_samples() -> list[Path]:
+def make_temporality() -> list[Path]:
+    """
+    Make case definition for each temporality [pre, per, peri_post, post]
+    """
     samples = list()
     for temporality in ['pre', 'peri', 'peri_post', 'post']:
         replacements = {'$temporality': temporality}
@@ -18,11 +24,19 @@ def make_samples() -> list[Path]:
 # Make
 #-----------------------------------------------------------------------------
 def make() -> list[Path]:
-    return make_cohort()
+    cohort_files = make_cohort()
+    sample_files = make_temporality()
+
+    toml_files = [
+        manifest.as_toml(cohort_files, 'cohort for case definition'),
+        manifest.as_toml(sample_files, 'temporality for case definition')
+    ]
+    toml_files = '\n'.join(toml_files)
+    print(toml_files)
+
+    return cohort_files + sample_files
 
 if __name__ == '__main__':
-    cohort_files = make_cohort()
-    print(manifest.as_toml(cohort_files, 'cohort case definition'))
+    make()
 
-    sample_files = make_samples()
-    print(manifest.as_toml(sample_files, 'samples of case definition'))
+
