@@ -69,9 +69,9 @@ def cube_document(source_table='study_population',
         min_subject=min_subject)
 
 #-----------------------------------------------------------------------------
-# Make FHIR variables
+# Make CUBE for casedef
 #-----------------------------------------------------------------------------
-def make_fhir_variables() -> list[Path]:
+def make_casedef() -> list[Path]:
     return [
         cube_patient(source_table='glioma__cohort_casedef',
                      table_cols=['dx_category_code',
@@ -173,8 +173,8 @@ def make_cube_llm_variables() -> list[Path]:
 # MAIN method
 #-----------------------------------------------------------------------------
 if __name__ == "__main__":
-    fhir_cube_files = make_fhir_variables()
-    print(manifest.as_toml(fhir_cube_files, 'cube FHIR variables'))
+    fhir_cube_files = make_casedef()
+    print(manifest.as_toml(fhir_cube_files, 'cube casedef'))
 
     llm_cube_files = make_cube_llm_variables()
-    print(manifest.as_toml(llm_cube_files, 'cube LLM variables'))
+    print(manifest.as_toml(llm_cube_files, 'cube LLM'))

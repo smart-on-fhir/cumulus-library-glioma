@@ -88,15 +88,9 @@ def name_study_population(suffix=None) -> str:
     table = name_suffix('study_population', suffix)
     return name_join('cohort', table)
 
-def name_count(table: str, suffix: str = None) -> str:
-    part = f'count_{suffix}' if suffix else 'count'
-    return name_join(part, table)
-
 def name_cube(table: str, suffix: str = None) -> str:
-    """
-    Using "count" naming convention for compatibility with Cumulus Dashboard.
-    """
-    return name_count(table, suffix)
+    part = f'cube_{suffix}' if suffix else 'cube'
+    return name_join(part, table)
 
 def name_valueset(table: str, suffix=None) -> str:
     part = f'valueset_{suffix}' if suffix else 'valueset'

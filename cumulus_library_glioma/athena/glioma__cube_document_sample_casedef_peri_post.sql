@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__count_document_sample_casedef_peri_post AS 
+CREATE or replace VIEW glioma__cube_document_sample_casedef_peri_post AS 
     WITH
     filtered_table AS (
         SELECT
