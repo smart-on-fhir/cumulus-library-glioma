@@ -1,4 +1,4 @@
-system,code,value
+system,code,display
 https://github.com/smart-on-fhir/cumulus-library-glioma,RADIOLOGY,"Radiology report: MRI brain/spine, CT Head, or MR spectroscopy"
 https://github.com/smart-on-fhir/cumulus-library-glioma,ONCOLOGY,"Oncology consult, oncology progress note, or neuro-oncology note type"
 https://github.com/smart-on-fhir/cumulus-library-glioma,NEURO,"Neurology consult, neurology progress note, or Neuropsychology note type"
