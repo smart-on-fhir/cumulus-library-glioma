@@ -68,7 +68,6 @@ study_prefix = "glioma"
 	"athena/glioma__cube_patient_rx.sql",
 	"athena/glioma__cube_encounter_casedef.sql",
 	"athena/glioma__cube_patient_sample_casedef_peri_post.sql",
-	"athena/glioma__cube_encounter_sample_casedef_peri_post.sql",
 	"athena/glioma__cube_note_sample_casedef_peri_post.sql",
 ]
 
