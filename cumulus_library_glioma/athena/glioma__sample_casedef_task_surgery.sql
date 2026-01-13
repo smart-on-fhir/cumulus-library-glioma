@@ -1,0 +1,1 @@
+create table glioma__sample_casedef_task_surgery as select * from glioma__sample_casedef_task where task = 'SURGERY'
