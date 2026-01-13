@@ -16,6 +16,7 @@ encounter_casedef as (
 ),
 encounter_doc as (
     SELECT  distinct
+            'documentreference' as fhir_resource,
             casedef.*,
             case
                 when    (doc.doc_author_day    is NOT null)
@@ -37,6 +38,7 @@ encounter_doc as (
 ),
 encounter_diag as (
     SELECT  distinct
+            'diagnosticreport' as fhir_resource,
             casedef.*,
             case
                 when   (diag.diag_effectivedatetime_day is NOT null)
