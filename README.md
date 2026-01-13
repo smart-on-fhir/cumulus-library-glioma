@@ -13,7 +13,7 @@
 | FHIR Resources       | [variables_fhir.tsv](variables_fhir.csv) |
 
 
-## Makefiles for this study   
+## Makefiles
 
 | Study Builder                         | FILE                                                                  |
 |---------------------------------------|-----------------------------------------------------------------------|
