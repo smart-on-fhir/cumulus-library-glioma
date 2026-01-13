@@ -12,7 +12,7 @@ encounter_casedef as (
             glioma__cohort_study_population    as population
     WHERE   casedef.encounter_ref   = population.encounter_ref
     AND     casedef.encounter_ref   = concat('Encounter/', etl.encounter_id)
-    AND     peri_post
+    AND     casedef.peri_post
 ),
 encounter_doc as (
     SELECT  distinct
