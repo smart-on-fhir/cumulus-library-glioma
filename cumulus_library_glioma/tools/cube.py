@@ -142,13 +142,6 @@ def make_casedef() -> list[Path]:
                               'note_system'],
                   min_subject=10),
 
-        cube_encounter(source_table='glioma__sample_casedef_peri_post',
-                  table_cols=['fhir_resource',
-                              'note_code',
-                              'note_display',
-                              'note_system'],
-                  min_subject=10),
-
         cube_note(source_table='glioma__sample_casedef_peri_post',
                   table_cols=['fhir_resource',
                               'note_code',
