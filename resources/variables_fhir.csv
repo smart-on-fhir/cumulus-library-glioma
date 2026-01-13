@@ -1,4 +1,4 @@
-variable    description FHIR
+"variable","description","FHIR resources"
 "Age at diagnosis","Age in years at initial pLGG diagnosis","FHIR Encounter (diagnosis date context via Encounter.period.start), FHIR Condition (Condition.onsetDateTime / recordedDate), FHIR DocumentReference (if only stated in note text)"
 "Tumor location","Anatomic site (cerebellum, optic pathway, etc.)","FHIR Condition (Condition.bodySite), FHIR DiagnosticReport (imaging report describing location), FHIR DocumentReference (clinic/radiology narrative)"
 "Tumor size / mass effect","Size, hydrocephalus, mass effect, midline shift","FHIR DiagnosticReport (radiology), FHIR DocumentReference (radiology narrative), FHIR Condition (secondary problems like hydrocephalus as separate Condition)"
