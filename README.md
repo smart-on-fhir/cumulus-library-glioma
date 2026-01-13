@@ -25,12 +25,12 @@
 
 ## LLM chart review files
 
-| Chart Review                 | FILE                                                                                    |
-|------------------------------|-----------------------------------------------------------------------------------------|
-| Example patient cases (DEID) | llm / [examples](cumulus_library_glioma/llm/examples)                                   |
-| Pydantic Schema              | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)                     |
-| diagnosis                    | llm /  [glioma__llm_dx.sql](cumulus_library_glioma/athena/glioma__llm_dx.sql)           |
-| molecular drivers            | llm /  [glioma__llm_gene.sql](cumulus_library_glioma/athena/glioma__llm_gene.sql)       |
-| genetic tests                | llm /  [glioma__llm_variant.sql](cumulus_library_glioma/athena/glioma__llm_variant.sql) |
-| medication                   | llm /  [glioma__llm_drug.sql](cumulus_library_glioma/athena/glioma__llm_drug.sql)       |
-| procedure                    | llm /  [glioma__llm_surgery.sql](cumulus_library_glioma/athena/glioma__llm_surgery.sql) |
+| Chart Review                 | FILE                                                                             |
+|------------------------------|----------------------------------------------------------------------------------|
+| Example patient cases (DEID) | llm / [examples](cumulus_library_glioma/llm/examples)                            |
+| Pydantic Schema              | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)              |
+| diagnosis                    | [glioma__llm_dx.sql](cumulus_library_glioma/athena/glioma__llm_dx.sql)           |
+| molecular drivers            | [glioma__llm_gene.sql](cumulus_library_glioma/athena/glioma__llm_gene.sql)       |
+| genetic tests                | [glioma__llm_variant.sql](cumulus_library_glioma/athena/glioma__llm_variant.sql) |
+| medication                   | [glioma__llm_drug.sql](cumulus_library_glioma/athena/glioma__llm_drug.sql)       |
+| procedure                    | [glioma__llm_surgery.sql](cumulus_library_glioma/athena/glioma__llm_surgery.sql) |
