@@ -61,7 +61,7 @@ study_prefix = "glioma"
     "athena/glioma__sample_casedef_task.sql"
 ]
 
-"samples for LLM tasks [diagnosis, drug, gene, surgery, progression]" = [
+"samples for LLM tasks diagnosis, drug, gene, surgery, progression" = [
     "athena/glioma__sample_casedef_task_diagnosis.sql",
     "athena/glioma__sample_casedef_task_drug.sql",
     "athena/glioma__sample_casedef_task_gene.sql",
@@ -101,17 +101,15 @@ study_prefix = "glioma"
 	"athena/glioma__cohort_rx_endo_therapy.sql",
 	"athena/glioma__cohort_rx_mtor_everolimus.sql",
 	"athena/glioma__cohort_rx_mtor_sirolimus.sql",
-	"athena/glioma__cohort_variable_union.sql",
-	"athena/glioma__cohort_variable_wide.sql",
 ]
 
-#    "variable union (structured)" = [
-#        "athena/glioma__cohort_variable_union.sql"
-#    ]
-#
-#    "variable wide (structured)" = [
-#        "athena/glioma__cohort_variable_wide.sql"
-#    ]
+"variable union (structured)" = [
+    "athena/glioma__cohort_variable_union.sql"
+]
+
+"variable wide (structured)" = [
+    "athena/glioma__cohort_variable_wide.sql"
+]
 
 # # -----------------------------------------------------------------------------
 # LLM

@@ -47,10 +47,10 @@ Stratified by FHIR Encounter class, type, and serviceType.
 | `enc_servicetype_display`  | varchar  | FHIR Encounter.serviceType display            |
 | `enc_type_display`         | varchar  | FHIR Encounter.type display                   |
 
-### glioma__cube_document_sample_casedef_index_post
+### glioma__cube_document_sample_casedef_peri_post
 
-Count distinct **FHIR DocumentReference** in cohort matching LGG case definition.    
-Stratified by FHIR DocumentReference.type and FHIR Encounter.class.   
+Count distinct note_ref ( **FHIR DocumentReference** or **FHIR DiagnosticReport)** in cohort matching LGG case definition.    
+Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FHIR DiagnosticReport.code) .   
 
 | column              | type    | description                                   |
 |---------------------|---------|-----------------------------------------------|

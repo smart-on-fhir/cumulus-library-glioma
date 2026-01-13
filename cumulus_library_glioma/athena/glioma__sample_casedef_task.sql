@@ -20,7 +20,7 @@ task as (
             glioma__llm_note_type   as enum_note_type,
             glioma__llm_note_task   as enum_doc_task
     where   (mention.doc_type = enum_note_type.code     OR
-             mention.doc_type = enum_note_type.display   )
+             mention.doc_type = enum_note_type.display)
     and     enum_note_type.code = enum_doc_task.code
 )
 select  task.task,
