@@ -98,6 +98,14 @@ def cube_note(source_table='study_population',
 #-----------------------------------------------------------------------------
 def make_casedef() -> list[Path]:
     return [
+        # Count encounters for casedef
+        cube_encounter(source_table='glioma__cohort_casedef',
+                       table_cols=['enc_class_code',
+                                   'enc_type_display',
+                                   'enc_servicetype_display',
+                                   'enc_period_ordinal']),
+
+        # Count patients for casedef
         cube_patient(source_table='glioma__cohort_casedef',
                      table_cols=['dx_category_code',
                                  'dx_code',
@@ -108,6 +116,7 @@ def make_casedef() -> list[Path]:
                                  'race_display'],
                      min_subject=10),
 
+        # Comorbidities
         cube_patient(source_table='glioma__cohort_dx',
                      table_cols=['dx_category_code',
                                  'dx_code',
@@ -118,6 +127,7 @@ def make_casedef() -> list[Path]:
                                  'race_display'],
                      min_subject=10),
 
+        # Drugs
         cube_patient(source_table='glioma__cohort_rx',
                      table_cols=['rx_status',
                                  'rx_category_code',
@@ -129,12 +139,31 @@ def make_casedef() -> list[Path]:
                                  'race_display'],
                      min_subject=10),
 
-        cube_encounter(source_table='glioma__cohort_casedef',
-                       table_cols=['enc_class_code',
-                                   'enc_type_display',
-                                   'enc_servicetype_display',
-                                   'enc_period_ordinal']),
+        # Procedures
+        cube_patient(source_table='glioma__cohort_proc',
+                     table_cols=['proc_status',
+                                 'proc_code',
+                                 'proc_system',
+                                 'proc_display',
+                                 'enc_class_code'],
+                     min_subject=10),
 
+        # Notes before casedef
+        cube_patient(source_table='glioma__sample_casedef_pre',
+                     table_cols=['fhir_resource',
+                              'note_code',
+                              'note_display',
+                              'note_system'],
+                     min_subject=10),
+
+        cube_note(source_table='glioma__sample_casedef_pre',
+                  table_cols=['fhir_resource',
+                              'note_code',
+                              'note_display',
+                              'note_system'],
+                  min_subject=10),
+
+        # Notes during or after casedef "peri- and post- periods"
         cube_patient(source_table='glioma__sample_casedef_peri_post',
                   table_cols=['fhir_resource',
                               'note_code',
@@ -155,6 +184,8 @@ def make_casedef() -> list[Path]:
 #-----------------------------------------------------------------------------
 def make_fhir_variables() -> list[Path]:
     return [
+
+        # Count Patients for Any/All coded Glioma Study Variable
         cube_patient(source_table='glioma__cohort_variable_union',
                      table_cols=['variable',
                                  'code',
@@ -162,6 +193,7 @@ def make_fhir_variables() -> list[Path]:
                                  'display'],
                      min_subject=10),
 
+        # Count Encounters for Any/All coded Glioma Study Variable
         cube_encounter(source_table='glioma__cohort_variable_union',
                        table_cols=['variable',
                                  'display',
@@ -171,6 +203,7 @@ def make_fhir_variables() -> list[Path]:
                                  'gender'],
                        min_subject=10),
 
+        # Glioma specific DiagnosticReports types
         cube_patient(source_table='glioma__cohort_variable_wide',
                      table_name='glioma__cube_patient_variable_wide_diag',
                      table_cols=['diag_brain_mri',
@@ -179,31 +212,36 @@ def make_fhir_variables() -> list[Path]:
                                  'diag_radiology'],
                      min_subject=10),
 
+        # Neurology
         cube_patient(source_table='glioma__cohort_variable_wide',
-                     table_name='glioma__cube_patient_variable_wide_dx',
-                     table_cols=['dx_brain_tumor',
-                                 'dx_cancer',
-                                 'dx_endo_diabetes',
-                                 'dx_focal_deficit',
+                     table_name='glioma__cube_patient_variable_wide_neuro',
+                     table_cols=['dx_focal_deficit',
                                  'dx_neuro',
                                  'dx_neurofibromatosis',
-                                 'dx_neuropathy'],
+                                 'dx_neuropathy',
+                                 'proc_neurosurgery'],
                      min_subject=10),
 
+        # Endocrine
         cube_patient(source_table='glioma__cohort_variable_wide',
-                     table_name='glioma__cube_patient_variable_wide_rx',
-                     table_cols=['rx_cancer_directed',
+                     table_name='glioma__cube_patient_variable_wide_endo',
+                     table_cols=['dx_endo_diabetes',
+                                 'rx_endo_diabetes',
+                                 'rx_endo_therapy'],
+                     min_subject=10),
+
+        # Cancer
+        cube_patient(source_table='glioma__cohort_variable_wide',
+                     table_name='glioma__cube_patient_variable_wide_cancer',
+                     table_cols=['dx_brain_tumor',
+                                 'dx_cancer',
+                                 'rx_cancer_directed',
                                  'rx_chemo',
                                  'rx_chemo_advanced',
                                  'rx_chemo_bevacizumab',
                                  'rx_chemo_platinum',
                                  'rx_chemo_platinum_carboplatin',
-                                 'rx_chemo_vincristine',
-                                 'rx_endo_diabetes',
-                                 'rx_endo_therapy',
-                                 'rx_mtor_everolimus',
-                                 'rx_mtor_sirolimus',
-                                 ],
+                                 'rx_chemo_vincristine'],
                      min_subject=10),
     ]
 

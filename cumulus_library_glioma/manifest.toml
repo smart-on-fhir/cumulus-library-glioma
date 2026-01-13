@@ -50,9 +50,10 @@ study_prefix = "glioma"
 	"athena/glioma__cohort_casedef.sql",
 ]
 
-"cohort glioma co-occurence (dx, rx)" = [
+"cohort glioma co-occurence (dx, rx, proc)" = [
     "athena/glioma__cohort_dx.sql",
     "athena/glioma__cohort_rx.sql",
+    "athena/glioma__cohort_proc.sql",
 ]
 
 "samples of case definition [pre, peri, peri_post, post]"= [
@@ -63,14 +64,16 @@ study_prefix = "glioma"
 ]
 
 "cube casedef"= [
+	"athena/glioma__cube_encounter_casedef.sql",
 	"athena/glioma__cube_patient_casedef.sql",
 	"athena/glioma__cube_patient_dx.sql",
 	"athena/glioma__cube_patient_rx.sql",
-	"athena/glioma__cube_encounter_casedef.sql",
+	"athena/glioma__cube_patient_proc.sql",
+	"athena/glioma__cube_patient_sample_casedef_pre.sql",
+	"athena/glioma__cube_note_sample_casedef_pre.sql",
 	"athena/glioma__cube_patient_sample_casedef_peri_post.sql",
 	"athena/glioma__cube_note_sample_casedef_peri_post.sql",
 ]
-
 
 # -----------------------------------------------------------------------------
 # Variable cohorts
@@ -113,10 +116,10 @@ study_prefix = "glioma"
 	"athena/glioma__cube_patient_variable_union.sql",
 	"athena/glioma__cube_encounter_variable_union.sql",
 	"athena/glioma__cube_patient_variable_wide_diag.sql",
-	"athena/glioma__cube_patient_variable_wide_dx.sql",
-	"athena/glioma__cube_patient_variable_wide_rx.sql",
+	"athena/glioma__cube_patient_variable_wide_neuro.sql",
+	"athena/glioma__cube_patient_variable_wide_endo.sql",
+	"athena/glioma__cube_patient_variable_wide_cancer.sql",
 ]
-
 
 # -----------------------------------------------------------------------------
 # LLM note types (dependancy: DocumentTypeAnnotation)
@@ -166,14 +169,18 @@ count_list = [
 	"glioma__cube_patient_dx",
 	"glioma__cube_patient_rx",
 	"glioma__cube_encounter_casedef",
+    "glioma__cube_patient_sample_casedef_pre",
+    "glioma__cube_patient_sample_casedef_peri_post",
+    "glioma__cube_note_sample_casedef_pre",
 	"glioma__cube_note_sample_casedef_peri_post",
 
     # FHIR variables
 	"glioma__cube_patient_variable_union",
 	"glioma__cube_encounter_variable_union",
-	"glioma__cube_patient_variable_wide_diag",
-	"glioma__cube_patient_variable_wide_dx",
-	"glioma__cube_patient_variable_wide_rx",
+    "glioma__cube_patient_variable_wide_diag",
+#    "glioma__cube_patient_variable_wide_cancer",
+#	"glioma__cube_patient_variable_wide_neuro",
+#	"glioma__cube_patient_variable_wide_endo",
 
     # LLM Variables
 	"glioma__cube_patient_llm_dx",
