@@ -3,9 +3,11 @@
 Custom curated definitions from Cumulus
 
 ## Case Definition for pLGG (Pediatric low grade glioma)
-| valueset                      | file |
-|-----------------------------------|------|
-| Case Definition  | [valueset_casedef.csv](valueset_casedef.csv)  |
+| valueset                      | file                                         |
+|-----------------------------------|----------------------------------------------|
+| Case Definition  | [valueset_casedef.csv](valueset_casedef.csv) |
+| Clinical Pathway | [variables_cds.csv](variables_cds.csv)       |
+| FHIR Resources | [variables_fhir.csv](variables_fhir.csv)     | 
 
 ## clinical pathway variables as tabular descriptions 
 | variables      | file                                               |
