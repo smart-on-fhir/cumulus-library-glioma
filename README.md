@@ -7,15 +7,20 @@
 | Athena SQL                            | athena / [README.md](cumulus_library_glioma/athena/README.md)       |
 
 
-| Study Builder                       | FILE                                                                |
-|-------------------------------------|---------------------------------------------------------------------|
-| Manifest                            | [manifest.toml](cumulus_library_glioma/manifest.toml)               |
-| Valuesets (National Library Medicine) | [valueset.toml](cumulus_library_glioma/vsac.toml)               |
-| File uploads (curated)              | [file_upload.toml](cumulus_library_glioma/file_upload.toml)         |
+| Study Builder                         | FILE                                                                  |
+|---------------------------------------|-----------------------------------------------------------------------|
+| Manifest                              | [manifest.toml](cumulus_library_glioma/manifest.toml)                 |
+| Valuesets (National Library Medicine) | [vsac.toml](cumulus_library_glioma/vsac.toml)                         |
+| File uploads (vsac)                   | [file_upload_vsac.toml](cumulus_library_glioma/file_upload_vsac.toml) |
+| File uploads (curated)                | [file_upload.toml](cumulus_library_glioma/file_upload.toml)           |
 
 
-| Chart Review                         | FILE                                                                 |
-|--------------------------------------|----------------------------------------------------------------------|
-| Chart Review (examples)              | llm / [examples](cumulus_library_glioma/llm/examples)                |
-| Chart Review (LLM)                   | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)  |
-| Chart Review (SQL)                   | llm /  [glioma__llm.sql](cumulus_library_glioma/athena/glioma__llm_dx.sql) |
+| Chart Review                          | FILE                                                                                    |
+|---------------------------------------|-----------------------------------------------------------------------------------------|
+| Chart Review (examples)               | llm / [examples](cumulus_library_glioma/llm/examples)                                   |
+| Chart Review (LLM)                    | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)                     |
+| Chart Review (dx=diagnosis)           | llm /  [glioma__llm_dx.sql](cumulus_library_glioma/athena/glioma__llm_dx.sql)           |
+| Chart Review (gene=molecular drivers) | llm /  [glioma__llm_gene.sql](cumulus_library_glioma/athena/glioma__llm_gene.sql)       |
+| Chart Review (variant=genetic tests)  | llm /  [glioma__llm_variant.sql](cumulus_library_glioma/athena/glioma__llm_variant.sql) |
+| Chart Review (drug=medication)        | llm /  [glioma__llm_drug.sql](cumulus_library_glioma/athena/glioma__llm_drug.sql)       |
+| Chart Review (surgery=procedure)      | llm /  [glioma__llm_surgery.sql](cumulus_library_glioma/athena/glioma__llm_surgery.sql) |
