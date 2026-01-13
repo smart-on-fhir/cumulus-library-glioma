@@ -1,11 +1,11 @@
-CREATE TABLE $prefix__meta_date AS
+CREATE TABLE glioma__meta_date AS
 with study_period as
 (
     select
         min(period_start_day)   as min_date,
         max(period_end_day)     as max_date
     FROM
-        $prefix__cohort_study_period
+        glioma__cohort_study_period
 )
 select  min_date,
         LEAST(max_date,     CURRENT_DATE)   as max_date
