@@ -1,6 +1,7 @@
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
-from cumulus_library_glioma.tools import filetool, tablespace
+from cumulus_library_glioma.tools import filetool
+from cumulus_library_glioma.tools.tablespace import name_trim, name_cube, ctas_as_view
 from cumulus_library_glioma.tools.settings import CUMULUS_CUBE_MIN_SUBJECTS
 from cumulus_library_glioma.tools import manifest
 
@@ -19,8 +20,8 @@ def cube_fhir_resource(fhir_resource:str,
     """
     if not table_name:
         count_type = fhir_resource if (fhir_resource != 'documentreference') else 'document'
-        table_name = tablespace.name_trim(source_table)
-        table_name = tablespace.name_cube(table_name, count_type)
+        table_name = name_trim(source_table)
+        table_name = name_cube(table_name, count_type)
 
     table_cols = sorted(list(set(table_cols)))
     sql = CountsBuilder(manifest=manifest.get_manifest()).get_count_query(
@@ -32,7 +33,7 @@ def cube_fhir_resource(fhir_resource:str,
             filter_resource=True,
             skip_status_filter=True
     )
-    sql = tablespace.ctas_as_view(sql, table_name)
+    sql = ctas_as_view(sql, table_name)
     return filetool.save_athena_view(table_name, sql)
 
 def cube_patient(source_table='study_population',
@@ -67,6 +68,30 @@ def cube_document(source_table='study_population',
         table_cols=table_cols,
         table_name=table_name,
         min_subject=min_subject)
+
+def cube_note(source_table='study_population',
+              table_cols=None,
+              table_name=None,
+              min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
+    """
+    Workaround for issue#446, will be fixed in next cumulus-library
+    https://github.com/smart-on-fhir/cumulus-library/issues/446
+    """
+    if not table_name:
+        table_name = name_cube(name_trim(source_table), 'note')
+
+    file_path = cube_fhir_resource(
+        fhir_resource='documentreference',
+        source_table=source_table,
+        table_cols=table_cols,
+        table_name=table_name,
+        min_subject=min_subject)
+
+    text = filetool.read_text(file_path)
+    text = text.replace('documentreference_ref', 'note_ref')
+    filetool.write_text(text, file_path)
+    file_path.with_name(f'{table_name}.sql')
+    return file_path
 
 #-----------------------------------------------------------------------------
 # Make CUBE for casedef
@@ -110,18 +135,32 @@ def make_casedef() -> list[Path]:
                                    'enc_servicetype_display',
                                    'enc_period_ordinal']),
 
-        cube_document(source_table='glioma__sample_casedef_peri_post',
-                       table_cols=['doc_type_code',
-                                   'doc_type_display',
-                                   'doc_type_system'],
-                      min_subject=10),
+        cube_patient(source_table='glioma__sample_casedef_peri_post',
+                  table_cols=['fhir_resource',
+                              'note_code',
+                              'note_display',
+                              'note_system'],
+                  min_subject=10),
 
+        cube_encounter(source_table='glioma__sample_casedef_peri_post',
+                  table_cols=['fhir_resource',
+                              'note_code',
+                              'note_display',
+                              'note_system'],
+                  min_subject=10),
+
+        cube_note(source_table='glioma__sample_casedef_peri_post',
+                  table_cols=['fhir_resource',
+                              'note_code',
+                              'note_display',
+                              'note_system'],
+                  min_subject=10),
     ]
 
 #-----------------------------------------------------------------------------
 # Make LLM variables
 #-----------------------------------------------------------------------------
-def make_cube_llm_variables() -> list[Path]:
+def make_llm_variables() -> list[Path]:
     return [
         cube_patient(source_table='glioma__llm_dx',
                      table_cols=['topography_has_mention',
@@ -176,5 +215,5 @@ if __name__ == "__main__":
     fhir_cube_files = make_casedef()
     print(manifest.as_toml(fhir_cube_files, 'cube casedef'))
 
-    llm_cube_files = make_cube_llm_variables()
+    llm_cube_files = make_llm_variables()
     print(manifest.as_toml(llm_cube_files, 'cube LLM'))
