@@ -13,6 +13,8 @@
 | FHIR Resources       | [variables_fhir.tsv](variables_fhir.csv) |
 
 
+## Makefiles for this study   
+
 | Study Builder                         | FILE                                                                  |
 |---------------------------------------|-----------------------------------------------------------------------|
 | Manifest                              | [manifest.toml](cumulus_library_glioma/manifest.toml)                 |
@@ -20,6 +22,8 @@
 | File uploads (vsac)                   | [file_upload_vsac.toml](cumulus_library_glioma/file_upload_vsac.toml) |
 | File uploads (curated)                | [file_upload.toml](cumulus_library_glioma/file_upload.toml)           |
 
+
+## LLM chart review files
 
 | Chart Review                 | FILE                                                                                    |
 |------------------------------|-----------------------------------------------------------------------------------------|
