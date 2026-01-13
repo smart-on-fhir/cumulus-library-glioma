@@ -1,4 +1,4 @@
-"variable","description","CDS"
+"variable","description","CDS(clinical decision support for clinical pathway)"
 "Age at diagnosis", "Patient age at initial pLGG diagnosis","Influences urgency of therapy, chemotherapy vs targeted preference, and strong avoidance/delay of radiotherapy in younger children"
 "Tumor location", "Anatomic site (e.g., cerebellum, optic pathway/hypothalamus, thalamus, brainstem, hemispheric)","Determines surgical resectability, risk of neurologic/visual/endocrine deficits, and likelihood of observation vs early systemic therapy"
 "Tumor size / mass effect", "Tumor volume and presence of hydrocephalus or compression", "Drives need for urgent neurosurgical intervention and early treatment"
