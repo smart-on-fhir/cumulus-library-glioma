@@ -93,8 +93,7 @@ class DocumentTask(Enum):
         DocumentType.DISCHARGE_SUMMARY,
     ]
 
-
-    SURGERY_LIST = [
+    SURGERY = [
         DocumentType.NEURO_SURGERY,
         DocumentType.RADIOLOGY,
         DocumentType.TUMOR_BOARD_NOTE,
