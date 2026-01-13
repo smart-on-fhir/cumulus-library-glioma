@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_encounter_casedef AS 
+CREATE or replace VIEW glioma__count_encounter_casedef AS 
     WITH
     filtered_table AS (
         SELECT

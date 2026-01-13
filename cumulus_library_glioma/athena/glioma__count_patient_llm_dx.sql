@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_patient_llm_dx AS 
+CREATE or replace VIEW glioma__count_patient_llm_dx AS 
     WITH
     filtered_table AS (
         SELECT
