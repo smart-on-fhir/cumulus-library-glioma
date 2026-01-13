@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_document_sample_casedef_index_post AS 
+CREATE or replace VIEW glioma__cube_document_sample_casedef_peri_post AS 
     WITH
     filtered_table AS (
         SELECT
@@ -10,7 +10,7 @@ CREATE or replace VIEW glioma__cube_document_sample_casedef_index_post AS
             s."doc_type_display",
             s."doc_type_system"
             --noqa: enable=RF03, AL02
-        FROM glioma__sample_casedef_index_post AS s
+        FROM glioma__sample_casedef_peri_post AS s
         INNER JOIN core__encounter AS e
             ON s.encounter_ref = e.encounter_ref
     ),
