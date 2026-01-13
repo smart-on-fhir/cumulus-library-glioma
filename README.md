@@ -6,6 +6,12 @@
 | Custom valuesets and drug keywords    | resources / [README.md](resources/README.md)                        |
 | Athena SQL                            | athena / [README.md](cumulus_library_glioma/athena/README.md)       |
 
+## clinical pathway variable descriptions 
+| variables            | file                                     |
+|----------------------|------------------------------------------|
+| CDS Clinical Pathway | [variables_cds.tsv](variables_cds.csv)   |
+| FHIR Resources       | [variables_fhir.tsv](variables_fhir.csv) |
+
 
 | Study Builder                         | FILE                                                                  |
 |---------------------------------------|-----------------------------------------------------------------------|
@@ -15,12 +21,12 @@
 | File uploads (curated)                | [file_upload.toml](cumulus_library_glioma/file_upload.toml)           |
 
 
-| Chart Review                          | FILE                                                                                    |
-|---------------------------------------|-----------------------------------------------------------------------------------------|
-| Chart Review (examples)               | llm / [examples](cumulus_library_glioma/llm/examples)                                   |
-| Chart Review (LLM)                    | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)                     |
-| Chart Review (dx=diagnosis)           | llm /  [glioma__llm_dx.sql](cumulus_library_glioma/athena/glioma__llm_dx.sql)           |
-| Chart Review (gene=molecular drivers) | llm /  [glioma__llm_gene.sql](cumulus_library_glioma/athena/glioma__llm_gene.sql)       |
-| Chart Review (variant=genetic tests)  | llm /  [glioma__llm_variant.sql](cumulus_library_glioma/athena/glioma__llm_variant.sql) |
-| Chart Review (drug=medication)        | llm /  [glioma__llm_drug.sql](cumulus_library_glioma/athena/glioma__llm_drug.sql)       |
-| Chart Review (surgery=procedure)      | llm /  [glioma__llm_surgery.sql](cumulus_library_glioma/athena/glioma__llm_surgery.sql) |
+| Chart Review                 | FILE                                                                                    |
+|------------------------------|-----------------------------------------------------------------------------------------|
+| Example patient cases (DEID) | llm / [examples](cumulus_library_glioma/llm/examples)                                   |
+| Pydantic Schema              | llm / [pydantic_schema](cumulus_library_glioma/llm/pydantic_schema)                     |
+| dx=diagnosis                 | llm /  [glioma__llm_dx.sql](cumulus_library_glioma/athena/glioma__llm_dx.sql)           |
+| gene=molecular drivers       | llm /  [glioma__llm_gene.sql](cumulus_library_glioma/athena/glioma__llm_gene.sql)       |
+| variant=genetic tests        | llm /  [glioma__llm_variant.sql](cumulus_library_glioma/athena/glioma__llm_variant.sql) |
+| drug=medication              | llm /  [glioma__llm_drug.sql](cumulus_library_glioma/athena/glioma__llm_drug.sql)       |
+| surgery=procedure            | llm /  [glioma__llm_surgery.sql](cumulus_library_glioma/athena/glioma__llm_surgery.sql) |
