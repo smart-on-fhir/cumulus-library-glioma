@@ -7,14 +7,22 @@ def make_cohort() -> list[Path]:
     """
     return [filetool.copy_template('cohort_casedef.sql')]
 
-def make_temporality() -> list[Path]:
+def make_cohort_aspects() -> list[Path]:
     """
-    Make case definition for each temporality [pre, per, peri_post, post]
+    Make cohort for casdef [dx, rx, lab, proc]
+    """
+    return [filetool.copy_template(f'cohort_casedef_{aspect}.sql')
+            for aspect in ['dx', 'rx', 'lab', 'proc']]
+
+def make_samples() -> list[Path]:
+    """
+    Make note samples for each casedef temporality [pre, per, peri_post, post]
     """
     samples = list()
+    samples.append(filetool.copy_template('sample_casedef.sql')) # all note samples for casedef
     for temporality in ['pre', 'peri', 'peri_post', 'post']:
         replacements = {'$temporality': temporality}
-        text = filetool.load_template('sample_casedef.sql', replacements)
+        text = filetool.load_template('sample_casedef_temporality.sql', replacements)
         target_table = tablespace.name_prefix(f'sample_casedef_{temporality}')
         target_file = filetool.path_athena(f'{target_table}.sql')
         samples.append(Path(filetool.write_text(text, target_file)))
@@ -25,11 +33,13 @@ def make_temporality() -> list[Path]:
 #-----------------------------------------------------------------------------
 def make() -> list[Path]:
     cohort_files = make_cohort()
-    sample_files = make_temporality()
+    aspect_files = make_cohort_aspects()
+    sample_files = make_samples()
 
     toml_files = [
-        manifest.as_toml(cohort_files, 'cohort for case definition'),
-        manifest.as_toml(sample_files, 'temporality for case definition')
+        manifest.as_toml(cohort_files, 'cohort from case definition (valueset_casedef)'),
+        manifest.as_toml(aspect_files, 'cohort for case definition aspects [dx, rx, lab, proc]'),
+        manifest.as_toml(sample_files, 'samples for casedef temporality [pre, per, peri_post, post]'),
     ]
     toml_files = '\n'.join(toml_files)
     print(toml_files)
