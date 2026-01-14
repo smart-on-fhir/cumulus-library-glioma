@@ -11,7 +11,7 @@ def list_valueset_vsac() -> list[Path]:
     """
     return filetool.list_valuesets('*valueset*')
 
-def list_valueset_uploads() -> list[Path]:
+def list_valueset_resources() -> list[Path]:
     """
     :return: list of ValueSet Files from upload directory (source= user provided)
     """
@@ -22,7 +22,7 @@ def list_valueset_variable_names() -> list[str]:
     List of valueset variable names, excluding special "case definition" and "FHIR diagnostic category".
     :return: sorted list of ValueSet variable names (sources: VSAC and Uploads)
     """
-    var_list = list_valueset_vsac() + list_valueset_uploads()
+    var_list = list_valueset_vsac() + list_valueset_resources()
     var_list = [v.name for v in var_list]
     var_list = [v for v in var_list if "casedef" not in v]
     var_list = [v for v in var_list if "fhir_diagnostic_service" not in v]
