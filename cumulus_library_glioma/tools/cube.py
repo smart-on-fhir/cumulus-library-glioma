@@ -117,7 +117,7 @@ def make_casedef() -> list[Path]:
                      min_subject=10),
 
         # Comorbidities
-        cube_patient(source_table='glioma__cohort_dx',
+        cube_patient(source_table='glioma__cohort_casedef_dx',
                      table_cols=['dx_category_code',
                                  'dx_code',
                                  'dx_system',
@@ -128,7 +128,7 @@ def make_casedef() -> list[Path]:
                      min_subject=10),
 
         # Drugs
-        cube_patient(source_table='glioma__cohort_rx',
+        cube_patient(source_table='glioma__cohort_casedef_rx',
                      table_cols=['rx_status',
                                  'rx_category_code',
                                  'rx_code',
@@ -140,7 +140,7 @@ def make_casedef() -> list[Path]:
                      min_subject=10),
 
         # Procedures
-        cube_patient(source_table='glioma__cohort_proc',
+        cube_patient(source_table='glioma__cohort_casedef_proc',
                      table_cols=['proc_status',
                                  'proc_code',
                                  'proc_system',
@@ -148,15 +148,15 @@ def make_casedef() -> list[Path]:
                                  'enc_class_code'],
                      min_subject=10),
 
-        # Notes before casedef
-        cube_patient(source_table='glioma__sample_casedef_pre',
+        # Notes (any temporality)
+        cube_patient(source_table='glioma__sample_casedef',
                      table_cols=['fhir_resource',
-                              'note_code',
-                              'note_display',
-                              'note_system'],
+                                 'note_code',
+                                 'note_display',
+                                 'note_system'],
                      min_subject=10),
 
-        cube_note(source_table='glioma__sample_casedef_pre',
+        cube_note(source_table='glioma__sample_casedef',
                   table_cols=['fhir_resource',
                               'note_code',
                               'note_display',
@@ -212,7 +212,7 @@ def make_fhir_variables() -> list[Path]:
                                  'diag_radiology'],
                      min_subject=10),
 
-        # Neurology
+        # Neurology [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
                      table_name='glioma__cube_patient_variable_wide_neuro',
                      table_cols=['dx_focal_deficit',
@@ -222,7 +222,7 @@ def make_fhir_variables() -> list[Path]:
                                  'proc_neurosurgery'],
                      min_subject=10),
 
-        # Endocrine
+        # Endocrine [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
                      table_name='glioma__cube_patient_variable_wide_endo',
                      table_cols=['dx_endo_diabetes',
@@ -230,7 +230,7 @@ def make_fhir_variables() -> list[Path]:
                                  'rx_endo_therapy'],
                      min_subject=10),
 
-        # Cancer
+        # Cancer [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
                      table_name='glioma__cube_patient_variable_wide_cancer',
                      table_cols=['dx_brain_tumor',
