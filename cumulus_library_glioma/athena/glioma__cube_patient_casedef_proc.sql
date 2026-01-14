@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_patient_proc AS 
+CREATE or replace VIEW glioma__cube_patient_casedef_proc AS 
     WITH
     filtered_table AS (
         SELECT
@@ -10,7 +10,7 @@ CREATE or replace VIEW glioma__cube_patient_proc AS
             s."proc_status",
             s."proc_system"
             --noqa: enable=RF03, AL02
-        FROM glioma__cohort_proc AS s
+        FROM glioma__cohort_casedef_proc AS s
     ),
     
     null_replacement AS (

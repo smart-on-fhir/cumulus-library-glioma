@@ -45,17 +45,19 @@ study_prefix = "glioma"
 # -----------------------------------------------------------------------------
 #  *CASE DEFINITION* pLGG (Pediatric Low Grade Glioma)
 
-"cohort case definition"= [
+"cohort from case definition (valueset_casedef)"= [
 	"athena/glioma__cohort_casedef.sql",
 ]
 
-"cohort glioma co-occurence (dx, rx, proc)" = [
-    "athena/glioma__cohort_dx.sql",
-    "athena/glioma__cohort_rx.sql",
-    "athena/glioma__cohort_proc.sql",
+"cohort for case definition aspects [dx, rx, lab, proc]"= [
+	"athena/glioma__cohort_casedef_dx.sql",
+	"athena/glioma__cohort_casedef_rx.sql",
+	"athena/glioma__cohort_casedef_lab.sql",
+	"athena/glioma__cohort_casedef_proc.sql",
 ]
 
 "samples of case definition [pre, peri, peri_post, post]"= [
+	"athena/glioma__sample_casedef.sql",
 	"athena/glioma__sample_casedef_pre.sql",
 	"athena/glioma__sample_casedef_peri.sql",
 	"athena/glioma__sample_casedef_peri_post.sql",
@@ -65,11 +67,11 @@ study_prefix = "glioma"
 "cube casedef"= [
 	"athena/glioma__cube_encounter_casedef.sql",
 	"athena/glioma__cube_patient_casedef.sql",
-	"athena/glioma__cube_patient_dx.sql",
-	"athena/glioma__cube_patient_rx.sql",
-	"athena/glioma__cube_patient_proc.sql",
-	"athena/glioma__cube_patient_sample_casedef_pre.sql",
-	"athena/glioma__cube_note_sample_casedef_pre.sql",
+	"athena/glioma__cube_patient_casedef_dx.sql",
+	"athena/glioma__cube_patient_casedef_rx.sql",
+	"athena/glioma__cube_patient_casedef_proc.sql",
+	"athena/glioma__cube_patient_sample_casedef.sql",
+	"athena/glioma__cube_note_sample_casedef.sql",
 	"athena/glioma__cube_patient_sample_casedef_peri_post.sql",
 	"athena/glioma__cube_note_sample_casedef_peri_post.sql",
 ]
@@ -169,18 +171,19 @@ study_prefix = "glioma"
 
 count_list = [
     # Case Definition
+    "glioma__cube_encounter_casedef",
 	"glioma__cube_patient_casedef",
-	"glioma__cube_patient_dx",
-	"glioma__cube_patient_rx",
-	"glioma__cube_encounter_casedef",
-    "glioma__cube_patient_sample_casedef_pre",
+	"glioma__cube_patient_casedef_dx",
+	"glioma__cube_patient_casedef_rx",
+    "glioma__cube_patient_casedef_proc",
+    "glioma__cube_patient_sample_casedef",
     "glioma__cube_patient_sample_casedef_peri_post",
-    "glioma__cube_note_sample_casedef_pre",
+    "glioma__cube_note_sample_casedef",
 	"glioma__cube_note_sample_casedef_peri_post",
 
     # FHIR variables
+    "glioma__cube_encounter_variable_union",
 	"glioma__cube_patient_variable_union",
-	"glioma__cube_encounter_variable_union",
     "glioma__cube_patient_variable_wide_diag",
 #    "glioma__cube_patient_variable_wide_cancer",
 #	"glioma__cube_patient_variable_wide_neuro",

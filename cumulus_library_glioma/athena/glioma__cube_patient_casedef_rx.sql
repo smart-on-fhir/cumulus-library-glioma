@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_patient_rx AS 
+CREATE or replace VIEW glioma__cube_patient_casedef_rx AS 
     WITH
     filtered_table AS (
         SELECT
@@ -13,7 +13,7 @@ CREATE or replace VIEW glioma__cube_patient_rx AS
             s."rx_status",
             s."rx_system"
             --noqa: enable=RF03, AL02
-        FROM glioma__cohort_rx AS s
+        FROM glioma__cohort_casedef_rx AS s
     ),
     
     null_replacement AS (
