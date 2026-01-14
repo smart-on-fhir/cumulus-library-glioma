@@ -11,12 +11,12 @@ class TestFiletool(unittest.TestCase):
         self.assertTrue(filetool.path_template('cohort_study_period.sql').exists())
 
     def test_template_prefix(self):
-        text = filetool.load_template('sample_casedef.sql')
+        text = filetool.load_template('sample_casedef_temporality.sql')
         self.assertFalse('$prefix' in text)
         self.assertTrue('$temporality' in text)
 
     def test_template_optional_replacement(self):
-        text = filetool.load_template('sample_casedef.sql', replacements={'$temporality': 'pre'})
+        text = filetool.load_template('sample_casedef_temporality.sql', replacements={'$temporality': 'pre'})
         self.assertFalse('$temporality' in text)
         self.assertFalse('$prefix' in text)
         self.assertTrue('glioma__sample_casedef_pre' in text)
