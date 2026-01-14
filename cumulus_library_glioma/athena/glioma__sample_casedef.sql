@@ -1,4 +1,4 @@
-create TABLE glioma__sample_casedef_pre as
+create TABLE glioma__sample_casedef as
 WITH
 encounter_casedef as (
     SELECT  distinct
@@ -8,13 +8,12 @@ encounter_casedef as (
             casedef.days_since,
             casedef.ordinal_since,
             population.enc_period_start_day,
-            population.enc_period_ordinal
+            population.enc_period_ordinal,
     FROM    etl__completion_encounters          as etl,
             glioma__cohort_casedef             as casedef,
             glioma__cohort_study_population    as population
     WHERE   casedef.encounter_ref   = population.encounter_ref
     AND     casedef.encounter_ref   = concat('Encounter/', etl.encounter_id)
-    AND     casedef.pre
 ),
 encounter_doc as (
     SELECT  distinct
