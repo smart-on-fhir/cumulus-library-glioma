@@ -1,4 +1,4 @@
-create TABLE $prefix__sample_casedef as
+create TABLE $prefix__sample_casedef_$temporality as
 WITH
 encounter_casedef as (
     SELECT  distinct
@@ -12,6 +12,7 @@ encounter_casedef as (
             $prefix__cohort_study_population    as population
     WHERE   casedef.encounter_ref   = population.encounter_ref
     AND     casedef.encounter_ref   = concat('Encounter/', etl.encounter_id)
+    AND     casedef.$temporality
 ),
 encounter_doc as (
     SELECT  distinct
