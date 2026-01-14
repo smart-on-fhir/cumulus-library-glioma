@@ -1,0 +1,7 @@
+config_type="valueset"
+table_prefix = "rx_class"
+
+[umls_stewards.platinum]
+# TODO https://github.com/smart-on-fhir/cumulus-library/issues/442#issuecomment-3745004450
+sab = ["MED-RT", "RXNORM", "SNOMEDCT_US", "NCI"]
+search_terms = ["Platinum-based Drug", "Platinum Compounds", "Platinum Antineoplastic Compound", "cisplatin"]

@@ -1,0 +1,7 @@
+config_type="valueset"
+
+table_prefix = "rx_class"
+
+[umls_stewards.vinca_alkaloid]
+sab = "MED-RT"
+search_terms = ["vinca"]

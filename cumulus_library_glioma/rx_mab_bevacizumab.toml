@@ -1,0 +1,6 @@
+config_type="valueset"
+table_prefix = "rx_in"
+
+[umls_stewards.bevacizumab]
+sab = "RXNORM"
+search_terms = ["Bevacizumab","Avastin"]
