@@ -1,0 +1,14 @@
+config_type="valueset"
+
+table_prefix = "rxnorm"
+
+[vsac_stewards]
+rx_cancer_directed="2.16.840.1.113762.1.4.1260.230"
+rx_chemo='2.16.840.1.113762.1.4.1260.511'
+rx_chemo_advanced="2.16.840.1.113883.3.7643.2.1046"
+rx_chemo_platinum="2.16.840.1.113762.1.4.1260.71"
+rx_chemo_platinum_carboplatin="2.16.840.1.113762.1.4.1260.441"
+rx_chemo_vincristine="2.16.840.1.113883.3.1444.3.192"
+rx_chemo_bevacizumab="2.16.840.1.113762.1.4.1116.179"
+rx_endo_diabetes="2.16.840.1.113762.1.4.1190.58"
+rx_endo_therapy="2.16.840.1.113762.1.4.1260.14"

@@ -1,6 +1,6 @@
 config_type="valueset"
 
-table_prefix = "valueset"
+table_prefix = "diagnostics"
 
 [vsac_stewards]
 dx_brain_tumor="2.16.840.1.113883.17.4077.3.1011"
@@ -10,16 +10,6 @@ dx_focal_deficit="2.16.840.1.113883.17.4077.3.1033"
 dx_neuro="2.16.840.1.113762.1.4.1182.309"
 dx_neuropathy="2.16.840.1.113762.1.4.1222.1518"
 dx_endo_diabetes="2.16.840.1.113883.3.464.1003.103.12.1001"
-
-rx_cancer_directed="2.16.840.1.113762.1.4.1260.230"
-rx_chemo='2.16.840.1.113762.1.4.1260.511'
-rx_chemo_advanced="2.16.840.1.113883.3.7643.2.1046"
-rx_chemo_platinum="2.16.840.1.113762.1.4.1260.71"
-rx_chemo_platinum_carboplatin="2.16.840.1.113762.1.4.1260.441"
-rx_chemo_vincristine="2.16.840.1.113883.3.1444.3.192"
-rx_chemo_bevacizumab="2.16.840.1.113762.1.4.1116.179"
-rx_endo_diabetes="2.16.840.1.113762.1.4.1190.58"
-rx_endo_therapy="2.16.840.1.113762.1.4.1260.14"
 
 #lab_gene_test="2.16.840.1.113883.3.1434.1000.1060"
 #lab_gene_braf="2.16.840.1.113883.3.1444.3.288"
