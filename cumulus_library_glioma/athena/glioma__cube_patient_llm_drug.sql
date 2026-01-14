@@ -1,19 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_llm_drug AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."category",
-            s."has_mention",
-            s."phase",
-            s."route",
-            s."rx_class",
-            s."status"
-            --noqa: enable=RF03, AL02
-        FROM glioma__llm_drug AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -41,7 +27,8 @@ CREATE or replace VIEW glioma__cube_patient_llm_drug AS
                 cast(status AS varchar),
                 'cumulus__none'
             ) AS status
-        FROM filtered_table
+        FROM glioma__llm_drug
+        
     ),
 
     powerset AS (
@@ -76,12 +63,12 @@ CREATE or replace VIEW glioma__cube_patient_llm_drug AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."category",
-        p."has_mention",
-        p."phase",
-        p."route",
-        p."rx_class",
-        p."status"
+            p."category",
+            p."has_mention",
+            p."phase",
+            p."route",
+            p."rx_class",
+            p."status"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 1

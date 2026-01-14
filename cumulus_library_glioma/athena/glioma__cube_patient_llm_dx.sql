@@ -1,22 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_llm_dx AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."behavior_display_best",
-            s."behavior_has_mention",
-            s."category_display_best",
-            s."grade_display_best",
-            s."grade_has_mention",
-            s."morphology_display_best",
-            s."morphology_has_mention",
-            s."topography_display_best",
-            s."topography_has_mention"
-            --noqa: enable=RF03, AL02
-        FROM glioma__llm_dx AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -56,7 +39,8 @@ CREATE or replace VIEW glioma__cube_patient_llm_dx AS
                 cast(topography_has_mention AS varchar),
                 'cumulus__none'
             ) AS topography_has_mention
-        FROM filtered_table
+        FROM glioma__llm_dx
+        
     ),
 
     powerset AS (
@@ -100,15 +84,15 @@ CREATE or replace VIEW glioma__cube_patient_llm_dx AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."behavior_display_best",
-        p."behavior_has_mention",
-        p."category_display_best",
-        p."grade_display_best",
-        p."grade_has_mention",
-        p."morphology_display_best",
-        p."morphology_has_mention",
-        p."topography_display_best",
-        p."topography_has_mention"
+            p."behavior_display_best",
+            p."behavior_has_mention",
+            p."category_display_best",
+            p."grade_display_best",
+            p."grade_has_mention",
+            p."morphology_display_best",
+            p."morphology_has_mention",
+            p."topography_display_best",
+            p."topography_has_mention"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

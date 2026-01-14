@@ -1,17 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_variable_wide_diag AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."diag_brain_mri",
-            s."diag_head_neck",
-            s."diag_pathology",
-            s."diag_radiology"
-            --noqa: enable=RF03, AL02
-        FROM glioma__cohort_variable_wide AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -31,7 +19,8 @@ CREATE or replace VIEW glioma__cube_patient_variable_wide_diag AS
                 cast(diag_radiology AS varchar),
                 'cumulus__none'
             ) AS diag_radiology
-        FROM filtered_table
+        FROM glioma__cohort_variable_wide
+        
     ),
 
     powerset AS (
@@ -60,10 +49,10 @@ CREATE or replace VIEW glioma__cube_patient_variable_wide_diag AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."diag_brain_mri",
-        p."diag_head_neck",
-        p."diag_pathology",
-        p."diag_radiology"
+            p."diag_brain_mri",
+            p."diag_head_neck",
+            p."diag_pathology",
+            p."diag_radiology"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

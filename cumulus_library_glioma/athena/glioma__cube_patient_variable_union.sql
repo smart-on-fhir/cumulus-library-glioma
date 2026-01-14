@@ -1,17 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_variable_union AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."code",
-            s."display",
-            s."system",
-            s."variable"
-            --noqa: enable=RF03, AL02
-        FROM glioma__cohort_variable_union AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -31,7 +19,8 @@ CREATE or replace VIEW glioma__cube_patient_variable_union AS
                 cast(variable AS varchar),
                 'cumulus__none'
             ) AS variable
-        FROM filtered_table
+        FROM glioma__cohort_variable_union
+        
     ),
 
     powerset AS (
@@ -60,10 +49,10 @@ CREATE or replace VIEW glioma__cube_patient_variable_union AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."code",
-        p."display",
-        p."system",
-        p."variable"
+            p."code",
+            p."display",
+            p."system",
+            p."variable"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

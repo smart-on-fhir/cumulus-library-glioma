@@ -1,21 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_llm_gene AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."braf_altered",
-            s."braf_fusion",
-            s."braf_v600e",
-            s."cdkn2a_deleted",
-            s."h3k27m_mutant",
-            s."has_mention",
-            s."idh_mutant",
-            s."tp53_altered"
-            --noqa: enable=RF03, AL02
-        FROM glioma__llm_gene AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -51,7 +35,8 @@ CREATE or replace VIEW glioma__cube_patient_llm_gene AS
                 cast(tp53_altered AS varchar),
                 'cumulus__none'
             ) AS tp53_altered
-        FROM filtered_table
+        FROM glioma__llm_gene
+        
     ),
 
     powerset AS (
@@ -92,14 +77,14 @@ CREATE or replace VIEW glioma__cube_patient_llm_gene AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."braf_altered",
-        p."braf_fusion",
-        p."braf_v600e",
-        p."cdkn2a_deleted",
-        p."h3k27m_mutant",
-        p."has_mention",
-        p."idh_mutant",
-        p."tp53_altered"
+            p."braf_altered",
+            p."braf_fusion",
+            p."braf_v600e",
+            p."cdkn2a_deleted",
+            p."h3k27m_mutant",
+            p."has_mention",
+            p."idh_mutant",
+            p."tp53_altered"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 1

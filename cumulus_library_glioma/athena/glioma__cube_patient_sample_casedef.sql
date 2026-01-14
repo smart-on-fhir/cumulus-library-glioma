@@ -1,17 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_sample_casedef AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."fhir_resource",
-            s."note_code",
-            s."note_display",
-            s."note_system"
-            --noqa: enable=RF03, AL02
-        FROM glioma__sample_casedef AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -31,7 +19,8 @@ CREATE or replace VIEW glioma__cube_patient_sample_casedef AS
                 cast(note_system AS varchar),
                 'cumulus__none'
             ) AS note_system
-        FROM filtered_table
+        FROM glioma__sample_casedef
+        
     ),
 
     powerset AS (
@@ -60,10 +49,10 @@ CREATE or replace VIEW glioma__cube_patient_sample_casedef AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."fhir_resource",
-        p."note_code",
-        p."note_display",
-        p."note_system"
+            p."fhir_resource",
+            p."note_code",
+            p."note_display",
+            p."note_system"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

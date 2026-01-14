@@ -1,21 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_casedef_rx AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."age_at_visit",
-            s."gender",
-            s."race_display",
-            s."rx_category_code",
-            s."rx_code",
-            s."rx_display",
-            s."rx_status",
-            s."rx_system"
-            --noqa: enable=RF03, AL02
-        FROM glioma__cohort_casedef_rx AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -51,7 +35,8 @@ CREATE or replace VIEW glioma__cube_patient_casedef_rx AS
                 cast(rx_system AS varchar),
                 'cumulus__none'
             ) AS rx_system
-        FROM filtered_table
+        FROM glioma__cohort_casedef_rx
+        
     ),
 
     powerset AS (
@@ -92,14 +77,14 @@ CREATE or replace VIEW glioma__cube_patient_casedef_rx AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."age_at_visit",
-        p."gender",
-        p."race_display",
-        p."rx_category_code",
-        p."rx_code",
-        p."rx_display",
-        p."rx_status",
-        p."rx_system"
+            p."age_at_visit",
+            p."gender",
+            p."race_display",
+            p."rx_category_code",
+            p."rx_code",
+            p."rx_display",
+            p."rx_status",
+            p."rx_system"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

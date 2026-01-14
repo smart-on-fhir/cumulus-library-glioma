@@ -1,18 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_casedef_proc AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."enc_class_code",
-            s."proc_code",
-            s."proc_display",
-            s."proc_status",
-            s."proc_system"
-            --noqa: enable=RF03, AL02
-        FROM glioma__cohort_casedef_proc AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -36,7 +23,8 @@ CREATE or replace VIEW glioma__cube_patient_casedef_proc AS
                 cast(proc_system AS varchar),
                 'cumulus__none'
             ) AS proc_system
-        FROM filtered_table
+        FROM glioma__cohort_casedef_proc
+        
     ),
 
     powerset AS (
@@ -68,11 +56,11 @@ CREATE or replace VIEW glioma__cube_patient_casedef_proc AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."enc_class_code",
-        p."proc_code",
-        p."proc_display",
-        p."proc_status",
-        p."proc_system"
+            p."enc_class_code",
+            p."proc_code",
+            p."proc_display",
+            p."proc_status",
+            p."proc_system"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

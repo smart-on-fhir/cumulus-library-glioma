@@ -1,22 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_variable_wide_cancer AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."dx_brain_tumor",
-            s."dx_cancer",
-            s."rx_cancer_directed",
-            s."rx_chemo",
-            s."rx_chemo_advanced",
-            s."rx_chemo_bevacizumab",
-            s."rx_chemo_platinum",
-            s."rx_chemo_platinum_carboplatin",
-            s."rx_chemo_vincristine"
-            --noqa: enable=RF03, AL02
-        FROM glioma__cohort_variable_wide AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -56,7 +39,8 @@ CREATE or replace VIEW glioma__cube_patient_variable_wide_cancer AS
                 cast(rx_chemo_vincristine AS varchar),
                 'cumulus__none'
             ) AS rx_chemo_vincristine
-        FROM filtered_table
+        FROM glioma__cohort_variable_wide
+        
     ),
 
     powerset AS (
@@ -100,15 +84,15 @@ CREATE or replace VIEW glioma__cube_patient_variable_wide_cancer AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."dx_brain_tumor",
-        p."dx_cancer",
-        p."rx_cancer_directed",
-        p."rx_chemo",
-        p."rx_chemo_advanced",
-        p."rx_chemo_bevacizumab",
-        p."rx_chemo_platinum",
-        p."rx_chemo_platinum_carboplatin",
-        p."rx_chemo_vincristine"
+            p."dx_brain_tumor",
+            p."dx_cancer",
+            p."rx_cancer_directed",
+            p."rx_chemo",
+            p."rx_chemo_advanced",
+            p."rx_chemo_bevacizumab",
+            p."rx_chemo_platinum",
+            p."rx_chemo_platinum_carboplatin",
+            p."rx_chemo_vincristine"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10
