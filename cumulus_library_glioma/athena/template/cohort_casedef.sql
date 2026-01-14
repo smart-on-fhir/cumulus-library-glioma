@@ -86,6 +86,7 @@ join_longitudinal as (
             longitudinal.age_at_visit,
             longitudinal.gender,
             longitudinal.race_display,
+            longitudinal.status,
             longitudinal.enc_class_code,
             longitudinal.enc_type_display,
             longitudinal.enc_servicetype_display

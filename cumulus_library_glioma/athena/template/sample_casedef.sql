@@ -8,7 +8,7 @@ encounter_casedef as (
             casedef.days_since,
             casedef.ordinal_since,
             population.enc_period_start_day,
-            population.enc_period_ordinal,
+            population.enc_period_ordinal
     FROM    etl__completion_encounters          as etl,
             $prefix__cohort_casedef             as casedef,
             $prefix__cohort_study_population    as population
