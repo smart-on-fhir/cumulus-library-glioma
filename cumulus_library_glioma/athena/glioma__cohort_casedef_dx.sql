@@ -1,16 +1,20 @@
-create  table glioma__cohort_dx as
+create  table glioma__cohort_casedef_dx as
 WITH
 casedef as
 (
     select distinct
+            days_since,
+            ordinal_since,
+            dx_system,
             coalesce(dx_code, 'NO_CODE')        as dx_code,
             coalesce(dx_display, 'NO_DISPLAY')  as dx_display,
-            dx_system,
             subject_ref,
             encounter_ref
     from    glioma__cohort_casedef
 )
 select  distinct
+        casedef.days_since,
+        casedef.ordinal_since,
         dx.*
 from    casedef,
         glioma__cohort_study_population_dx as dx
