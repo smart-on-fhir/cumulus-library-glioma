@@ -79,6 +79,6 @@ class VariantMention(SpanAugmentedMention):
     )
 
     hgvs_variant:str = Field(
-        str,
+        None,
         description="Human Genome Variation Society (HGVS) variant"
     )
