@@ -1,0 +1,4 @@
+config_type="valueset"
+table_prefix = "rx_glioma_ingredients"
+
+keyword_file = "../resources/keywords_drug_ingredient.tsv"

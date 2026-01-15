@@ -4,32 +4,34 @@ study_prefix = "glioma"
 [file_config.file_names]
 # -----------------------------------------------------------------------------
 
-## Cancer Drug Class
-"rx_class: Alkylating agents"       = ["rx_class_alkylating.toml"]
-"rx_class: Antimetabolites"         = ["rx_class_antimetabolite.toml"]
-"rx_class: Monoclonal Antiboidies"  = ["rx_class_mab.toml"]
-"rx_class: Platinum Compounds"      = ["rx_class_platinum.toml"]
-"rx_class: Vinca Alkaloids"         = ["rx_class_vinca.toml"]
+#"Glioma drug ingredients" = ["keywords_drug_ingredient.toml"]
 
-## Cancer Drug Ingredients
-"Alkylating IN: Temozolomide"       = ["rx_alkylating_temozolomide.toml"]
-"Antimetabolite IN: Thioguanine"    = ["rx_antimetabolite_thioguanine.toml"]
-"Monoclonal Ab IN: bevacizumab"     = ["rx_mab_bevacizumab.toml"]
-"MEK inhibitor IN: trametinib"      = ["rx_mek_trametinib.toml"]
-"Platinum IN: Carboplatin"          = ["rx_platinum_carboplatin.toml"]
-"Platinum IN: Cisplatin"            = ["rx_platinum_cisplatin.toml"]
-"Topoisomerase IN: Irinotecan"      = ["rx_topo_irinotecan.toml"]
-"Vinca Alkaloid IN: Vinblastine"    = ["rx_vinca_vinblastine.toml"]
-"Vinca Alkaloid IN: Vincristine"    = ["rx_vinca_vincristine.toml"]
-
-## Therapuetic Areas
-"Therapuetic Area: Endocrine"       = ["rx_ta_endocrine.toml"]
-"Therapuetic Area: Diabetes"        = ["rx_ta_diabetes.toml"]
+### Cancer Drug Class
+#"rx_class: Alkylating agents"       = ["rx_class_alkylating.toml"]
+#"rx_class: Antimetabolites"         = ["rx_class_antimetabolite.toml"]
+#"rx_class: Monoclonal Antiboidies"  = ["rx_class_mab.toml"]
+#"rx_class: Platinum Compounds"      = ["rx_class_platinum.toml"]
+#"rx_class: Vinca Alkaloids"         = ["rx_class_vinca.toml"]
+#
+### Cancer Drug Ingredients
+#"Alkylating IN: Temozolomide"       = ["rx_alkylating_temozolomide.toml"]
+#"Antimetabolite IN: Thioguanine"    = ["rx_antimetabolite_thioguanine.toml"]
+#"Monoclonal Ab IN: bevacizumab"     = ["rx_mab_bevacizumab.toml"]
+#"MEK inhibitor IN: trametinib"      = ["rx_mek_trametinib.toml"]
+#"Platinum IN: Carboplatin"          = ["rx_platinum_carboplatin.toml"]
+#"Platinum IN: Cisplatin"            = ["rx_platinum_cisplatin.toml"]
+#"Topoisomerase IN: Irinotecan"      = ["rx_topo_irinotecan.toml"]
+#"Vinca Alkaloid IN: Vinblastine"    = ["rx_vinca_vinblastine.toml"]
+#"Vinca Alkaloid IN: Vincristine"    = ["rx_vinca_vincristine.toml"]
+#
+### Therapuetic Areas
+#"Therapuetic Area: Endocrine"       = ["rx_ta_endocrine.toml"]
+#"Therapuetic Area: Diabetes"        = ["rx_ta_diabetes.toml"]
 
 ## Upload CSV/TSV curated files
-"file_upload.toml" = [
-    "file_upload.toml"
-]
+#"file_upload.toml" = [
+#    "file_upload.toml"
+#]
 
 # -----------------------------------------------------------------------------
 # Study population
