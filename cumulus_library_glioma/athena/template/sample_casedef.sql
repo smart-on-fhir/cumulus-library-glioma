@@ -50,11 +50,11 @@ encounter_diag as (
                 end as  sort_by_date,
             diag.diag_effectivedatetime_day     as note_author_day,
             diag.diag_effectiveperiod_start_day as note_date,
-            diag.diag_system                as note_system,
-            diag.diag_code                  as note_code,
-            diag.diag_display               as note_display,
-            diag.diagnosticreport_ref       as note_ref
-    FROM    encounter_casedef               as casedef,
+            diag.diag_system                    as note_system,
+            diag.diag_code                      as note_code,
+            diag.diag_display                   as note_display,
+            diag.diagnosticreport_ref           as note_ref
+    FROM    encounter_casedef                   as casedef,
             $prefix__cohort_study_population_diag as diag
     WHERE   casedef.encounter_ref   = diag.encounter_ref
     AND     diag.aux_has_text
