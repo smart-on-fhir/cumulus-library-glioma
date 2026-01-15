@@ -1,5 +1,5 @@
 config_type="valueset"
-table_prefix = "rx_in"
+table_prefix = "rx_in_thioguanine"
 
 [umls_stewards.thioguanine]
 sab = "RXNORM"

@@ -1,5 +1,5 @@
 config_type="valueset"
-table_prefix = "rx_class"
+table_prefix = "rx_class_mek"
 
 [umls_stewards.mek]
 sab = "ATC" #TODO: ATC, MED-RT, RXNORM,....

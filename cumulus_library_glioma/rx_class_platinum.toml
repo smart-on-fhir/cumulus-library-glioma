@@ -1,5 +1,5 @@
 config_type="valueset"
-table_prefix = "rx_class"
+table_prefix = "rx_class_platinum"
 
 # [umls_stewards.platinum]
 # TODO https://github.com/smart-on-fhir/cumulus-library/issues/442#issuecomment-3745004450

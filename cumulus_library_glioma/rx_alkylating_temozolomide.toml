@@ -1,5 +1,5 @@
 config_type="valueset"
-table_prefix = "rx_in"
+table_prefix = "rx_in_temozolomide"
 
 [umls_stewards.temozolomide]
 sab = "RXNORM"

@@ -1,6 +1,5 @@
 config_type="valueset"
-
-table_prefix = "rx_in"
+table_prefix = "rx_in_carboplatin"
 
 [umls_stewards.carboplatin]
 sab = "RXNORM"

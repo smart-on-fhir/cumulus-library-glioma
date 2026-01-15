@@ -1,6 +1,6 @@
 config_type="valueset"
-table_prefix = "rx_in"
+table_prefix = "rx_in_trametinib"
 
-[umls_stewards.bevacizumab]
+[umls_stewards.trametinib]
 sab = "RXNORM"
 search_terms = ["trametinib"]

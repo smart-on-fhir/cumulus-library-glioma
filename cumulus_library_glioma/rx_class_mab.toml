@@ -1,5 +1,5 @@
 config_type="valueset"
-table_prefix = "rx_class"
+table_prefix = "rx_class_mab"
 
 # mAb = Monoclonal Antibodies (standard abbreviation)
 [umls_stewards.mab]

@@ -1,6 +1,6 @@
 config_type="valueset"
-table_prefix = "rx_in"
+table_prefix = "rx_in_irinotecan"
 
-[umls_stewards.cisplatin]
+[umls_stewards.irinotecan]
 sab = "RXNORM"
 search_terms = ["irinotecan"]
