@@ -18,7 +18,7 @@
 | Study Builder                         | FILE                                                                  |
 |---------------------------------------|-----------------------------------------------------------------------|
 | Manifest                              | [manifest.toml](cumulus_library_glioma/manifest.toml)                 |
-| Valuesets (National Library Medicine) | [vsac.toml](cumulus_library_glioma/vsac_drugs.toml)                         |
+| Valuesets (National Library Medicine) | [vsac.toml](cumulus_library_glioma/rx_ta_endocrine.toml)                         |
 | File uploads (vsac)                   | [file_upload_vsac.toml](cumulus_library_glioma/file_upload_vsac.toml) |
 | File uploads (curated)                | [file_upload.toml](cumulus_library_glioma/file_upload.toml)           |
 

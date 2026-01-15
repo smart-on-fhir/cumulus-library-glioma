@@ -3,26 +3,33 @@ study_prefix = "glioma"
 
 [file_config.file_names]
 # -----------------------------------------------------------------------------
-## Valuesets to download
-#    "vsac_drugs.toml" = [
-#        "vsac_drugs.toml"
-#    ]
 
-#"rx_vincristine.toml" = [
-#    "rx_vincristine.toml"
-#]
+## Cancer Drug Class
+"rx_class: Alkylating agents"       = ["rx_class_alkylating.toml"]
+"rx_class: Antimetabolites"         = ["rx_class_antimetabolite.toml"]
+"rx_class: Monoclonal Antiboidies"  = ["rx_class_mab.toml"]
+"rx_class: Platinum Compounds"      = ["rx_class_platinum.toml"]
+"rx_class: Vinca Alkaloids"         = ["rx_class_vinca.toml"]
 
-#"rx_class_vinca.toml" = [
-#    "rx_class_vinca.toml"
-#]
+## Cancer Drug Ingredients
+"Alkylating IN: Temozolomide"       = ["rx_alkylating_temozolomide.toml"]
+"Antimetabolite IN: Thioguanine"    = ["rx_antimetabolite_thioguanine.toml"]
+"Monoclonal Ab IN: bevacizumab"     = ["rx_mab_bevacizumab.toml"]
+"MEK inhibitor IN: trametinib"      = ["rx_mek_trametinib.toml"]
+"Platinum IN: Carboplatin"          = ["rx_platinum_carboplatin.toml"]
+"Platinum IN: Cisplatin"            = ["rx_platinum_cisplatin.toml"]
+"Topoisomerase IN: Irinotecan"      = ["rx_topo_irinotecan.toml"]
+"Vinca Alkaloid IN: Vinblastine"    = ["rx_vinca_vinblastine.toml"]
+"Vinca Alkaloid IN: Vincristine"    = ["rx_vinca_vincristine.toml"]
 
+## Therapuetic Areas
+"Therapuetic Area: Endocrine"       = ["rx_ta_endocrine.toml"]
+"Therapuetic Area: Diabetes"        = ["rx_ta_diabetes.toml"]
+
+## Upload CSV/TSV curated files
 "file_upload.toml" = [
     "file_upload.toml"
 ]
-
-#    "file_upload_vsac.toml" = [
-#        "file_upload_vsac.toml"
-#    ]
 
 # -----------------------------------------------------------------------------
 # Study population
@@ -49,9 +56,9 @@ study_prefix = "glioma"
     "athena/glioma__cohort_study_population_diag.sql",
     "athena/glioma__cohort_study_population_proc.sql",
 ]
-
-# -----------------------------------------------------------------------------
-#  *CASE DEFINITION* pLGG (Pediatric Low Grade Glioma)
+#
+## -----------------------------------------------------------------------------
+##  *CASE DEFINITION* pLGG (Pediatric Low Grade Glioma)
 
 "cohort from case definition (valueset_casedef)"= [
     "athena/glioma__cohort_casedef.sql",
@@ -84,55 +91,55 @@ study_prefix = "glioma"
     "athena/glioma__cube_patient_sample_casedef_peri_post.sql",
     "athena/glioma__cube_note_sample_casedef_peri_post.sql",
 ]
-#
-#    # -----------------------------------------------------------------------------
-#    # Variable cohorts
-#    "variable cohorts"= [
-#        "athena/glioma__cohort_diag_brain_mri.sql",
-#        "athena/glioma__cohort_diag_head_neck.sql",
-#        "athena/glioma__cohort_diag_pathology.sql",
-#        "athena/glioma__cohort_diag_radiology.sql",
-#        "athena/glioma__cohort_dx_brain_tumor.sql",
-#        "athena/glioma__cohort_dx_cancer.sql",
-#        "athena/glioma__cohort_dx_endo_diabetes.sql",
-#        "athena/glioma__cohort_dx_focal_deficit.sql",
-#        "athena/glioma__cohort_dx_neuro.sql",
-#        "athena/glioma__cohort_dx_neurofibromatosis.sql",
-#        "athena/glioma__cohort_dx_neuropathy.sql",
-#        "athena/glioma__cohort_lab_mtor_sirolimus.sql",
-#        "athena/glioma__cohort_proc_neurosurgery.sql",
-#        "athena/glioma__cohort_rx_cancer_directed.sql",
-#        "athena/glioma__cohort_rx_chemo.sql",
-#        "athena/glioma__cohort_rx_chemo_advanced.sql",
-#        "athena/glioma__cohort_rx_chemo_bevacizumab.sql",
-#        "athena/glioma__cohort_rx_chemo_platinum.sql",
-#        "athena/glioma__cohort_rx_chemo_platinum_carboplatin.sql",
-#        "athena/glioma__cohort_rx_chemo_vincristine.sql",
-#        "athena/glioma__cohort_rx_endo_diabetes.sql",
-#        "athena/glioma__cohort_rx_endo_therapy.sql",
-#        "athena/glioma__cohort_rx_mtor_everolimus.sql",
-#        "athena/glioma__cohort_rx_mtor_sirolimus.sql",
-#    ]
-#
-#    "variable union (structured)" = [
-#        "athena/glioma__cohort_variable_union.sql"
-#    ]
-#
-#    "variable wide (structured)" = [
-#        "athena/glioma__cohort_variable_wide.sql"
-#    ]
-#
-#    "cube FHIR"= [
-#        "athena/glioma__cube_patient_variable_union.sql",
-#        "athena/glioma__cube_encounter_variable_union.sql",
-#        "athena/glioma__cube_patient_variable_wide_diag.sql",
-#        "athena/glioma__cube_patient_variable_wide_neuro.sql",
-#        "athena/glioma__cube_patient_variable_wide_endo.sql",
-#        "athena/glioma__cube_patient_variable_wide_cancer.sql",
-#    ]
-#
-# -----------------------------------------------------------------------------
-# LLM note types (dependancy: DocumentTypeAnnotation)
+
+##    # -----------------------------------------------------------------------------
+##    # Variable cohorts
+##    "variable cohorts"= [
+##        "athena/glioma__cohort_diag_brain_mri.sql",
+##        "athena/glioma__cohort_diag_head_neck.sql",
+##        "athena/glioma__cohort_diag_pathology.sql",
+##        "athena/glioma__cohort_diag_radiology.sql",
+##        "athena/glioma__cohort_dx_brain_tumor.sql",
+##        "athena/glioma__cohort_dx_cancer.sql",
+##        "athena/glioma__cohort_dx_endo_diabetes.sql",
+##        "athena/glioma__cohort_dx_focal_deficit.sql",
+##        "athena/glioma__cohort_dx_neuro.sql",
+##        "athena/glioma__cohort_dx_neurofibromatosis.sql",
+##        "athena/glioma__cohort_dx_neuropathy.sql",
+##        "athena/glioma__cohort_lab_mtor_sirolimus.sql",
+##        "athena/glioma__cohort_proc_neurosurgery.sql",
+##        "athena/glioma__cohort_rx_cancer_directed.sql",
+##        "athena/glioma__cohort_rx_chemo.sql",
+##        "athena/glioma__cohort_rx_chemo_advanced.sql",
+##        "athena/glioma__cohort_rx_chemo_bevacizumab.sql",
+##        "athena/glioma__cohort_rx_chemo_platinum.sql",
+##        "athena/glioma__cohort_rx_chemo_platinum_carboplatin.sql",
+##        "athena/glioma__cohort_rx_chemo_vincristine.sql",
+##        "athena/glioma__cohort_rx_endo_diabetes.sql",
+##        "athena/glioma__cohort_rx_endo_therapy.sql",
+##        "athena/glioma__cohort_rx_mtor_everolimus.sql",
+##        "athena/glioma__cohort_rx_mtor_sirolimus.sql",
+##    ]
+##
+##    "variable union (structured)" = [
+##        "athena/glioma__cohort_variable_union.sql"
+##    ]
+##
+##    "variable wide (structured)" = [
+##        "athena/glioma__cohort_variable_wide.sql"
+##    ]
+##
+##    "cube FHIR"= [
+##        "athena/glioma__cube_patient_variable_union.sql",
+##        "athena/glioma__cube_encounter_variable_union.sql",
+##        "athena/glioma__cube_patient_variable_wide_diag.sql",
+##        "athena/glioma__cube_patient_variable_wide_neuro.sql",
+##        "athena/glioma__cube_patient_variable_wide_endo.sql",
+##        "athena/glioma__cube_patient_variable_wide_cancer.sql",
+##    ]
+##
+## -----------------------------------------------------------------------------
+## LLM note types (dependancy: DocumentTypeAnnotation)
 
 "samples for LLM tasks" = [
     "athena/glioma__sample_casedef_task.sql"
@@ -146,8 +153,8 @@ study_prefix = "glioma"
     "athena/glioma__sample_casedef_task_progression.sql",
 ]
 
-# -----------------------------------------------------------------------------
-# LLM task results (dependancy: DocumentTask)
+## -----------------------------------------------------------------------------
+## LLM task results (dependancy: DocumentTask)
 
 "glioma LLM (ICDO: grade, topography, morphology, behavior)" = [
     "athena/glioma__llm_dx.sql",

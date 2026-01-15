@@ -2,5 +2,5 @@ config_type="valueset"
 table_prefix = "rx_class"
 
 [umls_stewards.antimetabolite]
-sab = "MED-RT"
+sab = "RXNORM" # TODO: ["RXNORM", "MED-RT"]
 search_terms = ['thioguanine', 'methotrexate', 'mercaptopurine', 'antimetabolites', 'purine analog']

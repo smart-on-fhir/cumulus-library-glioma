@@ -1,0 +1,9 @@
+config_type="valueset"
+table_prefix = "rx_class"
+
+[umls_stewards.mek]
+sab = "NCI"
+search_terms = [
+    "BRAF Inhibitor",
+    "BRAF V600E Inhibitor",
+]

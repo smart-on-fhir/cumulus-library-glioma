@@ -1,0 +1,5 @@
+config_type="valueset"
+table_prefix = "rx_ta"
+
+[vsac_stewards]
+rx_endo_diabetes="2.16.840.1.113762.1.4.1190.58"
