@@ -1,0 +1,9 @@
+config_type="valueset"
+table_prefix = "rx_class_ntrk"
+
+[umls_stewards.ntrk]
+sab = "RXNORM"
+search_terms = [
+    "larotrectinib",
+    "entrectinib"
+]

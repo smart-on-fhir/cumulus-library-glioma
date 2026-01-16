@@ -1,0 +1,6 @@
+config_type="valueset"
+table_prefix = "rx_class_alk"
+
+[umls_stewards.alk]
+sab = "NCI"
+search_terms = ["ALK Inhibitor"]

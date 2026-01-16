@@ -3,4 +3,11 @@ table_prefix = "rx_class_alkylating"
 
 [umls_stewards.alkylating]
 sab = "RXNORM"
-search_terms = ["cyclophosphamide", "cytoxan", "ifosfamide", "lomustine", "carmustine", "temozolomide"]
+search_terms = [
+    "cyclophosphamide",
+    "cytoxan",
+    "ifosfamide",
+    "lomustine",
+    "carmustine",
+    "temozolomide"
+]

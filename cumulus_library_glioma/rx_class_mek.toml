@@ -4,7 +4,10 @@ table_prefix = "rx_class_mek"
 [umls_stewards.mek]
 sab = "RXNORM"
 search_terms = [
+    # MAPK/ERK kinase
     "trametinib",
     "selumetinib",
     "mirdametinib",
-    "cobimetinib"]
+    "cobimetinib",
+    "binimetinib"
+]

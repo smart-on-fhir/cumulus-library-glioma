@@ -3,4 +3,4 @@ table_prefix = "rx_in_thioguanine"
 
 [umls_stewards.thioguanine]
 sab = "RXNORM"
-search_terms = ["thioguanine", 'tabloid']
+search_terms = ["thioguanine", 'tioguanine', 'tabloid']
