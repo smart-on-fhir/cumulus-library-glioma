@@ -1,7 +1,13 @@
 config_type="valueset"
 table_prefix = "rx_class_mab"
 
-# mAb = Monoclonal Antibodies (standard abbreviation)
 [umls_stewards.mab]
 sab = "RXNORM"
-search_terms = ["bevacizumab", "avastin", "nivolumab", "pembrolizumab"]
+search_terms = [
+    "bevacizumab",
+    "avastin",
+    "nivolumab",
+    "pembrolizumab",
+    "alemtuzumab",
+    "basiliximab"
+]

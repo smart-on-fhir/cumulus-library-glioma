@@ -22,7 +22,7 @@ file = "../resources/llm_note_type.csv"
 file = "../resources/llm_note_task.csv"
 
 # ---------------------------------------------------------
-# Source: cureated by CHOP+CHIP
+# Source: CURATED by CHIP+CHOP
 
 [tables.valueset_casedef]
 file = "../resources/valueset_casedef.csv"
@@ -30,44 +30,14 @@ file = "../resources/valueset_casedef.csv"
 [tables.valueset_dx_neurofibromatosis]
 file = "../resources/valueset_dx_neurofibromatosis.csv"
 
-[tables.valueset_lab_mtor_sirolimus]
-file = "../resources/valueset_lab_mtor_sirolimus.csv"
-
-[tables.valueset_rx_mtor_sirolimus]
-file = "../resources/valueset_rx_mtor_sirolimus.csv"
-
-[tables.valueset_rx_mtor_everolimus]
-file = "../resources/valueset_rx_mtor_everolimus.csv"
-
 [tables.valueset_diag_pathology]
 file = "../resources/valueset_diag_pathology.csv"
 
 [tables.valueset_doc_pathology]
 file = "../resources/valueset_diag_pathology.csv"
 
-# ---------------------------------------------------------
-# Drug Keywords
-
-#    [tables.keywords_drug_class]
-#    file = "../resources/keywords_drug_class.tsv"
+#    [tables.valueset_rx_mtor_sirolimus]
+#    file = "../resources/valueset_rx_mtor_sirolimus.csv"
 #
-#    [tables.keywords_drug_ingredient]
-#    file = "../resources/keywords_drug_ingredient.tsv"
-#
-#    [tables.keywords_drug_brand]
-#    file = "../resources/keywords_drug_brand.tsv"
-
-# ---------------------------------------------------------
-# Drug Relationships (Class -> Ingredient -> Brand )
-
-#    [tables.rel_drug_class]
-#    file = "../resources/rel_drug_class.tsv"
-#
-#    [tables.rel_drug_ingredient]
-#    file = "../resources/rel_drug_ingredient.tsv"
-#
-#    [tables.rel_drug_brand]
-#    file = "../resources/rel_drug_brand.tsv"
-#
-#    [tables.rel_drug_expand_rules]
-#    file = "../resources/rel_drug_expand_rules.tsv"
+#    [tables.valueset_rx_mtor_everolimus]
+#    file = "../resources/valueset_rx_mtor_everolimus.csv"

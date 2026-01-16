@@ -1,3 +1,4 @@
+import tomllib
 from pathlib import Path
 from cumulus_library import StudyManifest
 from cumulus_library_glioma.tools import filetool
@@ -14,7 +15,7 @@ def get_manifest():
 def _quote(text:str, quote_char:str='"') -> str:
     return quote_char + text + quote_char
 
-def as_toml(file_list:list[Path], toml_key:str, subdir='athena') -> str:
+def as_toml_parallel(file_list:list[Path], toml_key:str, subdir='athena') -> str:
     """
     Workaround for https://github.com/smart-on-fhir/cumulus-library/issues/439
     :param toml_key: key name to display during build

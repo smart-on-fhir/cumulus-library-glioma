@@ -4,6 +4,5 @@ table_prefix = "rx_class_braf"
 [umls_stewards.braf]
 sab = "NCI"
 search_terms = [
-    "BRAF Inhibitor",
-    "BRAF V600E Inhibitor",
+    "BRAF Inhibitor"
 ]
