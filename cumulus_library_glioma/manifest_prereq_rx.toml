@@ -1,0 +1,40 @@
+# study prefix is the name of the tablepace cumulus_library.StudyManifest().get_study_prefix() 
+study_prefix = "glioma"
+
+[file_config.file_names]
+
+### Cancer TA= Therapeutic Area
+"Therapuetic Area: Cancer" = ["rx_ta_cancer.toml"]
+
+###  Drug Class
+"ALK Inhibitors"        = ["rx_class_alk.toml"]
+"Alkylating agents"     = ["rx_class_alkylating.toml"]
+"Antimetabolites"       = ["rx_class_antimetabolite.toml"]
+"BRAF inhibitors"       = ["rx_class_braf.toml"]
+"Topoisomerase Inhibitors" = ["rx_class_topoisomerase.toml"]
+"FGFR Inhibitors"       = ["rx_class_fgfr.toml"]
+"IDH1/IDH2 Inhibitors"  = ["rx_class_idh.toml"]
+"Monoclonal Antibodies" = ["rx_class_mab.toml"]
+"MAPK Pathway (general)"= ["rx_class_mapk.toml"]
+"MEK1/MEK2 inhibitors"  = ["rx_class_mek.toml"]
+"MTOR inhibitors"       = ["rx_class_mtor.toml"]
+"NTRK Inhibitors"       = ["rx_class_ntrk.toml"]
+"Pan-RAF kinase Inhibitors"= ["rx_class_pan_raf.toml"]
+"Platinum Compounds"    = ["rx_class_platinum.toml"]
+"RET inhibitors"        = ["rx_class_ret.toml"]
+"ROS1 Inhibitors"        = ["rx_class_ros1.toml"]
+"Vinca Alkaloids"       = ["rx_class_vinca.toml"]
+
+####  Drug Ingredients
+"Monoclonal Ab IN: Bevacizumab"     = ["rx_in_bevacizumab.toml"]
+"Platinum IN: Carboplatin"          = ["rx_in_carboplatin.toml"]
+"Platinum IN: Cisplatin"            = ["rx_in_cisplatin.toml"]
+"Topoisomerase IN: Etoposide"       = ["rx_in_etoposide.toml"]
+"Topoisomerase IN: Irinotecan"      = ["rx_in_irinotecan.toml"]
+"Alkylating IN: Lomustine"          = ["rx_in_lomustine.toml"]
+"Alkylating IN: Procarbazine"       = ["rx_in_procarbazine.toml"]
+"Alkylating IN: Temozolomide"       = ["rx_in_temozolomide.toml"]
+"Antimetabolite IN: Thioguanine"    = ["rx_in_thioguanine.toml"]
+"MEK inhibitor IN: Trametinib"      = ["rx_in_trametinib.toml"]
+"Vinca Alkaloid IN: Vinblastine"    = ["rx_in_vinblastine.toml"]
+"Vinca Alkaloid IN: Vincristine"    = ["rx_in_vincristine.toml"]

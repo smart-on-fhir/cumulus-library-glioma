@@ -36,8 +36,6 @@ file = "../resources/valueset_diag_pathology.csv"
 [tables.valueset_doc_pathology]
 file = "../resources/valueset_diag_pathology.csv"
 
-#    [tables.valueset_rx_mtor_sirolimus]
-#    file = "../resources/valueset_rx_mtor_sirolimus.csv"
-#
-#    [tables.valueset_rx_mtor_everolimus]
-#    file = "../resources/valueset_rx_mtor_everolimus.csv"
+[tables.valueset_casedef_rx]
+col_types = ["STRING","STRING","STRING", "STRING", "INT"]
+file = "../resources/valueset_casedef_rx.csv"
