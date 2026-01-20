@@ -1,0 +1,302 @@
+system	code	display
+http://www.cms.gov/Medicare/Coding/ICD10	code	display
+http://www.cms.gov/Medicare/Coding/ICD10	00500ZZ	Destruction of Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00510ZZ	Destruction of Cerebral Meninges, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00520ZZ	Destruction of Dura Mater, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00560ZZ	Destruction of Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00570ZZ	Destruction of Cerebral Hemisphere, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00580ZZ	Destruction of Basal Ganglia, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00590ZZ	Destruction of Thalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	005A0ZZ	Destruction of Hypothalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	005B0ZZ	Destruction of Pons, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	005C0ZZ	Destruction of Cerebellum, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	005D0ZZ	Destruction of Medulla Oblongata, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00800ZZ	Division of Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00870ZZ	Division of Cerebral Hemisphere, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00880ZZ	Division of Basal Ganglia, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009000Z	Drainage of Brain with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00900ZZ	Drainage of Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009100Z	Drainage of Cerebral Meninges with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00910ZZ	Drainage of Cerebral Meninges, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009200Z	Drainage of Dura Mater with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00920ZZ	Drainage of Dura Mater, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009300Z	Drainage of Intracranial Epidural Space with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00930ZZ	Drainage of Intracranial Epidural Space, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009400Z	Drainage of Intracranial Subdural Space with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00940ZZ	Drainage of Intracranial Subdural Space, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009500Z	Drainage of Intracranial Subarachnoid Space with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00950ZZ	Drainage of Intracranial Subarachnoid Space, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009600Z	Drainage of Cerebral Ventricle with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00960ZZ	Drainage of Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009700Z	Drainage of Cerebral Hemisphere with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00970ZZ	Drainage of Cerebral Hemisphere, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009800Z	Drainage of Basal Ganglia with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00980ZZ	Drainage of Basal Ganglia, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009900Z	Drainage of Thalamus with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00990ZZ	Drainage of Thalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009A00Z	Drainage of Hypothalamus with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009A0ZZ	Drainage of Hypothalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009B00Z	Drainage of Pons with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009B0ZZ	Drainage of Pons, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009C00Z	Drainage of Cerebellum with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009C0ZZ	Drainage of Cerebellum, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009D00Z	Drainage of Medulla Oblongata with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	009D0ZZ	Drainage of Medulla Oblongata, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00B00ZZ	Excision of Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00B10ZZ	Excision of Cerebral Meninges, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00B20ZZ	Excision of Dura Mater, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00B60ZZ	Excision of Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00B70ZZ	Excision of Cerebral Hemisphere, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00B80ZZ	Excision of Basal Ganglia, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00B90ZZ	Excision of Thalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00BA0ZZ	Excision of Hypothalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00BB0ZZ	Excision of Pons, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00BC0ZZ	Excision of Cerebellum, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00BD0ZZ	Excision of Medulla Oblongata, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C00ZZ	Extirpation of Matter from Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C10ZZ	Extirpation of Matter from Cerebral Meninges, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C20ZZ	Extirpation of Matter from Dura Mater, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C30ZZ	Extirpation of Matter from Intracranial Epidural Space, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C40ZZ	Extirpation of Matter from Intracranial Subdural Space, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C50ZZ	Extirpation of Matter from Intracranial Subarachnoid Space, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C60ZZ	Extirpation of Matter from Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C70ZZ	Extirpation of Matter from Cerebral Hemisphere, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C80ZZ	Extirpation of Matter from Basal Ganglia, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00C90ZZ	Extirpation of Matter from Thalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00CA0ZZ	Extirpation of Matter from Hypothalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00CB0ZZ	Extirpation of Matter from Pons, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00CC0ZZ	Extirpation of Matter from Cerebellum, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00CD0ZZ	Extirpation of Matter from Medulla Oblongata, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00D10ZZ	Extraction of Cerebral Meninges, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00D20ZZ	Extraction of Dura Mater, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00H002Z	Insertion of Monitoring Device into Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00H003Z	Insertion of Infusion Device into Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00H602Z	Insertion of Monitoring Device into Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00H603Z	Insertion of Infusion Device into Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00J00ZZ	Inspection of Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00N90ZZ	Release Thalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00NA0ZZ	Release Hypothalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P000Z	Removal of Drainage Device from Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P002Z	Removal of Monitoring Device from Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P003Z	Removal of Infusion Device from Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P007Z	Removal of Autologous Tissue Substitute from Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P00JZ	Removal of Synthetic Substitute from Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P00KZ	Removal of Nonautologous Tissue Substitute from Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P600Z	Removal of Drainage Device from Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P602Z	Removal of Monitoring Device from Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P603Z	Removal of Infusion Device from Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00P6X2Z	Removal of Monitoring Device from Cerebral Ventricle, External Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00Q90ZZ	Repair Thalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00QA0ZZ	Repair Hypothalamus, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00T70ZZ	Resection of Cerebral Hemisphere, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W000Z	Revision of Drainage Device in Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W002Z	Revision of Monitoring Device in Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W003Z	Revision of Infusion Device in Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W007Z	Revision of Autologous Tissue Substitute in Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W00JZ	Revision of Synthetic Substitute in Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W00KZ	Revision of Nonautologous Tissue Substitute in Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W00MZ	Revision of Neurostimulator Lead in Brain, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W600Z	Revision of Drainage Device in Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W602Z	Revision of Monitoring Device in Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W603Z	Revision of Infusion Device in Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	00W60MZ	Revision of Neurostimulator Lead in Cerebral Ventricle, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N9000Z	Drainage of Skull with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N900ZZ	Drainage of Skull, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N9100Z	Drainage of Frontal Bone with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N910ZZ	Drainage of Frontal Bone, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N9300Z	Drainage of Right Parietal Bone with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N930ZZ	Drainage of Right Parietal Bone, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N9400Z	Drainage of Left Parietal Bone with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N940ZZ	Drainage of Left Parietal Bone, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N9500Z	Drainage of Right Temporal Bone with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N950ZZ	Drainage of Right Temporal Bone, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N9600Z	Drainage of Left Temporal Bone with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N960ZZ	Drainage of Left Temporal Bone, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N9700Z	Drainage of Occipital Bone with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0N970ZZ	Drainage of Occipital Bone, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0W9100Z	Drainage of Cranial Cavity with Drainage Device, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0W910ZZ	Drainage of Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WC10ZZ	Extirpation of Matter from Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WH10YZ	Insertion of Other Device into Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WJ10ZZ	Inspection of Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WP100Z	Removal of Drainage Device from Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WP101Z	Removal of Radioactive Element from Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WP10JZ	Removal of Synthetic Substitute from Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WP10YZ	Removal of Other Device from Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WW100Z	Revision of Drainage Device in Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WW101Z	Revision of Radioactive Element in Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WW103Z	Revision of Infusion Device in Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WW10JZ	Revision of Synthetic Substitute in Cranial Cavity, Open Approach
+http://www.cms.gov/Medicare/Coding/ICD10	0WW10YZ	Revision of Other Device in Cranial Cavity, Open Approach
+http://snomed.info/sct	10458001	Evacuation of intracerebral hematoma (procedure)
+http://snomed.info/sct	112929000	Exploratory craniotomy, supratentorial (procedure)
+http://snomed.info/sct	1201979001	Excision of lesion of brain (procedure)
+http://snomed.info/sct	1287541008	Coagulation of brain tissue (procedure)
+http://snomed.info/sct	1296603004	Drainage of cerebral epidural space by incision (procedure)
+http://snomed.info/sct	1296604005	Drainage of cerebral epidural space by trephination (procedure)
+http://snomed.info/sct	1296605006	Drainage of cerebral subdural space by incision (procedure)
+http://snomed.info/sct	1296606007	Drainage of cerebral subdural space by trephination (procedure)
+http://snomed.info/sct	1296607003	Drainage of cerebral subarachnoid space by trephination (procedure)
+http://snomed.info/sct	1296608008	Drainage of cerebral subarachnoid space by incision (procedure)
+http://snomed.info/sct	1296626006	Division of tract of brain (procedure)
+http://snomed.info/sct	13431007	Prefrontal lobotomy (procedure)
+http://snomed.info/sct	13433005	Excision of lesion of brain by transtemporal approach (procedure)
+http://snomed.info/sct	13666002	Leukotomy (procedure)
+http://snomed.info/sct	14247003	Cerebral hemispherectomy (procedure)
+http://snomed.info/sct	14554005	Cryotherapy of brain (procedure)
+http://snomed.info/sct	1583007	Tractotomy of mesencephalon (procedure)
+http://snomed.info/sct	171442008	Major excision of brain tissue (procedure)
+http://snomed.info/sct	171443003	Total lobectomy of brain (procedure)
+http://snomed.info/sct	171447002	Excision of lesion of frontal lobe of brain (procedure)
+http://snomed.info/sct	171448007	Excision of lesion of temporal lobe of brain (procedure)
+http://snomed.info/sct	171449004	Excision of lesion of parietal lobe of brain (procedure)
+http://snomed.info/sct	171450004	Excision of lesion of occipital lobe of brain (procedure)
+http://snomed.info/sct	171451000	Excision of lesion of cerebellum (procedure)
+http://snomed.info/sct	171455009	Stereotactic leucotomy (procedure)
+http://snomed.info/sct	171471009	Drainage of lesion of brain tissue (procedure)
+http://snomed.info/sct	171472002	Drainage of abscess of brain tissue (procedure)
+http://snomed.info/sct	171473007	Evacuation of hematoma from temporal lobe of brain (procedure)
+http://snomed.info/sct	171474001	Evacuation of hematoma from cerebellum (procedure)
+http://snomed.info/sct	171479006	Open division of brain tissue (procedure)
+http://snomed.info/sct	171495006	Maintenance of neurostimulator in brain (procedure)
+http://snomed.info/sct	171540003	Endoscopic extirpation of lesion of ventricle of brain (procedure)
+http://snomed.info/sct	171554006	Drainage of subarachnoid space of brain (procedure)
+http://snomed.info/sct	171692002	Removal of lesion of brain meninges (procedure)
+http://snomed.info/sct	171693007	Extirpation of lesion of meninges of brain cortex (procedure)
+http://snomed.info/sct	171694001	Extirpation of lesion of meninges of sphenoidal ridge of cranium (procedure)
+http://snomed.info/sct	171695000	Extirpation of lesion of meninges of subfrontal region of brain (procedure)
+http://snomed.info/sct	171696004	Extirpation of lesion of meninges of parasagittal region of brain (procedure)
+http://snomed.info/sct	171697008	Extirpation of lesion of falx cerebri (procedure)
+http://snomed.info/sct	171698003	Extirpation of lesion of tentorium cerebelli (procedure)
+http://snomed.info/sct	171722000	Evacuation of intracranial subdural abscess (procedure)
+http://snomed.info/sct	178373004	Exploratory open craniotomy (procedure)
+http://snomed.info/sct	178375006	Exploratory burrhole of cranium (procedure)
+http://snomed.info/sct	178376007	Reopening of cranium and re-exploration of intracranial operation site and surgical arrest of postoperative bleeding (procedure)
+http://snomed.info/sct	178391009	Cranial morcellization (procedure)
+http://snomed.info/sct	1868005	Removal of foreign body from brain (procedure)
+http://snomed.info/sct	1995001	Stripping of cerebral meninges (procedure)
+http://snomed.info/sct	21551002	Division of brain tissue (procedure)
+http://snomed.info/sct	22480005	Intracranial microdissection (procedure)
+http://snomed.info/sct	230810008	Excision of tumor of brain meninges (procedure)
+http://snomed.info/sct	230811007	Excision of cyst of brain meninges (procedure)
+http://snomed.info/sct	230814004	Removal of intracranial subdural tumor (procedure)
+http://snomed.info/sct	230837005	Focal excision of brain tissue tumor (procedure)
+http://snomed.info/sct	230838000	Focal excision of brain abscess (procedure)
+http://snomed.info/sct	230839008	Focal excision of brain hematoma (procedure)
+http://snomed.info/sct	230840005	Focal excision of brain cyst (procedure)
+http://snomed.info/sct	230841009	Focal excision of swollen brain (procedure)
+http://snomed.info/sct	230859007	Destruction of brain tumor (procedure)
+http://snomed.info/sct	230886007	Exploration of ventricle of brain (procedure)
+http://snomed.info/sct	230888008	Open exploration of ventricle of brain (procedure)
+http://snomed.info/sct	230890009	Excision of lesion of ventricle of brain (procedure)
+http://snomed.info/sct	230893006	Removal of foreign body from ventricle of brain (procedure)
+http://snomed.info/sct	234064002	Marsupialization of cerebral lesion (procedure)
+http://snomed.info/sct	234915008	Marsupialization of lesion of brain (procedure)
+http://snomed.info/sct	25353009	Craniotomy (procedure)
+http://snomed.info/sct	2552005	Incision of cerebral subarachnoid space (procedure)
+http://snomed.info/sct	260643004	Middle cranial fossa craniectomy (procedure)
+http://snomed.info/sct	260644005	Posterior cranial fossa craniectomy (procedure)
+http://snomed.info/sct	26096003	Stripping of cerebral subdural membrane (procedure)
+http://snomed.info/sct	27181009	Removal of foreign body from brain by incision (procedure)
+http://snomed.info/sct	27190002	Excision of lesion of cerebral meninges (procedure)
+http://snomed.info/sct	2737001	Exploratory craniotomy, infratentorial (procedure)
+http://snomed.info/sct	273990004	Coagulation of brain tissue using electrical energy (procedure)
+http://snomed.info/sct	273991000	Lobotomy of brain (procedure)
+http://snomed.info/sct	28264008	Amygdalotomy (procedure)
+http://snomed.info/sct	287205001	Brain decortication (procedure)
+http://snomed.info/sct	287208004	Operation on thalamus (procedure)
+http://snomed.info/sct	29063004	Incision of cerebrum (procedure)
+http://snomed.info/sct	29114001	Incision and drainage of cranial sinus (procedure)
+http://snomed.info/sct	2968008	Craniectomy with treatment of penetrating wound of brain (procedure)
+http://snomed.info/sct	30195003	Excision of lesion of cerebral cortex (procedure)
+http://snomed.info/sct	304848009	Callosotomy (procedure)
+http://snomed.info/sct	304849001	Subpial transection of cortex (procedure)
+http://snomed.info/sct	307299001	Removal of lesion from intracranial subdural space (procedure)
+http://snomed.info/sct	31746001	Debridement of cerebral meninges (procedure)
+http://snomed.info/sct	32606000	Marsupialization of cyst of brain (procedure)
+http://snomed.info/sct	34097003	Craniectomy for excision of meningioma, infratentorial (procedure)
+http://snomed.info/sct	36910002	Excision of bone of cranium (procedure)
+http://snomed.info/sct	37380009	Destruction of cerebral lesion (procedure)
+http://snomed.info/sct	38512006	Resection of cerebral meninges (procedure)
+http://snomed.info/sct	39667005	Amygdalohippocampotomy (procedure)
+http://snomed.info/sct	39704007	Exploration of brain (procedure)
+http://snomed.info/sct	4045001	Drainage of cerebral ventricle by incision (procedure)
+http://snomed.info/sct	42699003	Incision of brain (procedure)
+http://snomed.info/sct	427037000	Complete callosotomy (procedure)
+http://snomed.info/sct	427599009	Excision of lesion of tissue of brain stem (procedure)
+http://snomed.info/sct	429314008	Partial callosotomy (procedure)
+http://snomed.info/sct	429510003	Multiple subpial transections of cerebral cortex (procedure)
+http://snomed.info/sct	438369007	Incision of bone of cranium and transection of tentorium cerebelli (procedure)
+http://snomed.info/sct	438614004	Excision of bone of cranium and excision of neoplasm of cerebellopontine angle (procedure)
+http://snomed.info/sct	439493007	Incision of bone of cranium with elevation of bone flap and excision of epileptogenic focus (procedure)
+http://snomed.info/sct	439499006	Excision of bone of cranium and excision of infratentorial neoplasm of brain (procedure)
+http://snomed.info/sct	440062005	Excision of bone of cranium with excision of abscess of brain (procedure)
+http://snomed.info/sct	441832005	Extirpation of lesion of meninges of base of skull (procedure)
+http://snomed.info/sct	442616007	Extirpation of lesion of meninges of clivus of skull (procedure)
+http://snomed.info/sct	445746008	Craniotomy and removal of hematoma from extradural space (procedure)
+http://snomed.info/sct	44589002	Debridement of brain (procedure)
+http://snomed.info/sct	445926009	Excision of intradural lesion of base of middle cranial fossa (procedure)
+http://snomed.info/sct	445942002	Excision of temporal lobe (procedure)
+http://snomed.info/sct	446103006	Partial excision of lesion of brain (procedure)
+http://snomed.info/sct	446115005	Elevation of depressed fracture of skull and debridement of brain (procedure)
+http://snomed.info/sct	446209004	Excision of intradural lesion of base of anterior cranial fossa (procedure)
+http://snomed.info/sct	446210009	Excision of intradural lesion of base of posterior cranial fossa (procedure)
+http://snomed.info/sct	446440008	Curettage of lesion of brain (procedure)
+http://snomed.info/sct	446570000	Craniectomy by retromastoid approach (procedure)
+http://snomed.info/sct	446571001	Craniotomy of posterior fossa (procedure)
+http://snomed.info/sct	446683008	Craniotomy and decompression of brain (procedure)
+http://snomed.info/sct	446705006	Trephination of cranium and drainage of chronic hematoma from intracranial subdural space (procedure)
+http://snomed.info/sct	446816008	Craniotomy and evacuation of traumatic hematoma (procedure)
+http://snomed.info/sct	446848007	Craniotomy and evacuation of blood clot (procedure)
+http://snomed.info/sct	446850004	Trephination of cranium and external drainage of effusion from intracranial subdural space (procedure)
+http://snomed.info/sct	446865003	Craniotomy and removal of foreign body (procedure)
+http://snomed.info/sct	446868001	Excision of meningioma by supratentorial approach (procedure)
+http://snomed.info/sct	447107001	Craniotomy and excision of neoplasm of brain (procedure)
+http://snomed.info/sct	447115003	Total excision of lesion of brain tissue (procedure)
+http://snomed.info/sct	447156000	Trephination of cranium and drainage of empyema of intracranial subdural space (procedure)
+http://snomed.info/sct	447362004	Excision of meningioma by infratentorial approach (procedure)
+http://snomed.info/sct	447363009	Craniotomy by retromastoid approach (procedure)
+http://snomed.info/sct	447469009	Partial excision of meningioma by infratentorial approach (procedure)
+http://snomed.info/sct	447518007	Partial excision of meningioma by supratentorial approach (procedure)
+http://snomed.info/sct	447529006	Total excision of meningioma by infratentorial approach (procedure)
+http://snomed.info/sct	447594008	Total excision of meningioma by supratentorial approach (procedure)
+http://snomed.info/sct	45322003	Decompression of brain (procedure)
+http://snomed.info/sct	4570007	Chemopallidectomy (procedure)
+http://snomed.info/sct	53423001	Lobectomy of brain (procedure)
+http://snomed.info/sct	5384005	Excision of part of frontal cortex (procedure)
+http://snomed.info/sct	54872009	Destruction of lesion of cerebral meninges (procedure)
+http://snomed.info/sct	54891009	Removal of foreign body from cerebral meninges (procedure)
+http://snomed.info/sct	56143008	Division of cerebral meninges (procedure)
+http://snomed.info/sct	56959007	Operation on globus pallidus (procedure)
+http://snomed.info/sct	58337008	Transorbital leukotomy (procedure)
+http://snomed.info/sct	58515002	Cryoleucotomy (procedure)
+http://snomed.info/sct	59696004	Curettage of cerebral meninges (procedure)
+http://snomed.info/sct	61327009	Puncture and drainage of craniopharyngioma (procedure)
+http://snomed.info/sct	61965006	Incision of cranial sinus (procedure)
+http://snomed.info/sct	67402009	Partial lobectomy of brain (procedure)
+http://snomed.info/sct	67864003	Trephination of cranium (procedure)
+http://snomed.info/sct	68346000	Drainage of cerebrum (procedure)
+http://snomed.info/sct	68731005	Decortication of cerebral meninges (procedure)
+http://snomed.info/sct	69086007	Curettage of brain (procedure)
+http://snomed.info/sct	69788001	Tractotomy of medulla oblongata (procedure)
+http://snomed.info/sct	71722001	Thalamotomy (procedure)
+http://snomed.info/sct	73006002	Cranial decompression, posterior fossa (procedure)
+http://snomed.info/sct	75626002	Pallidoamygdalotomy (procedure)
+http://snomed.info/sct	76961002	Lobotomy and tractotomy (procedure)
+http://snomed.info/sct	77697000	Cryothalamectomy (procedure)
+http://snomed.info/sct	789003	Cranial decompression, subtemporal, supratentorial (procedure)
+http://snomed.info/sct	79093007	Craniotomy with treatment of penetrating wound of brain (procedure)
+http://snomed.info/sct	807005	Excision of brain (procedure)
+http://snomed.info/sct	81259007	Incision of cerebral meninges (procedure)
+http://snomed.info/sct	8155007	Excision of basal ganglion (procedure)
+http://snomed.info/sct	81849003	Pallidoansotomy (procedure)
+http://snomed.info/sct	82678002	Incision of cerebral epidural space (procedure)
+http://snomed.info/sct	82917000	Reopening of craniotomy site (procedure)
+http://snomed.info/sct	87060004	Pallidotomy (procedure)
+http://snomed.info/sct	87192001	Pallidectomy (procedure)
+http://snomed.info/sct	90287005	Thalamectomy (procedure)
+http://snomed.info/sct	91652006	Incision of cerebral subdural space (procedure)
+http://snomed.info/sct	9257004	Revision of intracranial neurostimulator receiver (procedure)
+http://snomed.info/sct	9372002	Drainage of cranial sinus by trephination (procedure)
+http://snomed.info/sct	9580008	Chemothalamectomy (procedure)
+http://snomed.info/sct	9888007	Excision of intracranial lesion (procedure)

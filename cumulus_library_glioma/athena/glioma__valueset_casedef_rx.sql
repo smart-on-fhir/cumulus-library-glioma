@@ -16,7 +16,7 @@ freq_vocab as
 (
     select  count(*) as tf, rxcui, display
     from    lower_str
-    where   SAB!='RXNORM'
+    where   SAB not in ('RXNORM', 'GS', 'NDDF', 'MMX', 'MMSL')
     and     rxcui not in (select distinct rxcui from freq_rxnorm)
     group   by rxcui, display
 ),

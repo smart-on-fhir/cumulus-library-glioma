@@ -1,6 +1,6 @@
 import unittest
 from cumulus_library.builders.counts import CountsBuilder
-from cumulus_library_glioma.tools import manifest, filetool
+from cumulus_library_glioma.tools import manifest, filetool, tablespace
 
 class TestManifest(unittest.TestCase):
     def test_manifest_exists(self):
@@ -13,3 +13,5 @@ class TestManifest(unittest.TestCase):
         builder = CountsBuilder(manifest=manifest.get_manifest())
         self.assertEqual('glioma', builder.study_prefix)
 
+    def test_list_rx_valuesets(self):
+        print(manifest.list_rx_valuesets())

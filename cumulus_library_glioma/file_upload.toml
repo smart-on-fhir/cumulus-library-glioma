@@ -1,6 +1,26 @@
 config_type="file_upload"
 
 # ---------------------------------------------------------
+# Source: CURATED by CHIP+CHOP
+
+[tables.valueset_casedef]
+col_types = ["STRING","STRING","STRING"]
+file = "../resources/glioma_casedef_dx.csv"
+
+[tables.valueset_casedef_rx]
+col_types = ["STRING","STRING","STRING", "STRING","INT"]
+file = "../resources/glioma_casedef_rx.csv"
+
+[tables.valueset_dx_neurofibromatosis]
+file = "../resources/dx_neurofibromatosis.csv"
+
+[tables.valueset_diag_pathology]
+file = "../resources/diag_pathology.csv"
+
+[tables.valueset_doc_pathology]
+file = "../resources/diag_pathology.csv"
+
+# ---------------------------------------------------------
 # curated by standards orgs (FHIR and NCI)
 
 [tables.fhir_diagnostic_service]
@@ -22,20 +42,34 @@ file = "../resources/llm_note_type.csv"
 file = "../resources/llm_note_task.csv"
 
 # ---------------------------------------------------------
-# Source: CURATED by CHIP+CHOP
+# Source: https://vsac.nlm.nih.gov
 
-[tables.valueset_casedef]
-file = "../resources/valueset_casedef.csv"
+[tables.valueset_dx_brain_tumor]
+file = "../resources/dx_brain_tumor.tsv"
 
-[tables.valueset_dx_neurofibromatosis]
-file = "../resources/valueset_dx_neurofibromatosis.csv"
+[tables.valueset_dx_cancer]
+file = "../resources/dx_cancer.tsv"
 
-[tables.valueset_diag_pathology]
-file = "../resources/valueset_diag_pathology.csv"
+[tables.valueset_dx_focal_deficit]
+file = "../resources/dx_focal_deficit.tsv"
 
-[tables.valueset_doc_pathology]
-file = "../resources/valueset_diag_pathology.csv"
+[tables.valueset_dx_neuro]
+file = "../resources/dx_neuro.tsv"
 
-[tables.valueset_casedef_rx]
-col_types = ["STRING","STRING","STRING", "STRING", "INT"]
-file = "../resources/valueset_casedef_rx.csv"
+[tables.valueset_dx_neuropathy]
+file = "../resources/dx_neuropathy.tsv"
+
+[tables.valueset_dx_endo_diabetes]
+file = "../resources/dx_endo_diabetes.tsv"
+
+[tables.valueset_diag_brain_mri]
+file = "../resources/diag_brain_mri.tsv"
+
+[tables.valueset_diag_head_neck]
+file = "../resources/diag_head_neck.tsv"
+
+[tables.valueset_diag_radiology]
+file = "../resources/diag_radiology.tsv"
+
+[tables.valueset_proc_neurosurgery]
+file = "../resources/proc_neurosurgery.tsv"

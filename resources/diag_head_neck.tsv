@@ -1,0 +1,152 @@
+system	code	display
+http://loinc.org	code	display
+http://loinc.org	24586-0	MR Brain W anesthesia
+http://loinc.org	24587-8	MR Brain WO and W contrast IV
+http://loinc.org	24588-6	MR Brain WO and W contrast IV and W anesthesia
+http://loinc.org	24589-4	MR Brain W contrast IV
+http://loinc.org	24590-2	MR Brain
+http://loinc.org	24694-2	MR Face WO and W contrast IV
+http://loinc.org	24735-3	MR Internal auditory canal and Posterior fossa
+http://loinc.org	24740-3	MR Internal auditory canal and Posterior fossa WO and W contrast IV
+http://loinc.org	24839-3	MR Neck
+http://loinc.org	24840-1	MR Neck WO and W contrast IV
+http://loinc.org	24841-9	MR Neck W contrast IV
+http://loinc.org	24851-8	MR Orbit - bilateral WO and W contrast IV
+http://loinc.org	24852-6	MR Orbit - bilateral W contrast IV
+http://loinc.org	24879-9	MR Pituitary and Sella turcica WO and W contrast IV
+http://loinc.org	24880-7	MR Pituitary and Sella turcica
+http://loinc.org	24914-4	MR Sinuses
+http://loinc.org	24915-1	MR Sinuses W contrast IV
+http://loinc.org	24935-9	MR Cervical spine
+http://loinc.org	24936-7	MR Cervical spine W anesthesia
+http://loinc.org	24937-5	MR Cervical spine WO and W contrast IV
+http://loinc.org	24938-3	MR Cervical spine W contrast IV
+http://loinc.org	24999-5	MR Temporomandibular joint
+http://loinc.org	30655-5	MR Cerebral cisterns
+http://loinc.org	30656-3	MR Guidance for stereotactic localization of Brain-- W contrast IV
+http://loinc.org	30657-1	MR Brain WO contrast
+http://loinc.org	30658-9	MR Internal auditory canal WO contrast
+http://loinc.org	30659-7	MR Internal auditory canal WO and W contrast IV
+http://loinc.org	30660-5	MR Neck WO contrast
+http://loinc.org	30661-3	MR Orbit - bilateral WO contrast
+http://loinc.org	30662-1	MR Sinuses WO contrast
+http://loinc.org	30663-9	MR Sinuses WO and W contrast IV
+http://loinc.org	30666-2	MR Pituitary and Sella turcica WO contrast
+http://loinc.org	30667-0	MR Cervical spine WO contrast
+http://loinc.org	30800-7	MR Guidance for stereotactic localization of Brain-- WO contrast
+http://loinc.org	30854-4	MR Cervical and thoracic and lumbar spine WO contrast
+http://loinc.org	30855-1	MR Cervical and thoracic and lumbar spine WO and W contrast IV
+http://loinc.org	30857-7	MR Nerves cranial
+http://loinc.org	30860-1	MR Nasopharynx
+http://loinc.org	35953-9	MR Face
+http://loinc.org	35956-2	MR Internal auditory canal
+http://loinc.org	36045-3	MR Larynx
+http://loinc.org	36053-7	MR Parathyroid gland
+http://loinc.org	36056-0	MR Posterior fossa
+http://loinc.org	36088-3	MR Internal auditory canal limited
+http://loinc.org	36096-6	MR Brain limited W contrast IV
+http://loinc.org	36105-5	MR Brain limited WO contrast
+http://loinc.org	36148-5	MR Face W contrast IV
+http://loinc.org	36155-0	MR Internal auditory canal W contrast IV
+http://loinc.org	36230-1	MR Larynx W contrast IV
+http://loinc.org	36233-5	MR Nasopharynx W contrast IV
+http://loinc.org	36238-4	MR Pituitary and Sella turcica W contrast IV
+http://loinc.org	36243-4	MR Posterior fossa W contrast IV
+http://loinc.org	36382-0	MR Larynx WO and W contrast IV
+http://loinc.org	36384-6	MR Nasopharynx WO and W contrast IV
+http://loinc.org	36388-7	MR Posterior fossa WO and W contrast IV
+http://loinc.org	36407-5	MR Thyroid gland WO and W contrast IV
+http://loinc.org	36435-6	MR Face WO contrast
+http://loinc.org	36513-0	MR Nasopharynx WO contrast
+http://loinc.org	36518-9	MR Posterior fossa WO contrast
+http://loinc.org	36536-1	MR Thyroid gland WO contrast
+http://loinc.org	36777-1	MR Orbit
+http://loinc.org	36778-9	MR Orbit - right
+http://loinc.org	36820-9	MR Orbit W contrast IV
+http://loinc.org	36821-7	MR Orbit - left W contrast IV
+http://loinc.org	36822-5	MR Orbit - right W contrast IV
+http://loinc.org	36842-3	MR Orbit WO and W contrast IV
+http://loinc.org	36843-1	MR Orbit - left WO and W contrast IV
+http://loinc.org	36844-9	MR Orbit - right WO and W contrast IV
+http://loinc.org	36872-0	MR Orbit WO contrast
+http://loinc.org	36873-8	MR Orbit - left WO contrast
+http://loinc.org	36874-6	MR Orbit - right WO contrast
+http://loinc.org	36933-0	MR Salivary gland
+http://loinc.org	36936-3	MR Guidance for stereotactic biopsy of Brain
+http://loinc.org	36956-1	MR Orbit and Face WO contrast
+http://loinc.org	37215-1	MR Brain and Larynx W contrast IV
+http://loinc.org	37217-7	MR Brain stem and Cranial nerves
+http://loinc.org	37218-5	MR Brain.temporal
+http://loinc.org	37224-3	MR Parotid gland
+http://loinc.org	37228-4	MR Temporomandibular joint - bilateral
+http://loinc.org	37230-0	MR Temporomandibular joint - left
+http://loinc.org	37231-8	MR Temporomandibular joint - right
+http://loinc.org	37239-1	MR Brain and Internal auditory canal W contrast IV
+http://loinc.org	37241-7	MR Parotid gland W contrast IV
+http://loinc.org	37244-1	MR Temporomandibular joint W contrast IV
+http://loinc.org	37245-8	MR Temporomandibular joint - bilateral W contrast IV
+http://loinc.org	37247-4	MR Temporomandibular joint - left W contrast IV
+http://loinc.org	37249-0	MR Temporomandibular joint - right W contrast IV
+http://loinc.org	37265-6	MR Parotid gland WO and W contrast IV
+http://loinc.org	37268-0	MR Temporomandibular joint WO and W contrast IV
+http://loinc.org	37269-8	MR Temporomandibular joint - bilateral WO and W contrast IV
+http://loinc.org	37270-6	MR Temporomandibular joint - left WO and W contrast IV
+http://loinc.org	37271-4	MR Temporomandibular joint - right WO and W contrast IV
+http://loinc.org	37278-9	MR Brain and Internal auditory canal WO contrast
+http://loinc.org	37279-7	MR Brain and Larynx WO contrast
+http://loinc.org	37281-3	MR Parotid gland WO contrast
+http://loinc.org	37284-7	MR Temporomandibular joint WO contrast
+http://loinc.org	37285-4	MR Temporomandibular joint - bilateral WO contrast
+http://loinc.org	37286-2	MR Temporomandibular joint - left WO contrast
+http://loinc.org	37287-0	MR Temporomandibular joint - right WO contrast
+http://loinc.org	37435-5	MR Temporomandibular joint cine
+http://loinc.org	38061-8	MR Spine Cervical and Spine Thoracic and Spine Lumbar and Sacrum W contrast IV
+http://loinc.org	38836-3	MR Orbit - left
+http://loinc.org	39029-4	MR Orbit and Face WO and W contrast IV
+http://loinc.org	39038-5	MR Orbit and Face W contrast IV
+http://loinc.org	42270-9	MR Cervical spine W flexion and W extension
+http://loinc.org	42300-4	MR Thyroid gland
+http://loinc.org	42303-8	MR Orbit and Face
+http://loinc.org	42385-5	MR Brain and Pituitary and Sella turcica
+http://loinc.org	42386-3	MR Brain cine for CSF flow
+http://loinc.org	42391-3	MR Brain and Pituitary and Sella turcica W contrast IV
+http://loinc.org	42392-1	MR Brain and Pituitary and Sella turcica WO and W contrast IV
+http://loinc.org	42393-9	MR Brain and Pituitary and Sella turcica WO contrast
+http://loinc.org	42698-1	MR Cervical and thoracic and lumbar spine
+http://loinc.org	43455-5	MR Oropharynx
+http://loinc.org	43456-3	MR Cervical and thoracic spine WO and W contrast IV
+http://loinc.org	43457-1	MR Cervical and thoracic spine
+http://loinc.org	43530-5	MR Orbit and Face and Neck
+http://loinc.org	43769-9	MR Brain and Internal auditory canal WO and W contrast IV
+http://loinc.org	43772-3	MR Brain and Internal auditory canal
+http://loinc.org	44122-0	MR Guidance for stereotactic localization of Brain-- WO and W contrast IV
+http://loinc.org	46310-9	MR Orbit and Face and Neck WO and W contrast IV
+http://loinc.org	46321-6	MR Orbit and Face and Neck W contrast IV
+http://loinc.org	46332-3	MR Orbit and Face and Neck WO contrast
+http://loinc.org	48440-2	MR Skull base W contrast IV
+http://loinc.org	48444-4	MR Brain.temporal W contrast IV
+http://loinc.org	48445-1	MR Larynx WO contrast
+http://loinc.org	48447-7	MR Cervical spine W contrast IT
+http://loinc.org	48450-1	MR Cervical spine WO and W contrast IT
+http://loinc.org	48453-5	MR Brain.temporal WO contrast
+http://loinc.org	48461-8	MR Neck limited
+http://loinc.org	48687-8	MR Skull base WO contrast
+http://loinc.org	48694-4	MR Brain.temporal WO and W contrast IV
+http://loinc.org	69201-2	MR Guidance for biopsy of Salivary gland
+http://loinc.org	69202-0	MR Guidance for biopsy of Thyroid gland
+http://loinc.org	69211-1	MR Nasal bones
+http://loinc.org	69220-2	MR Skull base WO and W contrast IV
+http://loinc.org	80505-1	MR Brain for new diagnosis tumor WO and W contrast IV
+http://loinc.org	80506-9	MR Brain for low grade tumor WO and W contrast IV
+http://loinc.org	80507-7	MR Brain for high grade tumor WO and W contrast IV
+http://loinc.org	80510-1	MR Brain for metastasis WO and W contrast IV
+http://loinc.org	80511-9	MR Brain for postoperative
+http://loinc.org	82128-0	MR Brain and Face WO contrast
+http://loinc.org	82129-8	MR Brain and Face WO and W contrast IV
+http://loinc.org	82130-6	MR Face and Neck WO contrast
+http://loinc.org	82131-4	MR Face and Neck WO and W contrast IV
+http://loinc.org	89284-4	MR Cervical and thoracic spine W contrast IV
+http://loinc.org	91561-1	MR Cervical and thoracic and lumbar spine W contrast IV
+http://loinc.org	91591-8	MR Brain and Orbit - bilateral W contrast IV
+http://loinc.org	91592-6	MR Brain and Orbit - bilateral WO and W contrast IV
+http://loinc.org	91593-4	MR Brain and Orbit - bilateral WO contrast

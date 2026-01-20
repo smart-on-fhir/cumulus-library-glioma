@@ -8,18 +8,21 @@ CUBE(s) are simply the CUBE keyword in a group by "**CUBE**" clause resulting in
 
 CSV table naming conventions
 
-| alias             | meaning                                           |
-|-------------------|---------------------------------------------------|
-| glioma__          | cumulus study prefix                              |
-| cube              | powerset counts                                   |
-| patient           | count distinct patients                           |
-| encounter         | count distinct encounters                         |
-| note              | count distinct clinical notes (document or reprt) |
-| documentreference | count distinct document reference                 |
-| diagnosticreport  | count distinct diagnostic report                  |
-| casedef           | match case definition for LGG(Low Grade Glioma)   |
-| sample            | sample LGG cohort                                 |
-| index_post        | sample LGG cohort starting at first LGG diagnosis |
+| alias             | meaning                                                 |
+|-------------------|---------------------------------------------------------|
+| glioma__          | cumulus study prefix                                    |
+| cube              | powerset counts                                         |
+| patient           | count distinct patients                                 |
+| encounter         | count distinct encounters                               |
+| note              | count distinct clinical notes (document or reprt)       |
+| documentreference | count distinct document reference                       |
+| diagnosticreport  | count distinct diagnostic report                        |
+| casedef           | match case definition for LGG(Low Grade Glioma)         |
+| sample            | sample LGG cohort                                       |
+| pre               | sample LGG cohort _before_ first LGG diagnosis          |
+| peri              | sample LGG cohort _during_ first LGG diagnosis          |
+| peri_post         | sample LGG cohort _during or after_ first LGG diagnosis |
+| post              | sample LGG cohort _after_ first LGG diagnosis           |
 
 ### glioma__cube_encounter_casedef
 

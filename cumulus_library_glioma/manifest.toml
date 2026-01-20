@@ -60,142 +60,46 @@ study_prefix = "glioma"
     "athena/glioma__sample_casedef_post.sql",
 ]
 
-#"cube casedef"= [
-#    "athena/glioma__cube_encounter_casedef.sql",
-#    "athena/glioma__cube_patient_casedef.sql",
-#    "athena/glioma__cube_patient_casedef_dx.sql",
-#    "athena/glioma__cube_patient_casedef_rx.sql",
-#    "athena/glioma__cube_patient_casedef_proc.sql",
-#    "athena/glioma__cube_patient_casedef_lab.sql",
-#    "athena/glioma__cube_patient_sample_casedef.sql",
-#    "athena/glioma__cube_note_sample_casedef.sql",
-#    "athena/glioma__cube_patient_sample_casedef_peri_post.sql",
-#    "athena/glioma__cube_note_sample_casedef_peri_post.sql",
-#]
-#
-###    # -----------------------------------------------------------------------------
-###    # Variable cohorts
-###    "variable cohorts"= [
-###        "athena/glioma__cohort_diag_brain_mri.sql",
-###        "athena/glioma__cohort_diag_head_neck.sql",
-###        "athena/glioma__cohort_diag_pathology.sql",
-###        "athena/glioma__cohort_diag_radiology.sql",
-###        "athena/glioma__cohort_dx_brain_tumor.sql",
-###        "athena/glioma__cohort_dx_cancer.sql",
-###        "athena/glioma__cohort_dx_endo_diabetes.sql",
-###        "athena/glioma__cohort_dx_focal_deficit.sql",
-###        "athena/glioma__cohort_dx_neuro.sql",
-###        "athena/glioma__cohort_dx_neurofibromatosis.sql",
-###        "athena/glioma__cohort_dx_neuropathy.sql",
-###        "athena/glioma__cohort_lab_mtor_sirolimus.sql",
-###        "athena/glioma__cohort_proc_neurosurgery.sql",
-###        "athena/glioma__cohort_rx_cancer_directed.sql",
-###        "athena/glioma__cohort_rx_chemo.sql",
-###        "athena/glioma__cohort_rx_chemo_advanced.sql",
-###        "athena/glioma__cohort_rx_chemo_bevacizumab.sql",
-###        "athena/glioma__cohort_rx_chemo_platinum.sql",
-###        "athena/glioma__cohort_rx_chemo_platinum_carboplatin.sql",
-###        "athena/glioma__cohort_rx_chemo_vincristine.sql",
-###        "athena/glioma__cohort_rx_endo_diabetes.sql",
-###        "athena/glioma__cohort_rx_endo_therapy.sql",
-###        "athena/glioma__cohort_rx_mtor_everolimus.sql",
-###        "athena/glioma__cohort_rx_mtor_sirolimus.sql",
-###    ]
-###
-###    "variable union (structured)" = [
-###        "athena/glioma__cohort_variable_union.sql"
-###    ]
-###
-###    "variable wide (structured)" = [
-###        "athena/glioma__cohort_variable_wide.sql"
-###    ]
-###
-###    "cube FHIR"= [
-###        "athena/glioma__cube_patient_variable_union.sql",
-###        "athena/glioma__cube_encounter_variable_union.sql",
-###        "athena/glioma__cube_patient_variable_wide_diag.sql",
-###        "athena/glioma__cube_patient_variable_wide_neuro.sql",
-###        "athena/glioma__cube_patient_variable_wide_endo.sql",
-###        "athena/glioma__cube_patient_variable_wide_cancer.sql",
-###    ]
-###
-### -----------------------------------------------------------------------------
-### LLM note types (dependancy: DocumentTypeAnnotation)
-#
-#"samples for LLM tasks" = [
-#    "athena/glioma__sample_casedef_task.sql"
-#]
-#
-#"samples for LLM tasks diagnosis, drug, gene, surgery, progression" = [
-#    "athena/glioma__sample_casedef_task_diagnosis.sql",
-#    "athena/glioma__sample_casedef_task_drug.sql",
-#    "athena/glioma__sample_casedef_task_gene.sql",
-#    "athena/glioma__sample_casedef_task_surgery.sql",
-#    "athena/glioma__sample_casedef_task_progression.sql",
-#]
-#
-### -----------------------------------------------------------------------------
-### LLM task results (dependancy: DocumentTask)
-#
-#"glioma LLM (ICDO: grade, topography, morphology, behavior)" = [
-#    "athena/glioma__llm_dx.sql",
-#]
-#
-#"glioma LLM (surgery, drug, gene, variant)" = [
-#    "athena/glioma__llm_surgery.sql",
-#    "athena/glioma__llm_drug.sql",
-#    "athena/glioma__llm_gene.sql",
-#    "athena/glioma__llm_variant.sql",
-#]
-#
-#"cube LLM"= [
-#    "athena/glioma__cube_patient_llm_dx.sql",
-#    "athena/glioma__cube_patient_llm_surgery.sql",
-#    "athena/glioma__cube_patient_llm_drug.sql",
-#    "athena/glioma__cube_patient_llm_variant.sql",
-#    "athena/glioma__cube_patient_llm_gene.sql",
-#]
-#
-#"meta data" = [
-#    "athena/glioma__meta_date.sql",
-#    "athena/glioma__meta_version.sql",
-#]
-#
-##    # -----------------------------------------------------------------------------
-##    # Export to Cumulus aggregator
-##
-##    [export_config]
-##
-##    count_list = [
-##        # Case Definition
-##        "glioma__cube_encounter_casedef",
-##        "glioma__cube_patient_casedef",
-##        "glioma__cube_patient_casedef_dx",
-##        "glioma__cube_patient_casedef_rx",
-##        "glioma__cube_patient_casedef_proc",
-##        "glioma__cube_patient_casedef_lab",
-##        "glioma__cube_patient_sample_casedef",
-##        "glioma__cube_patient_sample_casedef_peri_post",
-##        "glioma__cube_note_sample_casedef",
-##        "glioma__cube_note_sample_casedef_peri_post",
-##
-##        # FHIR variables
-##        "glioma__cube_encounter_variable_union",
-##        "glioma__cube_patient_variable_union",
-##        "glioma__cube_patient_variable_wide_diag",
-##    #    "glioma__cube_patient_variable_wide_cancer",
-##    #	"glioma__cube_patient_variable_wide_neuro",
-##    #	"glioma__cube_patient_variable_wide_endo",
-##
-##        # LLM Variables
-##        "glioma__cube_patient_llm_dx",
-##        "glioma__cube_patient_llm_surgery",
-##        "glioma__cube_patient_llm_drug",
-##        "glioma__cube_patient_llm_variant",
-##        "glioma__cube_patient_llm_gene",
-##    ]
-##
-#meta_list = [
-#    "glioma__meta_date",
-#    "glioma__meta_version",
-#]
+"cube casedef"= [
+	"athena/glioma__cube_encounter_casedef.sql",
+	"athena/glioma__cube_patient_casedef.sql",
+	"athena/glioma__cube_patient_casedef_dx_comorbidity.sql",
+	"athena/glioma__cube_patient_casedef_rx.sql",
+	"athena/glioma__cube_patient_casedef_rx_variable.sql",
+	"athena/glioma__cube_patient_casedef_proc.sql",
+	"athena/glioma__cube_encounter_casedef_lab.sql",
+	"athena/glioma__cube_patient_sample_casedef.sql",
+	"athena/glioma__cube_note_sample_casedef.sql",
+	"athena/glioma__cube_patient_sample_casedef_peri_post.sql",
+	"athena/glioma__cube_note_sample_casedef_peri_post.sql",
+]
+
+"metadata study date and versioning " = [
+    "athena/glioma__meta_date.sql",
+    "athena/glioma__meta_version.sql"
+]
+
+## -----------------------------------------------------------------------------
+## Export to Cumulus aggregator
+
+[export_config]
+
+count_list = [
+    # Case Definition
+    "glioma__cube_encounter_casedef",
+    "glioma__cube_patient_casedef",
+    "glioma__cube_patient_casedef_dx_comorbidity",
+    "glioma__cube_patient_casedef_rx",
+    "glioma__cube_patient_casedef_rx_variable",
+    "glioma__cube_patient_casedef_proc",
+    "glioma__cube_patient_casedef_lab",
+    "glioma__cube_patient_sample_casedef",
+    "glioma__cube_patient_sample_casedef_peri_post",
+    "glioma__cube_note_sample_casedef",
+    "glioma__cube_note_sample_casedef_peri_post",
+]
+
+meta_list = [
+    "glioma__meta_date",
+    "glioma__meta_version",
+]
