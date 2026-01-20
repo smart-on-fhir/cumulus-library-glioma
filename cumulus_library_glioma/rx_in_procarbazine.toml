@@ -1,0 +1,6 @@
+config_type="valueset"
+table_prefix = "rx_in_procarbazine"
+
+[umls_stewards.rx_in_procarbazine]
+sab = "RXNORM"
+search_terms = ["procarbazine"]

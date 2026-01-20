@@ -4,6 +4,7 @@ select * from glioma__rx_class_alk_valuesets	    UNION ALL
 select * from glioma__rx_class_alkylating_valuesets	UNION ALL
 select * from glioma__rx_class_antimetabolite_valuesets	UNION ALL
 select * from glioma__rx_class_braf_valuesets	    UNION ALL
+select * from glioma__rx_class_topoisomerase_valuesets	UNION ALL
 select * from glioma__rx_class_fgfr_valuesets	    UNION ALL
 select * from glioma__rx_class_idh_valuesets	    UNION ALL
 select * from glioma__rx_class_mab_valuesets	    UNION ALL
@@ -13,11 +14,16 @@ select * from glioma__rx_class_mtor_valuesets	    UNION ALL
 select * from glioma__rx_class_ntrk_valuesets	    UNION ALL
 select * from glioma__rx_class_pan_raf_valuesets	UNION ALL
 select * from glioma__rx_class_platinum_valuesets	UNION ALL
+select * from glioma__rx_class_ret_valuesets	    UNION ALL
+select * from glioma__rx_class_ros1_valuesets	    UNION ALL
 select * from glioma__rx_class_vinca_valuesets	    UNION ALL
 select * from glioma__rx_in_bevacizumab_valuesets	UNION ALL
 select * from glioma__rx_in_carboplatin_valuesets	UNION ALL
 select * from glioma__rx_in_cisplatin_valuesets	    UNION ALL
+select * from glioma__rx_in_etoposide_valuesets	    UNION ALL
 select * from glioma__rx_in_irinotecan_valuesets	UNION ALL
+select * from glioma__rx_in_lomustine_valuesets	    UNION ALL
+select * from glioma__rx_in_procarbazine_valuesets	UNION ALL
 select * from glioma__rx_in_temozolomide_valuesets	UNION ALL
 select * from glioma__rx_in_thioguanine_valuesets	UNION ALL
 select * from glioma__rx_in_trametinib_valuesets	UNION ALL

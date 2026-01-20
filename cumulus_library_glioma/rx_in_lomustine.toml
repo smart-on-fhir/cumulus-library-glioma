@@ -1,0 +1,8 @@
+config_type="valueset"
+table_prefix = "rx_in_lomustine"
+
+[umls_stewards.rx_in_lomustine]
+sab = "RXNORM"
+search_terms = [
+    "lomustine",
+]
