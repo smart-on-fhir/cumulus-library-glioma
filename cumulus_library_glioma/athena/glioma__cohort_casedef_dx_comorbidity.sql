@@ -1,10 +1,14 @@
-create  table glioma__cohort_casedef_dx as
+create  table glioma__cohort_casedef_dx_comorbidity as
 WITH
 casedef as
 (
     select distinct
             days_since,
             ordinal_since,
+            pre,
+            peri,
+            peri_post,
+            post,
             dx_system,
             coalesce(dx_code, 'NO_CODE')        as dx_code,
             coalesce(dx_display, 'NO_DISPLAY')  as dx_display,
@@ -15,6 +19,10 @@ casedef as
 select  distinct
         casedef.days_since,
         casedef.ordinal_since,
+        casedef.pre,
+        casedef.peri,
+        casedef.peri_post,
+        casedef.post,
         dx.*
 from    casedef,
         glioma__cohort_study_population_dx as dx
