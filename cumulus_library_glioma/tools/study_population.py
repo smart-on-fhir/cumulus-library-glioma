@@ -1,5 +1,5 @@
 from pathlib import Path
-from cumulus_library_glioma.tools import filetool, tablespace
+from cumulus_library_glioma.tools import filetool
 from cumulus_library_glioma.tools.settings import CUMULUS_CACHE_PREFIX
 from cumulus_library_glioma.tools.tablespace import name_prefix
 from cumulus_library_glioma.tools import manifest
@@ -57,6 +57,30 @@ def drop_cache(table_list:list, cache='cache') -> list[str]:
 # Make
 ###############################################################################
 def make_study_population(table_list:list, cache:str|bool =False) -> list[Path]:
+    """
+    Study Population is built from "template/" dir.
+    Study Population matches inclusion/exlusion criteria from `StudyBuilderConfig`.
+    Study Population contains all Patient encounters matching criteria and all FHIR resources below.
+
+    Study Builder then builds each `AspectKey`:
+        dx = 'diagnoses'
+        rx = 'medications'
+        lab = 'labs'
+        proc = 'procedures'
+        doc = 'document'
+        diag = 'diagnostic_report'
+
+    Produces:
+    * cohort_study_population.sql       Patient Encounters matching criteria
+    * cohort_study_population_dx.sql    -> FHIR Condition
+    * cohort_study_population_rx.sql    -> FHIR MedicationRequest
+    * cohort_study_population_lab.sql   -> FHIR Observation.category=lab
+    * cohort_study_population_doc.sql   -> FHIR DocumentReference
+    * cohort_study_population_proc.sql  -> FHIR Procedure
+    * cohort_study_population_diag.sql  -> FHIR DiagnosticReport
+
+    :return: list of SQL `study_population`
+    """
     if cache:
         return [create_view(table, cache) for table in table_list]
     else:
@@ -64,4 +88,4 @@ def make_study_population(table_list:list, cache:str|bool =False) -> list[Path]:
 
 if __name__ == '__main__':
     target_list = make_study_population(TABLE_LIST, CUMULUS_CACHE_PREFIX)
-    print(manifest.as_toml(target_list, 'study_population'))
+    print(manifest.as_toml_parallel(target_list, 'study_population'))

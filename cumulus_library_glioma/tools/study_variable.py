@@ -127,4 +127,4 @@ def make() -> list[Path]:
 
 if __name__ == '__main__':
     target_files = make() + [make_union(), make_wide()]
-    print(manifest.as_toml(target_files, 'variable cohorts'))
+    print(manifest.as_toml_parallel(target_files, 'variable cohorts'))
