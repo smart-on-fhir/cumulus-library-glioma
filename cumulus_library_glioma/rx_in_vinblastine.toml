@@ -1,0 +1,6 @@
+config_type="valueset"
+table_prefix = "rx_in_vinblastine"
+
+[umls_stewards.rx_in_vinblastine]
+sab = "RXNORM"
+search_terms = ["vinblastine"]

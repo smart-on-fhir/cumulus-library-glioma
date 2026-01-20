@@ -1,5 +1,5 @@
 create table glioma__cohort_diag_brain_mri as 
-select * from 
+select distinct * from 
  glioma__cohort_study_population_diag , 
 glioma__valueset_diag_brain_mri
 WHERE

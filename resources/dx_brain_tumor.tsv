@@ -1,0 +1,90 @@
+system	code	display
+http://snomed.info/sct	code	display
+http://snomed.info/sct	109911004	Overlapping malignant neoplasm of brain and other parts of the central nervous system (disorder)
+http://snomed.info/sct	109912006	Overlapping malignant neoplasm of brain (disorder)
+http://snomed.info/sct	126952004	Neoplasm of brain (disorder)
+http://snomed.info/sct	126953009	Neoplasm of cerebrum (disorder)
+http://snomed.info/sct	126954003	Neoplasm of frontal lobe (disorder)
+http://snomed.info/sct	126955002	Neoplasm of temporal lobe (disorder)
+http://snomed.info/sct	126956001	Neoplasm of parietal lobe (disorder)
+http://snomed.info/sct	126957005	Neoplasm of occipital lobe (disorder)
+http://snomed.info/sct	126960003	Neoplasm of cerebellum (disorder)
+http://snomed.info/sct	126961004	Neoplasm of brain stem (disorder)
+http://snomed.info/sct	188297001	Malignant neoplasm of midbrain (disorder)
+http://snomed.info/sct	188462001	Metastatic malignant neoplasm to brain and spinal cord (disorder)
+http://snomed.info/sct	189162003	Benign neoplasm of brain, supratentorial (disorder)
+http://snomed.info/sct	189484008	Neoplasm of uncertain behavior of brain and/or spinal cord (disorder)
+http://snomed.info/sct	189487001	Neoplasm of uncertain or unknown behavior of brain, supratentorial (disorder)
+http://snomed.info/sct	189488006	Neoplasm of uncertain or unknown behavior of brain, infratentorial (disorder)
+http://snomed.info/sct	363467004	Malignant neoplasm of frontal lobe (disorder)
+http://snomed.info/sct	363468009	Malignant neoplasm of temporal lobe (disorder)
+http://snomed.info/sct	363469001	Malignant neoplasm of parietal lobe (disorder)
+http://snomed.info/sct	363470000	Malignant neoplasm of occipital lobe (disorder)
+http://snomed.info/sct	363473003	Malignant neoplasm of brainstem (disorder)
+http://snomed.info/sct	428061005	Malignant neoplasm of brain (disorder)
+http://snomed.info/sct	429033009	Malignant neoplasm of cerebrum (disorder)
+http://snomed.info/sct	448248006	Malignant neoplasm of axial suprasellar region of brain (disorder)
+http://snomed.info/sct	448989001	Malignant epithelial neoplasm of brain (disorder)
+http://snomed.info/sct	449420002	Malignant neoplasm of cerebellum (disorder)
+http://snomed.info/sct	92029009	Benign neoplasm of brain stem (disorder)
+http://snomed.info/sct	92030004	Benign neoplasm of brain (disorder)
+http://snomed.info/sct	92050000	Benign neoplasm of cerebellum (disorder)
+http://snomed.info/sct	92114009	Benign neoplasm of frontal lobe (disorder)
+http://snomed.info/sct	92253009	Benign neoplasm of occipital lobe (disorder)
+http://snomed.info/sct	92276007	Benign neoplasm of parietal lobe (disorder)
+http://snomed.info/sct	92427003	Benign neoplasm of temporal lobe (disorder)
+http://snomed.info/sct	93726004	Primary malignant neoplasm of brain stem (disorder)
+http://snomed.info/sct	93727008	Primary malignant neoplasm of brain (disorder)
+http://snomed.info/sct	93746009	Primary malignant neoplasm of cerebellum (disorder)
+http://snomed.info/sct	93749002	Primary malignant neoplasm of cerebrum (disorder)
+http://snomed.info/sct	93807001	Primary malignant neoplasm of frontal lobe (disorder)
+http://snomed.info/sct	93928006	Primary malignant neoplasm of occipital lobe (disorder)
+http://snomed.info/sct	93946000	Primary malignant neoplasm of parietal lobe (disorder)
+http://snomed.info/sct	94086000	Primary malignant neoplasm of temporal lobe (disorder)
+http://snomed.info/sct	94224009	Metastatic malignant neoplasm to brain stem (disorder)
+http://snomed.info/sct	94225005	Metastatic malignant neoplasm to brain (disorder)
+http://snomed.info/sct	94245002	Metastatic malignant neoplasm to cerebellum (disorder)
+http://snomed.info/sct	94248000	Metastatic malignant neoplasm to cerebrum (disorder)
+http://snomed.info/sct	94309003	Metastatic malignant neoplasm to frontal lobe (disorder)
+http://snomed.info/sct	94448002	Metastatic malignant neoplasm to occipital lobe (disorder)
+http://snomed.info/sct	94471000	Metastatic malignant neoplasm to parietal lobe (disorder)
+http://snomed.info/sct	94622002	Metastatic malignant neoplasm to temporal lobe (disorder)
+http://snomed.info/sct	94766006	Neoplasm of uncertain behavior of brain stem (disorder)
+http://snomed.info/sct	94767002	Neoplasm of uncertain behavior of brain (disorder)
+http://snomed.info/sct	94786005	Neoplasm of uncertain behavior of cerebellum (disorder)
+http://snomed.info/sct	94789003	Neoplasm of uncertain behavior of cerebrum (disorder)
+http://snomed.info/sct	94847003	Neoplasm of uncertain behavior of frontal lobe (disorder)
+http://snomed.info/sct	94968001	Neoplasm of uncertain behavior of occipital lobe (disorder)
+http://snomed.info/sct	94986003	Neoplasm of uncertain behavior of parietal lobe (disorder)
+http://snomed.info/sct	95126008	Neoplasm of uncertain behavior of temporal lobe (disorder)
+http://hl7.org/fhir/sid/icd-10-cm	C71	Malignant neoplasm of brain
+http://hl7.org/fhir/sid/icd-10-cm	C71.0	Malignant neoplasm of cerebrum, except lobes and ventricles
+http://hl7.org/fhir/sid/icd-10-cm	C71.1	Malignant neoplasm of frontal lobe
+http://hl7.org/fhir/sid/icd-10-cm	C71.2	Malignant neoplasm of temporal lobe
+http://hl7.org/fhir/sid/icd-10-cm	C71.3	Malignant neoplasm of parietal lobe
+http://hl7.org/fhir/sid/icd-10-cm	C71.4	Malignant neoplasm of occipital lobe
+http://hl7.org/fhir/sid/icd-10-cm	C71.5	Malignant neoplasm of cerebral ventricle
+http://hl7.org/fhir/sid/icd-10-cm	C71.6	Malignant neoplasm of cerebellum
+http://hl7.org/fhir/sid/icd-10-cm	C71.7	Malignant neoplasm of brain stem
+http://hl7.org/fhir/sid/icd-10-cm	C71.8	Malignant neoplasm of overlapping sites of brain
+http://hl7.org/fhir/sid/icd-10-cm	C71.9	Malignant neoplasm of brain, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	C79.3	Secondary malignant neoplasm of brain and cerebral meninges
+http://hl7.org/fhir/sid/icd-10-cm	C79.31	Secondary malignant neoplasm of brain
+http://hl7.org/fhir/sid/icd-10-cm	D32.0	Benign neoplasm of cerebral meninges
+http://hl7.org/fhir/sid/icd-10-cm	D32.9	Benign neoplasm of meninges, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	D33	Benign neoplasm of brain and other parts of central nervous system
+http://hl7.org/fhir/sid/icd-10-cm	D33.0	Benign neoplasm of brain, supratentorial
+http://hl7.org/fhir/sid/icd-10-cm	D33.1	Benign neoplasm of brain, infratentorial
+http://hl7.org/fhir/sid/icd-10-cm	D33.2	Benign neoplasm of brain, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	D33.3	Benign neoplasm of cranial nerves
+http://hl7.org/fhir/sid/icd-10-cm	D43	Neoplasm of uncertain behavior of brain and central nervous system
+http://hl7.org/fhir/sid/icd-10-cm	D43.0	Neoplasm of uncertain behavior of brain, supratentorial
+http://hl7.org/fhir/sid/icd-10-cm	D43.1	Neoplasm of uncertain behavior of brain, infratentorial
+http://hl7.org/fhir/sid/icd-10-cm	D43.2	Neoplasm of uncertain behavior of brain, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	D43.3	Neoplasm of uncertain behavior of cranial nerves
+http://hl7.org/fhir/sid/icd-10-cm	D49.6	Neoplasm of unspecified behavior of brain
+http://hl7.org/fhir/sid/icd-10-cm	H47.631	Disorders of visual cortex in (due to) neoplasm, right side of brain
+http://hl7.org/fhir/sid/icd-10-cm	H47.632	Disorders of visual cortex in (due to) neoplasm, left side of brain
+http://hl7.org/fhir/sid/icd-10-cm	H47.639	Disorders of visual cortex in (due to) neoplasm, unspecified side of brain
+http://hl7.org/fhir/sid/icd-10-cm	Z85.841	Personal history of malignant neoplasm of brain
+http://hl7.org/fhir/sid/icd-10-cm	Z86.011	Personal history of benign neoplasm of the brain

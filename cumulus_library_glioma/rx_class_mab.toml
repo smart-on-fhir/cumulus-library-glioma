@@ -1,0 +1,13 @@
+config_type="valueset"
+table_prefix = "rx_class_mab"
+
+[umls_stewards.rx_class_mab]
+sab = "RXNORM"
+search_terms = [
+    "bevacizumab",
+    "avastin",
+    "nivolumab",
+    "pembrolizumab",
+    "alemtuzumab",
+    "basiliximab"
+]

@@ -1,0 +1,692 @@
+system	code	display
+http://snomed.info/sct	code	display
+http://snomed.info/sct	101000119102	Numbness and tingling sensation of skin (finding)
+http://snomed.info/sct	102601005	Perioral numbness (finding)
+http://snomed.info/sct	102603008	Numbness of skin (finding)
+http://snomed.info/sct	102938007	Difficulty writing (finding)
+http://snomed.info/sct	102958008	Increased polarization of nerve cell and nerve fiber (finding)
+http://snomed.info/sct	102988004	Abnormal straight line walking test (finding)
+http://snomed.info/sct	102991004	Abnormal eyes closed straight line walking test (finding)
+http://snomed.info/sct	102992006	Scissors gait on eyes closed straight line walking test (finding)
+http://snomed.info/sct	102993001	Deviation to one side on eyes closed straight line walking test (finding)
+http://snomed.info/sct	102996009	Cryesthesia (finding)
+http://snomed.info/sct	102997000	Psychroalgia (finding)
+http://snomed.info/sct	102998005	Cold sensation absent (finding)
+http://snomed.info/sct	102999002	Cryalgesia (finding)
+http://snomed.info/sct	103000001	Crymodynia (finding)
+http://snomed.info/sct	103003004	Impaired body position sense (finding)
+http://snomed.info/sct	103005006	Inadequate analgesia (finding)
+http://snomed.info/sct	103019006	Bulging fontanelle (finding)
+http://snomed.info/sct	10325006	Anomic aphasia (finding)
+http://snomed.info/sct	103257003	Abnormal lateral conjugate gaze (finding)
+http://snomed.info/sct	106145009	Motor nervous system finding (finding)
+http://snomed.info/sct	106169008	Aphasia, agnosia, dyslexia AND/OR apraxia (finding)
+http://snomed.info/sct	110362007	Absent acmesthesia (finding)
+http://snomed.info/sct	11145003	Single limb ataxia (finding)
+http://snomed.info/sct	11193009	Metallic taste (finding)
+http://snomed.info/sct	112102006	Atypical neuralgia (finding)
+http://snomed.info/sct	112105008	Sense of smell altered (finding)
+http://snomed.info/sct	112107000	Primary bitter taste disorder (disorder)
+http://snomed.info/sct	1140008	Thermal hypesthesia (finding)
+http://snomed.info/sct	11800000	Subcortical alexia (finding)
+http://snomed.info/sct	119416008	Epigastric discomfort (finding)
+http://snomed.info/sct	12273009	Non-rhythmic abnormal eye movement (finding)
+http://snomed.info/sct	124868006	Receptor site alteration (finding)
+http://snomed.info/sct	124869003	Increase in receptor sites (finding)
+http://snomed.info/sct	124870002	Decrease in receptor sites (finding)
+http://snomed.info/sct	124871003	Absence of receptor sites (finding)
+http://snomed.info/sct	124872005	Surface receptor redistribution (finding)
+http://snomed.info/sct	12869004	Primary salt taste disorder (disorder)
+http://snomed.info/sct	129609000	Spinocerebellar ataxia (disorder)
+http://snomed.info/sct	129860001	Kinesthetic alteration (finding)
+http://snomed.info/sct	13028004	Abnormal nervous system function (finding)
+http://snomed.info/sct	13044008	Associative aphasia (finding)
+http://snomed.info/sct	130979001	Comfort alteration (finding)
+http://snomed.info/sct	130980003	Decreased vibratory sense (finding)
+http://snomed.info/sct	130984007	Tactile alteration (finding)
+http://snomed.info/sct	130985008	Disturbed sensory perception (finding)
+http://snomed.info/sct	130990006	Transcortical aphasia (finding)
+http://snomed.info/sct	13106001	Absence of 2-point discrimination (finding)
+http://snomed.info/sct	131182003	Visual alteration (finding)
+http://snomed.info/sct	135810007	Delayed myelination (finding)
+http://snomed.info/sct	135873002	Transient paresthesia (finding)
+http://snomed.info/sct	14150005	Alteration in comfort: chronic pain (finding)
+http://snomed.info/sct	14151009	Hyperesthesia (finding)
+http://snomed.info/sct	14686007	Hemianesthesia (finding)
+http://snomed.info/sct	16170002	Musical alexia (finding)
+http://snomed.info/sct	16171003	Double athetosis (disorder)
+http://snomed.info/sct	162024005	Difficulty swallowing solids (finding)
+http://snomed.info/sct	162025006	Difficulty swallowing fluid (finding)
+http://snomed.info/sct	162200009	Temporary loss of memory (finding)
+http://snomed.info/sct	162248005	Prickling sensation of skin (finding)
+http://snomed.info/sct	162335008	Transient neurological symptoms (finding)
+http://snomed.info/sct	16269008	Neuralgia (finding)
+http://snomed.info/sct	16831006	Indifference to pain (finding)
+http://snomed.info/sct	17360003	Hippocampal pressure groove (finding)
+http://snomed.info/sct	17450006	Myoclonus (finding)
+http://snomed.info/sct	18156008	Abdominal hyperesthesia (finding)
+http://snomed.info/sct	18358003	Prosopagnosia (finding)
+http://snomed.info/sct	18618006	Aura (finding)
+http://snomed.info/sct	192071009	Mild memory disturbance (finding)
+http://snomed.info/sct	192138007	Developmental dyslexia (disorder)
+http://snomed.info/sct	192871008	Early onset cerebellar ataxia with myoclonus (disorder)
+http://snomed.info/sct	192874000	Cerebellar ataxia associated with another disorder (disorder)
+http://snomed.info/sct	192970008	Cauda equina syndrome (disorder)
+http://snomed.info/sct	192971007	Cauda equina syndrome not affecting bladder (disorder)
+http://snomed.info/sct	193722001	Low vision, both eyes (disorder)
+http://snomed.info/sct	194177006	Opsoclonia (finding)
+http://snomed.info/sct	19557000	Hyperexplexia (finding)
+http://snomed.info/sct	198030008	Periodic paralysis (finding)
+http://snomed.info/sct	20262006	Ataxia (finding)
+http://snomed.info/sct	20301004	Dysphasia (finding)
+http://snomed.info/sct	20361002	Alteration in comfort: pain (finding)
+http://snomed.info/sct	2070002	Burning sensation in eye (finding)
+http://snomed.info/sct	20818009	Dissociated spinal nerve sensory loss (finding)
+http://snomed.info/sct	20930002	Anosognosia (finding)
+http://snomed.info/sct	220363002	Central nervous system deficit (finding)
+http://snomed.info/sct	22281006	Pseudogeusesthesia (finding)
+http://snomed.info/sct	225897003	Smiles spontaneously (finding)
+http://snomed.info/sct	228147004	Gross motor impairment (finding)
+http://snomed.info/sct	228148009	Fine motor impairment (finding)
+http://snomed.info/sct	229654003	Brocas dysphasia (finding)
+http://snomed.info/sct	229664007	Receptive dysphasia (disorder)
+http://snomed.info/sct	229665008	Expressive dysphasia (finding)
+http://snomed.info/sct	229666009	Efferent motor dysphasia (finding)
+http://snomed.info/sct	229677003	Deep dysgraphia (finding)
+http://snomed.info/sct	229678008	Phonological dysgraphia (finding)
+http://snomed.info/sct	229679000	Surface dysgraphia (finding)
+http://snomed.info/sct	229680002	Deep dyslexia (finding)
+http://snomed.info/sct	229681003	Phonological dyslexia (finding)
+http://snomed.info/sct	229682005	Surface dyslexia (finding)
+http://snomed.info/sct	229684006	Spastic dysarthria (finding)
+http://snomed.info/sct	229685007	Flaccid dysarthria (finding)
+http://snomed.info/sct	229686008	Mixed dysarthria (finding)
+http://snomed.info/sct	229687004	Cerebellar dysarthria (finding)
+http://snomed.info/sct	229688009	Extrapyramidal dysarthria (finding)
+http://snomed.info/sct	229690005	Dysarthriapneumophonia (finding)
+http://snomed.info/sct	229691009	Dysarthria of velopharynx (finding)
+http://snomed.info/sct	229747003	Developmental dysphasia (finding)
+http://snomed.info/sct	229749000	Congenital auditory agnosia (finding)
+http://snomed.info/sct	23011003	Global aphasia (finding)
+http://snomed.info/sct	230227009	Early onset cerebellar ataxia (disorder)
+http://snomed.info/sct	230228004	Early onset cerebellar ataxia with retained tendon reflexes (disorder)
+http://snomed.info/sct	230229007	Early onset cerebellar ataxia with hypogonadism (disorder)
+http://snomed.info/sct	230230002	Early onset cerebellar ataxia with retinitis pigmentosa and optic atrophy (disorder)
+http://snomed.info/sct	230231003	Early onset cerebellar ataxia with essential tremor (disorder)
+http://snomed.info/sct	230232005	Late onset cerebellar ataxia (disorder)
+http://snomed.info/sct	230233000	Progressive cerebellar ataxia (disorder)
+http://snomed.info/sct	230234006	Periodic ataxia (disorder)
+http://snomed.info/sct	230235007	Olivopontocerebellar atrophy with slow eye movement (disorder)
+http://snomed.info/sct	230236008	Olivopontocerebellar atrophy with blindness (disorder)
+http://snomed.info/sct	230237004	Progressive spinocerebellar ataxia with decreased tendon reflexes (disorder)
+http://snomed.info/sct	230238009	Progressive spinocerebellar ataxia with retained tendon reflexes (disorder)
+http://snomed.info/sct	230239001	Progressive cerebellar ataxia with palatal myoclonus (disorder)
+http://snomed.info/sct	230240004	Progressive cerebellar ataxia with hypogonadism (disorder)
+http://snomed.info/sct	230279005	Non-Alzheimers progressive dysphasia (disorder)
+http://snomed.info/sct	230336005	Vocal tic disorder (disorder)
+http://snomed.info/sct	230337001	Motor tic disorder (disorder)
+http://snomed.info/sct	230736007	Transient global amnesia (finding)
+http://snomed.info/sct	23133003	Dysdiadochokinesis (finding)
+http://snomed.info/sct	23168003	Speech dysfunction (finding)
+http://snomed.info/sct	23869008	Literal paraphasia (finding)
+http://snomed.info/sct	23924001	Tight chest (finding)
+http://snomed.info/sct	24057006	Combined aphasia (finding)
+http://snomed.info/sct	24067001	Central paraphasia (finding)
+http://snomed.info/sct	242027005	Paralysis following electric shock (finding)
+http://snomed.info/sct	24234009	Hemihypalgesia (finding)
+http://snomed.info/sct	24480009	Abnormal nerve conduction (finding)
+http://snomed.info/sct	24500009	Autotopagnosia (finding)
+http://snomed.info/sct	246636008	Hazy vision (disorder)
+http://snomed.info/sct	246779003	Vestibulo-ocular input on whole body rotation (finding)
+http://snomed.info/sct	247318005	Abnormal taste in mouth (finding)
+http://snomed.info/sct	247319002	Taste of food lingers (finding)
+http://snomed.info/sct	247320008	Things smell different (finding)
+http://snomed.info/sct	247321007	Unusual smell in nose (finding)
+http://snomed.info/sct	247322000	Abnormal sensation (finding)
+http://snomed.info/sct	247323005	Tightness in throat (finding)
+http://snomed.info/sct	247334008	Sensation as if period due (finding)
+http://snomed.info/sct	247335009	Sensation as if urinary bladder still full (finding)
+http://snomed.info/sct	247336005	Persistent abdominal sensation after micturition (finding)
+http://snomed.info/sct	247337001	Persistent perineal sensation after micturition (finding)
+http://snomed.info/sct	247338006	Sensation as if bowel still full (finding)
+http://snomed.info/sct	247339003	Sensation as if stool remains in rectum (finding)
+http://snomed.info/sct	247340001	Sensation as if diarrhea will start (finding)
+http://snomed.info/sct	247341002	Sensation of swelling (finding)
+http://snomed.info/sct	247342009	Foreign body sensation (finding)
+http://snomed.info/sct	247402000	Low tolerance of pain (finding)
+http://snomed.info/sct	247404004	Allodynia (finding)
+http://snomed.info/sct	247407006	High tolerance of pain (finding)
+http://snomed.info/sct	247592009	Poor short-term memory (finding)
+http://snomed.info/sct	247994001	Noise intolerance (finding)
+http://snomed.info/sct	248024008	Finding of delayed reaction time (finding)
+http://snomed.info/sct	248145004	Inappropriate movement of face (finding)
+http://snomed.info/sct	24982008	Diplopia (disorder)
+http://snomed.info/sct	249939004	Proximal muscle weakness (finding)
+http://snomed.info/sct	250062002	Arms ataxic (finding)
+http://snomed.info/sct	250065000	Legs ataxic (finding)
+http://snomed.info/sct	250067008	Truncal ataxia (finding)
+http://snomed.info/sct	25045008	Motor level spinal paralysis (finding)
+http://snomed.info/sct	25094008	Tactile agnosia (finding)
+http://snomed.info/sct	251566000	Motor nerve conduction block (finding)
+http://snomed.info/sct	251567009	Repetitive discharge on single stimulus (finding)
+http://snomed.info/sct	251572000	Amplitude decrement at low rate (2-3Hz) (finding)
+http://snomed.info/sct	251573005	Amplitude increment at high rate (20-50Hz) (finding)
+http://snomed.info/sct	251574004	Finding of post-activation (tetanic) potentiation (finding)
+http://snomed.info/sct	251575003	Post-activation (tetanic) exhaustion (finding)
+http://snomed.info/sct	264552009	Neurological deficit (finding)
+http://snomed.info/sct	26544005	Muscle weakness (finding)
+http://snomed.info/sct	26857005	Hyperesthesia dolorosa (finding)
+http://snomed.info/sct	271723009	Sensory agnosia (finding)
+http://snomed.info/sct	271801002	Taste sense altered (finding)
+http://snomed.info/sct	271805006	Anesthesia of skin (finding)
+http://snomed.info/sct	27206009	Agraphia (finding)
+http://snomed.info/sct	27362007	Dyslogia (finding)
+http://snomed.info/sct	274662006	Transient limb paralysis (finding)
+http://snomed.info/sct	275462005	Disorder of smell (disorder)
+http://snomed.info/sct	27572006	Intention myoclonus (finding)
+http://snomed.info/sct	275921007	Scalp itchy (finding)
+http://snomed.info/sct	276299000	Dissociative anesthesia (finding)
+http://snomed.info/sct	276435006	Pain / sensation finding (finding)
+http://snomed.info/sct	276444007	Generalized pruritus (finding)
+http://snomed.info/sct	277028004	Diffuse motor nerve conduction abnormality (finding)
+http://snomed.info/sct	277029007	Focal motor nerve conduction slowing (finding)
+http://snomed.info/sct	277031003	Decremental response to repetitive nerve stimulation (finding)
+http://snomed.info/sct	277033000	No post-activation response (finding)
+http://snomed.info/sct	277841004	Sensory intolerance (finding)
+http://snomed.info/sct	278235004	Focal sensory nerve conduction slowing (finding)
+http://snomed.info/sct	278236003	Diffuse sensory nerve conduction abnormality (finding)
+http://snomed.info/sct	278237007	Sensory nerve conduction block (finding)
+http://snomed.info/sct	278238002	Focal mixed nerve conduction slowing (finding)
+http://snomed.info/sct	278239005	Diffuse mixed nerve conduction abnormality (finding)
+http://snomed.info/sct	278240007	Mixed nerve conduction block (finding)
+http://snomed.info/sct	278512001	Ataxic cerebral palsy (disorder)
+http://snomed.info/sct	279084009	Chest discomfort (finding)
+http://snomed.info/sct	2806008	Impaired psychomotor development (finding)
+http://snomed.info/sct	281110002	Somatosensory agnosia (finding)
+http://snomed.info/sct	281229000	Space-occupying lesion of nervous system (finding)
+http://snomed.info/sct	284107008	Difficulty controlling posture (finding)
+http://snomed.info/sct	284110001	Unable to control head posture (finding)
+http://snomed.info/sct	284113004	Difficulty controlling head posture (finding)
+http://snomed.info/sct	284117003	Unable to control shoulder girdle posture (finding)
+http://snomed.info/sct	284120006	Difficulty controlling shoulder girdle posture (finding)
+http://snomed.info/sct	284123008	Unable to control trunk posture (finding)
+http://snomed.info/sct	284126000	Difficulty controlling trunk posture (finding)
+http://snomed.info/sct	284129007	Unable to control pelvic posture (finding)
+http://snomed.info/sct	284132005	Difficulty controlling pelvic posture (finding)
+http://snomed.info/sct	28502008	Sensory denervation (finding)
+http://snomed.info/sct	285755009	Simultagnosia (finding)
+http://snomed.info/sct	285757001	Visual agnosia for objects (finding)
+http://snomed.info/sct	285758006	Visuospatial agnosia (finding)
+http://snomed.info/sct	285760008	Position agnosia (finding)
+http://snomed.info/sct	285761007	Agnosia for pain (finding)
+http://snomed.info/sct	285762000	Agnosia for temperature (finding)
+http://snomed.info/sct	28581003	Rebound dysmetria (finding)
+http://snomed.info/sct	288446006	Difficulty performing writing activities (finding)
+http://snomed.info/sct	288939007	Difficulty swallowing (finding)
+http://snomed.info/sct	288945004	Difficulty swallowing food (finding)
+http://snomed.info/sct	288956004	Difficulty swallowing thickened fluid (finding)
+http://snomed.info/sct	288962009	Difficulty swallowing saliva (finding)
+http://snomed.info/sct	288967003	Difficulty initiating swallowing reflex (finding)
+http://snomed.info/sct	289195008	Slurred speech (finding)
+http://snomed.info/sct	289496000	Burning sensation of vulva (finding)
+http://snomed.info/sct	29448009	Absence of postural sense (finding)
+http://snomed.info/sct	298753001	Numbness of upper limb (finding)
+http://snomed.info/sct	29903003	Sensory deprivation isolation (finding)
+http://snomed.info/sct	299042006	Weakness of hand (finding)
+http://snomed.info/sct	29951000119107	Ataxic hemiparesis (disorder)
+http://snomed.info/sct	299735001	Neurological lesion (finding)
+http://snomed.info/sct	299736000	Intraspinal space-occupying lesion (finding)
+http://snomed.info/sct	299737009	Lower motor neuron lesion (disorder)
+http://snomed.info/sct	299738004	Upper motor neurone lesion (finding)
+http://snomed.info/sct	299739007	Bilateral upper motor neurone lesion (finding)
+http://snomed.info/sct	299899002	Problem of sense of smell (finding)
+http://snomed.info/sct	299903009	Hot-cold discrimination reduced (finding)
+http://snomed.info/sct	299904003	Hot-cold discrimination absent (finding)
+http://snomed.info/sct	299905002	Heat sensation reduced (finding)
+http://snomed.info/sct	299906001	Heat sensation absent (finding)
+http://snomed.info/sct	299907005	Cold sensation reduced (finding)
+http://snomed.info/sct	299912006	Absent light touch sensation (finding)
+http://snomed.info/sct	299913001	Impaired light touch sensation (finding)
+http://snomed.info/sct	299917000	Absent firm touch sensation (finding)
+http://snomed.info/sct	299918005	Impaired firm touch sensation (finding)
+http://snomed.info/sct	299922000	Absent touch discrimination (finding)
+http://snomed.info/sct	299923005	Impaired touch discrimination (finding)
+http://snomed.info/sct	299927006	Absent pin prick discrimination (finding)
+http://snomed.info/sct	299928001	Impaired pin prick discrimination (finding)
+http://snomed.info/sct	299934008	Impaired vibration sensation (finding)
+http://snomed.info/sct	299946007	Graphesthesia absent (finding)
+http://snomed.info/sct	299948008	Sensation of a lesion (finding)
+http://snomed.info/sct	299950000	Barbers chair sign (finding)
+http://snomed.info/sct	299952008	Pseudoathetosis (finding)
+http://snomed.info/sct	299954009	Tightness sensation (finding)
+http://snomed.info/sct	299960009	Nervous system problem (finding)
+http://snomed.info/sct	300704000	Difficulty writing check (finding)
+http://snomed.info/sct	301823007	Burning sensation of ear (finding)
+http://snomed.info/sct	302188001	Bad taste in mouth (finding)
+http://snomed.info/sct	302289002	Coordination problem (finding)
+http://snomed.info/sct	30385002	Graphomotor aphasia (finding)
+http://snomed.info/sct	304281000	Unable to control posture (finding)
+http://snomed.info/sct	30553004	Spinal nerve sensory loss (finding)
+http://snomed.info/sct	30596009	Absent body position sense (finding)
+http://snomed.info/sct	306778008	Difficulty swallowing soft foods (finding)
+http://snomed.info/sct	307126008	Unable to write (finding)
+http://snomed.info/sct	308074007	Pin prick sensation of right foot abnormal (finding)
+http://snomed.info/sct	308075008	Pin prick sensation of left foot abnormal (finding)
+http://snomed.info/sct	308921004	Neurological symptom (finding)
+http://snomed.info/sct	309086004	Paresthesia of hand (finding)
+http://snomed.info/sct	309087008	Paresthesia of foot (finding)
+http://snomed.info/sct	309252004	Unable to read (finding)
+http://snomed.info/sct	309253009	Difficulty reading (finding)
+http://snomed.info/sct	309521004	Numbness of hand (finding)
+http://snomed.info/sct	309536001	Numbness of finger (finding)
+http://snomed.info/sct	309537005	Numbness of lower limb (finding)
+http://snomed.info/sct	309538000	Numbness of foot (finding)
+http://snomed.info/sct	309539008	Numbness of toe (finding)
+http://snomed.info/sct	309557009	Numbness of face (finding)
+http://snomed.info/sct	310501001	Numbness of limbs (finding)
+http://snomed.info/sct	314811006	Tactile discrimination right foot abnormal (finding)
+http://snomed.info/sct	314829001	Tactile discrimination left foot abnormal (finding)
+http://snomed.info/sct	32422007	Hemispatial neglect (finding)
+http://snomed.info/sct	32680009	Nothnagels syndrome (disorder)
+http://snomed.info/sct	328681008	Motor aphasia (finding)
+http://snomed.info/sct	33371008	Absence of tickle sensation (finding)
+http://snomed.info/sct	33466002	Ocular flutter (finding)
+http://snomed.info/sct	33653009	Absence of sensation (finding)
+http://snomed.info/sct	33994004	Akinesia (finding)
+http://snomed.info/sct	34061007	Tissue sensitivity (finding)
+http://snomed.info/sct	3449007	Finger agnosia (finding)
+http://snomed.info/sct	34669005	Command automatism (finding)
+http://snomed.info/sct	34680005	Primary sweet taste disorder (disorder)
+http://snomed.info/sct	348083004	Primary taste disorder (disorder)
+http://snomed.info/sct	349084003	Unpleasant taste in mouth (finding)
+http://snomed.info/sct	34977006	Intellectual aphasia (finding)
+http://snomed.info/sct	35204001	Paragrammatism (finding)
+http://snomed.info/sct	36031001	Burning feet (finding)
+http://snomed.info/sct	36955009	Loss of taste (finding)
+http://snomed.info/sct	37001003	Bradylalia (finding)
+http://snomed.info/sct	37303008	Sensitivity to individual odor (finding)
+http://snomed.info/sct	373423002	Corneal anesthesia (finding)
+http://snomed.info/sct	373590007	Convergence retraction nystagmus (disorder)
+http://snomed.info/sct	373909009	Choking sensation (finding)
+http://snomed.info/sct	373928002	Sensation of floating (finding)
+http://snomed.info/sct	373932008	Feels hot (finding)
+http://snomed.info/sct	373939004	Feels hot and sweaty (finding)
+http://snomed.info/sct	37475001	Synesthesialgia (finding)
+http://snomed.info/sct	37481009	Anterior tongue taste disorder (disorder)
+http://snomed.info/sct	37558005	Abnormal saltatory conduction (finding)
+http://snomed.info/sct	3756000	Static ataxia (finding)
+http://snomed.info/sct	37651007	Tactile anesthesia (finding)
+http://snomed.info/sct	37732008	Cluttering (finding)
+http://snomed.info/sct	37960002	Sanger-Brown cerebellar ataxia (disorder)
+http://snomed.info/sct	38175008	Garlic taste (finding)
+http://snomed.info/sct	386783003	Tic (finding)
+http://snomed.info/sct	386807006	Memory impairment (finding)
+http://snomed.info/sct	387602005	Syntactical aphasia (finding)
+http://snomed.info/sct	390932001	10g monofilament sensation absent (finding)
+http://snomed.info/sct	39157001	Flaccid paralysis (finding)
+http://snomed.info/sct	394667006	10g monofilament sensation R foot abnormal (finding)
+http://snomed.info/sct	394668001	10g monofilament sensation L foot abnormal (finding)
+http://snomed.info/sct	395080004	Sensory disturbance in limb (finding)
+http://snomed.info/sct	397738006	Sensory nerve conduction block - excessive (finding)
+http://snomed.info/sct	397743004	Motor nerve conduction block - partial (finding)
+http://snomed.info/sct	397911006	Motor nerve conduction block - full (finding)
+http://snomed.info/sct	397921003	Motor nerve conduction block - excessive (finding)
+http://snomed.info/sct	397922005	Sensory nerve conduction block - inadequate caudad spread (finding)
+http://snomed.info/sct	397948002	Sensory nerve conduction block - partial (finding)
+http://snomed.info/sct	397974008	Hypesthesia (finding)
+http://snomed.info/sct	397975009	Sensory nerve conduction block - inadequate cephalad spread (finding)
+http://snomed.info/sct	398026008	Reduced sensation of skin (finding)
+http://snomed.info/sct	398160004	Sensory nerve conduction block - patchy (finding)
+http://snomed.info/sct	398263009	Motor nerve conduction block - patchy (finding)
+http://snomed.info/sct	398277007	Sensory nerve conduction block - full (finding)
+http://snomed.info/sct	398632002	Impaired vibration sensation of foot (finding)
+http://snomed.info/sct	398894000	Pin prick sensation of foot-abnormal (finding)
+http://snomed.info/sct	398991009	Motor retardation (finding)
+http://snomed.info/sct	399993004	Disorder of taste (disorder)
+http://snomed.info/sct	40307005	Primary acid taste disorder (disorder)
+http://snomed.info/sct	403596007	Cutaneous hyperalgesia (finding)
+http://snomed.info/sct	403597003	Cutaneous allodynia (finding)
+http://snomed.info/sct	403599000	Stinging of skin (finding)
+http://snomed.info/sct	403600002	Formication of skin (finding)
+http://snomed.info/sct	404685002	Oculomasticatory myorhythmia (finding)
+http://snomed.info/sct	407630006	Global Deterioration Scale level 2 - very mild cognitive decline (finding)
+http://snomed.info/sct	407631005	Global Deterioration Scale level 3 - mild cognitive decline (finding)
+http://snomed.info/sct	407632003	Global Deterioration Scale level 4 - moderate cognitive decline (finding)
+http://snomed.info/sct	407633008	Global Deterioration Scale level 5 - moderately severe cognitive decline (finding)
+http://snomed.info/sct	407634002	Global Deterioration Scale level 6 - severe cognitive decline (finding)
+http://snomed.info/sct	407635001	Global Deterioration Scale level 7 - very severe cognitive decline (finding)
+http://snomed.info/sct	40852003	Agrammatism (finding)
+http://snomed.info/sct	409624004	Incomplete paralysis (finding)
+http://snomed.info/sct	414563008	Kussmauls respiration (finding)
+http://snomed.info/sct	416909000	Impaired psychomotor performance (finding)
+http://snomed.info/sct	417892007	Impaired vibration sense of left foot (finding)
+http://snomed.info/sct	418363000	Itching of skin (finding)
+http://snomed.info/sct	418711005	Impaired vibration sense of right foot (finding)
+http://snomed.info/sct	422840005	Mass lesion of brain (finding)
+http://snomed.info/sct	423407004	Temperature sensation reversal (finding)
+http://snomed.info/sct	42341009	Agnosia (finding)
+http://snomed.info/sct	424650008	Limited enunciation (finding)
+http://snomed.info/sct	425403003	Limited sensory perception (finding)
+http://snomed.info/sct	427926004	Lingual dysarthria (finding)
+http://snomed.info/sct	428334004	Downward drift of outstretched supinated arm (finding)
+http://snomed.info/sct	43364001	Abdominal discomfort (finding)
+http://snomed.info/sct	43378000	Extrapyramidal sign (finding)
+http://snomed.info/sct	43659006	Auditory agnosia (finding)
+http://snomed.info/sct	43661002	Motor alexia (finding)
+http://snomed.info/sct	4381006	Verbal paraphasia (finding)
+http://snomed.info/sct	44077006	Numbness (finding)
+http://snomed.info/sct	44169009	Loss of sense of smell (finding)
+http://snomed.info/sct	442183006	Psychogenic dyskinesia (disorder)
+http://snomed.info/sct	443438009	Hypnic jerk (finding)
+http://snomed.info/sct	443441000	Synkinesis of face (finding)
+http://snomed.info/sct	443692001	Synkinesis of eyelid (finding)
+http://snomed.info/sct	444980006	Sporadic olivopontocerebellar atrophy (disorder)
+http://snomed.info/sct	44525005	Abnormal unpleasant perception of strong scent (finding)
+http://snomed.info/sct	445329008	Itching of lesion of skin (disorder)
+http://snomed.info/sct	445424004	Weakness of vocal cord (finding)
+http://snomed.info/sct	445458007	Sensory ataxia (finding)
+http://snomed.info/sct	44594002	Baranys sign (finding)
+http://snomed.info/sct	44695005	Paralysis (finding)
+http://snomed.info/sct	449162004	Experiential sensory symptoms (finding)
+http://snomed.info/sct	449813001	Numbness of saddle area (finding)
+http://snomed.info/sct	450881007	Hypermetria (finding)
+http://snomed.info/sct	45846002	Sensitive to smells (finding)
+http://snomed.info/sct	46640001	Accommodative asthenopia (finding)
+http://snomed.info/sct	46794001	Ocular bobbing (finding)
+http://snomed.info/sct	46855008	Complete aphasia (finding)
+http://snomed.info/sct	47999008	Ideational agnosia (finding)
+http://snomed.info/sct	4805006	Functional aphasia (finding)
+http://snomed.info/sct	48167000	Amnesia (finding)
+http://snomed.info/sct	48257004	Anarthria (finding)
+http://snomed.info/sct	49275006	Athetoid paralysis (finding)
+http://snomed.info/sct	52559000	Motor dysfunction (finding)
+http://snomed.info/sct	52669001	Automatism (finding)
+http://snomed.info/sct	53096005	Paraphasia (finding)
+http://snomed.info/sct	54685005	Synkinesis (finding)
+http://snomed.info/sct	55406008	Hyperalgesia (finding)
+http://snomed.info/sct	57105000	Simple acroparesthesia (finding)
+http://snomed.info/sct	57791006	Taste-blindness (finding)
+http://snomed.info/sct	57948007	Agnosia for taste (finding)
+http://snomed.info/sct	59073000	Tactile hypesthesia (finding)
+http://snomed.info/sct	5934007	Subcortical aphasia (finding)
+http://snomed.info/sct	59540003	Inequality in size of cerebral ventricles (finding)
+http://snomed.info/sct	59546009	Motor ataxia (finding)
+http://snomed.info/sct	59770006	Dyslexia (finding)
+http://snomed.info/sct	609526004	Referred itching (finding)
+http://snomed.info/sct	609560006	Distant referral of tactile sensation (finding)
+http://snomed.info/sct	61691009	Adiadochokinesia (finding)
+http://snomed.info/sct	62507009	Pins and needles (finding)
+http://snomed.info/sct	63157004	Parieto-occipital aphasia (finding)
+http://snomed.info/sct	63437008	Anosodiaphoria (finding)
+http://snomed.info/sct	63755003	Glove anesthesia (finding)
+http://snomed.info/sct	64697009	Thermal anesthesia (finding)
+http://snomed.info/sct	66073004	Glossopharyngeal taste disorder (disorder)
+http://snomed.info/sct	66085007	Stocking anesthesia (finding)
+http://snomed.info/sct	66264000	Todds paresis (finding)
+http://snomed.info/sct	66490000	Neurological muscular paralysis (finding)
+http://snomed.info/sct	67104004	Ambulatory automatism (finding)
+http://snomed.info/sct	67761004	Olivopontocerebellar degeneration (disorder)
+http://snomed.info/sct	6810008	Hypoalgesia (finding)
+http://snomed.info/sct	68900007	Posttraumatic aphasia (finding)
+http://snomed.info/sct	69206000	Fluent aphasia (finding)
+http://snomed.info/sct	69752006	Hypometria (finding)
+http://snomed.info/sct	69757000	Pathematic aphasia (finding)
+http://snomed.info/sct	697990000	Hypogeusia (finding)
+http://snomed.info/sct	697992008	Hemiageusia (finding)
+http://snomed.info/sct	698002002	Loss of taste anterior two thirds of tongue (finding)
+http://snomed.info/sct	698036008	Oral motor ataxia (finding)
+http://snomed.info/sct	698293005	Acute flaccid paralysis (finding)
+http://snomed.info/sct	699220008	Phantom taste (disorder)
+http://snomed.info/sct	699281009	Focal motor weakness (finding)
+http://snomed.info/sct	699392007	Itching of ear (finding)
+http://snomed.info/sct	7006003	Clumsiness (finding)
+http://snomed.info/sct	702315006	Dystonic cerebral palsy (disorder)
+http://snomed.info/sct	702317003	Chorea-athetoid cerebral palsy (disorder)
+http://snomed.info/sct	702531002	Loss of taste posterior one third of tongue (finding)
+http://snomed.info/sct	713514005	Muscle weakness of limb (finding)
+http://snomed.info/sct	71778000	Sensory extinction (finding)
+http://snomed.info/sct	72564000	Lightning eye movement (finding)
+http://snomed.info/sct	73466007	Parasympathetic cardiovascular function disorder (disorder)
+http://snomed.info/sct	73495003	Dyssynergia cerebellaris myoclonica (disorder)
+http://snomed.info/sct	74776002	Itching of eye (finding)
+http://snomed.info/sct	75019001	Athetoid cerebral palsy (disorder)
+http://snomed.info/sct	77420001	Scanning speech (finding)
+http://snomed.info/sct	7751009	Visual discomfort (finding)
+http://snomed.info/sct	78357006	Motor level spinal weakness (finding)
+http://snomed.info/sct	78403003	Spastic paralysis (finding)
+http://snomed.info/sct	79256006	Acroparesthesia (finding)
+http://snomed.info/sct	7973008	Abnormal vision (finding)
+http://snomed.info/sct	8011004	Dysarthria (finding)
+http://snomed.info/sct	80474004	Absence of vibratory sense (finding)
+http://snomed.info/sct	80577009	Cortical alexia (finding)
+http://snomed.info/sct	80965009	Semantic aphasia (finding)
+http://snomed.info/sct	82473003	Radiculitis (disorder)
+http://snomed.info/sct	83156004	Sense of smell impaired (finding)
+http://snomed.info/sct	8381001	Sunken fontanelle (finding)
+http://snomed.info/sct	83975008	Naming errors (finding)
+http://snomed.info/sct	8480004	Agnosia for smell (finding)
+http://snomed.info/sct	84942005	Paragraphia (finding)
+http://snomed.info/sct	85102008	Cerebellar ataxia (disorder)
+http://snomed.info/sct	8663007	Cauda equina syndrome without neurogenic bladder (disorder)
+http://snomed.info/sct	86819001	Time agnosia (finding)
+http://snomed.info/sct	87128005	Sensory discomfort (finding)
+http://snomed.info/sct	87275002	Dissociated sensory loss (finding)
+http://snomed.info/sct	87486003	Aphasia (finding)
+http://snomed.info/sct	87866006	Trismus (finding)
+http://snomed.info/sct	88278002	Dysgraphia (finding)
+http://snomed.info/sct	88414008	Tic de pensée (finding)
+http://snomed.info/sct	88772000	Abnormal axonal conduction (finding)
+http://snomed.info/sct	89410007	Conduction aphasia (finding)
+http://snomed.info/sct	89498001	Temporal lobe aphasia (finding)
+http://snomed.info/sct	90673000	Burning sensation (finding)
+http://snomed.info/sct	91019004	Paresthesia (finding)
+http://snomed.info/sct	91454002	Pleocytosis of cerebrospinal fluid (finding)
+http://snomed.info/sct	91510005	Spasmus coordinatus (finding)
+http://snomed.info/sct	91646005	Gibberish aphasia (finding)
+http://snomed.info/sct	9236007	Alexia (finding)
+http://snomed.info/sct	95357004	Anesthesia of mucous membrane (finding)
+http://snomed.info/sct	95359001	Mucosal numbness (finding)
+http://snomed.info/sct	95360006	Burning sensation of mucous membrane (finding)
+http://snomed.info/sct	95630007	Neonatal dyskinesia (finding)
+http://snomed.info/sct	95665007	Facial paresthesia (finding)
+http://snomed.info/sct	95673003	Paresthesia of upper limb (finding)
+http://snomed.info/sct	95677002	Disorder of vision (disorder)
+http://snomed.info/sct	9748009	Dyskinesia (finding)
+http://hl7.org/fhir/sid/icd-10-cm	G50	Disorders of trigeminal nerve
+http://hl7.org/fhir/sid/icd-10-cm	G50.0	Trigeminal neuralgia
+http://hl7.org/fhir/sid/icd-10-cm	G50.1	Atypical facial pain
+http://hl7.org/fhir/sid/icd-10-cm	G50.8	Other disorders of trigeminal nerve
+http://hl7.org/fhir/sid/icd-10-cm	G50.9	Disorder of trigeminal nerve, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G51	Facial nerve disorders
+http://hl7.org/fhir/sid/icd-10-cm	G51.0	Bells palsy
+http://hl7.org/fhir/sid/icd-10-cm	G51.1	Geniculate ganglionitis
+http://hl7.org/fhir/sid/icd-10-cm	G51.2	Melkerssons syndrome
+http://hl7.org/fhir/sid/icd-10-cm	G51.3	Clonic hemifacial spasm
+http://hl7.org/fhir/sid/icd-10-cm	G51.31	Clonic hemifacial spasm, right
+http://hl7.org/fhir/sid/icd-10-cm	G51.32	Clonic hemifacial spasm, left
+http://hl7.org/fhir/sid/icd-10-cm	G51.33	Clonic hemifacial spasm, bilateral
+http://hl7.org/fhir/sid/icd-10-cm	G51.39	Clonic hemifacial spasm, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G51.4	Facial myokymia
+http://hl7.org/fhir/sid/icd-10-cm	G51.8	Other disorders of facial nerve
+http://hl7.org/fhir/sid/icd-10-cm	G51.9	Disorder of facial nerve, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G52	Disorders of other cranial nerves
+http://hl7.org/fhir/sid/icd-10-cm	G52.0	Disorders of olfactory nerve
+http://hl7.org/fhir/sid/icd-10-cm	G52.1	Disorders of glossopharyngeal nerve
+http://hl7.org/fhir/sid/icd-10-cm	G52.2	Disorders of vagus nerve
+http://hl7.org/fhir/sid/icd-10-cm	G52.3	Disorders of hypoglossal nerve
+http://hl7.org/fhir/sid/icd-10-cm	G52.7	Disorders of multiple cranial nerves
+http://hl7.org/fhir/sid/icd-10-cm	G52.8	Disorders of other specified cranial nerves
+http://hl7.org/fhir/sid/icd-10-cm	G52.9	Cranial nerve disorder, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G53	Cranial nerve disorders in diseases classified elsewhere
+http://hl7.org/fhir/sid/icd-10-cm	G54	Nerve root and plexus disorders
+http://hl7.org/fhir/sid/icd-10-cm	G54.0	Brachial plexus disorders
+http://hl7.org/fhir/sid/icd-10-cm	G54.1	Lumbosacral plexus disorders
+http://hl7.org/fhir/sid/icd-10-cm	G54.2	Cervical root disorders, not elsewhere classified
+http://hl7.org/fhir/sid/icd-10-cm	G54.3	Thoracic root disorders, not elsewhere classified
+http://hl7.org/fhir/sid/icd-10-cm	G54.4	Lumbosacral root disorders, not elsewhere classified
+http://hl7.org/fhir/sid/icd-10-cm	G54.5	Neuralgic amyotrophy
+http://hl7.org/fhir/sid/icd-10-cm	G54.6	Phantom limb syndrome with pain
+http://hl7.org/fhir/sid/icd-10-cm	G54.7	Phantom limb syndrome without pain
+http://hl7.org/fhir/sid/icd-10-cm	G54.8	Other nerve root and plexus disorders
+http://hl7.org/fhir/sid/icd-10-cm	G54.9	Nerve root and plexus disorder, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G55	Nerve root and plexus compressions in diseases classified elsewhere
+http://hl7.org/fhir/sid/icd-10-cm	G56	Mononeuropathies of upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.0	Carpal tunnel syndrome
+http://hl7.org/fhir/sid/icd-10-cm	G56.00	Carpal tunnel syndrome, unspecified upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.01	Carpal tunnel syndrome, right upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.02	Carpal tunnel syndrome, left upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.03	Carpal tunnel syndrome, bilateral upper limbs
+http://hl7.org/fhir/sid/icd-10-cm	G56.1	Other lesions of median nerve
+http://hl7.org/fhir/sid/icd-10-cm	G56.10	Other lesions of median nerve, unspecified upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.11	Other lesions of median nerve, right upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.12	Other lesions of median nerve, left upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.13	Other lesions of median nerve, bilateral upper limbs
+http://hl7.org/fhir/sid/icd-10-cm	G56.2	Lesion of ulnar nerve
+http://hl7.org/fhir/sid/icd-10-cm	G56.20	Lesion of ulnar nerve, unspecified upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.21	Lesion of ulnar nerve, right upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.22	Lesion of ulnar nerve, left upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.23	Lesion of ulnar nerve, bilateral upper limbs
+http://hl7.org/fhir/sid/icd-10-cm	G56.3	Lesion of radial nerve
+http://hl7.org/fhir/sid/icd-10-cm	G56.30	Lesion of radial nerve, unspecified upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.31	Lesion of radial nerve, right upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.32	Lesion of radial nerve, left upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.33	Lesion of radial nerve, bilateral upper limbs
+http://hl7.org/fhir/sid/icd-10-cm	G56.4	Causalgia of upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.40	Causalgia of unspecified upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.41	Causalgia of right upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.42	Causalgia of left upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.43	Causalgia of bilateral upper limbs
+http://hl7.org/fhir/sid/icd-10-cm	G56.8	Other specified mononeuropathies of upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.80	Other specified mononeuropathies of unspecified upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.81	Other specified mononeuropathies of right upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.82	Other specified mononeuropathies of left upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.83	Other specified mononeuropathies of bilateral upper limbs
+http://hl7.org/fhir/sid/icd-10-cm	G56.9	Unspecified mononeuropathy of upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.90	Unspecified mononeuropathy of unspecified upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.91	Unspecified mononeuropathy of right upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.92	Unspecified mononeuropathy of left upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G56.93	Unspecified mononeuropathy of bilateral upper limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57	Mononeuropathies of lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.0	Lesion of sciatic nerve
+http://hl7.org/fhir/sid/icd-10-cm	G57.00	Lesion of sciatic nerve, unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.01	Lesion of sciatic nerve, right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.02	Lesion of sciatic nerve, left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.03	Lesion of sciatic nerve, bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.1	Meralgia paresthetica
+http://hl7.org/fhir/sid/icd-10-cm	G57.10	Meralgia paresthetica, unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.11	Meralgia paresthetica, right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.12	Meralgia paresthetica, left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.13	Meralgia paresthetica, bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.2	Lesion of femoral nerve
+http://hl7.org/fhir/sid/icd-10-cm	G57.20	Lesion of femoral nerve, unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.21	Lesion of femoral nerve, right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.22	Lesion of femoral nerve, left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.23	Lesion of femoral nerve, bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.3	Lesion of lateral popliteal nerve
+http://hl7.org/fhir/sid/icd-10-cm	G57.30	Lesion of lateral popliteal nerve, unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.31	Lesion of lateral popliteal nerve, right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.32	Lesion of lateral popliteal nerve, left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.33	Lesion of lateral popliteal nerve, bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.4	Lesion of medial popliteal nerve
+http://hl7.org/fhir/sid/icd-10-cm	G57.40	Lesion of medial popliteal nerve, unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.41	Lesion of medial popliteal nerve, right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.42	Lesion of medial popliteal nerve, left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.43	Lesion of medial popliteal nerve, bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.5	Tarsal tunnel syndrome
+http://hl7.org/fhir/sid/icd-10-cm	G57.50	Tarsal tunnel syndrome, unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.51	Tarsal tunnel syndrome, right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.52	Tarsal tunnel syndrome, left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.53	Tarsal tunnel syndrome, bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.6	Lesion of plantar nerve
+http://hl7.org/fhir/sid/icd-10-cm	G57.60	Lesion of plantar nerve, unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.61	Lesion of plantar nerve, right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.62	Lesion of plantar nerve, left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.63	Lesion of plantar nerve, bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.7	Causalgia of lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.70	Causalgia of unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.71	Causalgia of right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.72	Causalgia of left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.73	Causalgia of bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.8	Other specified mononeuropathies of lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.80	Other specified mononeuropathies of unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.81	Other specified mononeuropathies of right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.82	Other specified mononeuropathies of left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.83	Other specified mononeuropathies of bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G57.9	Unspecified mononeuropathy of lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.90	Unspecified mononeuropathy of unspecified lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.91	Unspecified mononeuropathy of right lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.92	Unspecified mononeuropathy of left lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G57.93	Unspecified mononeuropathy of bilateral lower limbs
+http://hl7.org/fhir/sid/icd-10-cm	G58	Other mononeuropathies
+http://hl7.org/fhir/sid/icd-10-cm	G58.0	Intercostal neuropathy
+http://hl7.org/fhir/sid/icd-10-cm	G58.7	Mononeuritis multiplex
+http://hl7.org/fhir/sid/icd-10-cm	G58.8	Other specified mononeuropathies
+http://hl7.org/fhir/sid/icd-10-cm	G58.9	Mononeuropathy, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G59	Mononeuropathy in diseases classified elsewhere
+http://hl7.org/fhir/sid/icd-10-cm	G80	Cerebral palsy
+http://hl7.org/fhir/sid/icd-10-cm	G80.0	Spastic quadriplegic cerebral palsy
+http://hl7.org/fhir/sid/icd-10-cm	G80.1	Spastic diplegic cerebral palsy
+http://hl7.org/fhir/sid/icd-10-cm	G80.2	Spastic hemiplegic cerebral palsy
+http://hl7.org/fhir/sid/icd-10-cm	G80.3	Athetoid cerebral palsy
+http://hl7.org/fhir/sid/icd-10-cm	G80.4	Ataxic cerebral palsy
+http://hl7.org/fhir/sid/icd-10-cm	G80.8	Other cerebral palsy
+http://hl7.org/fhir/sid/icd-10-cm	G80.9	Cerebral palsy, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G81	Hemiplegia and hemiparesis
+http://hl7.org/fhir/sid/icd-10-cm	G81.0	Flaccid hemiplegia
+http://hl7.org/fhir/sid/icd-10-cm	G81.00	Flaccid hemiplegia affecting unspecified side
+http://hl7.org/fhir/sid/icd-10-cm	G81.01	Flaccid hemiplegia affecting right dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.02	Flaccid hemiplegia affecting left dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.03	Flaccid hemiplegia affecting right nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.04	Flaccid hemiplegia affecting left nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.1	Spastic hemiplegia
+http://hl7.org/fhir/sid/icd-10-cm	G81.10	Spastic hemiplegia affecting unspecified side
+http://hl7.org/fhir/sid/icd-10-cm	G81.11	Spastic hemiplegia affecting right dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.12	Spastic hemiplegia affecting left dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.13	Spastic hemiplegia affecting right nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.14	Spastic hemiplegia affecting left nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.9	Hemiplegia, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G81.90	Hemiplegia, unspecified affecting unspecified side
+http://hl7.org/fhir/sid/icd-10-cm	G81.91	Hemiplegia, unspecified affecting right dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.92	Hemiplegia, unspecified affecting left dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.93	Hemiplegia, unspecified affecting right nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G81.94	Hemiplegia, unspecified affecting left nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G82	Paraplegia (paraparesis) and quadriplegia (quadriparesis)
+http://hl7.org/fhir/sid/icd-10-cm	G82.2	Paraplegia
+http://hl7.org/fhir/sid/icd-10-cm	G82.20	Paraplegia, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G82.21	Paraplegia, complete
+http://hl7.org/fhir/sid/icd-10-cm	G82.22	Paraplegia, incomplete
+http://hl7.org/fhir/sid/icd-10-cm	G82.5	Quadriplegia
+http://hl7.org/fhir/sid/icd-10-cm	G82.50	Quadriplegia, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G82.51	Quadriplegia, C1-C4 complete
+http://hl7.org/fhir/sid/icd-10-cm	G82.52	Quadriplegia, C1-C4 incomplete
+http://hl7.org/fhir/sid/icd-10-cm	G82.53	Quadriplegia, C5-C7 complete
+http://hl7.org/fhir/sid/icd-10-cm	G82.54	Quadriplegia, C5-C7 incomplete
+http://hl7.org/fhir/sid/icd-10-cm	G83	Other paralytic syndromes
+http://hl7.org/fhir/sid/icd-10-cm	G83.0	Diplegia of upper limbs
+http://hl7.org/fhir/sid/icd-10-cm	G83.1	Monoplegia of lower limb
+http://hl7.org/fhir/sid/icd-10-cm	G83.10	Monoplegia of lower limb affecting unspecified side
+http://hl7.org/fhir/sid/icd-10-cm	G83.11	Monoplegia of lower limb affecting right dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.12	Monoplegia of lower limb affecting left dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.13	Monoplegia of lower limb affecting right nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.14	Monoplegia of lower limb affecting left nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.2	Monoplegia of upper limb
+http://hl7.org/fhir/sid/icd-10-cm	G83.20	Monoplegia of upper limb affecting unspecified side
+http://hl7.org/fhir/sid/icd-10-cm	G83.21	Monoplegia of upper limb affecting right dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.22	Monoplegia of upper limb affecting left dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.23	Monoplegia of upper limb affecting right nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.24	Monoplegia of upper limb affecting left nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.3	Monoplegia, unspecified
+http://hl7.org/fhir/sid/icd-10-cm	G83.30	Monoplegia, unspecified affecting unspecified side
+http://hl7.org/fhir/sid/icd-10-cm	G83.31	Monoplegia, unspecified affecting right dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.32	Monoplegia, unspecified affecting left dominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.33	Monoplegia, unspecified affecting right nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.34	Monoplegia, unspecified affecting left nondominant side
+http://hl7.org/fhir/sid/icd-10-cm	G83.4	Cauda equina syndrome
+http://hl7.org/fhir/sid/icd-10-cm	G83.5	Locked-in state
+http://hl7.org/fhir/sid/icd-10-cm	G83.8	Other specified paralytic syndromes
+http://hl7.org/fhir/sid/icd-10-cm	G83.81	Brown-Séquard syndrome
+http://hl7.org/fhir/sid/icd-10-cm	G83.82	Anterior cord syndrome
+http://hl7.org/fhir/sid/icd-10-cm	G83.83	Posterior cord syndrome
+http://hl7.org/fhir/sid/icd-10-cm	G83.84	Todds paralysis (postepileptic)
+http://hl7.org/fhir/sid/icd-10-cm	G83.89	Other specified paralytic syndromes
+http://hl7.org/fhir/sid/icd-10-cm	G83.9	Paralytic syndrome, unspecified

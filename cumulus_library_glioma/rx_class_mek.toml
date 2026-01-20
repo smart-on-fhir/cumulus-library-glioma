@@ -1,0 +1,13 @@
+config_type="valueset"
+table_prefix = "rx_class_mek"
+
+[umls_stewards.rx_class_mek]
+sab = "RXNORM"
+search_terms = [
+    # MAPK/ERK kinase
+    "trametinib",
+    "selumetinib",
+    "mirdametinib",
+    "cobimetinib",
+    "binimetinib"
+]

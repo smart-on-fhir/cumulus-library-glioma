@@ -1,17 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_llm_variant AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."has_mention",
-            s."hgnc_name",
-            s."hgvs_variant",
-            s."interpretation"
-            --noqa: enable=RF03, AL02
-        FROM glioma__llm_variant AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -31,7 +19,8 @@ CREATE or replace VIEW glioma__cube_patient_llm_variant AS
                 cast(interpretation AS varchar),
                 'cumulus__none'
             ) AS interpretation
-        FROM filtered_table
+        FROM glioma__llm_variant
+        
     ),
 
     powerset AS (
@@ -60,10 +49,10 @@ CREATE or replace VIEW glioma__cube_patient_llm_variant AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."has_mention",
-        p."hgnc_name",
-        p."hgvs_variant",
-        p."interpretation"
+            p."has_mention",
+            p."hgnc_name",
+            p."hgvs_variant",
+            p."interpretation"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 1

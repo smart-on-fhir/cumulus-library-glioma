@@ -1,20 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_llm_surgery AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."anatomical_site",
-            s."approach",
-            s."complications",
-            s."extent_of_resection",
-            s."has_mention",
-            s."surgical_type",
-            s."technique_details"
-            --noqa: enable=RF03, AL02
-        FROM glioma__llm_surgery AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -46,7 +31,8 @@ CREATE or replace VIEW glioma__cube_patient_llm_surgery AS
                 cast(technique_details AS varchar),
                 'cumulus__none'
             ) AS technique_details
-        FROM filtered_table
+        FROM glioma__llm_surgery
+        
     ),
 
     powerset AS (
@@ -84,13 +70,13 @@ CREATE or replace VIEW glioma__cube_patient_llm_surgery AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."anatomical_site",
-        p."approach",
-        p."complications",
-        p."extent_of_resection",
-        p."has_mention",
-        p."surgical_type",
-        p."technique_details"
+            p."anatomical_site",
+            p."approach",
+            p."complications",
+            p."extent_of_resection",
+            p."has_mention",
+            p."surgical_type",
+            p."technique_details"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 1

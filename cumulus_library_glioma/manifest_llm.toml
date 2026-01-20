@@ -1,0 +1,69 @@
+# study prefix is the name of the tablepace cumulus_library.StudyManifest().get_study_prefix() 
+study_prefix = "glioma"
+
+[file_config.file_names]
+## -----------------------------------------------------------------------------
+## Upload CSV/TSV curated files
+"file_upload.toml" = [
+    "file_upload.toml"
+]
+
+## -----------------------------------------------------------------------------
+## LLM note types (dependancy: DocumentTypeAnnotation)
+
+"samples for LLM tasks" = [
+    "athena/glioma__sample_casedef_task.sql"
+]
+
+"samples for LLM tasks diagnosis, drug, gene, surgery, progression" = [
+    "athena/glioma__sample_casedef_task_diagnosis.sql",
+    "athena/glioma__sample_casedef_task_drug.sql",
+    "athena/glioma__sample_casedef_task_gene.sql",
+    "athena/glioma__sample_casedef_task_surgery.sql",
+    "athena/glioma__sample_casedef_task_progression.sql",
+]
+
+## -----------------------------------------------------------------------------
+## LLM task results (dependancy: DocumentTask)
+
+"glioma LLM (ICDO: grade, topography, morphology, behavior)" = [
+    "athena/glioma__llm_dx.sql",
+]
+
+"glioma LLM (surgery, drug, gene, variant)" = [
+    "athena/glioma__llm_surgery.sql",
+    "athena/glioma__llm_drug.sql",
+    "athena/glioma__llm_gene.sql",
+    "athena/glioma__llm_variant.sql",
+]
+
+"cube LLM"= [
+    "athena/glioma__cube_patient_llm_dx.sql",
+    "athena/glioma__cube_patient_llm_surgery.sql",
+    "athena/glioma__cube_patient_llm_drug.sql",
+    "athena/glioma__cube_patient_llm_variant.sql",
+    "athena/glioma__cube_patient_llm_gene.sql",
+]
+
+"meta data" = [
+    "athena/glioma__meta_date.sql",
+    "athena/glioma__meta_version.sql",
+]
+
+# -----------------------------------------------------------------------------
+# Export to Cumulus aggregator
+
+[export_config]
+count_list = [
+    # LLM Variables
+    "glioma__cube_patient_llm_dx",
+    "glioma__cube_patient_llm_surgery",
+    "glioma__cube_patient_llm_drug",
+    "glioma__cube_patient_llm_variant",
+    "glioma__cube_patient_llm_gene",
+]
+
+meta_list = [
+    "glioma__meta_date",
+    "glioma__meta_version",
+]

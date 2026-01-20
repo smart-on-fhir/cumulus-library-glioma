@@ -5,7 +5,8 @@ select distinct
     RX.category_system      as rx_category_system,
     RX.category_display     as rx_category_display,
     RX.medication_code      as rx_code,
-    lower(replace(RX.medication_display, chr(10), ' ')) as rx_display,
+    RX.medication_display   as rx_display,
+    lower(replace(RX.medication_display, chr(10), ' ')) as rx_code_display,
     RX.medication_system    as rx_system,
     RX.medicationrequest_ref as medicationrequest_ref,
     study_population.*

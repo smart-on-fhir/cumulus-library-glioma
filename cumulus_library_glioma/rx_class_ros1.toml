@@ -1,0 +1,10 @@
+config_type="valueset"
+table_prefix = "rx_class_ros1"
+
+[umls_stewards.rx_class_ros1]
+sab = "RXNORM"
+search_terms = [
+    "crizotinib",
+    "entrectinib",
+    "lorlatinib"
+]

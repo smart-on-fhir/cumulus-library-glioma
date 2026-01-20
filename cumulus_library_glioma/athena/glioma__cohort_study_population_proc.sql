@@ -5,8 +5,6 @@ select distinct
     PROC.code_display               as proc_display,
     PROC.code_system                as proc_system,
     PROC.performeddatetime_day      as proc_performed_day,
-    PROC.performeddatetime_month    as proc_performed_month,
-    PROC.performeddatetime_year     as proc_performed_year,
     PROC.procedure_ref,
     study_population.*
 from

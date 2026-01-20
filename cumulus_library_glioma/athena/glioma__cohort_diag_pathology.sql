@@ -1,0 +1,7 @@
+create table glioma__cohort_diag_pathology as 
+select distinct * from 
+ glioma__cohort_study_population_diag , 
+glioma__valueset_diag_pathology
+WHERE
+glioma__cohort_study_population_diag.diag_code = glioma__valueset_diag_pathology.code and 
+glioma__cohort_study_population_diag.diag_system = glioma__valueset_diag_pathology.system

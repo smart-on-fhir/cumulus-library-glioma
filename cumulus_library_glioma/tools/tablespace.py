@@ -1,5 +1,7 @@
 from enum import Enum
-from cumulus_library_glioma.tools.filetool import PREFIX
+
+# study prefix is the schema "root" or "tablespace" for tables in this study (glioma)
+PREFIX = 'glioma'
 
 class Reference(Enum):
     """
@@ -7,8 +9,8 @@ class Reference(Enum):
     """
     dx = 'condition'
     rx = 'medicationrequest'
+    lab = 'observation_lab'
     obs = 'observation'
-    lab = 'observation'
     proc = 'procedure'
     doc = 'documentreference'
     diag = 'diagnosticreport'
@@ -19,30 +21,43 @@ class Reference(Enum):
         return self.name
 
     def reference(self):
-        if Reference.pat == self.name:
+        if Reference.pat.name == self.name:
             return 'subject_ref'
-        return f"{self.name}_ref"
+        if Reference.lab.name == self.name:
+            return 'observation_ref'
+        return f"{self.value}_ref"
 
     def code(self)-> str:
-        if Reference.doc == self.name:
+        if Reference.doc.name == self.name:
             return 'doc_type_code'
+        if Reference.lab.name == self.name:
+            return 'lab_observation_code'
         return f"{self.name}_code"
 
     def system(self)-> str:
+        if Reference.doc.name == self.name:
+            return 'doc_type_system'
+        if Reference.lab.name == self.name:
+            return 'lab_observation_system'
         return f"{self.name}_system"
 
-###############################################################################
+#-----------------------------------------------------------------------------
 # get Reference Enum
-###############################################################################
+#-----------------------------------------------------------------------------
+_REF_KEYS = [str(ref.name) for ref in Reference]
 def get_reference(table:str) -> Reference:
-    # lookup = name_trim(table)
-    lookup = table.replace(f'{PREFIX}__', '')
-    lookup = lookup.split('_')[0]
-    return Reference[lookup]
+    lookup = name_trim(table)
+    tokens = set(lookup.split('_'))
+    match = tokens.intersection(_REF_KEYS)
+    if not match:
+        raise ValueError(f"Reference value {match} not found in table {table}")
+    if len(match) > 1:
+        raise ValueError(f"Reference value {match} multiple match types for table {table}")
+    return Reference[match.pop()]
 
-###############################################################################
+#-----------------------------------------------------------------------------
 # naming conventions
-###############################################################################
+#-----------------------------------------------------------------------------
 def name_prefix(table: list | str) -> list | str:
     if isinstance(table, list):
         return [f'{PREFIX}__{table}' for table in sorted(set(table))]
@@ -55,7 +70,7 @@ def name_suffix(name: str, suffix=None) -> str:
 def name_trim(table) -> str:
     simple = table
     for part in ['cohort_', 'cube_', 'valueset_']:
-        simple = simple.replace(name_prefix(part), '')
+        simple = simple.replace(part, '')
     return simple.replace(name_prefix(''), '')
 
 def name_join(part: str, table: str) -> str:
@@ -81,9 +96,9 @@ def name_valueset(table: str, suffix=None) -> str:
     part = f'valueset_{suffix}' if suffix else 'valueset'
     return name_join(part, table)
 
-###############################################################################
-# Basic SQL to replace with JINJA
-###############################################################################
+#-----------------------------------------------------------------------------
+# Basic SQL to replace with JINJA Templates
+#-----------------------------------------------------------------------------
 def sql_list(clauses_list) -> str:
     return sql_iter(clauses_list, ',')
 
@@ -95,9 +110,9 @@ def sql_iter(clauses_list, operator=',') -> str:
         return sql_iter([clauses_list])
     return f' {operator} \n'.join(sorted(list(set(clauses_list))))
 
-###############################################################################
-# CTAS
-###############################################################################
+#-----------------------------------------------------------------------------
+# CTAS (create table as)
+#-----------------------------------------------------------------------------
 def ctas(source: str, variable: str, where: list) -> str:
     """
     CTAS(create table as) will create a COHORT table as a subselection of the
@@ -109,9 +124,10 @@ def ctas(source: str, variable: str, where: list) -> str:
     :return: str SQL for creating the variable cohort table.
     """
     from_list = sql_list([source, name_valueset(variable)])
-    select_from = f'select * from \n {from_list}'
-    sql = [f'create table {name_cohort(variable)} as ',
-           select_from, 'WHERE', sql_iter(where, 'and')]
+    cohort_name = name_cohort(variable)
+    select = f"select distinct * from \n {from_list}"
+    sql = [f'create table {cohort_name} as ',
+           select, 'WHERE', sql_and(where)]
     return '\n'.join(sql)
 
 def ctas_as_view(sql:str, table_name:str) -> str:

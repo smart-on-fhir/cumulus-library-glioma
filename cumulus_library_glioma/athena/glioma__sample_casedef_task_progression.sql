@@ -1,0 +1,1 @@
+create table glioma__sample_casedef_task_progression as select * from glioma__sample_casedef_task where task = 'PROGRESSION'

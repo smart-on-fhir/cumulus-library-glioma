@@ -1,0 +1,7 @@
+config_type="valueset"
+table_prefix = "rx_ta_cancer"
+
+[vsac_stewards]
+vsac_rx_cancer_directed="2.16.840.1.113762.1.4.1260.230"
+vsac_rx_chemo='2.16.840.1.113762.1.4.1260.511'
+vsac_rx_chemo_advanced="2.16.840.1.113883.3.7643.2.1046"
