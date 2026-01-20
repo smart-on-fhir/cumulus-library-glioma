@@ -1,16 +1,16 @@
 ## Getting Started 
 
-| README                                | FILE                                                                |
-|---------------------------------------|---------------------------------------------------------------------|
-| Low Grade Glioma                      | [case_definition.md](case_definition.md)                            |
-| Custom valuesets and drug keywords    | resources / [README.md](resources/README.md)                        |
-| Athena SQL                            | athena / [README.md](cumulus_library_glioma/athena/README.md)       |
+| README           | FILE                                                          |
+|------------------|---------------------------------------------------------------|
+| Low Grade Glioma | [case_definition.md](case_definition.md)                      |
+| Custom valuesets | resources / [README.md](resources/README.md)                  |
+| Athena SQL       | athena / [README.md](cumulus_library_glioma/athena/README.md) |
 
 ## Clinical pathway variable descriptions 
-| variables            | file                                     |
-|----------------------|------------------------------------------|
-| CDS Clinical Pathway | [variables_cds.tsv](variables_cds.csv)   |
-| FHIR Resources       | [variables_fhir.tsv](variables_fhir.csv) |
+| variables            | file                                             |
+|----------------------|--------------------------------------------------|
+| CDS Clinical Pathway | [variables_cds.tsv](resources/variables_cds.csv) |
+| FHIR Resources       | [variables_fhir.tsv](resources/variables_fhir.csv)         |
 
 
 ## Makefiles
@@ -18,8 +18,6 @@
 | Study Builder                         | FILE                                                                  |
 |---------------------------------------|-----------------------------------------------------------------------|
 | Manifest                              | [manifest.toml](cumulus_library_glioma/manifest.toml)                 |
-| Valuesets (National Library Medicine) | [vsac.toml](cumulus_library_glioma/rx_ta_endocrine.toml)                         |
-| File uploads (vsac)                   | [file_upload_vsac.toml](cumulus_library_glioma/file_upload_vsac.toml) |
 | File uploads (curated)                | [file_upload.toml](cumulus_library_glioma/file_upload.toml)           |
 
 
