@@ -1,7 +1,7 @@
 config_type="valueset"
 table_prefix = "rx_class_idh"
 
-[umls_stewards.idh]
+[umls_stewards.rx_class_idh]
 sab = "RXNORM"# "MED-RT"
 search_terms = [
 #    "Isocitrate Dehydrogenase 1 Inhibitor",
@@ -11,5 +11,4 @@ search_terms = [
     "Ivosidenib",
     "Vorasidenib",
     "Enasidenib"
-
 ]

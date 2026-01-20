@@ -1,9 +1,6 @@
 config_type="valueset"
 table_prefix = "rx_in_vincristine"
 
-[umls_stewards.vincristine]
+[umls_stewards.rx_in_vincristine]
 sab = "RXNORM"
 search_terms = ["vincristine"]
-
-[vsac_stewards]
-rx_chemo_vincristine="2.16.840.1.113883.3.1444.3.192"

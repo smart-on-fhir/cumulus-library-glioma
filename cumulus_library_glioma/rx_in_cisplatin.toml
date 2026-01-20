@@ -1,6 +1,6 @@
 config_type="valueset"
 table_prefix = "rx_in_cisplatin"
 
-[umls_stewards.cisplatin]
+[umls_stewards.rx_in_cisplatin]
 sab = "RXNORM"
 search_terms = ["cisplatin"]

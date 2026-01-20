@@ -2,6 +2,6 @@ config_type="valueset"
 
 table_prefix = "rx_class_vinca"
 
-[umls_stewards.vinca]
+[umls_stewards.rx_class_vinca]
 sab = "MED-RT"
 search_terms = ["vinca"]

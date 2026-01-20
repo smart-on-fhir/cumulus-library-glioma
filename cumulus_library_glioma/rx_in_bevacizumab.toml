@@ -1,9 +1,6 @@
 config_type="valueset"
 table_prefix = "rx_in_bevacizumab"
 
-[umls_stewards.bevacizumab]
+[umls_stewards.rx_in_bevacizumab]
 sab = "RXNORM"
 search_terms = ["Bevacizumab","Avastin"]
-
-[vsac_stewards]
-rx_chemo_bevacizumab="2.16.840.1.113762.1.4.1116.179"

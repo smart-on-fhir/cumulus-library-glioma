@@ -11,8 +11,8 @@ study_prefix = "glioma"
 ### Cancer TA= Therapeutic Area
 "Therapuetic Area: Cancer" = ["rx_ta_cancer.toml"]
 
-### Cancer Drug Class
-"ALK Inhibitors"        = ["rx_class_alky.toml"]
+###  Drug Class
+"ALK Inhibitors"        = ["rx_class_alk.toml"]
 "Alkylating agents"     = ["rx_class_alkylating.toml"]
 "Antimetabolites"       = ["rx_class_antimetabolite.toml"]
 "BRAF inhibitors"       = ["rx_class_braf.toml"]
@@ -27,16 +27,16 @@ study_prefix = "glioma"
 "Platinum Compounds"    = ["rx_class_platinum.toml"]
 "Vinca Alkaloids"       = ["rx_class_vinca.toml"]
 
-#### Cancer Drug Ingredients
-"Alkylating IN: Temozolomide"       = ["rx_alkylating_temozolomide.toml"]
-"Antimetabolite IN: Thioguanine"    = ["rx_antimetabolite_thioguanine.toml"]
-"Monoclonal Ab IN: bevacizumab"     = ["rx_mab_bevacizumab.toml"]
-"MEK inhibitor IN: trametinib"      = ["rx_mek_trametinib.toml"]
-"Platinum IN: Carboplatin"          = ["rx_platinum_carboplatin.toml"]
-"Platinum IN: Cisplatin"            = ["rx_platinum_cisplatin.toml"]
-"Topoisomerase IN: Irinotecan"      = ["rx_topo_irinotecan.toml"]
-"Vinca Alkaloid IN: Vinblastine"    = ["rx_vinca_vinblastine.toml"]
-"Vinca Alkaloid IN: Vincristine"    = ["rx_vinca_vincristine.toml"]
+####  Drug Ingredients
+"Monoclonal Ab IN: Bevacizumab"     = ["rx_in_bevacizumab.toml"]
+"Platinum IN: Carboplatin"          = ["rx_in_carboplatin.toml"]
+"Platinum IN: Cisplatin"            = ["rx_in_cisplatin.toml"]
+"Topoisomerase IN: Irinotecan"      = ["rx_in_irinotecan.toml"]
+"Alkylating IN: Temozolomide"       = ["rx_in_temozolomide.toml"]
+"Antimetabolite IN: Thioguanine"    = ["rx_in_thioguanine.toml"]
+"MEK inhibitor IN: Trametinib"      = ["rx_in_trametinib.toml"]
+"Vinca Alkaloid IN: Vinblastine"    = ["rx_in_vinblastine.toml"]
+"Vinca Alkaloid IN: Vincristine"    = ["rx_in_vincristine.toml"]
 
 ## -----------------------------------------------------------------------------
 ## Study population
@@ -72,7 +72,7 @@ study_prefix = "glioma"
 #]
 #
 #"cohort for case definition aspects [dx, rx, lab, proc]"= [
-#    "athena/glioma__cohort_casedef_dx.sql",
+#    "athena/glioma__cohort_casedef_dx_comorbidity.sql",
 #    "athena/glioma__cohort_casedef_rx.sql",
 #    "athena/glioma__cohort_casedef_lab.sql",
 #    "athena/glioma__cohort_casedef_proc.sql",

@@ -1,6 +1,6 @@
 config_type="valueset"
 table_prefix = "rx_in_temozolomide"
 
-[umls_stewards.temozolomide]
+[umls_stewards.rx_in_temozolomide]
 sab = "RXNORM"
 search_terms = ["temozolomide", "Temodar", "Temodal", "Temcad", "Temedac"]

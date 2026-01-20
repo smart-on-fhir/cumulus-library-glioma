@@ -1,10 +1,10 @@
 config_type="valueset"
 table_prefix = "rx_class_platinum"
 
-[umls_stewards.platinum]
+[umls_stewards.rx_class_platinum]
 # TODO https://github.com/smart-on-fhir/cumulus-library/issues/442#issuecomment-3745004450
 sab = "ATC" # ["ATC", "MED-RT", "RXNORM", "SNOMEDCT_US", "NCI"]
 search_terms = ["Platinum-based Drug", "Platinum Compounds", "Platinum Antineoplastic Compound", "cisplatin"]
 
 [vsac_stewards]
-rx_class_vsac_platinum="2.16.840.1.113762.1.4.1260.71"
+vsac_rx_class_platinum="2.16.840.1.113762.1.4.1260.71"

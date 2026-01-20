@@ -1,6 +1,6 @@
 config_type="valueset"
 table_prefix = "rx_in_thioguanine"
 
-[umls_stewards.thioguanine]
+[umls_stewards.rx_in_thioguanine]
 sab = "RXNORM"
 search_terms = ["thioguanine", 'tioguanine', 'tabloid']

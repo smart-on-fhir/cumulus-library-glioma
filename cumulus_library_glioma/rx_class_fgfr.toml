@@ -1,7 +1,7 @@
 config_type="valueset"
 table_prefix = "rx_class_fgfr"
 
-[umls_stewards.fgfr]
+[umls_stewards.rx_class_fgfr]
 sab = "RXNORM"
 search_terms = [
     # "Fibroblast growth factor receptor",
