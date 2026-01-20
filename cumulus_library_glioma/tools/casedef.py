@@ -37,9 +37,9 @@ def make() -> list[Path]:
     sample_files = make_samples()
 
     toml_files = [
-        manifest.as_toml(cohort_files, 'cohort from case definition (valueset_casedef)'),
-        manifest.as_toml(aspect_files, 'cohort for case definition aspects [dx, rx, lab, proc]'),
-        manifest.as_toml(sample_files, 'samples for casedef temporality [pre, per, peri_post, post]'),
+        manifest.as_toml_parallel(cohort_files, 'cohort from case definition (valueset_casedef)'),
+        manifest.as_toml_parallel(aspect_files, 'cohort for case definition aspects [dx, rx, lab, proc]'),
+        manifest.as_toml_parallel(sample_files, 'samples for casedef temporality [pre, per, peri_post, post]'),
     ]
     toml_files = '\n'.join(toml_files)
     print(toml_files)

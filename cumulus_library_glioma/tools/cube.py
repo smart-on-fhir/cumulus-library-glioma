@@ -5,21 +5,22 @@ from cumulus_library_glioma.tools.tablespace import name_trim, name_cube, ctas_a
 from cumulus_library_glioma.tools.settings import CUMULUS_CUBE_MIN_SUBJECTS
 from cumulus_library_glioma.tools import manifest
 
-def cube_fhir_resource(fhir_resource:str,
+def cube_fhir_resource(primary_id:str,
                        source_table='study_population',
                        table_cols=None,
                        table_name=None,
                        min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
     """Generates a counts table using a template
 
-    :param fhir_resource: The type of FHIR resource to count
+    :param primary_id: The type of FHIR resource to count
     :param source_table: The table to create counts data from
     :param table_cols: The columns from the source table to add to the count table
     :param table_name: The name of the table to create. Must start with study prefix
     :param min_subject: Minimum number of patients to include in result groupings
     """
     if not table_name:
-        count_type = fhir_resource if (fhir_resource != 'documentreference') else 'document'
+        count_type = primary_id.replace('_ref', '')
+        count_type = count_type if (count_type!='subject') else 'patient'
         table_name = name_trim(source_table)
         table_name = name_cube(table_name, count_type)
 
@@ -29,9 +30,7 @@ def cube_fhir_resource(fhir_resource:str,
             source_table=source_table,
             table_cols=table_cols,
             min_subject=min_subject,
-            fhir_resource=fhir_resource,
-            filter_resource=True,
-            skip_status_filter=True
+            primary_id=primary_id,
     )
     sql = ctas_as_view(sql, table_name)
     return filetool.save_athena_view(table_name, sql)
@@ -41,7 +40,7 @@ def cube_patient(source_table='study_population',
                  table_name=None,
                  min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
     return cube_fhir_resource(
-        fhir_resource='patient',
+        primary_id='subject_ref',
         source_table=source_table,
         table_cols=table_cols,
         table_name=table_name,
@@ -52,7 +51,7 @@ def cube_encounter(source_table='study_population',
                    table_name=None,
                    min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
     return cube_fhir_resource(
-        fhir_resource='encounter',
+        primary_id='encounter_ref',
         source_table=source_table,
         table_cols=table_cols,
         table_name=table_name,
@@ -63,7 +62,7 @@ def cube_document(source_table='study_population',
                   table_name=None,
                   min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
     return cube_fhir_resource(
-        fhir_resource='documentreference',
+        primary_id='documentreference_ref',
         source_table=source_table,
         table_cols=table_cols,
         table_name=table_name,
@@ -81,7 +80,7 @@ def cube_note(source_table='study_population',
         table_name = name_cube(name_trim(source_table), 'note')
 
     file_path = cube_fhir_resource(
-        fhir_resource='documentreference',
+        primary_id='note_ref',
         source_table=source_table,
         table_cols=table_cols,
         table_name=table_name,
@@ -117,7 +116,7 @@ def make_casedef() -> list[Path]:
                      min_subject=10),
 
         # Comorbidities
-        cube_patient(source_table='glioma__cohort_casedef_dx',
+        cube_patient(source_table='glioma__cohort_casedef_dx_comorbidity',
                      table_cols=['dx_category_code',
                                  'dx_code',
                                  'dx_system',
@@ -139,6 +138,18 @@ def make_casedef() -> list[Path]:
                                  'race_display'],
                      min_subject=10),
 
+        # Glioma Drugs
+        cube_patient(source_table='glioma__cohort_casedef_rx_variable',
+                     table_cols=['rx_category_code',
+                                 'rx_code',
+                                 'rx_system',
+                                 'rx_display',
+                                 'valueset',
+                                 'pre',
+                                 'peri',
+                                 'post'],
+                     min_subject=10),
+
         # Procedures
         cube_patient(source_table='glioma__cohort_casedef_proc',
                      table_cols=['proc_status',
@@ -147,6 +158,14 @@ def make_casedef() -> list[Path]:
                                  'proc_display',
                                  'enc_class_code'],
                      min_subject=10),
+
+        # Lab Observations
+        cube_encounter(source_table='glioma__cohort_casedef_lab',
+                       table_cols=['lab_observation_code',
+                                   'lab_observation_system',
+                                   'lab_observation_display',
+                                   'enc_class_code'],
+                       min_subject=10),
 
         # Notes (any temporality)
         cube_patient(source_table='glioma__sample_casedef',
@@ -182,7 +201,7 @@ def make_casedef() -> list[Path]:
 #-----------------------------------------------------------------------------
 # Make FHIR variables
 #-----------------------------------------------------------------------------
-def make_fhir_variables() -> list[Path]:
+def make_fhir_variables_deprecated() -> list[Path]:
     return [
 
         # Count Patients for Any/All coded Glioma Study Variable
@@ -248,7 +267,7 @@ def make_fhir_variables() -> list[Path]:
 #-----------------------------------------------------------------------------
 # Make LLM variables
 #-----------------------------------------------------------------------------
-def make_llm_variables() -> list[Path]:
+def make_llm_variables_deprecated() -> list[Path]:
     return [
         cube_patient(source_table='glioma__llm_dx',
                      table_cols=['topography_has_mention',
@@ -301,10 +320,10 @@ def make_llm_variables() -> list[Path]:
 #-----------------------------------------------------------------------------
 if __name__ == "__main__":
     fhir_cube_files = make_casedef()
-    print(manifest.as_toml(fhir_cube_files, 'cube casedef'))
+    print(manifest.as_toml_parallel(fhir_cube_files, 'cube casedef'))
 
-    fhir_cube_files = make_fhir_variables()
-    print(manifest.as_toml(fhir_cube_files, 'cube FHIR'))
+    #fhir_cube_files = make_fhir_variables_deprecated()
+    #print(manifest.as_toml_parallel(fhir_cube_files, 'cube FHIR'))
 
-    llm_cube_files = make_llm_variables()
-    print(manifest.as_toml(llm_cube_files, 'cube LLM'))
+    #llm_cube_files = make_llm_variables_deprecated()
+    #print(manifest.as_toml_parallel(llm_cube_files, 'cube LLM'))

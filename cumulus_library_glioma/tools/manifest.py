@@ -6,8 +6,21 @@ from cumulus_library_glioma.tools import filetool
 #-----------------------------------------------------------------------------
 # get study manifest using cumulus library
 #-----------------------------------------------------------------------------
-def get_manifest():
-    return StudyManifest(filetool.path_project())
+def get_manifest(manifest_path: Path|str = None) -> StudyManifest:
+    if not manifest_path:
+        manifest_path = filetool.path_project()
+    if isinstance(manifest_path, str):
+        manifest_path = filetool.path_project(manifest_path)
+    return StudyManifest(manifest_path)
+
+def list_rx_valuesets():
+    workflows = get_manifest().get_all_workflows()
+    rx_list = [item.replace('.toml', '') for item in workflows if item.startswith('rx_')]
+    table_list = [f'glioma__{rx}_valuesets' for rx in rx_list]
+    select_list = [f'select * from {table}' for table in table_list]
+    union_list = '\tUNION ALL\n'.join(select_list)
+    ctas = 'create TABLE glioma__valueset_casedef_rx_union AS '
+    return ctas + union_list
 
 #-----------------------------------------------------------------------------
 # TOML helpers
