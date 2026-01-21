@@ -1,3 +1,5 @@
+import json
+import os
 from enum import StrEnum
 
 from pydantic import BaseModel, Field
@@ -246,3 +248,10 @@ class GliomaProgressionAnnotation(BaseModel):
         default_factory=list,
         description="All glioma disease progressions aggregated for each line of therapy",
     )
+
+
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
+
+    with open(f"{basedir}/schemas/glioma-progression-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaProgressionAnnotation.model_json_schema(), f, indent=2)

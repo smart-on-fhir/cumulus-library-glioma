@@ -1,3 +1,5 @@
+import json
+import os
 from enum import StrEnum
 
 from pydantic import BaseModel, Field
@@ -245,3 +247,10 @@ class GliomaMedicationsAnnotation(BaseModel):
     targeted_therapy_mention: list[GliomaTargetedTherapyMention] = Field(
         default_factory=list, description="All mentions of glioma targeted therapy"
     )
+
+
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
+
+    with open(f"{basedir}/schemas/glioma-medications-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaMedicationsAnnotation.model_json_schema(), f, indent=2)

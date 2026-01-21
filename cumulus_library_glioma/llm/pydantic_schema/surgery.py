@@ -1,3 +1,5 @@
+import json
+import os
 from enum import StrEnum
 
 from pydantic import BaseModel, Field
@@ -74,3 +76,10 @@ class GliomaSurgicalAnnotation(BaseModel):
     surgical_type_mention: SurgicalTypeMention
     approach_mention: SurgicalApproachMention
     extent_of_resection_mention: SurgicalExtentOfResectionMention
+
+
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
+
+    with open(f"{basedir}/schemas/glioma-surgical-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaSurgicalAnnotation.model_json_schema(), f, indent=2)

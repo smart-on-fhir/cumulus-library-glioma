@@ -1,5 +1,9 @@
+import json 
+import os 
 from enum import StrEnum
+
 from pydantic import BaseModel, Field
+
 from .mention import SpanAugmentedMention
 
 ###############################################################################
@@ -219,3 +223,10 @@ class GliomaDiagnosisAnnotation(BaseModel):
     behavior_mention: BehaviorMention
     grade_mention: GradeMention
     nf1_status_mention: NF1StatusMention
+
+
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
+
+    with open(f"{basedir}/schemas/glioma-diagnosis-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaDiagnosisAnnotation.model_json_schema(), f, indent=2)

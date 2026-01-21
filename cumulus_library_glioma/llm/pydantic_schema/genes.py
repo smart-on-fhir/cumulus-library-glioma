@@ -1,5 +1,9 @@
+import json
+import os
 from enum import StrEnum
+
 from pydantic import BaseModel, Field
+
 from .mention import SpanAugmentedMention
 
 ###############################################################################
@@ -92,3 +96,10 @@ class GliomaGeneAnnotation(BaseModel):
     genetic_variant_mention: list[GeneticVariantMention] = Field(
         default_factory=list, description="All mentions of pLGG genetic variants"
     )
+
+
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
+
+    with open(f"{basedir}/schemas/glioma-gene-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaGeneAnnotation.model_json_schema(), f, indent=2)

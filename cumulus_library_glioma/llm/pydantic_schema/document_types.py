@@ -10,7 +10,8 @@ Design notes:
 - Defaults are NOT_MENTIONED for the enum, and has_mention=False per SpanAugmentedMention.
 - `document_types` is a list so you can capture multiple doc types in one note set.
 """
-
+import json
+import os
 from enum import StrEnum
 
 from pydantic import BaseModel, Field
@@ -143,3 +144,10 @@ PROGRESSION_LIST = [
     DocumentType.ADMISSION_NOTE,
     DocumentType.DISCHARGE_SUMMARY,
 ]
+
+
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
+
+    with open(f"{basedir}/schemas/glioma-document-types-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaDocumentTypeAnnotation.model_json_schema(), f, indent=2)
