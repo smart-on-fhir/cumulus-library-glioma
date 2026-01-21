@@ -149,5 +149,5 @@ PROGRESSION_LIST = [
 if __name__ == "__main__":
     basedir = os.path.dirname(__file__)
 
-    with open(f"{basedir}/schemas/glioma-document-types-annotation.json", "w", encoding="utf8") as f:
+    with open(f"{basedir}/schemas/glioma-document-type-annotation.json", "w", encoding="utf8") as f:
         json.dump(GliomaDocumentTypeAnnotation.model_json_schema(), f, indent=2)
