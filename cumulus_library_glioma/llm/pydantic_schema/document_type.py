@@ -1,5 +1,5 @@
 """
-document_types.py
+document_type.py
 
 Enums + Pydantic "mention" models for extracting which document types are present/relevant
 for each pLGG annotation module.
@@ -8,7 +8,7 @@ Design notes:
 - We treat "document type" as something the reviewer/LLM can mark as present/referenced.
 - Each module gets its own Enum + Mention class so you can keep module-specific taxonomies.
 - Defaults are NOT_MENTIONED for the enum, and has_mention=False per SpanAugmentedMention.
-- `document_types` is a list so you can capture multiple doc types in one note set.
+- `document_type` is a list so you can capture multiple doc types in one note set.
 """
 import json
 import os

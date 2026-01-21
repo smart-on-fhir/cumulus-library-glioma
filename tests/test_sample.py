@@ -2,7 +2,7 @@ import unittest
 from pathlib import Path
 import pandas as pd
 from cumulus_library_glioma.tools import filetool, tablespace, manifest
-from cumulus_library_glioma.llm.pydantic_schema.document_types import (
+from cumulus_library_glioma.llm.pydantic_schema.document_type import (
     DocumentType
 )
 
