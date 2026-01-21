@@ -19,7 +19,11 @@ _Disclaimer_: This study is in progress and _should not yet_ be used at the poin
 
 ## What is a low-grade glioma? 
 "_Glioma_" is a malignant tumor in the brain. "_Low grade_" is a measure of cancer severity.     
-The glioma [clinical case definition](glioma_clinical_definition.md) was curated into a set of [glioma diagnosis codes](resources/glioma_casedef_dx.csv).    
+The glioma [clinical case definition](glioma_clinical_definition.md) was curated into a set of [glioma diagnosis codes](resources/glioma_casedef_dx.csv).
+
+`pLGG` is a subset of patients with a "glioma" diagnosis. 
+* "Pediatric" is derived from patient age at diagnosis.
+* "Low grade" is documented in oncology/pathology reports as the gold standard.   
 
 ## pLGG clinical pathway variables 
 `Variables` include diagnostics, treatments, lines of therapy, responses to treatment and cancer progression. The long term goal is to aid CDS (clinical decision support) using patient data in standard FHIR format.         
