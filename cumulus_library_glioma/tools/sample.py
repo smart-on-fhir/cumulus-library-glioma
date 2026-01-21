@@ -1,6 +1,6 @@
 from pathlib import Path
 import pandas as pd
-from cumulus_library_glioma.tools import filetool, manifest
+from cumulus_library_glioma.tools import filetool
 from cumulus_library_glioma.llm.pydantic_schema.document_types import DocumentType, DocumentTask
 
 def make_valueset() -> Path:
