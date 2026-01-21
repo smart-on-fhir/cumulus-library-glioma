@@ -4,8 +4,8 @@ from enum import StrEnum
 
 from pydantic import BaseModel, Field
 
-from .mention import SpanAugmentedMention
-from .drug_glioma import (
+from cumulus_library_glioma.llm.pydantic_schema.mention import SpanAugmentedMention
+from cumulus_library_glioma.llm.pydantic_schema.drug_glioma import (
     GliomaTargetedTherapy,
     GliomaChemotherapyClass,
     GliomaChemotherapyRegimen

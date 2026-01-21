@@ -16,7 +16,7 @@ from enum import StrEnum
 
 from pydantic import BaseModel, Field
 
-from .mention import SpanAugmentedMention
+from cumulus_library_glioma.llm.pydantic_schema.mention import SpanAugmentedMention
 
 
 # ------------------------------------------------------------------------------
