@@ -1,8 +1,11 @@
+import json
+import os
 from enum import StrEnum
-from typing import Optional
+
 from pydantic import BaseModel, Field
-from .mention import SpanAugmentedMention
-from .drug_glioma import (
+
+from cumulus_library_glioma.llm.pydantic_schema.mention import SpanAugmentedMention
+from cumulus_library_glioma.llm.pydantic_schema.drug_glioma import (
     GliomaTargetedTherapy,
     GliomaChemotherapyClass,
     GliomaChemotherapyRegimen
@@ -12,10 +15,10 @@ from .drug_glioma import (
 # Age at Progression
 ###############################################################################
 class AgeAtProgressionMention(SpanAugmentedMention):
-    age_years: Optional[float] = Field(
-        None,
-        description="Age at glioma disease progression in years, if explicitly stated."
+    age_years: int | None = Field(
+        None, description="Age at glioma disease progression in years, if explicitly stated."
     )
+
 
 ###############################################################################
 # Progression Type
@@ -28,11 +31,13 @@ class ProgressionType(StrEnum):
     SUSPECTED = "SUSPECTED"
     NONE = "NONE"
 
+
 class ProgressionTypeMention(SpanAugmentedMention):
     progression: ProgressionType = Field(
         ProgressionType.NOT_MENTIONED,
-        description="Radiographic/functional progression status as stated."
+        description="Radiographic/functional progression status as stated.",
     )
+
 
 ###############################################################################
 # Regrowth of Tumor
@@ -45,11 +50,13 @@ class RegrowthPattern(StrEnum):
     PSEUDOPROGRESSION_SUSPECTED = "PSEUDOPROGRESSION_SUSPECTED"
     OTHER = "OTHER"
 
+
 class RegrowthPatternMention(SpanAugmentedMention):
     regrowth_pattern: RegrowthPattern = Field(
         RegrowthPattern.NOT_MENTIONED,
-        description="Pattern of regrowth on/off therapy (progression vs rebound vs resistance)."
+        description="Pattern of regrowth on/off therapy (progression vs rebound vs resistance).",
     )
+
 
 ###############################################################################
 # Symptom Burden
@@ -64,11 +71,12 @@ class SymptomBurden(StrEnum):
     INCREASED_ICP = "INCREASED_ICP"
     OTHER = "OTHER"
 
+
 class SymptomBurdenMention(SpanAugmentedMention):
     symptom_burden: list[SymptomBurden] = Field(
-        default_factory=list,
-        description="Symptoms attributed to the tumor; may include multiple."
+        default_factory=list, description="Symptoms attributed to the tumor; may include multiple."
     )
+
 
 ###############################################################################
 # Visual
@@ -81,11 +89,12 @@ class VisualStatus(StrEnum):
     SEVERE_LOSS = "SEVERE_LOSS"
     OTHER = "OTHER"
 
+
 class VisualAcuityMention(SpanAugmentedMention):
     visual_status: VisualStatus = Field(
-        VisualStatus.NOT_MENTIONED,
-        description="Directionality of visual function over time."
+        VisualStatus.NOT_MENTIONED, description="Directionality of visual function over time."
     )
+
 
 ###############################################################################
 # Cognitive Risk
@@ -98,11 +107,13 @@ class NeurocognitiveRisk(StrEnum):
     IMPAIRED_BASELINE = "IMPAIRED_BASELINE"
     OTHER = "OTHER"
 
+
 class NeurocognitiveRiskMention(SpanAugmentedMention):
     risk: NeurocognitiveRisk = Field(
         NeurocognitiveRisk.NOT_MENTIONED,
-        description="Neurocognitive risk/impairment cues (baseline or treatment-related)."
+        description="Neurocognitive risk/impairment cues (baseline or treatment-related).",
     )
+
 
 ###############################################################################
 # Endocrine
@@ -116,11 +127,12 @@ class EndocrineStatus(StrEnum):
     HYPOTHALAMIC_DYSFUNCTION = "HYPOTHALAMIC_DYSFUNCTION"
     OTHER = "OTHER"
 
+
 class EndocrineFunctionMention(SpanAugmentedMention):
     endocrine_status: EndocrineStatus = Field(
-        EndocrineStatus.NOT_MENTIONED,
-        description="Endocrine function/dysfunction signals."
+        EndocrineStatus.NOT_MENTIONED, description="Endocrine function/dysfunction signals."
     )
+
 
 ###############################################################################
 # Line of Therapy
@@ -132,14 +144,16 @@ class TherapyLineNumber(StrEnum):
     THIRD_LINE = "THIRD_LINE"
     FOURTH_LINE_OR_GREATER = "FOURTH_LINE_OR_GREATER"
 
+
 class TherapyLineNumberMention(SpanAugmentedMention):
     line_number: TherapyLineNumber = Field(
         TherapyLineNumber.NOT_MENTIONED,
         description=(
             "Line of therapy in the overall treatment sequence "
             "(first-line, second-line, third-line, etc.)."
-        )
+        ),
     )
+
 
 class TherapyModality(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
@@ -150,11 +164,12 @@ class TherapyModality(StrEnum):
     RADIOTHERAPY = "RADIOTHERAPY"
     CLINICAL_TRIAL = "CLINICAL_TRIAL"
 
+
 class TherapyModalityMention(SpanAugmentedMention):
     therapy_modality: TherapyModality = Field(
-        TherapyModality.NOT_MENTIONED,
-        description="Line of therapy."
+        TherapyModality.NOT_MENTIONED, description="Line of therapy."
     )
+
 
 ###############################################################################
 # Prior Therapy
@@ -162,23 +177,21 @@ class TherapyModalityMention(SpanAugmentedMention):
 class PriorTherapyExposureMention(SpanAugmentedMention):
     prior_modalities: list[TherapyModality] = Field(
         default_factory=list,
-        description="Previously received modalities (surgery/chemo/targeted/RT/trial)."
+        description="Previously received modalities (surgery/chemo/targeted/RT/trial).",
     )
 
     prior_chemo_class: list[GliomaChemotherapyClass] = Field(
-        default_factory=list,
-        description="Named prior chemotherapy class if stated."
+        default_factory=list, description="Named prior chemotherapy class if stated."
     )
 
     prior_chemo_regimen: list[GliomaChemotherapyRegimen] = Field(
-        default_factory=list,
-        description="Named prior chemotherapy regimen if stated."
+        default_factory=list, description="Named prior chemotherapy regimen if stated."
     )
 
     prior_targeted: list[GliomaTargetedTherapy] = Field(
-        default_factory=list,
-        description="Named prior targeted regimens if stated."
+        default_factory=list, description="Named prior targeted regimens if stated."
     )
+
 
 ###############################################################################
 # Clinical Trial Available
@@ -190,11 +203,13 @@ class ClinicalTrialAvailability(StrEnum):
     NOT_AVAILABLE = "NOT_AVAILABLE"
     OTHER = "OTHER"
 
+
 class ClinicalTrialAvailabilityMention(SpanAugmentedMention):
     trial_status: ClinicalTrialAvailability = Field(
         ClinicalTrialAvailability.NOT_MENTIONED,
-        description="Whether a clinical trial is available/considered."
+        description="Whether a clinical trial is available/considered.",
     )
+
 
 class RadiotherapyExposureHistory(StrEnum):
     NOT_MENTIONED = "NOT_MENTIONED"
@@ -202,11 +217,13 @@ class RadiotherapyExposureHistory(StrEnum):
     NOT_EXPOSED = "NOT_EXPOSED"
     UNKNOWN = "UNKNOWN"
 
+
 class RadiotherapyExposureHistoryMention(SpanAugmentedMention):
     has_prior_radiotherapy: RadiotherapyExposureHistory = Field(
         RadiotherapyExposureHistory.NOT_MENTIONED,
-        description="Whether patient has prior radiotherapy exposure."
+        description="Whether patient has prior radiotherapy exposure.",
     )
+
 
 ###############################################################################
 # Annotation: Glioma Disease Progression
@@ -225,11 +242,16 @@ class GliomaProgressionMention(SpanAugmentedMention):
     clinical_trial: ClinicalTrialAvailabilityMention
     radiotherapy_exposure_history: RadiotherapyExposureHistoryMention
 
+
 class GliomaProgressionAnnotation(BaseModel):
-    glioma_progression: list[GliomaProgressionMention] = Field(
+    glioma_progression_mention: list[GliomaProgressionMention] = Field(
         default_factory=list,
-        description="All glioma disease progressions aggregated for each line of therapy"
+        description="All glioma disease progressions aggregated for each line of therapy",
     )
 
 
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
 
+    with open(f"{basedir}/schemas/glioma-progression-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaProgressionAnnotation.model_json_schema(), f, indent=2)

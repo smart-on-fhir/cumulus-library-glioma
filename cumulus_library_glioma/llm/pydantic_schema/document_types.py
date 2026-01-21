@@ -10,14 +10,18 @@ Design notes:
 - Defaults are NOT_MENTIONED for the enum, and has_mention=False per SpanAugmentedMention.
 - `document_types` is a list so you can capture multiple doc types in one note set.
 """
-from enum import StrEnum, Enum
-from typing import Optional
-from pydantic import BaseModel, Field
-from .mention import SpanAugmentedMention
+import json
+import os
+from enum import StrEnum
 
-#------------------------------------------------------------------------------
+from pydantic import BaseModel, Field
+
+from cumulus_library_glioma.llm.pydantic_schema.mention import SpanAugmentedMention
+
+
+# ------------------------------------------------------------------------------
 # Document Types relevant to Glioma (pLGG)
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 class DocumentType(StrEnum):
     RADIOLOGY = "Radiology report: MRI brain/spine, CT Head, or MR spectroscopy"
     ONCOLOGY = "Oncology consult, oncology progress note, or neuro-oncology note type"
@@ -40,88 +44,110 @@ class DocumentType(StrEnum):
     CLINICAL_TRIAL = "Clinical trial consent, enrollment, or protocol"
     NONE = "None of the above"
 
+
 class DocumentTypeMention(SpanAugmentedMention):
     doc_type: DocumentType = Field(
-        DocumentType.NONE,
-        description="What type of document/note is this?"
+        DocumentType.NONE, description="What type of document/note is this?"
     )
 
     is_administrative: bool = Field(
         False,
-        description="Is this document/note administrative and lacking clinical significance relevant to pLGG?"
+        description="Is this document/note administrative and lacking clinical significance relevant to pLGG?",
     )
 
-    doc_type_confidence: Optional[float] = Field(
+    doc_type_confidence: int | None = Field(
         None,
-        description="LLM confidence score (0–1) for the document type classification."
+        description="LLM confidence score (0-100) for the document type classification, with 100 being the highest confidence.",
     )
 
-#------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
 # Annotation BaseModel
-#------------------------------------------------------------------------------
-class DocumentTypeAnnotation(BaseModel):
-    doc_type: list[DocumentTypeMention] = Field(default_factory=list, description="All document type mentions")
+# ------------------------------------------------------------------------------
+class GliomaDocumentTypeAnnotation(BaseModel):
+    glioma_doc_type_mention: list[DocumentTypeMention] = Field(
+        default_factory=list, description="All document type mentions"
+    )
 
 
-#------------------------------------------------------------------------------
-# DocumentType relevant for each "task"
-#------------------------------------------------------------------------------
-class DocumentTask(Enum):
-    DIAGNOSIS = [
-        DocumentType.NEURO,
-        DocumentType.NEURO_SURGERY,
-        DocumentType.OPHTHALMOLOGY,
-        DocumentType.ONCOLOGY,
-        DocumentType.RADIOLOGY,
-        DocumentType.PATHOLOGY_REPORT_SURGICAL,
-        DocumentType.PATHOLOGY_REPORT_BIOPSY,
-        DocumentType.GENETICS,
-        DocumentType.TUMOR_BOARD_NOTE,
-        DocumentType.EMERGENCY_DEPARTMENT,
-        DocumentType.ADMISSION_NOTE,
-        DocumentType.DISCHARGE_SUMMARY
-    ]
+# ------------------------------------------------------------------------------
+# List document types for `diagnosis.py`
+# ------------------------------------------------------------------------------
+DIAGNOSIS_LIST = [
+    DocumentType.NEURO,
+    DocumentType.NEURO_SURGERY,
+    DocumentType.OPHTHALMOLOGY,
+    DocumentType.ONCOLOGY,
+    DocumentType.RADIOLOGY,
+    DocumentType.PATHOLOGY_REPORT_SURGICAL,
+    DocumentType.PATHOLOGY_REPORT_BIOPSY,
+    DocumentType.GENETICS,
+    DocumentType.TUMOR_BOARD_NOTE,
+    DocumentType.EMERGENCY_DEPARTMENT,
+    DocumentType.ADMISSION_NOTE,
+    DocumentType.DISCHARGE_SUMMARY,
+]
 
-    GENE = [
-        DocumentType.NEURO,
-        DocumentType.ONCOLOGY,
-        DocumentType.GENETICS,
-        DocumentType.PATHOLOGY_REPORT_SURGICAL,
-        DocumentType.PATHOLOGY_REPORT_BIOPSY,
-        DocumentType.TUMOR_BOARD_NOTE,
-        DocumentType.ADMISSION_NOTE,
-        DocumentType.DISCHARGE_SUMMARY,
-    ]
+# ------------------------------------------------------------------------------
+# List document types for `drug_glioma.py`
+# ------------------------------------------------------------------------------
+DRUG_LIST = [
+    DocumentType.ONCOLOGY,
+    DocumentType.PHARMACY,
+    DocumentType.MEDICATION_ORDER,
+    DocumentType.MEDICATION_ADMIN,
+    DocumentType.CHEMOTHERAPY,
+    DocumentType.ADVERSE_EVENT,
+    DocumentType.CLINICAL_TRIAL,
+    DocumentType.TUMOR_BOARD_NOTE,
+    DocumentType.ADMISSION_NOTE,
+    DocumentType.DISCHARGE_SUMMARY,
+]
 
-    SURGERY = [
-        DocumentType.NEURO_SURGERY,
-        DocumentType.RADIOLOGY,
-        DocumentType.TUMOR_BOARD_NOTE,
-        DocumentType.DISCHARGE_SUMMARY,
-        DocumentType.PATHOLOGY_REPORT_SURGICAL
-    ]
+# ------------------------------------------------------------------------------
+# List document types for `gene.py`
+# ------------------------------------------------------------------------------
+GENE_LIST = [
+    DocumentType.NEURO,
+    DocumentType.ONCOLOGY,
+    DocumentType.GENETICS,
+    DocumentType.PATHOLOGY_REPORT_SURGICAL,
+    DocumentType.PATHOLOGY_REPORT_BIOPSY,
+    DocumentType.TUMOR_BOARD_NOTE,
+    DocumentType.ADMISSION_NOTE,
+    DocumentType.DISCHARGE_SUMMARY,
+]
 
-    DRUG = [
-        DocumentType.ONCOLOGY,
-        DocumentType.PHARMACY,
-        DocumentType.MEDICATION_ORDER,
-        DocumentType.MEDICATION_ADMIN,
-        DocumentType.CHEMOTHERAPY,
-        DocumentType.ADVERSE_EVENT,
-        DocumentType.CLINICAL_TRIAL,
-        DocumentType.TUMOR_BOARD_NOTE,
-        DocumentType.ADMISSION_NOTE,
-        DocumentType.DISCHARGE_SUMMARY,
-    ]
+# ------------------------------------------------------------------------------
+# List document types `surgery.py`
+# ------------------------------------------------------------------------------
+SURGERY_LIST = [
+    DocumentType.NEURO_SURGERY,
+    DocumentType.RADIOLOGY,
+    DocumentType.TUMOR_BOARD_NOTE,
+    DocumentType.DISCHARGE_SUMMARY,
+    DocumentType.PATHOLOGY_REPORT_SURGICAL,
+]
 
-    PROGRESSION = [
-        DocumentType.NEURO,
-        DocumentType.ONCOLOGY,
-        DocumentType.RADIOLOGY,
-        DocumentType.OPHTHALMOLOGY,
-        DocumentType.ENDOCRINOLOGY,
-        DocumentType.TUMOR_BOARD_NOTE,
-        DocumentType.EMERGENCY_DEPARTMENT,
-        DocumentType.ADMISSION_NOTE,
-        DocumentType.DISCHARGE_SUMMARY,
-    ]
+
+# ------------------------------------------------------------------------------
+# List document types for `progression.py`
+# ------------------------------------------------------------------------------
+PROGRESSION_LIST = [
+    DocumentType.NEURO,
+    DocumentType.ONCOLOGY,
+    DocumentType.RADIOLOGY,
+    DocumentType.OPHTHALMOLOGY,
+    DocumentType.ENDOCRINOLOGY,
+    DocumentType.TUMOR_BOARD_NOTE,
+    DocumentType.EMERGENCY_DEPARTMENT,
+    DocumentType.ADMISSION_NOTE,
+    DocumentType.DISCHARGE_SUMMARY,
+]
+
+
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
+
+    with open(f"{basedir}/schemas/glioma-document-types-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaDocumentTypeAnnotation.model_json_schema(), f, indent=2)

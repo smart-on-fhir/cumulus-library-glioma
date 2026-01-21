@@ -1,6 +1,11 @@
+import json
+import os
 from enum import StrEnum
+
 from pydantic import BaseModel, Field
-from .mention import SpanAugmentedMention
+
+from cumulus_library_glioma.llm.pydantic_schema.mention import SpanAugmentedMention
+
 
 ###############################################################################
 # Surgical Type
@@ -9,17 +14,19 @@ class SurgicalType(StrEnum):
     BIOPSY = "BIOPSY"
     RESECTION = "RESECTION"
     DEBULKING = "DEBULKING"
-    ABLATION = "ABLATION"              # LITT, RFA, etc.
+    ABLATION = "ABLATION"  # LITT, RFA, etc.
     ENDOSCOPIC = "ENDOSCOPIC"
     CRANIOTOMY = "CRANIOTOMY"
     OTHER = "OTHER"
     NOT_MENTIONED = "NOT_MENTIONED"
 
+
 class SurgicalTypeMention(SpanAugmentedMention):
     surgical_type: SurgicalType = Field(
         default=SurgicalType.NOT_MENTIONED,
-        description="High-level categorization of the surgery (biopsy, resection, ablation, etc.)"
+        description="High-level categorization of the surgery (biopsy, resection, ablation, etc.)",
     )
+
 
 ###############################################################################
 # Extent of Resection
@@ -29,16 +36,18 @@ class SurgicalExtentOfResection(StrEnum):
     SUBTOTAL = "SUBTOTAL"
     PARTIAL = "PARTIAL"
     BIOPSY_ONLY = "BIOPSY_ONLY"
-    SUPRATOTAL = "SUPRATOTAL"          # used in LGG for seizure control
+    SUPRATOTAL = "SUPRATOTAL"  # used in LGG for seizure control
     NOT_APPLICABLE = "NOT_APPLICABLE"
     UNRESECTABLE = "UNRESECTABLE"
     NOT_MENTIONED = "NOT_MENTIONED"
 
+
 class SurgicalExtentOfResectionMention(SpanAugmentedMention):
     extent_of_resection: SurgicalExtentOfResection = Field(
         default=SurgicalExtentOfResection.NOT_MENTIONED,
-        description="Reported extent of tumor resection."
+        description="Reported extent of tumor resection.",
     )
+
 
 ###############################################################################
 # Surgical Approach
@@ -52,16 +61,25 @@ class SurgicalApproach(StrEnum):
     KEYHOLE = "KEYHOLE"
     NOT_MENTIONED = "NOT_MENTIONED"
 
+
 class SurgicalApproachMention(SpanAugmentedMention):
     approach: SurgicalApproach = Field(
         default=SurgicalApproach.NOT_MENTIONED,
-        description="Technical approach used during the surgery (open, awake, stereotactic, laser)."
+        description="Technical approach used during the surgery (open, awake, stereotactic, laser).",
     )
+
 
 ###############################################################################
 # Annotation BaseModel
 ###############################################################################
-class SurgicalAnnotation(BaseModel):
-    surgical_type: SurgicalTypeMention
-    approach: SurgicalApproachMention
-    extent_of_resection: SurgicalExtentOfResectionMention
+class GliomaSurgicalAnnotation(BaseModel):
+    surgical_type_mention: SurgicalTypeMention
+    approach_mention: SurgicalApproachMention
+    extent_of_resection_mention: SurgicalExtentOfResectionMention
+
+
+if __name__ == "__main__":
+    basedir = os.path.dirname(__file__)
+
+    with open(f"{basedir}/schemas/glioma-surgical-annotation.json", "w", encoding="utf8") as f:
+        json.dump(GliomaSurgicalAnnotation.model_json_schema(), f, indent=2)
