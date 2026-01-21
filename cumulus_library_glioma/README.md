@@ -72,14 +72,15 @@ Currently this works only at BCH and is not "out of the box" ready for use at ot
 ---
 # Directory contents 
 
-| File                                               | Description                                              |
-|----------------------------------------------------|----------------------------------------------------------|
-| [file_upload.toml](file_upload.toml)               | default= precompiled valuesets to upload to Athena       |
-| [manifest.toml](manifest.toml)                     | default = [manifest_casedef.toml](manifest_casedef.toml) |
-| [manifest_casedef.toml](manifest_casedef.toml)     | builds glioma case definitions with fhir CUBE outputs.   |
-| [manifest_llm.toml](manifest_llm.toml)             | builds LLM tables in Athena SQL with llm CUBE ouputs.    |
-| [manifest_prereq_rx.toml](manifest_prereq_rx.toml) | build glioma RXNORM drug lists from sources.             |
-| rx_____.toml files                                 | see [README.md](../README.md) "Glioma drug therapy"      |
+| File                                               | Description                                                 |
+|----------------------------------------------------|-------------------------------------------------------------|
+| [file_upload.toml](file_upload.toml)               | default= precompiled valuesets to upload to Athena          |
+| [manifest.toml](manifest.toml)                     | default = [manifest_casedef.toml](manifest_casedef.toml)    |
+| [manifest_casedef.toml](manifest_casedef.toml)     | builds glioma case definitions with fhir CUBE outputs.      |
+| [manifest_variables.toml](manifest_variables.toml) | builds glioma variables other than drug lists (in progress) |
+| [manifest_llm.toml](manifest_llm.toml)             | builds LLM tables in Athena SQL with llm CUBE ouputs.       |
+| [manifest_prereq_rx.toml](manifest_prereq_rx.toml) | build glioma RXNORM drug lists from sources.                |
+| rx_____.toml files                                 | see [README.md](../README.md) "Glioma drug therapy"         |
 
  
     
