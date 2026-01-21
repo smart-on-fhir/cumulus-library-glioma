@@ -1,5 +1,4 @@
 from enum import StrEnum
-from typing import Optional
 from pydantic import BaseModel, Field
 from .mention import SpanAugmentedMention
 
@@ -11,6 +10,7 @@ from .mention import SpanAugmentedMention
 #   https://www.ncbi.nlm.nih.gov/gtr/conditions/C0017638/
 ###############################################################################
 
+
 ###############################################################################
 # Molecular Driver
 ###############################################################################
@@ -18,114 +18,77 @@ class MolecularDriverMention(SpanAugmentedMention):
     """
     Minimal set of clinically actionable genetic alterations for glioma.
     """
+
     # --- Core actionable alteration ---
-    braf_altered: Optional[bool] = Field(
-        None,
-        description="BRAF alteration is present (any type)."
+    braf_altered: bool | None = Field(None, description="BRAF alteration is present (any type).")
+
+    braf_v600e: bool | None = Field(None, description="BRAF V600E mutation is present.")
+
+    braf_fusion: bool | None = Field(
+        None, description=" BRAF fusion (e.g., KIAA1549-BRAF) is present."
     )
 
-    braf_v600e: Optional[bool] = Field(
-        None,
-        description="BRAF V600E mutation is present."
+    idh_mutant: bool | None = Field(None, description="IDH1 or IDH2 mutation is present.")
+
+    h3k27m_mutant: bool | None = Field(
+        None, description="Histone H3 K27M (H3-3A or H3C2) mutation is present."
     )
 
-    braf_fusion: Optional[bool] = Field(
-        None,
-        description=" BRAF fusion (e.g., KIAA1549-BRAF) is present."
-    )
-
-    idh_mutant: Optional[bool] = Field(
-        None,
-        description="IDH1 or IDH2 mutation is present."
-    )
-
-    h3k27m_mutant: Optional[bool] = Field(
-        None,
-        description="Histone H3 K27M (H3-3A or H3C2) mutation is present."
-    )
-
-    tp53_altered: Optional[bool] = Field(
-        None,
-        description="TP53 mutation or loss is present."
-    )
+    tp53_altered: bool | None = Field(None, description="TP53 mutation or loss is present.")
 
     # --- Copy number / pathway surrogates ---
-    cdkn2a_deleted: Optional[bool] = Field(
-        None,
-        description="CDKN2A deletion is present."
-    )
+    cdkn2a_deleted: bool | None = Field(None, description="CDKN2A deletion is present.")
 
-    nf1_mapk_activation: Optional[bool] = Field(
-        None,
-        description="NF1 MAPK activation is present."
-    )
+    nf1_mapk_activation: bool | None = Field(None, description="NF1 MAPK activation is present.")
 
-    other_raf_alteration: Optional[bool] = Field(
-        None,
-        description="Other RAF alteration is present."
-    )
+    other_raf_alteration: bool | None = Field(None, description="Other RAF alteration is present.")
 
-    fgfr_alteration: Optional[bool] = Field(
-        None,
-        description="FGFR alteration is present."
-    )
+    fgfr_alteration: bool | None = Field(None, description="FGFR alteration is present.")
 
-    ntrk_fusion: Optional[bool] = Field(
-        None,
-        description="NTRK fusion is present."
-    )
+    ntrk_fusion: bool | None = Field(None, description="NTRK fusion is present.")
 
-    alk_fusion: Optional[bool] = Field(
-        None,
-        description="ALK fusion is present."
-    )
+    alk_fusion: bool | None = Field(None, description="ALK fusion is present.")
 
-    ros1_fusion: Optional[bool] = Field(
-        None,
-        description="ROS1 fusion is present."
-    )
+    ros1_fusion: bool | None = Field(None, description="ROS1 fusion is present.")
+
 
 ###############################################################################
 # Genetic Variants
 ###############################################################################
 class GeneticVariantInterpretation(StrEnum):
-    B = 'BENIGN'
-    LB = 'LIKELY BENIGN'
-    VUS = 'VARIANT OF UNKNOWN SIGNIFICANCE'
-    P = 'PATHOGENIC'
-    LP = 'LIKELY PATHOGENIC'
-    NOT_MENTIONED = 'NOT MENTIONED'
+    B = "BENIGN"
+    LB = "LIKELY BENIGN"
+    VUS = "VARIANT OF UNKNOWN SIGNIFICANCE"
+    P = "PATHOGENIC"
+    LP = "LIKELY PATHOGENIC"
+    NOT_MENTIONED = "NOT MENTIONED"
+
 
 class GeneticVariantMention(SpanAugmentedMention):
     """
     Clinical interpretation of genetic variant
     """
-    hgnc_name: Optional[str] = Field(
-        default=None,
-        description="HGNC/HUGO gene naming convention"
-    )
+
+    hgnc_name: str | None = Field(default=None, description="HGNC/HUGO gene naming convention")
 
     interpretation: GeneticVariantInterpretation = Field(
         GeneticVariantInterpretation.NOT_MENTIONED,
-        description='Clinical interpretation of genetic variant or genetic test result'
+        description="Clinical interpretation of genetic variant or genetic test result",
     )
 
-    hgvs_variant: Optional[str] = Field(
-        None,
-        description="HGVS variant string (e.g., NM_004333.6(BRAF):c.1799T>A)."
+    hgvs_variant: str | None = Field(
+        None, description="HGVS variant string (e.g., NM_004333.6(BRAF):c.1799T>A)."
     )
 
 
 ###############################################################################
 # Annotation BaseModel
 ###############################################################################
-class GeneAnnotation(BaseModel):
-    molecular_driver: list[MolecularDriverMention] = Field(
-        default_factory=list,
-        description="All mentions of pLGG Molecular drivers"
+class GliomaGeneAnnotation(BaseModel):
+    molecular_driver_mention: list[MolecularDriverMention] = Field(
+        default_factory=list, description="All mentions of pLGG Molecular drivers"
     )
 
-    genetic_variant: list[GeneticVariantMention] = Field(
-        default_factory=list,
-        description="All mentions of pLGG genetic variants"
+    genetic_variant_mention: list[GeneticVariantMention] = Field(
+        default_factory=list, description="All mentions of pLGG genetic variants"
     )
