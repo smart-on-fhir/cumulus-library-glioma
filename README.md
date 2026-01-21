@@ -34,7 +34,7 @@ The glioma [clinical case definition](glioma_clinical_definition.md) was curated
 | FHIR Resources       | [variables_fhir.tsv](resources/variables_fhir.csv)         |
 
 
-## Glioma Drug Therapy
+## Glioma drug therapy
 Pre-compiled valueset of glioma drugs is included in [glioma_casedef_rx.csv](resources/glioma_casedef_rx.csv), including all RXNORM drugs that match each of the following drug "class/pathwawy" or "ingredient" valuesets. Drug concepts from `SNOMEDCT` and other UMLS sources are mapped to RXNORM.
 
 * `system` is always standard [RXNORM](https://www.nlm.nih.gov/research/umls/rxnorm/overview.html)
@@ -69,6 +69,6 @@ This study is built on [Cumulus](https://docs.smarthealthit.org/cumulus/).
 | Documentation                                                                                    | Task                                                     |  
 |--------------------------------------------------------------------------------------------------|----------------------------------------------------------|
 | Cumulus [first-time-setup](https://docs.smarthealthit.org/cumulus/library/first-time-setup.html) | build `core` dependacies required by this `glioma` study |
-| [README.md](cumulus_library_glioma/README.md)                             | build `glioma` (this study)                              |     
-| `athena`/[README.md](cumulus_library_glioma/athena/README.md)             | glioma schema in `athena` (SQL)                            |
-| `llm`/[README.md](cumulus_library_glioma/llm/README.md)                   | glioma `LLM` prompts, instructions, and outputs            |
+| [README.md](cumulus_library_glioma/README.md)                                                    | build `glioma` (this study)                              |     
+| `athena`/[README.md](cumulus_library_glioma/athena/README.md)                                    | glioma schema in `athena` (SQL)                          |
+| `llm`/[README.md](cumulus_library_glioma/llm/README.md)                                          | glioma `LLM` prompts, instructions, and outputs          |
