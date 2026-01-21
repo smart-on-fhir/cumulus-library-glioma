@@ -1,14 +1,10 @@
-# Getting Started 
+# Table of Contents
 
-## Technical documentation
-This study is built on [Cumulus](https://docs.smarthealthit.org/cumulus/).
-
-| Documentation                                                                                    | Task                                                     |  
-|--------------------------------------------------------------------------------------------------|----------------------------------------------------------|
-| Cumulus [first-time-setup](https://docs.smarthealthit.org/cumulus/library/first-time-setup.html) | build `core` dependacies required by this `glioma` study |
-| [README.md](cumulus_library_glioma/README.md)                             | build `glioma` (this study)                              |     
-| `athena`/[README.md](cumulus_library_glioma/athena/README.md)             | glioma schema in `athena` (SQL)                            |
-| `llm`/[README.md](cumulus_library_glioma/llm/README.md)                   | glioma `LLM` prompts, instructions, and outputs            |
+- [Goals of this study](#goals-of-this-study)
+- [What is a low-grade glioma?](#what-is-a-low-grade-glioma)
+- [pLGG clinical pathway variables](#plgg-clinical-pathway-variables)
+- [Glioma Drug Therapy](#glioma-drug-therapy)
+- [Technical documentation](#technical-documentation)
 
 ## Goals of this study  
 For pediatric low-grade glioma (`pLGG`) patients, the "best" treatment is not always obvious. 
@@ -23,7 +19,7 @@ _Disclaimer_: This study is in progress and _should not yet_ be used at the poin
 
 ## What is a low-grade glioma? 
 "_Glioma_" is a malignant tumor in the brain. "_Low grade_" is a measure of cancer severity.     
-The glioma [clinical case definition](clinical_case_definition.md) was curated into a set of [glioma diagnosis codes](resources/glioma_casedef_dx.csv).    
+The glioma [clinical case definition](glioma_clinical_definition.md) was curated into a set of [glioma diagnosis codes](resources/glioma_casedef_dx.csv).    
 
 ## pLGG clinical pathway variables 
 `Variables` include diagnostics, treatments, lines of therapy, responses to treatment and cancer progression. The long term goal is to aid CDS (clinical decision support) using patient data in standard FHIR format.         
@@ -35,9 +31,12 @@ The glioma [clinical case definition](clinical_case_definition.md) was curated i
 
 
 ## Glioma Drug Therapy
-Pre-compiled list of glioma drugs is included in [glioma_casedef_rx.csv](resources/glioma_casedef_rx.csv), including all RXNORM drugs that match each of the following drug "class/pathwawy" or "ingredient" valuesets.  
+Pre-compiled valueset of glioma drugs is included in [glioma_casedef_rx.csv](resources/glioma_casedef_rx.csv), including all RXNORM drugs that match each of the following drug "class/pathwawy" or "ingredient" valuesets. Drug concepts from `SNOMEDCT` and other UMLS sources are mapped to RXNORM.
 
-
+* `system` is always standard [RXNORM](https://www.nlm.nih.gov/research/umls/rxnorm/overview.html)
+* `code` is the drug concept `rxcui` in RXNORM
+* `display` is a human-readable label
+* `tf` is "term frequency": most commonly used _display_ in UMLS.
 
 | Chemotherapy OR targeted molecular | Drug class/pathway valueset                                                    | Ingredient valuesets(s)                                                                                                                                                                  |    
 |------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
@@ -59,3 +58,13 @@ Pre-compiled list of glioma drugs is included in [glioma_casedef_rx.csv](resourc
 | Molecular                          | [Pan-RAF kinase Inhibitors](cumulus_library_glioma/rx_class_pan_raf.toml)      |                                                                                                                                                                                          |
 | Molecular                          | [RET inhibitors](cumulus_library_glioma/rx_class_ret.toml)                     |                                                                                                                                                                                          |
 | Molecular                          | [ROS1 Inhibitors](cumulus_library_glioma/rx_class_ros1.toml)                   |                                                                                                                                                                                          |
+
+## Technical documentation
+This study is built on [Cumulus](https://docs.smarthealthit.org/cumulus/).
+
+| Documentation                                                                                    | Task                                                     |  
+|--------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| Cumulus [first-time-setup](https://docs.smarthealthit.org/cumulus/library/first-time-setup.html) | build `core` dependacies required by this `glioma` study |
+| [README.md](cumulus_library_glioma/README.md)                             | build `glioma` (this study)                              |     
+| `athena`/[README.md](cumulus_library_glioma/athena/README.md)             | glioma schema in `athena` (SQL)                            |
+| `llm`/[README.md](cumulus_library_glioma/llm/README.md)                   | glioma `LLM` prompts, instructions, and outputs            |
