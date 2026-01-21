@@ -38,3 +38,11 @@ study_prefix = "glioma"
 "MEK inhibitor IN: Trametinib"      = ["rx_in_trametinib.toml"]
 "Vinca Alkaloid IN: Vinblastine"    = ["rx_in_vinblastine.toml"]
 "Vinca Alkaloid IN: Vincristine"    = ["rx_in_vincristine.toml"]
+
+"UNION ALL glioma drug valuesets from any UMLS source" = [
+    "athena/glioma__valueset_casedef_rx_union.sql"
+]
+
+"Compile glioma drug valueset into RXNORM standard" = [
+    "athena/glioma__valueset_casedef_rx.sql"
+]
