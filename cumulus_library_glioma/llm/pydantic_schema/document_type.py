@@ -12,7 +12,7 @@ Design notes:
 """
 import json
 import os
-from enum import StrEnum
+from enum import StrEnum, Enum
 
 from pydantic import BaseModel, Field
 
@@ -70,80 +70,84 @@ class GliomaDocumentTypeAnnotation(BaseModel):
     )
 
 
-# ------------------------------------------------------------------------------
-# List document types for `diagnosis.py`
-# ------------------------------------------------------------------------------
-DIAGNOSIS_LIST = [
-    DocumentType.NEURO,
-    DocumentType.NEURO_SURGERY,
-    DocumentType.OPHTHALMOLOGY,
-    DocumentType.ONCOLOGY,
-    DocumentType.RADIOLOGY,
-    DocumentType.PATHOLOGY_REPORT_SURGICAL,
-    DocumentType.PATHOLOGY_REPORT_BIOPSY,
-    DocumentType.GENETICS,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.EMERGENCY_DEPARTMENT,
-    DocumentType.ADMISSION_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-]
+#------------------------------------------------------------------------------
+# DocumentType relevant for each "task"
+#------------------------------------------------------------------------------
+class DocumentTask(Enum):
+    # ------------------------------------------------------------------------------
+    # List document types for `diagnosis.py`
+    # ------------------------------------------------------------------------------
+    DIAGNOSIS_LIST = [
+        DocumentType.NEURO,
+        DocumentType.NEURO_SURGERY,
+        DocumentType.OPHTHALMOLOGY,
+        DocumentType.ONCOLOGY,
+        DocumentType.RADIOLOGY,
+        DocumentType.PATHOLOGY_REPORT_SURGICAL,
+        DocumentType.PATHOLOGY_REPORT_BIOPSY,
+        DocumentType.GENETICS,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.EMERGENCY_DEPARTMENT,
+        DocumentType.ADMISSION_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+    ]
 
-# ------------------------------------------------------------------------------
-# List document types for `drug_glioma.py`
-# ------------------------------------------------------------------------------
-DRUG_LIST = [
-    DocumentType.ONCOLOGY,
-    DocumentType.PHARMACY,
-    DocumentType.MEDICATION_ORDER,
-    DocumentType.MEDICATION_ADMIN,
-    DocumentType.CHEMOTHERAPY,
-    DocumentType.ADVERSE_EVENT,
-    DocumentType.CLINICAL_TRIAL,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.ADMISSION_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-]
+    # ------------------------------------------------------------------------------
+    # List document types for `drug_glioma.py`
+    # ------------------------------------------------------------------------------
+    DRUG_LIST = [
+        DocumentType.ONCOLOGY,
+        DocumentType.PHARMACY,
+        DocumentType.MEDICATION_ORDER,
+        DocumentType.MEDICATION_ADMIN,
+        DocumentType.CHEMOTHERAPY,
+        DocumentType.ADVERSE_EVENT,
+        DocumentType.CLINICAL_TRIAL,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.ADMISSION_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+    ]
 
-# ------------------------------------------------------------------------------
-# List document types for `gene.py`
-# ------------------------------------------------------------------------------
-GENE_LIST = [
-    DocumentType.NEURO,
-    DocumentType.ONCOLOGY,
-    DocumentType.GENETICS,
-    DocumentType.PATHOLOGY_REPORT_SURGICAL,
-    DocumentType.PATHOLOGY_REPORT_BIOPSY,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.ADMISSION_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-]
+    # ------------------------------------------------------------------------------
+    # List document types for `gene.py`
+    # ------------------------------------------------------------------------------
+    GENE_LIST = [
+        DocumentType.NEURO,
+        DocumentType.ONCOLOGY,
+        DocumentType.GENETICS,
+        DocumentType.PATHOLOGY_REPORT_SURGICAL,
+        DocumentType.PATHOLOGY_REPORT_BIOPSY,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.ADMISSION_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+    ]
 
-# ------------------------------------------------------------------------------
-# List document types `surgery.py`
-# ------------------------------------------------------------------------------
-SURGERY_LIST = [
-    DocumentType.NEURO_SURGERY,
-    DocumentType.RADIOLOGY,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-    DocumentType.PATHOLOGY_REPORT_SURGICAL,
-]
+    # ------------------------------------------------------------------------------
+    # List document types `surgery.py`
+    # ------------------------------------------------------------------------------
+    SURGERY_LIST = [
+        DocumentType.NEURO_SURGERY,
+        DocumentType.RADIOLOGY,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+        DocumentType.PATHOLOGY_REPORT_SURGICAL,
+    ]
 
 
-# ------------------------------------------------------------------------------
-# List document types for `progression.py`
-# ------------------------------------------------------------------------------
-PROGRESSION_LIST = [
-    DocumentType.NEURO,
-    DocumentType.ONCOLOGY,
-    DocumentType.RADIOLOGY,
-    DocumentType.OPHTHALMOLOGY,
-    DocumentType.ENDOCRINOLOGY,
-    DocumentType.TUMOR_BOARD_NOTE,
-    DocumentType.EMERGENCY_DEPARTMENT,
-    DocumentType.ADMISSION_NOTE,
-    DocumentType.DISCHARGE_SUMMARY,
-]
+    # ------------------------------------------------------------------------------
+    # List document types for `progression.py`
+    # ------------------------------------------------------------------------------
+    PROGRESSION_LIST = [
+        DocumentType.NEURO,
+        DocumentType.ONCOLOGY,
+        DocumentType.RADIOLOGY,
+        DocumentType.OPHTHALMOLOGY,
+        DocumentType.ENDOCRINOLOGY,
+        DocumentType.TUMOR_BOARD_NOTE,
+        DocumentType.EMERGENCY_DEPARTMENT,
+        DocumentType.ADMISSION_NOTE,
+        DocumentType.DISCHARGE_SUMMARY,
+    ]
 
 
 if __name__ == "__main__":
