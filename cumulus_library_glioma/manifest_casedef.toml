@@ -51,12 +51,20 @@ study_prefix = "glioma"
     "athena/glioma__cohort_casedef_rx_variable.sql"
 ]
 
-"samples of case definition (pre, peri, peri_post, post)"= [
-    "athena/glioma__sample_casedef.sql",
-    "athena/glioma__sample_casedef_pre.sql",
-    "athena/glioma__sample_casedef_peri.sql",
-    "athena/glioma__sample_casedef_peri_post.sql",
-    "athena/glioma__sample_casedef_post.sql",
+"samples for casedef temporality (pre, per, peri_post, post)"= [
+	"athena/glioma__sample_casedef.sql",
+	"athena/glioma__sample_casedef_pre.sql",
+	"athena/glioma__sample_casedef_pre_limit_patient_10.sql",
+	"athena/glioma__sample_casedef_pre_limit_note_50.sql",
+	"athena/glioma__sample_casedef_peri.sql",
+	"athena/glioma__sample_casedef_peri_limit_patient_10.sql",
+	"athena/glioma__sample_casedef_peri_limit_note_50.sql",
+	"athena/glioma__sample_casedef_peri_post.sql",
+	"athena/glioma__sample_casedef_peri_post_limit_patient_10.sql",
+	"athena/glioma__sample_casedef_peri_post_limit_note_50.sql",
+	"athena/glioma__sample_casedef_post.sql",
+	"athena/glioma__sample_casedef_post_limit_patient_10.sql",
+	"athena/glioma__sample_casedef_post_limit_note_50.sql",
 ]
 
 "cube casedef"= [
