@@ -2,10 +2,6 @@ create  table glioma__cohort_casedef_proc as
 select  distinct
         casedef.days_since,
         casedef.ordinal_since,
-        casedef.pre,
-        casedef.peri,
-        casedef.peri_post,
-        casedef.post,
         casedef.dx_category_code,
         casedef.dx_system,
         casedef.dx_code,
