@@ -1,17 +1,5 @@
 CREATE or replace VIEW glioma__cube_patient_casedef_lab AS 
     WITH
-    filtered_table AS (
-        SELECT
-            s.subject_ref,
-            --noqa: disable=RF03, AL02
-            s."enc_class_code",
-            s."lab_observation_code",
-            s."lab_observation_display",
-            s."lab_observation_system"
-            --noqa: enable=RF03, AL02
-        FROM glioma__cohort_casedef_lab AS s
-    ),
-    
     null_replacement AS (
         SELECT
             subject_ref,
@@ -31,7 +19,8 @@ CREATE or replace VIEW glioma__cube_patient_casedef_lab AS
                 cast(lab_observation_system AS varchar),
                 'cumulus__none'
             ) AS lab_observation_system
-        FROM filtered_table
+        FROM glioma__cohort_casedef_lab
+        
     ),
 
     powerset AS (
@@ -60,10 +49,10 @@ CREATE or replace VIEW glioma__cube_patient_casedef_lab AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."enc_class_code",
-        p."lab_observation_code",
-        p."lab_observation_display",
-        p."lab_observation_system"
+            p."enc_class_code",
+            p."lab_observation_code",
+            p."lab_observation_display",
+            p."lab_observation_system"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

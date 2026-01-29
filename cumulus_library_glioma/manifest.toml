@@ -67,7 +67,7 @@ study_prefix = "glioma"
 	"athena/glioma__cube_patient_casedef_rx.sql",
 	"athena/glioma__cube_patient_casedef_rx_variable.sql",
 	"athena/glioma__cube_patient_casedef_proc.sql",
-	"athena/glioma__cube_encounter_casedef_lab.sql",
+	"athena/glioma__cube_patient_casedef_lab.sql",
 	"athena/glioma__cube_patient_sample_casedef.sql",
 	"athena/glioma__cube_note_sample_casedef.sql",
 	"athena/glioma__cube_patient_sample_casedef_peri_post.sql",

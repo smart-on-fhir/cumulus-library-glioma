@@ -160,12 +160,12 @@ def make_casedef() -> list[Path]:
                      min_subject=10),
 
         # Lab Observations
-        cube_encounter(source_table='glioma__cohort_casedef_lab',
-                       table_cols=['lab_observation_code',
-                                   'lab_observation_system',
-                                   'lab_observation_display',
-                                   'enc_class_code'],
-                       min_subject=10),
+        cube_patient(source_table='glioma__cohort_casedef_lab',
+                     table_cols=['lab_observation_code',
+                                 'lab_observation_system',
+                                 'lab_observation_display',
+                                 'enc_class_code'],
+                     min_subject=10),
 
         # Notes (any temporality)
         cube_patient(source_table='glioma__sample_casedef',
