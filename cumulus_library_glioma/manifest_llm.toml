@@ -1,4 +1,3 @@
-# study prefix is the name of the tablepace cumulus_library.StudyManifest().get_study_prefix() 
 study_prefix = "glioma"
 
 [file_config.file_names]
@@ -67,7 +66,7 @@ study_prefix = "glioma"
 	"athena/glioma__cube_patient_casedef_rx.sql",
 	"athena/glioma__cube_patient_casedef_rx_variable.sql",
 	"athena/glioma__cube_patient_casedef_proc.sql",
-	"athena/glioma__cube_encounter_casedef_lab.sql",
+	"athena/glioma__cube_patient_casedef_lab.sql",
 	"athena/glioma__cube_patient_sample_casedef.sql",
 	"athena/glioma__cube_note_sample_casedef.sql",
 	"athena/glioma__cube_patient_sample_casedef_peri_post.sql",
@@ -81,6 +80,10 @@ study_prefix = "glioma"
 
 ## -----------------------------------------------------------------------------
 ##  LLM specific section
+##
+##  Next cumulus-library version will allow submanifests RATHER THAN
+##  `manifest_casedef.toml` being redeclared again as per above. See ticket:
+##  https://github.com/smart-on-fhir/cumulus-library/issues/437
 
 "samples for LLM tasks" = [
     "athena/glioma__sample_casedef_task.sql"
@@ -120,17 +123,17 @@ study_prefix = "glioma"
 
 count_list = [
     # Case Definition
-    "glioma__cube_encounter_casedef",
-    "glioma__cube_patient_casedef",
-    "glioma__cube_patient_casedef_dx_comorbidity",
-    "glioma__cube_patient_casedef_rx",
-    "glioma__cube_patient_casedef_rx_variable",
-    "glioma__cube_patient_casedef_proc",
-    "glioma__cube_patient_casedef_lab",
-    "glioma__cube_patient_sample_casedef",
-    "glioma__cube_patient_sample_casedef_peri_post",
-    "glioma__cube_note_sample_casedef",
-    "glioma__cube_note_sample_casedef_peri_post",
+	"glioma__cube_encounter_casedef",
+	"glioma__cube_patient_casedef",
+	"glioma__cube_patient_casedef_dx_comorbidity",
+	"glioma__cube_patient_casedef_rx",
+	"glioma__cube_patient_casedef_rx_variable",
+	"glioma__cube_patient_casedef_proc",
+	"glioma__cube_patient_casedef_lab",
+	"glioma__cube_patient_sample_casedef",
+	"glioma__cube_note_sample_casedef",
+	"glioma__cube_patient_sample_casedef_peri_post",
+	"glioma__cube_note_sample_casedef_peri_post",
 
     # LLM Variables
     "glioma__cube_patient_llm_dx",
