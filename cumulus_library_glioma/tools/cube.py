@@ -99,7 +99,10 @@ def make_casedef() -> list[Path]:
     return [
         # Count encounters for casedef
         cube_encounter(source_table='glioma__cohort_casedef',
-                       table_cols=['enc_class_code',
+                       table_cols=['dx_category_code',
+                                   'age_at_dx_min',
+                                   'age_at_visit',
+                                   'enc_class_code',
                                    'enc_type_display',
                                    'enc_servicetype_display',
                                    'enc_period_ordinal']),
@@ -112,8 +115,7 @@ def make_casedef() -> list[Path]:
                                  'dx_display',
                                  'age_at_dx_min',
                                  'gender',
-                                 'race_display'],
-                     min_subject=10),
+                                 'race_display']),
 
         # Comorbidities
         cube_patient(source_table='glioma__cohort_casedef_dx_comorbidity',
@@ -123,8 +125,7 @@ def make_casedef() -> list[Path]:
                                  'dx_display',
                                  'age_at_visit',
                                  'gender',
-                                 'race_display'],
-                     min_subject=10),
+                                 'race_display']),
 
         # Drugs
         cube_patient(source_table='glioma__cohort_casedef_rx',
@@ -135,8 +136,7 @@ def make_casedef() -> list[Path]:
                                  'rx_display',
                                  'age_at_visit',
                                  'gender',
-                                 'race_display'],
-                     min_subject=10),
+                                 'race_display']),
 
         # Glioma Drugs
         cube_patient(source_table='glioma__cohort_casedef_rx_variable',
@@ -147,8 +147,7 @@ def make_casedef() -> list[Path]:
                                  'valueset',
                                  'pre',
                                  'peri',
-                                 'post'],
-                     min_subject=10),
+                                 'post']),
 
         # Procedures
         cube_patient(source_table='glioma__cohort_casedef_proc',
@@ -156,46 +155,40 @@ def make_casedef() -> list[Path]:
                                  'proc_code',
                                  'proc_system',
                                  'proc_display',
-                                 'enc_class_code'],
-                     min_subject=10),
+                                 'enc_class_code']),
 
         # Lab Observations
         cube_patient(source_table='glioma__cohort_casedef_lab',
                      table_cols=['lab_observation_code',
                                  'lab_observation_system',
                                  'lab_observation_display',
-                                 'enc_class_code'],
-                     min_subject=10),
+                                 'enc_class_code']),
 
         # Notes (any temporality)
         cube_patient(source_table='glioma__sample_casedef',
                      table_cols=['fhir_resource',
                                  'note_code',
                                  'note_display',
-                                 'note_system'],
-                     min_subject=10),
+                                 'note_system']),
 
         cube_note(source_table='glioma__sample_casedef',
                   table_cols=['fhir_resource',
                               'note_code',
                               'note_display',
-                              'note_system'],
-                  min_subject=10),
+                              'note_system']),
 
         # Notes during or after casedef "peri- and post- periods"
         cube_patient(source_table='glioma__sample_casedef_peri_post',
                   table_cols=['fhir_resource',
                               'note_code',
                               'note_display',
-                              'note_system'],
-                  min_subject=10),
+                              'note_system']),
 
         cube_note(source_table='glioma__sample_casedef_peri_post',
                   table_cols=['fhir_resource',
                               'note_code',
                               'note_display',
-                              'note_system'],
-                  min_subject=10),
+                              'note_system']),
     ]
 
 #-----------------------------------------------------------------------------
