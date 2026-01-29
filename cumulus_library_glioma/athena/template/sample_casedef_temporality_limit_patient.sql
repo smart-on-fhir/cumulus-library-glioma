@@ -1,4 +1,4 @@
-create table $prefix__sample_casedef_$temporality_$limit as
+create or replace view $prefix__sample_casedef_$temporality_limit_patient_$limit as
 WITH
 patient_list as (
     select  distinct
@@ -8,8 +8,7 @@ patient_list as (
 )
 select      distinct
             note.*
-from
-            $prefix__sample_casedef_$temporality as note,
+from        $prefix__sample_casedef_$temporality as note,
             patient_list as P
 where       P.subject_ref = note.subject_ref
 order by    subject_ref,
