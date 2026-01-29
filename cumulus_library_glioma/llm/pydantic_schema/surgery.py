@@ -73,6 +73,9 @@ class SurgicalApproachMention(SpanAugmentedMention):
 # Annotation BaseModel
 ###############################################################################
 class GliomaSurgicalAnnotation(BaseModel):
+    """
+    Most recent surgery related to the patients glioma.
+    """
     surgical_type_mention: SurgicalTypeMention
     approach_mention: SurgicalApproachMention
     extent_of_resection_mention: SurgicalExtentOfResectionMention
