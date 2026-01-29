@@ -1,3 +1,6 @@
+-- nested select DISTINCT was tested here in order to support the PARTITION CLAUSE.
+-- this was unexpected to me, but that's what I read. @comorbidity
+
 create TABLE $prefix__sample_casedef as
 WITH
 encounter_casedef as (
@@ -8,7 +11,10 @@ encounter_casedef as (
             casedef.days_since,
             casedef.ordinal_since,
             population.enc_period_start_day,
-            population.enc_period_ordinal
+            population.enc_period_ordinal,
+            population.enc_class_code,
+            population.enc_type_display,
+            population.enc_servicetype_display
     FROM    etl__completion_encounters          as etl,
             $prefix__cohort_casedef             as casedef,
             $prefix__cohort_study_population    as population
