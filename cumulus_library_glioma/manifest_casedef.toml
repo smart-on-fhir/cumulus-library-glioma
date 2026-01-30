@@ -41,7 +41,7 @@ study_prefix = "glioma"
 ]
 
 "cohort for case definition aspects (dx, rx, lab, proc)"= [
-    "athena/glioma__cohort_casedef_dx_comorbidity.sql",
+    "athena/glioma__cohort_casedef_dx.sql",
     "athena/glioma__cohort_casedef_rx.sql",
     "athena/glioma__cohort_casedef_lab.sql",
     "athena/glioma__cohort_casedef_proc.sql",

@@ -1,4 +1,4 @@
-create  table glioma__cohort_casedef_dx_comorbidity as
+create  table glioma__cohort_casedef_dx as
 WITH
 casedef as
 (
