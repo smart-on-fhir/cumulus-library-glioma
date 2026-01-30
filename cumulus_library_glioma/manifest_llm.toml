@@ -15,7 +15,7 @@ study_prefix = "glioma"
     "athena/glioma__include_utilization.sql",
     "athena/glioma__include_study_period.sql",
 ]
-#
+
 "study period" = [
     "athena/glioma__cohort_study_period.sql",
 ]
@@ -52,17 +52,20 @@ study_prefix = "glioma"
 ]
 
 "samples for casedef temporality (pre, per, peri_post, post)"= [
-	"athena/glioma__sample_casedef.sql",
+    "athena/glioma__sample_casedef.sql",
 	"athena/glioma__sample_casedef_pre.sql",
+	"athena/glioma__sample_casedef_peri.sql",
+	"athena/glioma__sample_casedef_peri_post.sql",
+	"athena/glioma__sample_casedef_post.sql",
+]
+
+"samples for casedef temporality (limit_note, limit_patient)"= [
 	"athena/glioma__sample_casedef_pre_limit_patient_10.sql",
 	"athena/glioma__sample_casedef_pre_limit_note_50.sql",
-	"athena/glioma__sample_casedef_peri.sql",
 	"athena/glioma__sample_casedef_peri_limit_patient_10.sql",
 	"athena/glioma__sample_casedef_peri_limit_note_50.sql",
-	"athena/glioma__sample_casedef_peri_post.sql",
 	"athena/glioma__sample_casedef_peri_post_limit_patient_10.sql",
 	"athena/glioma__sample_casedef_peri_post_limit_note_50.sql",
-	"athena/glioma__sample_casedef_post.sql",
 	"athena/glioma__sample_casedef_post_limit_patient_10.sql",
 	"athena/glioma__sample_casedef_post_limit_note_50.sql",
 ]
