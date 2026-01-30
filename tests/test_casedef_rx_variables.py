@@ -20,6 +20,13 @@ class TestIssue26_CaseDefRxVariables(unittest.TestCase):
     def test(self):
         merged = RX_MISSING_LIST + RX_DRUG_LIST + RX_BRAND_NAMES
         merged = set([drug.lower() for drug in merged])
+
+        print('##############################################################')
+        print('MERGED drug list')
+        print()
+        print(merged)
+        print('##############################################################')
+
         sql = casedef_rx_variables.select_drug_list(merged)
 
         print('##############################################################')
