@@ -144,10 +144,7 @@ def make_casedef() -> list[Path]:
                                  'rx_code',
                                  'rx_system',
                                  'rx_display',
-                                 'valueset',
-                                 'pre',
-                                 'peri',
-                                 'post']),
+                                 'valueset']),
 
         # Procedures
         cube_patient(source_table='glioma__cohort_casedef_proc',

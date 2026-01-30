@@ -4,18 +4,6 @@ CREATE or replace VIEW glioma__cube_patient_casedef_rx_variable AS
         SELECT
             subject_ref,
             coalesce(
-                cast(peri AS varchar),
-                'cumulus__none'
-            ) AS peri,
-            coalesce(
-                cast(post AS varchar),
-                'cumulus__none'
-            ) AS post,
-            coalesce(
-                cast(pre AS varchar),
-                'cumulus__none'
-            ) AS pre,
-            coalesce(
                 cast(rx_category_code AS varchar),
                 'cumulus__none'
             ) AS rx_category_code,
@@ -42,9 +30,6 @@ CREATE or replace VIEW glioma__cube_patient_casedef_rx_variable AS
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
-            "peri",
-            "post",
-            "pre",
             "rx_category_code",
             "rx_code",
             "rx_display",
@@ -52,9 +37,6 @@ CREATE or replace VIEW glioma__cube_patient_casedef_rx_variable AS
             "valueset",
             concat_ws(
                 '-',
-                COALESCE("peri",''),
-                COALESCE("post",''),
-                COALESCE("pre",''),
                 COALESCE("rx_category_code",''),
                 COALESCE("rx_code",''),
                 COALESCE("rx_display",''),
@@ -64,9 +46,6 @@ CREATE or replace VIEW glioma__cube_patient_casedef_rx_variable AS
         FROM null_replacement
         GROUP BY
             cube(
-            "peri",
-            "post",
-            "pre",
             "rx_category_code",
             "rx_code",
             "rx_display",
@@ -77,9 +56,6 @@ CREATE or replace VIEW glioma__cube_patient_casedef_rx_variable AS
 
     SELECT
         p.cnt_subject_ref AS cnt,
-            p."peri",
-            p."post",
-            p."pre",
             p."rx_category_code",
             p."rx_code",
             p."rx_display",

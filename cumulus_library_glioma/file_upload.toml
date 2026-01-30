@@ -8,7 +8,6 @@ col_types = ["STRING","STRING","STRING"]
 file = "../resources/glioma_casedef_dx.csv"
 
 [tables.valueset_casedef_rx]
-col_types = ["STRING","STRING","STRING", "STRING","INT"]
 file = "../resources/glioma_casedef_rx.csv"
 
 [tables.valueset_dx_neurofibromatosis]

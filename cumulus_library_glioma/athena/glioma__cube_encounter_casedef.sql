@@ -20,6 +20,10 @@ CREATE or replace VIEW glioma__cube_encounter_casedef AS
                 'cumulus__none'
             ) AS enc_class_code,
             coalesce(
+                cast(enc_period_ordinal AS varchar),
+                'cumulus__none'
+            ) AS enc_period_ordinal,
+            coalesce(
                 cast(enc_servicetype_display AS varchar),
                 'cumulus__none'
             ) AS enc_servicetype_display,
@@ -38,6 +42,7 @@ CREATE or replace VIEW glioma__cube_encounter_casedef AS
             "age_at_visit",
             "dx_category_code",
             "enc_class_code",
+            "enc_period_ordinal",
             "enc_servicetype_display",
             "enc_type_display",
             concat_ws(
@@ -46,6 +51,7 @@ CREATE or replace VIEW glioma__cube_encounter_casedef AS
                 COALESCE("age_at_visit",''),
                 COALESCE("dx_category_code",''),
                 COALESCE("enc_class_code",''),
+                COALESCE("enc_period_ordinal",''),
                 COALESCE("enc_servicetype_display",''),
                 COALESCE("enc_type_display",'')
             ) AS id
@@ -56,6 +62,7 @@ CREATE or replace VIEW glioma__cube_encounter_casedef AS
             "age_at_visit",
             "dx_category_code",
             "enc_class_code",
+            "enc_period_ordinal",
             "enc_servicetype_display",
             "enc_type_display"
             )
@@ -67,6 +74,7 @@ CREATE or replace VIEW glioma__cube_encounter_casedef AS
             p."age_at_visit",
             p."dx_category_code",
             p."enc_class_code",
+            p."enc_period_ordinal",
             p."enc_servicetype_display",
             p."enc_type_display"
     FROM powerset AS p
