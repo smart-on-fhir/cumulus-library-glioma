@@ -31,7 +31,7 @@ CREATE or replace VIEW glioma__cube_patient_casedef_dx_comorbidity AS
                 cast(race_display AS varchar),
                 'cumulus__none'
             ) AS race_display
-        FROM glioma__cohort_casedef_dx_comorbidity
+        FROM glioma__cohort_casedef_dx
         
     ),
 

@@ -14,19 +14,43 @@ def make_cohort_aspects() -> list[Path]:
     return [filetool.copy_template(f'cohort_casedef_{aspect}.sql')
             for aspect in ['dx', 'rx', 'lab', 'proc']]
 
+
+########################################################################################################
+# make samples
+##########################################################################################################
 def make_samples() -> list[Path]:
     """
     Make note samples for each casedef temporality [pre, per, peri_post, post]
     """
-    samples = list()
-    samples.append(filetool.copy_template('sample_casedef.sql')) # all note samples for casedef
+    samples = [filetool.copy_template('sample_casedef.sql')]
+
     for temporality in ['pre', 'peri', 'peri_post', 'post']:
-        replacements = {'$temporality': temporality}
-        text = filetool.load_template('sample_casedef_temporality.sql', replacements)
-        target_table = tablespace.name_prefix(f'sample_casedef_{temporality}')
-        target_file = filetool.path_athena(f'{target_table}.sql')
-        samples.append(Path(filetool.write_text(text, target_file)))
+        samples += [make_temporality(f'sample_casedef_temporality', temporality),
+                    make_temporality(f'sample_casedef_temporality_limit_patient', temporality, 10),
+                    make_temporality(f'sample_casedef_temporality_limit_note', temporality, 50)]
     return samples
+
+def make_temporality(template_name:str, temporality:str, limit: int = None) -> Path:
+    """
+    :param template_name: name of the SQL template to load
+    :param temporality: str one of ['pre', 'peri', 'peri_post', 'post']
+    :param limit: int patients or notes in sample
+    :return: path to Athena SQL
+    """
+    table_name = template_name.replace('temporality', temporality)
+
+    if limit:
+        limit = str(limit)
+        table_name = f'{table_name}_{limit}'
+    else:
+        limit = ''
+
+    replacements = {'$temporality': temporality, '$limit': limit}
+    text = filetool.load_template(f'{template_name}.sql', replacements)
+    target_table = tablespace.name_prefix(table_name)
+    target_file = filetool.path_athena(f'{target_table}.sql')
+    return Path(filetool.write_text(text, target_file))
+
 
 #-----------------------------------------------------------------------------
 # Make

@@ -1,3 +1,6 @@
+-- nested select DISTINCT was tested here in order to support the PARTITION CLAUSE.
+-- this was unexpected to me, but that's what I read. @comorbidity
+
 create TABLE glioma__sample_casedef as
 WITH
 encounter_casedef as (
@@ -8,7 +11,10 @@ encounter_casedef as (
             casedef.days_since,
             casedef.ordinal_since,
             population.enc_period_start_day,
-            population.enc_period_ordinal
+            population.enc_period_ordinal,
+            population.enc_class_code,
+            population.enc_type_display,
+            population.enc_servicetype_display
     FROM    etl__completion_encounters          as etl,
             glioma__cohort_casedef             as casedef,
             glioma__cohort_study_population    as population
@@ -50,11 +56,11 @@ encounter_diag as (
                 end as  sort_by_date,
             diag.diag_effectivedatetime_day     as note_author_day,
             diag.diag_effectiveperiod_start_day as note_date,
-            diag.diag_system                as note_system,
-            diag.diag_code                  as note_code,
-            diag.diag_display               as note_display,
-            diag.diagnosticreport_ref       as note_ref
-    FROM    encounter_casedef               as casedef,
+            diag.diag_system                    as note_system,
+            diag.diag_code                      as note_code,
+            diag.diag_display                   as note_display,
+            diag.diagnosticreport_ref           as note_ref
+    FROM    encounter_casedef                   as casedef,
             glioma__cohort_study_population_diag as diag
     WHERE   casedef.encounter_ref   = diag.encounter_ref
     AND     diag.aux_has_text
