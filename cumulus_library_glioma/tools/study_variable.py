@@ -107,7 +107,7 @@ def make_wide() -> Path:
     each column is a study variable.
 
     see `template/cohort_study_variables_wide.sql`
-    :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
+    :return: Path to SQL file `athena/glioma__cohort_study_variables_wide.sql`
     """
     variable_list = list_valueset_variable_names()
     template_sql = filetool.load_template(f"cohort_variable_wide.sql")

@@ -69,7 +69,7 @@ tabular as
 select  distinct
         tabular.*   ,
         subject_ref
-from    irae__cohort_study_population as study_pop,
+from    glioma__cohort_study_population as study_pop,
         tabular
 where   tabular.encounter_ref = study_pop.encounter_ref
 ;
