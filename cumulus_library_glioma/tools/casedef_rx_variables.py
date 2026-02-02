@@ -1,6 +1,13 @@
 #------------------------------------------------------------------------------
-# "many Glioma cases have no known cancer therapy"
+#
+# NOTICE: this file is for human-expert-review of
+# study builder medication outputs. It is used to verify/assist updating the
+# glioma_casedef_rx.csv
+#
+#------------------------------------------------------------------------------
+# Relates to Issue(s):
 # https://github.com/smart-on-fhir/cumulus-library-glioma/issues/26
+# "many Glioma cases have no known cancer therapy"
 #------------------------------------------------------------------------------
 
 RX_MISSING_LIST = [
@@ -163,3 +170,24 @@ def select_drug_list(drug_list) -> str:
             f"\nmerged as (\n{merged}\n) \n"
             f"select '{RXNORM}' as system,code,display "
             f"from merged order by code,display")
+
+def human_expert_verify():
+    merged = RX_MISSING_LIST + RX_DRUG_LIST + RX_BRAND_NAMES
+    merged = set([drug.lower() for drug in merged])
+
+    print('##############################################################')
+    print('MERGED drug list')
+    print()
+    print(merged)
+    print('##############################################################')
+
+    sql = select_drug_list(merged)
+
+    print('##############################################################')
+    print('glioma__issue26_missing_drugs')
+    print(sql)
+    print('##############################################################')
+
+
+if __name__ == '__main__':
+    human_expert_verify()
