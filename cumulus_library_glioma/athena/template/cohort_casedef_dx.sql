@@ -2,8 +2,7 @@ create  table $prefix__cohort_casedef_dx as
 WITH
 casedef as
 (
-    select distinct
-            days_since,
+    select  days_since,
             ordinal_since,
             pre,
             peri,

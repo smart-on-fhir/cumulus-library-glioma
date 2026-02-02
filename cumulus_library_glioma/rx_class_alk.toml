@@ -3,4 +3,4 @@ table_prefix = "rx_class_alk"
 
 [umls_stewards.rx_class_alk]
 sab = "NCI"
-search_terms = ["ALK Inhibitor"]
+search_terms = ["ALK Inhibitor", 'crizotinib']
