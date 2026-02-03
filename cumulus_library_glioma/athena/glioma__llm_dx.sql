@@ -1,144 +1,17 @@
 create or replace view glioma__llm_dx as
-WITH
-raw as
-(
-    select      distinct
-                result.grade_mention.has_mention        as grade_has_mention,
-                result.grade_mention.code               as grade_code,
-                result.grade_mention.display            as grade_display,
-
-                result.topography_mention.has_mention   as topography_has_mention,
-
-                case    when UPPER(result.topography_mention.display) like 'C0%'
-                        then NULL else result.topography_mention.display end as topography_display,
-
-                case    when UPPER(result.topography_mention.code) like 'C0%'
-                        then NULL else result.topography_mention.code end as topography_code,
-
-                result.morphology_mention.has_mention   as morphology_has_mention,
-
-                case    when UPPER(result.morphology_mention.display) like '0%%'
-                        then NULL else result.morphology_mention.display end as morphology_display,
-
-                case    when UPPER(result.morphology_mention.code) like '0%%'
-                        then NULL else result.morphology_mention.code end as morphology_code,
-
-                element_at(split(result.morphology_mention.code, '/'), 1) AS morphology_histology,
-                element_at(split(result.morphology_mention.code, '/'), 2) AS morphology_behavior,
-
-                result.behavior_mention.has_mention     as behavior_has_mention,
-                result.behavior_mention.code            as behavior_code,
-                result.behavior_mention.display         as behavior_display,
-
-                note_ref,
-                encounter_ref,
-                subject_ref
-    from        glioma__nlp_gpt_oss_120b
-),
-clean as
-(
-    select      distinct
-                raw.grade_has_mention,
-                nullif(trim(raw.grade_code), '')            as grade_code,
-                nullif(trim(raw.grade_display), '')         as grade_display,
-
-                raw.topography_has_mention,
-                nullif(trim(raw.topography_code), '')       as topography_code,
-                nullif(trim(raw.topography_display), '')    as topography_display,
-                
-                raw.morphology_has_mention,
-                nullif(trim(raw.morphology_code), '')       as morphology_code,
-                nullif(trim(raw.morphology_display), '')    as morphology_display,
-                
-                nullif(trim(raw.morphology_histology), '')  as morphology_histology,
-                nullif(trim(raw.morphology_behavior), '')   as morphology_behavior,
-                
-                raw.behavior_has_mention,                 
-                nullif(trim(raw.behavior_code), '')         as behavior_code,
-                nullif(trim(raw.behavior_display), '')      as behavior_display,
-
-                nci_grade.display           as grade_display_nci,
-                casedef.display             as topography_display_casdef,
-                nci.morphology_display      as morphology_display_nci,
-                nci_behave.display          as behavior_display_nci,
-                nci.category_display        as category_display_nci,
-
-                note_ref,
-                encounter_ref,
-                subject_ref
-    from        raw
-    left join   glioma__valueset_casedef    as casedef   on raw.topography_code = casedef.code
-    left join   glioma__nci_site_histology  as nci       on raw.morphology_code = nci.morphology_code
-    left join   glioma__nci_grade           as nci_grade on raw.grade_code = nci_grade.code
-    left join   glioma__nci_behavior        as nci_behave on raw.behavior_code = nci_behave.code
-),
-best as
-(
-    select      distinct
-                -- Grade
-                clean.grade_has_mention,
-                coalesce(
-                    clean.grade_display_nci,
-                    concat(clean.grade_display, ' (?)'),
-                    concat(cast(clean.grade_code as varchar), ' (#)'),
-                    'NONE') as grade_display_best,
-
-                clean.grade_display_nci,
-                clean.grade_display,
-                clean.grade_code,
-
-                -- Topography
-                clean.topography_has_mention,
-                coalesce(
-                    clean.topography_display_casdef,
-                    concat(clean.topography_display, ' (?)'),
-                    concat(cast(clean.topography_code as varchar), ' (#)'),
-                    'NONE') as topography_display_best,
-
-                clean.topography_display_casdef,
-                clean.topography_code,
-
-                -- Morphology
-                clean.morphology_has_mention,
-                coalesce(
-                    clean.morphology_display_nci,
-                    concat(clean.morphology_display, ' (?)'),
-                    concat(cast(clean.morphology_code as varchar), ' (#)'),
-                    'NONE') as morphology_display_best,
-
-                clean.morphology_display_nci,
-                clean.morphology_display,
-                clean.morphology_code,
-                clean.morphology_histology,
-                clean.morphology_behavior,
-
-                -- Behavior
-                clean.behavior_has_mention,
-
-                coalesce(
-                    clean.behavior_display_nci,
-                    concat(clean.behavior_display, ' (?)'),
-                    concat(cast(clean.behavior_code as varchar), ' (#)'),
-                    'NONE') as behavior_display_best,
-
-                clean.behavior_display_nci,
-                clean.behavior_display,
-                clean.behavior_code,
-
-                -- Category (Histological)
-                coalesce(
-                    clean.category_display_nci,
-                    nci.category_display,
-                    'NONE') as category_display_best,
-
-                clean.category_display_nci,
-                nci.category_display as category_display,
-
-                -- FHIR References
-                note_ref,
-                encounter_ref,
-                subject_ref
-    from        clean
-    left join   glioma__nci_site_histology  as nci    on clean.morphology_histology = nci.histology_code
-)
-select * from best ;
+select
+        coalesce(result.age_at_diagnosis.age_years, -1 )            as age_at_diagnosis,
+        coalesce(result.tumor_location.location, 'NOT_MENTIONED' )  as tumor_location,
+        coalesce(result.tumor_region.region, 'NOT_MENTIONED' )      as tumor_region,
+        coalesce(result.tumor_size.mass_effect, 'NOT_MENTIONED')    as tumor_size_mass_effect,
+        coalesce(result.tumor_size.size_text, 'NOT_MENTIONED')      as tumor_size_text,
+        coalesce(result.nf1_status.nf1_status, 'NOT_MENTIONED')     as nf1_status,
+        coalesce(result.grade.code, 'NOT_MENTIONED')                as grade_code,
+        coalesce(result.grade.display, 'NOT_MENTIONED')             as grade_display,
+        coalesce(result.behavior.code, 'NOT_MENTIONED')             as behavior_code,
+        coalesce(result.behavior.display, 'NOT_MENTIONED')          as behavior_display,
+        nlp.note_ref,
+        nlp.encounter_ref,
+        nlp.subject_ref
+from        glioma__nlp_diagnosis_gpt_oss_120b as nlp
+;
