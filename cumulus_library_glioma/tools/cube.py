@@ -76,21 +76,75 @@ def cube_note(source_table='study_population',
     Workaround for issue#446, will be fixed in next cumulus-library
     https://github.com/smart-on-fhir/cumulus-library/issues/446
     """
-    if not table_name:
-        table_name = name_cube(name_trim(source_table), 'note')
-
-    file_path = cube_fhir_resource(
+    return cube_fhir_resource(
         primary_id='note_ref',
         source_table=source_table,
         table_cols=table_cols,
         table_name=table_name,
         min_subject=min_subject)
 
-    text = filetool.read_text(file_path)
-    text = text.replace('documentreference_ref', 'note_ref')
-    filetool.write_text(text, file_path)
-    file_path.with_name(f'{table_name}.sql')
-    return file_path
+#-----------------------------------------------------------------------------
+# Make CUBE for casedef
+#-----------------------------------------------------------------------------
+def make_study_population() -> list[Path]:
+    return [
+        # encounters for study population
+        cube_encounter(source_table='glioma__cohort_study_population',
+                       table_cols=['enc_type_display',
+                                   'enc_class_code',
+                                   'enc_servicetype_display']),
+
+        # patients for study population
+        cube_patient(source_table='glioma__cohort_study_population',
+                     table_cols=['age_at_visit',
+                                 'gender',
+                                 'race_display']),
+
+        # Diagnosis
+        cube_patient(source_table='glioma__cohort_study_population_dx',
+                     table_cols=['dx_category_code',
+                                 'dx_code',
+                                 'dx_system',
+                                 'dx_display',
+                                 'age_at_visit']),
+
+        # Medications
+        cube_patient(source_table='glioma__cohort_study_population_rx',
+                     table_cols=['rx_category_code',
+                                 'rx_code',
+                                 'rx_display']),
+
+        # Procedures
+        cube_patient(source_table='glioma__cohort_study_population_proc',
+                     table_cols=['proc_status',
+                                 'proc_code',
+                                 'proc_system',
+                                 'proc_display',
+                                 'enc_class_code']),
+
+        # Lab Observations
+        cube_patient(source_table='glioma__cohort_study_population_lab',
+                     table_cols=['lab_observation_code',
+                                 'lab_observation_system',
+                                 'lab_observation_display',
+                                 'enc_class_code']),
+
+        # Documents
+        cube_patient(source_table='glioma__cohort_study_population_doc',
+                     table_cols=['doc_status',
+                                 'doc_type_system',
+                                 'doc_type_code',
+                                 'doc_type_display',
+                                 'enc_class_code']),
+
+        # Diagnostic Reports
+        cube_patient(source_table='glioma__cohort_study_population_diag',
+                     table_cols=['diag_category_display_best',
+                                 'diag_category_system',
+                                 'enc_class_code',
+                                 'enc_type_display',
+                                 'enc_servicetype_display']),
+    ]
 
 #-----------------------------------------------------------------------------
 # Make CUBE for casedef
@@ -121,11 +175,7 @@ def make_casedef() -> list[Path]:
         cube_patient(source_table='glioma__cohort_casedef_dx',
                      table_cols=['dx_category_code',
                                  'dx_code',
-                                 'dx_system',
-                                 'dx_display',
-                                 'age_at_visit',
-                                 'gender',
-                                 'race_display'],
+                                 'dx_display'],
                      table_name='glioma__cube_patient_casedef_dx_comorbidity'),
 
         # Drugs
@@ -139,7 +189,7 @@ def make_casedef() -> list[Path]:
                                  'gender',
                                  'race_display']),
 
-        # Glioma Drugs
+        # Drugs ** GLIOMA specific variables ***
         cube_patient(source_table='glioma__cohort_casedef_rx_variable',
                      table_cols=['rx_category_code',
                                  'rx_code',
@@ -258,63 +308,95 @@ def make_fhir_variables_deprecated() -> list[Path]:
 #-----------------------------------------------------------------------------
 # Make LLM variables
 #-----------------------------------------------------------------------------
-def make_llm_variables_deprecated() -> list[Path]:
+def make_llm_variables() -> list[Path]:
     return [
+        # cube_patient(source_table='glioma__llm_dx',
+        #              table_cols=['topography_has_mention',
+        #                          'topography_display_best',
+        #                          'morphology_has_mention',
+        #                          'morphology_display_best',
+        #                          'behavior_has_mention',
+        #                          'behavior_display_best',
+        #                          'grade_has_mention',
+        #                          'grade_display_best',
+        #                          'category_display_best'],
+        #              min_subject=10),
+
         cube_patient(source_table='glioma__llm_dx',
-                     table_cols=['topography_has_mention',
-                                 'topography_display_best',
-                                 'morphology_has_mention',
-                                 'morphology_display_best',
-                                 'behavior_has_mention',
-                                 'behavior_display_best',
-                                 'grade_has_mention',
-                                 'grade_display_best',
-                                 'category_display_best'],
-                     min_subject=10),
+                     table_cols=['age_at_diagnosis',
+                                 'tumor_location',
+                                 'tumor_region',
+                                 'tumor_size_mass_effect',
+                                 'grade_code',
+                                 'behavior_code',
+                                 'nf1_status']),
 
         cube_patient(source_table='glioma__llm_surgery',
-                     table_cols=['has_mention',
-                                 'surgical_type',
+                     table_cols=['surgical_type',
                                  'approach',
-                                 'extent_of_resection',
-                                 'anatomical_site',
-                                 'technique_details',
-                                 'complications']),
+                                 'extent_of_resection']),
 
-        cube_patient(source_table='glioma__llm_drug',
-                     table_cols=['has_mention',
-                                 'status',
-                                 'category',
-                                 'route',
-                                 'phase',
-                                 'rx_class']),
+        cube_patient(source_table='glioma__llm_progression',
+                     table_cols=['age_at_progression',
+                                 'progression',
+                                 'regrowth_pattern',
+                                 'symptom_burden',
+                                 'visual_status',
+                                 'neurocognitive_risk',
+                                 'endocrine_status',
+                                 'therapy_line_number',
+                                 'therapy_modality',
+                                 'clinical_trial_status',
+                                 'has_prior_radiotherapy']),
 
-        cube_patient(source_table='glioma__llm_variant',
-                     table_cols=['has_mention',
-                                 'hgnc_name',
-                                 'hgvs_variant',
-                                 'interpretation']),
+        cube_patient(source_table='glioma__llm_rx_chemo',
+                     table_cols=['rx_regimen',
+                                 'rx_class',
+                                 'rx_status',
+                                 'rx_treatment_phase',
+                                 'rx_treatment_response',
+                                 'rx_toxicity_severity',
+                                 'rx_treatment_discontinued']),
 
-        cube_patient(source_table='glioma__llm_gene',
-                     table_cols=['has_mention',
-                                 'braf_altered',
-                                 'braf_v600e',
-                                 'braf_fusion',
-                                 'idh_mutant',
-                                 'h3k27m_mutant',
-                                 'tp53_altered',
-                                 'cdkn2a_deleted'])
+        cube_patient(source_table='glioma__llm_rx_target',
+                     table_cols=['rx_class',
+                                 'rx_status',
+                                 'rx_treatment_phase',
+                                 'rx_treatment_response',
+                                 'rx_toxicity_severity',
+                                 'rx_treatment_discontinued']),
+
+        # cube_patient(source_table='glioma__llm_variant',
+        #              table_cols=['has_mention',
+        #                          'hgnc_name',
+        #                          'hgvs_variant',
+        #                          'interpretation']),
+        #
+        # cube_patient(source_table='glioma__llm_gene',
+        #              table_cols=['has_mention',
+        #                          'braf_altered',
+        #                          'braf_v600e',
+        #                          'braf_fusion',
+        #                          'idh_mutant',
+        #                          'h3k27m_mutant',
+        #                          'tp53_altered',
+        #                          'cdkn2a_deleted'])
     ]
 
 #-----------------------------------------------------------------------------
 # MAIN method
 #-----------------------------------------------------------------------------
 if __name__ == "__main__":
-    fhir_cube_files = make_casedef()
-    print(manifest.as_toml_parallel(fhir_cube_files, 'cube casedef'))
+
+    file_list = make_study_population()
+    print(manifest.as_toml_parallel(file_list, 'cube study population (dx, rx, lab, proc, doc, diag)'))
+
+    file_list = make_casedef()
+    print(manifest.as_toml_parallel(file_list, 'cube casedef'))
+
+    file_list = make_llm_variables()
+    print(manifest.as_toml_parallel(file_list, 'cube LLM'))
 
     #fhir_cube_files = make_fhir_variables_deprecated()
     #print(manifest.as_toml_parallel(fhir_cube_files, 'cube FHIR'))
 
-    #llm_cube_files = make_llm_variables_deprecated()
-    #print(manifest.as_toml_parallel(llm_cube_files, 'cube LLM'))
