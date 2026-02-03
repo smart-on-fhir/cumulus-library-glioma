@@ -4,41 +4,33 @@ CREATE or replace VIEW glioma__cube_patient_llm_dx AS
         SELECT
             subject_ref,
             coalesce(
-                cast(behavior_display_best AS varchar),
+                cast(age_at_diagnosis AS varchar),
                 'cumulus__none'
-            ) AS behavior_display_best,
+            ) AS age_at_diagnosis,
             coalesce(
-                cast(behavior_has_mention AS varchar),
+                cast(behavior_code AS varchar),
                 'cumulus__none'
-            ) AS behavior_has_mention,
+            ) AS behavior_code,
             coalesce(
-                cast(category_display_best AS varchar),
+                cast(grade_code AS varchar),
                 'cumulus__none'
-            ) AS category_display_best,
+            ) AS grade_code,
             coalesce(
-                cast(grade_display_best AS varchar),
+                cast(nf1_status AS varchar),
                 'cumulus__none'
-            ) AS grade_display_best,
+            ) AS nf1_status,
             coalesce(
-                cast(grade_has_mention AS varchar),
+                cast(tumor_location AS varchar),
                 'cumulus__none'
-            ) AS grade_has_mention,
+            ) AS tumor_location,
             coalesce(
-                cast(morphology_display_best AS varchar),
+                cast(tumor_region AS varchar),
                 'cumulus__none'
-            ) AS morphology_display_best,
+            ) AS tumor_region,
             coalesce(
-                cast(morphology_has_mention AS varchar),
+                cast(tumor_size_mass_effect AS varchar),
                 'cumulus__none'
-            ) AS morphology_has_mention,
-            coalesce(
-                cast(topography_display_best AS varchar),
-                'cumulus__none'
-            ) AS topography_display_best,
-            coalesce(
-                cast(topography_has_mention AS varchar),
-                'cumulus__none'
-            ) AS topography_has_mention
+            ) AS tumor_size_mass_effect
         FROM glioma__llm_dx
         
     ),
@@ -46,53 +38,45 @@ CREATE or replace VIEW glioma__cube_patient_llm_dx AS
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
-            "behavior_display_best",
-            "behavior_has_mention",
-            "category_display_best",
-            "grade_display_best",
-            "grade_has_mention",
-            "morphology_display_best",
-            "morphology_has_mention",
-            "topography_display_best",
-            "topography_has_mention",
+            "age_at_diagnosis",
+            "behavior_code",
+            "grade_code",
+            "nf1_status",
+            "tumor_location",
+            "tumor_region",
+            "tumor_size_mass_effect",
             concat_ws(
                 '-',
-                COALESCE("behavior_display_best",''),
-                COALESCE("behavior_has_mention",''),
-                COALESCE("category_display_best",''),
-                COALESCE("grade_display_best",''),
-                COALESCE("grade_has_mention",''),
-                COALESCE("morphology_display_best",''),
-                COALESCE("morphology_has_mention",''),
-                COALESCE("topography_display_best",''),
-                COALESCE("topography_has_mention",'')
+                COALESCE("age_at_diagnosis",''),
+                COALESCE("behavior_code",''),
+                COALESCE("grade_code",''),
+                COALESCE("nf1_status",''),
+                COALESCE("tumor_location",''),
+                COALESCE("tumor_region",''),
+                COALESCE("tumor_size_mass_effect",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
-            "behavior_display_best",
-            "behavior_has_mention",
-            "category_display_best",
-            "grade_display_best",
-            "grade_has_mention",
-            "morphology_display_best",
-            "morphology_has_mention",
-            "topography_display_best",
-            "topography_has_mention"
+            "age_at_diagnosis",
+            "behavior_code",
+            "grade_code",
+            "nf1_status",
+            "tumor_location",
+            "tumor_region",
+            "tumor_size_mass_effect"
             )
     )
 
     SELECT
         p.cnt_subject_ref AS cnt,
-            p."behavior_display_best",
-            p."behavior_has_mention",
-            p."category_display_best",
-            p."grade_display_best",
-            p."grade_has_mention",
-            p."morphology_display_best",
-            p."morphology_has_mention",
-            p."topography_display_best",
-            p."topography_has_mention"
+            p."age_at_diagnosis",
+            p."behavior_code",
+            p."grade_code",
+            p."nf1_status",
+            p."tumor_location",
+            p."tumor_region",
+            p."tumor_size_mass_effect"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10
