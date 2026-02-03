@@ -52,7 +52,6 @@ study_prefix = "glioma"
 ]
 
 "cohort for case definition aspects (dx, rx, lab, proc)"= [
-    "athena/glioma__cohort_casedef_dx.sql",
     "athena/glioma__cohort_casedef_rx.sql",
     "athena/glioma__cohort_casedef_lab.sql",
     "athena/glioma__cohort_casedef_proc.sql",
@@ -84,7 +83,6 @@ study_prefix = "glioma"
 "cube casedef"= [
 	"athena/glioma__cube_encounter_casedef.sql",
 	"athena/glioma__cube_patient_casedef.sql",
-	"athena/glioma__cube_patient_casedef_dx_comorbidity.sql",
 	"athena/glioma__cube_patient_casedef_rx.sql",
 	"athena/glioma__cube_patient_casedef_rx_variable.sql",
 	"athena/glioma__cube_patient_casedef_proc.sql",
@@ -120,7 +118,6 @@ count_list = [
     # Case Definition
 	"glioma__cube_encounter_casedef",
 	"glioma__cube_patient_casedef",
-	"glioma__cube_patient_casedef_dx_comorbidity",
 	"glioma__cube_patient_casedef_rx",
 	"glioma__cube_patient_casedef_rx_variable",
 	"glioma__cube_patient_casedef_proc",

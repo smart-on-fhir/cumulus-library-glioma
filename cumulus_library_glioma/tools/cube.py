@@ -172,11 +172,11 @@ def make_casedef() -> list[Path]:
                                  'race_display']),
 
         # Comorbidities
-        cube_patient(source_table='glioma__cohort_casedef_dx',
-                     table_cols=['dx_category_code',
-                                 'dx_code',
-                                 'dx_display'],
-                     table_name='glioma__cube_patient_casedef_dx_comorbidity'),
+        # cube_patient(source_table='glioma__cohort_casedef_dx',
+        #              table_cols=['dx_category_code',
+        #                          'dx_code',
+        #                          'dx_display'],
+        #              table_name='glioma__cube_patient_casedef_dx_comorbidity'),
 
         # Drugs
         cube_patient(source_table='glioma__cohort_casedef_rx',
