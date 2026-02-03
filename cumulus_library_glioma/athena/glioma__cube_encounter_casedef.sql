@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_encounter_casedef AS 
+CREATE TABLE glioma__cube_encounter_casedef AS (
     WITH
     null_replacement AS (
         SELECT
@@ -80,4 +80,4 @@ CREATE or replace VIEW glioma__cube_encounter_casedef AS
     FROM powerset AS p
     WHERE 
         p.cnt_encounter_ref >= 10
-;
+);

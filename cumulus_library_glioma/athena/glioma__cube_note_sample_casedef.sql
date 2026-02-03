@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_note_sample_casedef AS 
+CREATE TABLE glioma__cube_note_sample_casedef AS (
     WITH
     null_replacement AS (
         SELECT
@@ -56,4 +56,4 @@ CREATE or replace VIEW glioma__cube_note_sample_casedef AS
     FROM powerset AS p
     WHERE 
         p.cnt_note_ref >= 10
-;
+);

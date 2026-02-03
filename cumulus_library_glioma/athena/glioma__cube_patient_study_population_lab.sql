@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_patient_study_population_lab AS 
+CREATE TABLE glioma__cube_patient_study_population_lab AS (
     WITH
     null_replacement AS (
         SELECT
@@ -56,4 +56,4 @@ CREATE or replace VIEW glioma__cube_patient_study_population_lab AS
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10
-;
+);
