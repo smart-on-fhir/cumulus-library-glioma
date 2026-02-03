@@ -171,13 +171,6 @@ def make_casedef() -> list[Path]:
                                  'gender',
                                  'race_display']),
 
-        # Comorbidities
-        # cube_patient(source_table='glioma__cohort_casedef_dx',
-        #              table_cols=['dx_category_code',
-        #                          'dx_code',
-        #                          'dx_display'],
-        #              table_name='glioma__cube_patient_casedef_dx_comorbidity'),
-
         # Drugs
         cube_patient(source_table='glioma__cohort_casedef_rx',
                      table_cols=['rx_status',
@@ -237,6 +230,16 @@ def make_casedef() -> list[Path]:
                               'note_code',
                               'note_display',
                               'note_system']),
+
+        # Comorbidities
+        # https://github.com/smart-on-fhir/cumulus-library-glioma/issues/21
+        #
+        # cube_patient(source_table='glioma__cohort_casedef_dx',
+        #              table_cols=['dx_category_code',
+        #                          'dx_code',
+        #                          'dx_display'],
+        #              table_name='glioma__cube_patient_casedef_dx_comorbidity'),
+
     ]
 
 #-----------------------------------------------------------------------------
@@ -310,18 +313,6 @@ def make_fhir_variables_deprecated() -> list[Path]:
 #-----------------------------------------------------------------------------
 def make_llm_variables() -> list[Path]:
     return [
-        # cube_patient(source_table='glioma__llm_dx',
-        #              table_cols=['topography_has_mention',
-        #                          'topography_display_best',
-        #                          'morphology_has_mention',
-        #                          'morphology_display_best',
-        #                          'behavior_has_mention',
-        #                          'behavior_display_best',
-        #                          'grade_has_mention',
-        #                          'grade_display_best',
-        #                          'category_display_best'],
-        #              min_subject=10),
-
         cube_patient(source_table='glioma__llm_dx',
                      table_cols=['age_at_diagnosis',
                                  'tumor_location',
