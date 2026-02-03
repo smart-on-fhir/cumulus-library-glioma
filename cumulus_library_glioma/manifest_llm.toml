@@ -33,6 +33,17 @@ study_prefix = "glioma"
     "athena/glioma__cohort_study_population_proc.sql",
 ]
 
+"cube study population (dx, rx, lab, proc, doc, diag)"= [
+	"athena/glioma__cube_encounter_study_population.sql",
+	"athena/glioma__cube_patient_study_population.sql",
+	"athena/glioma__cube_patient_study_population_dx.sql",
+	"athena/glioma__cube_patient_study_population_rx.sql",
+	"athena/glioma__cube_patient_study_population_proc.sql",
+	"athena/glioma__cube_patient_study_population_lab.sql",
+	"athena/glioma__cube_patient_study_population_doc.sql",
+	"athena/glioma__cube_patient_study_population_diag.sql",
+]
+
 ## -----------------------------------------------------------------------------
 ##  *CASE DEFINITION* pLGG (Pediatric Low Grade Glioma)
 
@@ -41,7 +52,6 @@ study_prefix = "glioma"
 ]
 
 "cohort for case definition aspects (dx, rx, lab, proc)"= [
-    "athena/glioma__cohort_casedef_dx_comorbidity.sql",
     "athena/glioma__cohort_casedef_rx.sql",
     "athena/glioma__cohort_casedef_lab.sql",
     "athena/glioma__cohort_casedef_proc.sql",
@@ -73,7 +83,6 @@ study_prefix = "glioma"
 "cube casedef"= [
 	"athena/glioma__cube_encounter_casedef.sql",
 	"athena/glioma__cube_patient_casedef.sql",
-	"athena/glioma__cube_patient_casedef_dx_comorbidity.sql",
 	"athena/glioma__cube_patient_casedef_rx.sql",
 	"athena/glioma__cube_patient_casedef_rx_variable.sql",
 	"athena/glioma__cube_patient_casedef_proc.sql",
@@ -108,23 +117,20 @@ study_prefix = "glioma"
     "athena/glioma__sample_casedef_task_progression.sql",
 ]
 
-"glioma LLM (ICDO: grade, topography, morphology, behavior)" = [
+"glioma LLM (dx, rx, surgery, progression)" = [
     "athena/glioma__llm_dx.sql",
-]
-
-"glioma LLM (surgery, drug, gene, variant)" = [
+    "athena/glioma__llm_rx_chemo.sql",
+    "athena/glioma__llm_rx_target.sql",
     "athena/glioma__llm_surgery.sql",
-    "athena/glioma__llm_drug.sql",
-    "athena/glioma__llm_gene.sql",
-    "athena/glioma__llm_variant.sql",
+    "athena/glioma__llm_progression.sql",
 ]
 
 "cube LLM"= [
     "athena/glioma__cube_patient_llm_dx.sql",
+    "athena/glioma__cube_patient_llm_rx_chemo.sql",
+    "athena/glioma__cube_patient_llm_rx_target.sql",
     "athena/glioma__cube_patient_llm_surgery.sql",
-    "athena/glioma__cube_patient_llm_drug.sql",
-    "athena/glioma__cube_patient_llm_variant.sql",
-    "athena/glioma__cube_patient_llm_gene.sql",
+    "athena/glioma__cube_patient_llm_progression.sql",
 ]
 
 ## -----------------------------------------------------------------------------
@@ -133,10 +139,20 @@ study_prefix = "glioma"
 [export_config]
 
 count_list = [
+
+    # Study population
+    "glioma__cube_encounter_study_population",
+    "glioma__cube_patient_study_population",
+    "glioma__cube_patient_study_population_dx",
+    "glioma__cube_patient_study_population_rx",
+    "glioma__cube_patient_study_population_proc",
+    "glioma__cube_patient_study_population_lab",
+    "glioma__cube_patient_study_population_doc",
+    "glioma__cube_patient_study_population_diag",
+
     # Case Definition
 	"glioma__cube_encounter_casedef",
 	"glioma__cube_patient_casedef",
-	"glioma__cube_patient_casedef_dx_comorbidity",
 	"glioma__cube_patient_casedef_rx",
 	"glioma__cube_patient_casedef_rx_variable",
 	"glioma__cube_patient_casedef_proc",
@@ -148,10 +164,10 @@ count_list = [
 
     # LLM Variables
     "glioma__cube_patient_llm_dx",
+    "glioma__cube_patient_llm_rx_chemo",
+    "glioma__cube_patient_llm_rx_target",
     "glioma__cube_patient_llm_surgery",
-    "glioma__cube_patient_llm_drug",
-    "glioma__cube_patient_llm_variant",
-    "glioma__cube_patient_llm_gene",
+    "glioma__cube_patient_llm_progression",
 ]
 
 meta_list = [
