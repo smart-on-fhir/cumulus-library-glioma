@@ -1,5 +1,6 @@
 import os
 CUMULUS_CACHE_PREFIX = os.environ.get("CUMULUS_CACHE_PREFIX", None)
+CUMULUS_CUBE_AS_VIEW = int(os.environ.get("CUMULUS_CUBE_AS_VIEW") or 0)
 CUMULUS_CUBE_MIN_SUBJECTS = int(os.environ.get("CUMULUS_CUBE_MIN_SUBJECTS") or 10)
 
 print('###########################################################')

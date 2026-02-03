@@ -2,7 +2,7 @@ from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_glioma.tools import filetool
 from cumulus_library_glioma.tools.tablespace import name_trim, name_cube, ctas_as_view
-from cumulus_library_glioma.tools.settings import CUMULUS_CUBE_MIN_SUBJECTS
+from cumulus_library_glioma.tools.settings import CUMULUS_CUBE_MIN_SUBJECTS, CUMULUS_CUBE_AS_VIEW
 from cumulus_library_glioma.tools import manifest
 
 def cube_fhir_resource(primary_id:str,
@@ -32,7 +32,9 @@ def cube_fhir_resource(primary_id:str,
             min_subject=min_subject,
             primary_id=primary_id,
     )
-    sql = ctas_as_view(sql, table_name)
+    if CUMULUS_CUBE_AS_VIEW == 1:
+        sql = ctas_as_view(sql, table_name)
+
     return filetool.save_athena_view(table_name, sql)
 
 def cube_patient(source_table='study_population',
