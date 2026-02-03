@@ -33,6 +33,17 @@ study_prefix = "glioma"
     "athena/glioma__cohort_study_population_proc.sql",
 ]
 
+"cube study population (dx, rx, lab, proc, doc, diag)"= [
+	"athena/glioma__cube_encounter_study_population.sql",
+	"athena/glioma__cube_patient_study_population.sql",
+	"athena/glioma__cube_patient_study_population_dx.sql",
+	"athena/glioma__cube_patient_study_population_rx.sql",
+	"athena/glioma__cube_patient_study_population_proc.sql",
+	"athena/glioma__cube_patient_study_population_lab.sql",
+	"athena/glioma__cube_patient_study_population_doc.sql",
+	"athena/glioma__cube_patient_study_population_diag.sql",
+]
+
 ## -----------------------------------------------------------------------------
 ##  *CASE DEFINITION* pLGG (Pediatric Low Grade Glioma)
 
@@ -95,6 +106,17 @@ study_prefix = "glioma"
 [export_config]
 
 count_list = [
+
+    # Study population
+    "glioma__cube_encounter_study_population",
+    "glioma__cube_patient_study_population",
+    "glioma__cube_patient_study_population_dx",
+    "glioma__cube_patient_study_population_rx",
+    "glioma__cube_patient_study_population_proc",
+    "glioma__cube_patient_study_population_lab",
+    "glioma__cube_patient_study_population_doc",
+    "glioma__cube_patient_study_population_diag",
+
     # Case Definition
 	"glioma__cube_encounter_casedef",
 	"glioma__cube_patient_casedef",
