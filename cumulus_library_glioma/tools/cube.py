@@ -74,10 +74,6 @@ def cube_note(source_table='study_population',
               table_cols=None,
               table_name=None,
               min_subject=CUMULUS_CUBE_MIN_SUBJECTS) -> Path:
-    """
-    Workaround for issue#446, will be fixed in next cumulus-library
-    https://github.com/smart-on-fhir/cumulus-library/issues/446
-    """
     return cube_fhir_resource(
         primary_id='note_ref',
         source_table=source_table,
