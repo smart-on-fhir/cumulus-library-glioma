@@ -312,7 +312,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
 def make_llm_variables() -> list[Path]:
     return [
         cube_patient(source_table='glioma__llm_dx',
-                     table_cols=['age_at_diagnosis',
+                     table_cols=['age_at_dx',
                                  'tumor_location',
                                  'tumor_region',
                                  'tumor_size_mass_effect',

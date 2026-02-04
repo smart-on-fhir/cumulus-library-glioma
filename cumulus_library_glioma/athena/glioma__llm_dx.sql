@@ -1,6 +1,6 @@
 create or replace view glioma__llm_dx as
 select
-        coalesce(result.age_at_diagnosis.age_years, -1 )            as age_at_diagnosis,
+        coalesce(result.age_at_diagnosis.age_years, -1 )            as age_at_dx,
         coalesce(result.tumor_location.location, 'NOT_MENTIONED' )  as tumor_location,
         coalesce(result.tumor_region.region, 'NOT_MENTIONED' )      as tumor_region,
         coalesce(result.tumor_size.mass_effect, 'NOT_MENTIONED')    as tumor_size_mass_effect,
