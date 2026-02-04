@@ -1,7 +1,0 @@
-create table glioma__cohort_diag_brain_mri as 
-select distinct * from 
- glioma__cohort_study_population_diag , 
-glioma__valueset_diag_brain_mri
-WHERE
-glioma__cohort_study_population_diag.diag_code = glioma__valueset_diag_brain_mri.code and 
-glioma__cohort_study_population_diag.diag_system = glioma__valueset_diag_brain_mri.system
