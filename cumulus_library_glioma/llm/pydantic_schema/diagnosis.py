@@ -219,6 +219,7 @@ class GliomaDiagnosisAnnotation(BaseModel):
     tumor_region_mention: TumorRegionMention
     tumor_size_mention: TumorSizeMassEffectMention
     topography_mention: TopographyMention
+    histology_mention: HistologyMention
     morphology_mention: MorphologyMention
     behavior_mention: BehaviorMention
     grade_mention: GradeMention
