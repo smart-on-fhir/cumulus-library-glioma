@@ -4,9 +4,9 @@ This guide will help you run the glioma study. At a high level, the
 study and related NLP breaks down into three steps: 
 1. Building the initial Glioma study tables
 2. Ensuring you have access to the relevant DocumentReferences
-3. Running NLP detecting document types  
+3. Running NLP task to detect document types  
 4. Re-building the study to populate LLM-derived tables
-5. Running variable-specific Glioma NLP
+5. Running variable-specific Glioma NLP tasks
 
 For the sake of this walkthrough, we will be targeting a small sample of data 
 found in `glioma__sample_casedef_peri_post_limit_patient_10`. To run these instructions 
@@ -79,16 +79,21 @@ down to the notes described in this table.
 ## 3. Run NLP for Document_type stratification 
 
 Using the `cumulus-etl` tool, we will now run our first NLP tasks. These instructions  
-are for an [on-prem](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#local-on-prem-options) `gpt-oss-120b` instance, 
-but support for other models is detailed in the [example-nlp setup docs](https://docs.smarthealthit.org/cumulus/nlp/models.html).
-Note that using other models will require updating the `gpt-oss-120b` specific arguments below. 
+include two sets of commands: 
+1. For an [on-prem](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#local-on-prem-options) 
+   `gpt-oss-120b` instance;
+2. For a bedrock-hosted claude-sonnet45
 
+Support for other models is detailed in the 
+[example-nlp setup docs](https://docs.smarthealthit.org/cumulus/nlp/models.html).
+
+### GPT-OSS 120B: Running the model
 First you want to set up the GPT-OSS instance to run locally:
 ```sh
 docker compose up --wait gpt-oss-120b
 ```
 
-Once the LLM instance is up and running via docker, we will run an NLP task 
+Once your LLM is reachable, we will run an NLP task 
 aimed at identifying which glioma-variables notes are related to. This 
 will reduce the amount of notes we process for each task. 
 
@@ -96,14 +101,29 @@ Note that the `--task` argument specifies which model configuration is being use
 As sites change their LLM models to support their available infrastructure, 
 this task will need to reference the appropriate model.
 
-### 3.a. Doctype identification against peri-/post-operative notes
+### 3.a. GPT-OSS 120B doctype identification against peri-/post-operative notes
 ```sh
 docker compose run --rm -it\
   cumulus-etl nlp \
-  --task glioma__nlp_document_type_gpt_oss_120b \
   <input folder with ndjson files from step 2 above> \
   <your typical ETL PHI folder> \
   <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_document_type_gpt_oss_120b \
+  --provider local \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_peri_post_limit_patient_10
+```
+
+### 3.b. Claude Sonnet45 doctype identification against peri-/post-operative notes
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_document_type_claude_sonnet45 \
+  --provider bedrock \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
   --select-by-athena-table glioma__sample_casedef_peri_post_limit_patient_10
@@ -114,8 +134,9 @@ allows us to take advantage of the `cumulus-etl nlp`'s support for verifying the
 that will be processed with NLP before starting a run. This can be useful in ensuring that you 
 don't spend a lot of money/time running NLP on an unintentionally large selection of notes.
 
-Importantly: re-run your [Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
-at this point in order to pick up the newly created NLP tables and their schemas. 
+After NLP completes, re-run your 
+[Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
+to pick up the newly created NLP tables and their schemas. 
 
 Note that as you run these tasks against _new models_, you will need to run this 
 crawler again (though only for the first time)
@@ -123,6 +144,209 @@ crawler again (though only for the first time)
 ## 4. Building task-specific tables of note samples.
 
 This next step is incredibly manual at the moment, but in future iterations will 
-be better integrated into separate runs of the `glioma` library study. 
+be better integrated into separate runs of the `glioma` library study. For 
+the time being, each model will have slightly different build instructions and 
+SQL files. 
 
-TODO: Figure out these instructions for sites 
+First, we need to replace our manifest.toml file with one that can 
+build task-specific tables out of our doc_type observations. 
+We will leverage one of the `manifest_llm*.toml` files in our project.
+
+### 4.a. GPT-OSS 120B
+```
+rm manifest.toml
+ln -s manifest_llm.toml
+cumulus-library build  -s . -t glioma
+```
+
+### 4.b. Claude Sonnet45
+```
+rm manifest.toml
+ln -s manifest_llm_CLAUDE_.toml
+cumulus-library build  -s . -t glioma
+```
+
+This should trigger the construction of the following task-specific tables based on the 
+doc_types identified by our first NLP task: 
+
+- glioma__sample_casedef_task_diagnosis 
+- glioma__sample_casedef_task_gene 
+- glioma__sample_casedef_task_drug 
+- glioma__sample_casedef_task_progression 
+- glioma__sample_casedef_task_surgery 
+
+## 5. Running variable-specific Glioma NLP tasks
+
+With these scoped sample tables, we can run the following tasks 
+(again scoped by which model you want to use). 
+
+**GPT-OSS 120B** 
+- glioma__nlp_diagnosis_gpt_oss_120b
+- glioma__nlp_gene_gpt_oss_120b
+- glioma__nlp_medications_gpt_oss_120b
+- glioma__nlp_progression_gpt_oss_120b
+- glioma__nlp_surgical_gpt_oss_120b
+
+**Claude Sonnet45** 
+- glioma__nlp_diagnosis_claude_sonnet45
+- glioma__nlp_gene_claude_sonnet45
+- glioma__nlp_medications_claude_sonnet45
+- glioma__nlp_progression_claude_sonnet45
+- glioma__nlp_surgical_claude_sonnet45
+
+### 5.a.1 GPT-OSS 120B: Diagnosis Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_diagnosis_gpt_oss_120b \
+  --provider local \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_diagnosis
+```
+
+### 5.a.2 GPT-OSS 120B: Gene Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_gene_gpt_oss_120b \
+  --provider local \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_gene
+```
+
+### 5.a.3 GPT-OSS 120B: Medication Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_medications_gpt_oss_120b \
+  --provider local \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_drug
+```
+
+### 5.a.4 GPT-OSS 120B: Progression Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_progression_gpt_oss_120b \
+  --provider local \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_progression
+```
+
+### 5.a.5 GPT-OSS 120B: Surgical Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_surgical_gpt_oss_120b \
+  --provider local \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_surgery
+```
+
+
+### 5.b.1 Claude Sonnet45: Diagnosis Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_diagnosis_claude_sonnet45 \
+  --provider bedrock \
+  --provider local \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_diagnosis
+```
+
+### 5.b.2 Claude Sonnet45: Gene Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_gene_claude_sonnet45 \
+  --provider bedrock \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_gene
+```
+
+### 5.b.3 Claude Sonnet45: Medication Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_medications_claude_sonnet45 \
+  --provider bedrock \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_drug
+```
+
+### 5.b.4 Claude Sonnet45: Progression Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_progression_claude_sonnet45 \
+  --provider bedrock \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_progression
+```
+
+### 5.b.5 Claude Sonnet45: Surgical Data Extraction
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  <input folder with ndjson files from step 2 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --task glioma__nlp_surgical_claude_sonnet45 \
+  --provider bedrock \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table glioma__sample_casedef_task_surgery
+```
+
+Some troubleshooting tips: 
+- After running these tasks for the first time, you will 
+  have to re-run glue crawlers. 
+- If your samples are excessively large and you want to run 
+  this comment in a non-interactive mode, consider the 
+  `--allow-large-selection \` flag.
+- To incrementally upload batches of finished results 
+  to the relevant athena buckets and tables, consider using 
+  `--batch-size=2000` (or with some other batch size value).
+
+
+With this, you should have results in Athena for each of the
+NLP tasks of interest. Instructions for translating those 
+into athena cubes and more targeted views of NLP results are a WIP.
