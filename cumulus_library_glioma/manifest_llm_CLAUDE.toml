@@ -97,7 +97,7 @@ study_prefix = "glioma"
 ##  https://github.com/smart-on-fhir/cumulus-library/issues/437
 
 "samples for LLM tasks" = [
-    "athena/glioma__sample_casedef_task_CHOP.sql"
+    "athena/glioma__sample_casedef_task_CLAUDE.sql"
 ]
 
 "samples for LLM tasks diagnosis, drug, gene, surgery, progression" = [
@@ -109,14 +109,14 @@ study_prefix = "glioma"
 ]
 
 "glioma LLM (ICDO: grade, topography, morphology, behavior)" = [
-    "athena/glioma__llm_dx_CHOP.sql",
+    "athena/glioma__llm_dx_CLAUDE.sql",
 ]
 
 "glioma LLM (surgery, drug, gene, variant)" = [
-    "athena/glioma__llm_surgery_CHOP.sql",
-    "athena/glioma__llm_drug_CHOP.sql",
-    "athena/glioma__llm_gene_CHOP.sql",
-    "athena/glioma__llm_variant_CHOP.sql",
+    "athena/glioma__llm_surgery_CLAUDE.sql",
+    "athena/glioma__llm_drug_CLAUDE.sql",
+    "athena/glioma__llm_gene_CLAUDE.sql",
+    "athena/glioma__llm_variant_CLAUDE.sql",
 ]
 
 "cube LLM"= [
