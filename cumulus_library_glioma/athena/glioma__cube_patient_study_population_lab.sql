@@ -1,4 +1,4 @@
-CREATE TABLE glioma__cube_patient_casedef_lab AS (
+CREATE TABLE glioma__cube_patient_study_population_lab AS (
     WITH
     null_replacement AS (
         SELECT
@@ -19,7 +19,7 @@ CREATE TABLE glioma__cube_patient_casedef_lab AS (
                 cast(lab_observation_system AS varchar),
                 'cumulus__none'
             ) AS lab_observation_system
-        FROM glioma__cohort_casedef_lab
+        FROM glioma__cohort_study_population_lab
         
     ),
 

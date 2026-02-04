@@ -1,7 +1,0 @@
-create table glioma__cohort_dx_endo_diabetes as 
-select distinct * from 
- glioma__cohort_study_population_dx , 
-glioma__valueset_dx_endo_diabetes
-WHERE
-glioma__cohort_study_population_dx.dx_code = glioma__valueset_dx_endo_diabetes.code and 
-glioma__cohort_study_population_dx.dx_system = glioma__valueset_dx_endo_diabetes.system

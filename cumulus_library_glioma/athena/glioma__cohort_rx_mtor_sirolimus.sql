@@ -1,7 +1,0 @@
-create table glioma__cohort_rx_mtor_sirolimus as 
-select distinct * from 
- glioma__cohort_study_population_rx , 
-glioma__valueset_rx_mtor_sirolimus
-WHERE
-glioma__cohort_study_population_rx.rx_code = glioma__valueset_rx_mtor_sirolimus.code and 
-glioma__cohort_study_population_rx.rx_system = glioma__valueset_rx_mtor_sirolimus.system

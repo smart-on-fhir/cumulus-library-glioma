@@ -1,7 +1,0 @@
-create table glioma__cohort_diag_head_neck as 
-select distinct * from 
- glioma__cohort_study_population_diag , 
-glioma__valueset_diag_head_neck
-WHERE
-glioma__cohort_study_population_diag.diag_code = glioma__valueset_diag_head_neck.code and 
-glioma__cohort_study_population_diag.diag_system = glioma__valueset_diag_head_neck.system

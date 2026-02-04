@@ -1,7 +1,0 @@
-create table glioma__cohort_dx_focal_deficit as 
-select distinct * from 
- glioma__cohort_study_population_dx , 
-glioma__valueset_dx_focal_deficit
-WHERE
-glioma__cohort_study_population_dx.dx_code = glioma__valueset_dx_focal_deficit.code and 
-glioma__cohort_study_population_dx.dx_system = glioma__valueset_dx_focal_deficit.system

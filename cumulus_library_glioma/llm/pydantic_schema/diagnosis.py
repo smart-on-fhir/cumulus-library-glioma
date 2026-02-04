@@ -213,6 +213,11 @@ class NF1StatusMention(SpanAugmentedMention):
 ###############################################################################
 # Annotation BaseModel
 ###############################################################################
+# FYI: tumor location: specific anatomic structure involved
+#                       (thalamus, cerebellum)
+#       tumor region:   broader anatomic area or compartment contains tumor
+#                       (diencephalic, posterior fossa).
+###############################################################################
 class GliomaDiagnosisAnnotation(BaseModel):
     age_at_diagnosis_mention: AgeAtDiagnosisMention
     tumor_location_mention: TumorLocationMention
@@ -224,7 +229,6 @@ class GliomaDiagnosisAnnotation(BaseModel):
     behavior_mention: BehaviorMention
     grade_mention: GradeMention
     nf1_status_mention: NF1StatusMention
-
 
 if __name__ == "__main__":
     basedir = os.path.dirname(__file__)

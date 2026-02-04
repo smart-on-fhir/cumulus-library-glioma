@@ -1,4 +1,4 @@
-CREATE or replace VIEW glioma__cube_patient_casedef_dx AS 
+CREATE TABLE glioma__cube_patient_study_population_dx AS (
     WITH
     null_replacement AS (
         SELECT
@@ -22,16 +22,8 @@ CREATE or replace VIEW glioma__cube_patient_casedef_dx AS
             coalesce(
                 cast(dx_system AS varchar),
                 'cumulus__none'
-            ) AS dx_system,
-            coalesce(
-                cast(gender AS varchar),
-                'cumulus__none'
-            ) AS gender,
-            coalesce(
-                cast(race_display AS varchar),
-                'cumulus__none'
-            ) AS race_display
-        FROM glioma__cohort_casedef_dx
+            ) AS dx_system
+        FROM glioma__cohort_study_population_dx
         
     ),
 
@@ -43,17 +35,13 @@ CREATE or replace VIEW glioma__cube_patient_casedef_dx AS
             "dx_code",
             "dx_display",
             "dx_system",
-            "gender",
-            "race_display",
             concat_ws(
                 '-',
                 COALESCE("age_at_visit",''),
                 COALESCE("dx_category_code",''),
                 COALESCE("dx_code",''),
                 COALESCE("dx_display",''),
-                COALESCE("dx_system",''),
-                COALESCE("gender",''),
-                COALESCE("race_display",'')
+                COALESCE("dx_system",'')
             ) AS id
         FROM null_replacement
         GROUP BY
@@ -62,9 +50,7 @@ CREATE or replace VIEW glioma__cube_patient_casedef_dx AS
             "dx_category_code",
             "dx_code",
             "dx_display",
-            "dx_system",
-            "gender",
-            "race_display"
+            "dx_system"
             )
     )
 
@@ -74,10 +60,8 @@ CREATE or replace VIEW glioma__cube_patient_casedef_dx AS
             p."dx_category_code",
             p."dx_code",
             p."dx_display",
-            p."dx_system",
-            p."gender",
-            p."race_display"
+            p."dx_system"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10
-;
+);

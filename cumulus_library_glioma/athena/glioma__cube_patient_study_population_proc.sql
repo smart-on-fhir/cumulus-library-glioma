@@ -1,4 +1,4 @@
-CREATE TABLE glioma__cube_patient_casedef_proc AS (
+CREATE TABLE glioma__cube_patient_study_population_proc AS (
     WITH
     null_replacement AS (
         SELECT
@@ -23,7 +23,7 @@ CREATE TABLE glioma__cube_patient_casedef_proc AS (
                 cast(proc_system AS varchar),
                 'cumulus__none'
             ) AS proc_system
-        FROM glioma__cohort_casedef_proc
+        FROM glioma__cohort_study_population_proc
         
     ),
 

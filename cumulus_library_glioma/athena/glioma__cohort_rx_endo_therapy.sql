@@ -1,7 +1,0 @@
-create table glioma__cohort_rx_endo_therapy as 
-select distinct * from 
- glioma__cohort_study_population_rx , 
-glioma__valueset_rx_endo_therapy
-WHERE
-glioma__cohort_study_population_rx.rx_code = glioma__valueset_rx_endo_therapy.code and 
-glioma__cohort_study_population_rx.rx_system = glioma__valueset_rx_endo_therapy.system
