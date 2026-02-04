@@ -6,8 +6,8 @@ mention as (
             src.note_ref,
             src.encounter_ref,
             src.subject_ref
-    from    glioma__nlp_gpt_oss_120b    AS src,
-            UNNEST(src.result.doc_type) AS t1(src_result_mention)
+    from    glioma__nlp_document_type_gpt_oss_120b    AS src,
+            UNNEST(src.result.glioma_doc_type_mention) AS t1(src_result_mention)
     where   task_version = 2000
     and     src_result_mention IS NOT NULL
 ),
