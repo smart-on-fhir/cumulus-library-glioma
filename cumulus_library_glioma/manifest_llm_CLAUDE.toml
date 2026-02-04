@@ -1,0 +1,160 @@
+study_prefix = "glioma"
+
+[file_config.file_names]
+# -----------------------------------------------------------------------------
+## Upload CSV/TSV curated files
+"file_upload.toml" = [
+    "file_upload.toml"
+]
+
+## -----------------------------------------------------------------------------
+## Study population
+"inclusion criteria for study population" = [
+    "athena/glioma__include_gender.sql",
+    "athena/glioma__include_age_at_visit.sql",
+    "athena/glioma__include_utilization.sql",
+    "athena/glioma__include_study_period.sql",
+]
+
+"study period" = [
+    "athena/glioma__cohort_study_period.sql",
+]
+
+"study population" = [
+    "athena/glioma__cohort_study_population.sql",
+]
+
+"study population (dx, rx, lab, proc, doc, diag)" = [
+    "athena/glioma__cohort_study_population_dx.sql",
+    "athena/glioma__cohort_study_population_rx.sql",
+    "athena/glioma__cohort_study_population_lab.sql",
+    "athena/glioma__cohort_study_population_doc.sql",
+    "athena/glioma__cohort_study_population_diag.sql",
+    "athena/glioma__cohort_study_population_proc.sql",
+]
+
+## -----------------------------------------------------------------------------
+##  *CASE DEFINITION* pLGG (Pediatric Low Grade Glioma)
+
+"cohort from case definition (valueset_casedef)"= [
+    "athena/glioma__cohort_casedef.sql",
+]
+
+"cohort for case definition aspects (dx, rx, lab, proc)"= [
+    "athena/glioma__cohort_casedef_dx_comorbidity.sql",
+    "athena/glioma__cohort_casedef_rx.sql",
+    "athena/glioma__cohort_casedef_lab.sql",
+    "athena/glioma__cohort_casedef_proc.sql",
+]
+
+"cohort for glioma drug variables (rx)" = [
+    "athena/glioma__cohort_casedef_rx_variable.sql"
+]
+
+"samples for casedef temporality (pre, per, peri_post, post)"= [
+    "athena/glioma__sample_casedef.sql",
+	"athena/glioma__sample_casedef_pre.sql",
+	"athena/glioma__sample_casedef_peri.sql",
+	"athena/glioma__sample_casedef_peri_post.sql",
+	"athena/glioma__sample_casedef_post.sql",
+]
+
+"samples for casedef temporality (limit_note, limit_patient)"= [
+	"athena/glioma__sample_casedef_pre_limit_patient_10.sql",
+	"athena/glioma__sample_casedef_pre_limit_note_50.sql",
+	"athena/glioma__sample_casedef_peri_limit_patient_10.sql",
+	"athena/glioma__sample_casedef_peri_limit_note_50.sql",
+	"athena/glioma__sample_casedef_peri_post_limit_patient_10.sql",
+	"athena/glioma__sample_casedef_peri_post_limit_note_50.sql",
+	"athena/glioma__sample_casedef_post_limit_patient_10.sql",
+	"athena/glioma__sample_casedef_post_limit_note_50.sql",
+]
+
+"cube casedef"= [
+	"athena/glioma__cube_encounter_casedef.sql",
+	"athena/glioma__cube_patient_casedef.sql",
+	"athena/glioma__cube_patient_casedef_dx_comorbidity.sql",
+	"athena/glioma__cube_patient_casedef_rx.sql",
+	"athena/glioma__cube_patient_casedef_rx_variable.sql",
+	"athena/glioma__cube_patient_casedef_proc.sql",
+	"athena/glioma__cube_patient_casedef_lab.sql",
+	"athena/glioma__cube_patient_sample_casedef.sql",
+	"athena/glioma__cube_note_sample_casedef.sql",
+	"athena/glioma__cube_patient_sample_casedef_peri_post.sql",
+	"athena/glioma__cube_note_sample_casedef_peri_post.sql",
+]
+
+"metadata study date and versioning " = [
+    "athena/glioma__meta_date.sql",
+    "athena/glioma__meta_version.sql"
+]
+
+## -----------------------------------------------------------------------------
+##  LLM specific section
+##
+##  Next cumulus-library version will allow submanifests RATHER THAN
+##  `manifest_casedef.toml` being redeclared again as per above. See ticket:
+##  https://github.com/smart-on-fhir/cumulus-library/issues/437
+
+"samples for LLM tasks" = [
+    "athena/glioma__sample_casedef_task_CLAUDE.sql"
+]
+
+"samples for LLM tasks diagnosis, drug, gene, surgery, progression" = [
+    "athena/glioma__sample_casedef_task_diagnosis.sql",
+    "athena/glioma__sample_casedef_task_drug.sql",
+    "athena/glioma__sample_casedef_task_gene.sql",
+    "athena/glioma__sample_casedef_task_surgery.sql",
+    "athena/glioma__sample_casedef_task_progression.sql",
+]
+
+"glioma LLM (ICDO: grade, topography, morphology, behavior)" = [
+    "athena/glioma__llm_dx_CLAUDE.sql",
+]
+
+"glioma LLM (surgery, drug, gene, variant)" = [
+    "athena/glioma__llm_surgery_CLAUDE.sql",
+    "athena/glioma__llm_drug_CLAUDE.sql",
+    "athena/glioma__llm_gene_CLAUDE.sql",
+    "athena/glioma__llm_variant_CLAUDE.sql",
+]
+
+"cube LLM"= [
+    "athena/glioma__cube_patient_llm_dx.sql",
+    "athena/glioma__cube_patient_llm_surgery.sql",
+    "athena/glioma__cube_patient_llm_drug.sql",
+    "athena/glioma__cube_patient_llm_variant.sql",
+    "athena/glioma__cube_patient_llm_gene.sql",
+]
+
+## -----------------------------------------------------------------------------
+## Export to Cumulus aggregator
+
+[export_config]
+
+count_list = [
+    # Case Definition
+	"glioma__cube_encounter_casedef",
+	"glioma__cube_patient_casedef",
+	"glioma__cube_patient_casedef_dx_comorbidity",
+	"glioma__cube_patient_casedef_rx",
+	"glioma__cube_patient_casedef_rx_variable",
+	"glioma__cube_patient_casedef_proc",
+	"glioma__cube_patient_casedef_lab",
+	"glioma__cube_patient_sample_casedef",
+	"glioma__cube_note_sample_casedef",
+	"glioma__cube_patient_sample_casedef_peri_post",
+	"glioma__cube_note_sample_casedef_peri_post",
+
+    # LLM Variables
+    "glioma__cube_patient_llm_dx",
+    "glioma__cube_patient_llm_surgery",
+    "glioma__cube_patient_llm_drug",
+    "glioma__cube_patient_llm_variant",
+    "glioma__cube_patient_llm_gene",
+]
+
+meta_list = [
+    "glioma__meta_date",
+    "glioma__meta_version",
+]
