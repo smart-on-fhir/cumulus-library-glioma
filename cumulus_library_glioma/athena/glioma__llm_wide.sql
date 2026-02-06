@@ -1,15 +1,15 @@
 create or replace VIEW glioma__llm_wide_note AS WITH
 note as
 (
-    select distinct note_ref from glioma__llm_dx
-    UNION
-    select distinct note_ref from glioma__llm_drug
-    UNION
-    select distinct note_ref from glioma__llm_surgery
-    UNION
-    select distinct note_ref from glioma__llm_gene
-    UNION
-    select distinct note_ref from glioma__llm_variant
+    select note_ref from glioma__llm_dx
+    UNION ALL
+    select note_ref from glioma__llm_drug
+    UNION ALL
+    select note_ref from glioma__llm_surgery
+    UNION ALL
+    select note_ref from glioma__llm_gene
+    UNION ALL
+    select note_ref from glioma__llm_variant
 ),
 wide as
 (

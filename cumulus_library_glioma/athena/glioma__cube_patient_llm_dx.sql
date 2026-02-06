@@ -4,9 +4,9 @@ CREATE TABLE glioma__cube_patient_llm_dx AS (
         SELECT
             subject_ref,
             coalesce(
-                cast(age_at_diagnosis AS varchar),
+                cast(age_at_dx AS varchar),
                 'cumulus__none'
-            ) AS age_at_diagnosis,
+            ) AS age_at_dx,
             coalesce(
                 cast(behavior_code AS varchar),
                 'cumulus__none'
@@ -38,7 +38,7 @@ CREATE TABLE glioma__cube_patient_llm_dx AS (
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
-            "age_at_diagnosis",
+            "age_at_dx",
             "behavior_code",
             "grade_code",
             "nf1_status",
@@ -47,7 +47,7 @@ CREATE TABLE glioma__cube_patient_llm_dx AS (
             "tumor_size_mass_effect",
             concat_ws(
                 '-',
-                COALESCE("age_at_diagnosis",''),
+                COALESCE("age_at_dx",''),
                 COALESCE("behavior_code",''),
                 COALESCE("grade_code",''),
                 COALESCE("nf1_status",''),
@@ -58,7 +58,7 @@ CREATE TABLE glioma__cube_patient_llm_dx AS (
         FROM null_replacement
         GROUP BY
             cube(
-            "age_at_diagnosis",
+            "age_at_dx",
             "behavior_code",
             "grade_code",
             "nf1_status",
@@ -70,7 +70,7 @@ CREATE TABLE glioma__cube_patient_llm_dx AS (
 
     SELECT
         p.cnt_subject_ref AS cnt,
-            p."age_at_diagnosis",
+            p."age_at_dx",
             p."behavior_code",
             p."grade_code",
             p."nf1_status",
