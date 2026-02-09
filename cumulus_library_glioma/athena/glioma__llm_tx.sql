@@ -1,5 +1,27 @@
-create TABLE glioma__cohort_casedef_tx as
+create TABLE glioma__llm_tx as
 with
+observation as
+(
+    select  'LLM'               as source,
+            'OBSERVATION'       as tx_modality,
+            'OBSERVATION'       as tx_class,
+            'OBSERVATION'       as tx_specific,
+            subject_ref,
+            encounter_ref
+    from    glioma__llm_progression
+    where   therapy_modality = 'OBSERVATION'
+),
+radiotherapy AS
+(
+    select  'LLM'           as source,
+            'RADIOTHERAPY'  as tx_modality,
+            'RADIOTHERAPY'  as tx_class,
+            'RADIOTHERAPY'  as tx_specific,
+            subject_ref,
+            encounter_ref
+    from    glioma__llm_progression
+    where   therapy_modality = 'RADIOTHERAPY'
+),
 surgery as
 (
     select  'LLM'               as source,
@@ -90,6 +112,10 @@ fhir_rx_target as
 ),
 union_all as
 (
+    select * from observation
+    UNION ALL
+    select * from radiotherapy
+    UNION ALL
     select * from surgery
     UNION ALL
     select * from llm_rx_chemo
@@ -112,11 +138,15 @@ merged as
                 regexp_replace(
                 regexp_replace(
                 regexp_replace(
+                regexp_replace(
+                regexp_replace(
                 regexp_replace(tx_class,
-                    '^rx_(class|in)_', ''),
+                    '(?i)vsac_rx', ''),
+                    '(?i)^rx_(class|in)_', ''),
                     '(?i)_(inhibitor|agent)$', ''),
                     'TOP1', 'TOPOISOMERASE'),
-                    '\bvinca\b','VINCA_ALKALOID')
+                    '\bvinca\b','VINCA_ALKALOID'),
+                    '_',' ')
                     ) AS tx_class,
             tx_specific
     from union_all
