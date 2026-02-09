@@ -1,4 +1,4 @@
-create TABLE glioma__cohort_casedef_tx_response as
+create TABLE glioma__llm_tx_response as
 with
 progression as
 (
@@ -28,8 +28,9 @@ select  distinct
         tx.encounter_ref as tx_encounter_ref,
         progression.encounter_ref
 from    progression,
-        glioma__cohort_casedef_tx   as tx
-where   tx.subject_ref = progression.subject_ref
+        glioma__llm_tx   as tx
+where   progression.progression != 'NOT_MENTIONED'
+and     tx.subject_ref = progression.subject_ref
 and     tx.tx_modality = progression.therapy_modality
 and     tx.enc_period_start_day < progression.enc_period_start_day
 ;
