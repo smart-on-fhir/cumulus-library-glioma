@@ -313,12 +313,27 @@ def make_llm_variables() -> list[Path]:
     return [
         cube_patient(source_table='glioma__llm_dx',
                      table_cols=['age_at_dx',
+                                 'histology',
                                  'tumor_location',
                                  'tumor_region',
                                  'tumor_size_mass_effect',
                                  'grade_code',
                                  'behavior_code',
                                  'nf1_status']),
+
+        cube_patient(source_table='glioma__llm_dx_response',  # requires LLM
+                     table_cols=[
+                         'age_at_dx',
+                         'histology',
+                         'grade_display',
+                         'tumor_location',
+                         'tumor_region',
+                         'tumor_size_mass_effect',
+                         'progression',
+                         'regrowth_pattern',
+                         'symptom_burden',
+                         'visual_status'
+                     ]),
 
         cube_patient(source_table='glioma__llm_surgery',
                      table_cols=['surgical_type',
@@ -354,6 +369,22 @@ def make_llm_variables() -> list[Path]:
                                  'rx_treatment_response',
                                  'rx_toxicity_severity',
                                  'rx_treatment_discontinued']),
+
+        cube_patient(source_table='glioma__llm_tx', # requires LLM
+                     table_cols=['source',
+                                 'tx_modality',
+                                 'tx_class',
+                                 'tx_specific']),
+
+        cube_patient(source_table='glioma__llm_tx_response_30_days',  # requires LLM
+                     table_cols=['tx_modality',
+                                 'tx_class',
+                                 'tx_specific',
+                                 'progression',
+                                 'regrowth_pattern',
+                                 'symptom_burden',
+                                 'visual_status'
+                                 ]),
 
         # cube_patient(source_table='glioma__llm_variant',
         #              table_cols=['has_mention',

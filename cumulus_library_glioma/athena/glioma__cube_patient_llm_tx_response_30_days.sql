@@ -1,4 +1,4 @@
-CREATE TABLE glioma__cube_patient_casedef_tx_response_30_days AS (
+CREATE TABLE glioma__cube_patient_llm_tx_response_30_days AS (
     WITH
     null_replacement AS (
         SELECT
@@ -31,7 +31,7 @@ CREATE TABLE glioma__cube_patient_casedef_tx_response_30_days AS (
                 cast(visual_status AS varchar),
                 'cumulus__none'
             ) AS visual_status
-        FROM glioma__cohort_casedef_tx_response_30_days
+        FROM glioma__llm_tx_response_30_days
         
     ),
 
