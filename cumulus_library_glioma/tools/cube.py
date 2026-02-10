@@ -251,8 +251,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
                      table_cols=['variable',
                                  'code',
                                  'system',
-                                 'display'],
-                     min_subject=10),
+                                 'display']),
 
         # Count Encounters for Any/All coded Glioma Study Variable
         cube_encounter(source_table='glioma__cohort_variable_union',
@@ -261,8 +260,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
                                  'enc_class_code',
                                  'enc_period_ordinal',
                                  'age_at_visit',
-                                 'gender'],
-                       min_subject=10),
+                                 'gender']),
 
         # Glioma specific DiagnosticReports types
         cube_patient(source_table='glioma__cohort_variable_wide',
@@ -270,8 +268,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
                      table_cols=['diag_brain_mri',
                                  'diag_head_neck',
                                  'diag_pathology',
-                                 'diag_radiology'],
-                     min_subject=10),
+                                 'diag_radiology']),
 
         # Neurology [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
@@ -280,16 +277,14 @@ def make_fhir_variables_deprecated() -> list[Path]:
                                  'dx_neuro',
                                  'dx_neurofibromatosis',
                                  'dx_neuropathy',
-                                 'proc_neurosurgery'],
-                     min_subject=10),
+                                 'proc_neurosurgery']),
 
         # Endocrine [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
                      table_name='glioma__cube_patient_variable_wide_endo',
                      table_cols=['dx_endo_diabetes',
                                  'rx_endo_diabetes',
-                                 'rx_endo_therapy'],
-                     min_subject=10),
+                                 'rx_endo_therapy']),
 
         # Cancer [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
@@ -302,8 +297,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
                                  'rx_chemo_bevacizumab',
                                  'rx_chemo_platinum',
                                  'rx_chemo_platinum_carboplatin',
-                                 'rx_chemo_vincristine'],
-                     min_subject=10),
+                                 'rx_chemo_vincristine']),
     ]
 
 #-----------------------------------------------------------------------------
@@ -373,6 +367,7 @@ def make_llm_variables() -> list[Path]:
                                  'tx_class',
                                  'tx_specific',
                                  'progression',
+                                 'progression_bin',
                                  'regrowth_pattern',
                                  'symptom_burden',
                                  'visual_status']),
