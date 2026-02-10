@@ -1,4 +1,4 @@
-create TABLE glioma__llm_dx_response as
+create TABLE glioma__llm_dx_progression as
 select  distinct
         dx.age_at_dx,
         dx.grade_code,
