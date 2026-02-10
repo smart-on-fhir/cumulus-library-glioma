@@ -1,4 +1,4 @@
-create TABLE glioma__llm_wide_note AS WITH
+create TABLE glioma__llm_tabular AS WITH
 patient_list as
 (
     select  subject_ref, encounter_ref, note_ref from glioma__llm_dx
@@ -11,7 +11,7 @@ patient_list as
     UNION ALL
     select  subject_ref, encounter_ref, note_ref from glioma__llm_gene
 ),
-wide as
+tabular as
 (
     select      -- diagnosis.py
                 dx.age_at_dx,
@@ -64,5 +64,5 @@ wide as
     left join   glioma__llm_rx_chemo    as rx_chemo on patient_list.note_ref = rx_chemo.note_ref
     left join   glioma__llm_rx_target   as rx_target on patient_list.note_ref = rx_target.note_ref
 )
-select distinct * from wide;
+select distinct * from tabular;
 
