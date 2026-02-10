@@ -8,6 +8,10 @@ CREATE TABLE glioma__cube_patient_llm_tx_response_30_days AS (
                 'cumulus__none'
             ) AS progression,
             coalesce(
+                cast(progression_bin AS varchar),
+                'cumulus__none'
+            ) AS progression_bin,
+            coalesce(
                 cast(regrowth_pattern AS varchar),
                 'cumulus__none'
             ) AS regrowth_pattern,
@@ -39,6 +43,7 @@ CREATE TABLE glioma__cube_patient_llm_tx_response_30_days AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
             "progression",
+            "progression_bin",
             "regrowth_pattern",
             "symptom_burden",
             "tx_class",
@@ -48,6 +53,7 @@ CREATE TABLE glioma__cube_patient_llm_tx_response_30_days AS (
             concat_ws(
                 '-',
                 COALESCE("progression",''),
+                COALESCE("progression_bin",''),
                 COALESCE("regrowth_pattern",''),
                 COALESCE("symptom_burden",''),
                 COALESCE("tx_class",''),
@@ -59,6 +65,7 @@ CREATE TABLE glioma__cube_patient_llm_tx_response_30_days AS (
         GROUP BY
             cube(
             "progression",
+            "progression_bin",
             "regrowth_pattern",
             "symptom_burden",
             "tx_class",
@@ -71,6 +78,7 @@ CREATE TABLE glioma__cube_patient_llm_tx_response_30_days AS (
     SELECT
         p.cnt_subject_ref AS cnt,
             p."progression",
+            p."progression_bin",
             p."regrowth_pattern",
             p."symptom_burden",
             p."tx_class",
