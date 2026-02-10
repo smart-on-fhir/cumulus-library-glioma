@@ -321,13 +321,12 @@ def make_llm_variables() -> list[Path]:
                                  'behavior_code',
                                  'nf1_status']),
 
-        cube_patient(source_table='glioma__llm_dx_response',  # requires LLM
+        cube_patient(source_table='glioma__llm_dx_progression',  # requires LLM
                      table_cols=[
                          'age_at_dx',
                          'histology',
                          'grade_display',
                          'tumor_location',
-                         'tumor_region',
                          'tumor_size_mass_effect',
                          'progression',
                          'regrowth_pattern',
@@ -386,21 +385,23 @@ def make_llm_variables() -> list[Path]:
                                  'visual_status'
                                  ]),
 
-        # cube_patient(source_table='glioma__llm_variant',
-        #              table_cols=['has_mention',
-        #                          'hgnc_name',
-        #                          'hgvs_variant',
-        #                          'interpretation']),
-        #
-        # cube_patient(source_table='glioma__llm_gene',
-        #              table_cols=['has_mention',
-        #                          'braf_altered',
-        #                          'braf_v600e',
-        #                          'braf_fusion',
-        #                          'idh_mutant',
-        #                          'h3k27m_mutant',
-        #                          'tp53_altered',
-        #                          'cdkn2a_deleted'])
+        cube_patient(source_table='glioma__llm_gene',
+                     table_cols=['braf_altered',
+                                 'braf_v600e',
+                                 'braf_fusion',
+                                 'idh_mutant',
+                                 'variant_interpretation',
+                                 'hgnc_name']),
+
+        cube_patient(source_table='glioma__llm_gene_progression',
+                     table_cols=['braf_altered',
+                                 'braf_v600e',
+                                 'braf_fusion',
+                                 'idh_mutant',
+                                 'progression',
+                                 'tumor_size_mass_effect',
+                                 'visual_status'])
+
     ]
 
 #-----------------------------------------------------------------------------
