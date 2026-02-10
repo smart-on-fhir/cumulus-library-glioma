@@ -39,7 +39,7 @@ negative as
 stable as
 (
     select  age_at_progression,
-            'STABLE'  as progression,
+            progression,
             regrowth_pattern,
             symptom_burden,
             visual_status,
