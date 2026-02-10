@@ -94,15 +94,34 @@ both_functional as
     from    tabular
     where   progression in ('BOTH', 'FUNCTIONAL')
 ),
-union_all as
+other_progression as
 (
-    select * from stable
-    UNION ALL
+    select  age_at_progression,
+            progression,
+            regrowth_pattern,
+            symptom_burden,
+            visual_status,
+            neurocognitive_risk,
+            endocrine_status,
+            therapy_line_number,
+            therapy_modality,
+            clinical_trial_status,
+            has_prior_radiotherapy,
+            note_ref,
+            encounter_ref,
+            subject_ref
+    from    tabular
+    where   progression in ('BOTH', 'SUSPECTED')
+),
+any_progression as
+(
     select * from both_radiographic
     UNION ALL
     select * from both_functional
     UNION ALL
-    select * from tabular where progression = 'SUSPECTED'
+    select * from other_progression
 )
-select distinct * from union_all
+select  distinct 'STABLE'       as progression_bin, * from stable
+UNION ALL
+select  distinct 'PROGRESSION'  as progression_bin, * from any_progression
 ;

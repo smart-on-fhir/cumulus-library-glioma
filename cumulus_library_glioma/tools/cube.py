@@ -325,10 +325,11 @@ def make_llm_variables() -> list[Path]:
                      table_cols=[
                          'age_at_dx',
                          'histology',
-                         'grade_display',
+                         'grade_code',
                          'tumor_location',
                          'tumor_size_mass_effect',
                          'progression',
+                         'progression_bin',
                          'regrowth_pattern',
                          'symptom_burden',
                          'visual_status'
@@ -342,15 +343,13 @@ def make_llm_variables() -> list[Path]:
         cube_patient(source_table='glioma__llm_progression',
                      table_cols=['age_at_progression',
                                  'progression',
+                                 'progression_bin',
                                  'regrowth_pattern',
                                  'symptom_burden',
                                  'visual_status',
                                  'neurocognitive_risk',
-                                 'endocrine_status',
-                                 'therapy_line_number',
                                  'therapy_modality',
-                                 'clinical_trial_status',
-                                 'has_prior_radiotherapy']),
+                                 'clinical_trial_status']),
 
         cube_patient(source_table='glioma__llm_rx_chemo',
                      table_cols=['rx_regimen',
@@ -369,12 +368,6 @@ def make_llm_variables() -> list[Path]:
                                  'rx_toxicity_severity',
                                  'rx_treatment_discontinued']),
 
-        cube_patient(source_table='glioma__llm_tx', # requires LLM
-                     table_cols=['source',
-                                 'tx_modality',
-                                 'tx_class',
-                                 'tx_specific']),
-
         cube_patient(source_table='glioma__llm_tx_response_30_days',  # requires LLM
                      table_cols=['tx_modality',
                                  'tx_class',
@@ -382,8 +375,7 @@ def make_llm_variables() -> list[Path]:
                                  'progression',
                                  'regrowth_pattern',
                                  'symptom_burden',
-                                 'visual_status'
-                                 ]),
+                                 'visual_status']),
 
         cube_patient(source_table='glioma__llm_gene',
                      table_cols=['braf_altered',
@@ -399,7 +391,8 @@ def make_llm_variables() -> list[Path]:
                                  'braf_fusion',
                                  'idh_mutant',
                                  'progression',
-                                 'tumor_size_mass_effect',
+                                 'progression_bin',
+                                 'symptom_burden',
                                  'visual_status'])
 
     ]
@@ -417,7 +410,3 @@ if __name__ == "__main__":
 
     file_list = make_llm_variables()
     print(manifest.as_toml_parallel(file_list, 'cube LLM'))
-
-    #fhir_cube_files = make_fhir_variables_deprecated()
-    #print(manifest.as_toml_parallel(fhir_cube_files, 'cube FHIR'))
-

@@ -121,6 +121,7 @@ study_prefix = "glioma"
     "athena/glioma__llm_dx.sql",
     "athena/glioma__llm_rx_chemo.sql",
     "athena/glioma__llm_rx_target.sql",
+    "athena/glioma__llm_gene.sql",
     "athena/glioma__llm_surgery.sql",
     "athena/glioma__llm_progression.sql",
 ]
@@ -129,7 +130,7 @@ study_prefix = "glioma"
     "athena/glioma__llm_tx.sql",
 ]
 
-"glioma LLM (progression / response)" = [
+"glioma LLM (dx|gene progression, tx response)" = [
     "athena/glioma__llm_dx_progression.sql",
     "athena/glioma__llm_gene_progression.sql",
     "athena/glioma__llm_tx_response.sql",

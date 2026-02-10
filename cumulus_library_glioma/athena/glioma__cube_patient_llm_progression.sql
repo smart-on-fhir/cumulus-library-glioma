@@ -12,14 +12,6 @@ CREATE TABLE glioma__cube_patient_llm_progression AS (
                 'cumulus__none'
             ) AS clinical_trial_status,
             coalesce(
-                cast(endocrine_status AS varchar),
-                'cumulus__none'
-            ) AS endocrine_status,
-            coalesce(
-                cast(has_prior_radiotherapy AS varchar),
-                'cumulus__none'
-            ) AS has_prior_radiotherapy,
-            coalesce(
                 cast(neurocognitive_risk AS varchar),
                 'cumulus__none'
             ) AS neurocognitive_risk,
@@ -28,6 +20,10 @@ CREATE TABLE glioma__cube_patient_llm_progression AS (
                 'cumulus__none'
             ) AS progression,
             coalesce(
+                cast(progression_bin AS varchar),
+                'cumulus__none'
+            ) AS progression_bin,
+            coalesce(
                 cast(regrowth_pattern AS varchar),
                 'cumulus__none'
             ) AS regrowth_pattern,
@@ -35,10 +31,6 @@ CREATE TABLE glioma__cube_patient_llm_progression AS (
                 cast(symptom_burden AS varchar),
                 'cumulus__none'
             ) AS symptom_burden,
-            coalesce(
-                cast(therapy_line_number AS varchar),
-                'cumulus__none'
-            ) AS therapy_line_number,
             coalesce(
                 cast(therapy_modality AS varchar),
                 'cumulus__none'
@@ -56,26 +48,22 @@ CREATE TABLE glioma__cube_patient_llm_progression AS (
             count(DISTINCT subject_ref) AS cnt_subject_ref,
             "age_at_progression",
             "clinical_trial_status",
-            "endocrine_status",
-            "has_prior_radiotherapy",
             "neurocognitive_risk",
             "progression",
+            "progression_bin",
             "regrowth_pattern",
             "symptom_burden",
-            "therapy_line_number",
             "therapy_modality",
             "visual_status",
             concat_ws(
                 '-',
                 COALESCE("age_at_progression",''),
                 COALESCE("clinical_trial_status",''),
-                COALESCE("endocrine_status",''),
-                COALESCE("has_prior_radiotherapy",''),
                 COALESCE("neurocognitive_risk",''),
                 COALESCE("progression",''),
+                COALESCE("progression_bin",''),
                 COALESCE("regrowth_pattern",''),
                 COALESCE("symptom_burden",''),
-                COALESCE("therapy_line_number",''),
                 COALESCE("therapy_modality",''),
                 COALESCE("visual_status",'')
             ) AS id
@@ -84,13 +72,11 @@ CREATE TABLE glioma__cube_patient_llm_progression AS (
             cube(
             "age_at_progression",
             "clinical_trial_status",
-            "endocrine_status",
-            "has_prior_radiotherapy",
             "neurocognitive_risk",
             "progression",
+            "progression_bin",
             "regrowth_pattern",
             "symptom_burden",
-            "therapy_line_number",
             "therapy_modality",
             "visual_status"
             )
@@ -100,13 +86,11 @@ CREATE TABLE glioma__cube_patient_llm_progression AS (
         p.cnt_subject_ref AS cnt,
             p."age_at_progression",
             p."clinical_trial_status",
-            p."endocrine_status",
-            p."has_prior_radiotherapy",
             p."neurocognitive_risk",
             p."progression",
+            p."progression_bin",
             p."regrowth_pattern",
             p."symptom_burden",
-            p."therapy_line_number",
             p."therapy_modality",
             p."visual_status"
     FROM powerset AS p

@@ -24,9 +24,13 @@ CREATE TABLE glioma__cube_patient_llm_gene_progression AS (
                 'cumulus__none'
             ) AS progression,
             coalesce(
-                cast(tumor_size_mass_effect AS varchar),
+                cast(progression_bin AS varchar),
                 'cumulus__none'
-            ) AS tumor_size_mass_effect,
+            ) AS progression_bin,
+            coalesce(
+                cast(symptom_burden AS varchar),
+                'cumulus__none'
+            ) AS symptom_burden,
             coalesce(
                 cast(visual_status AS varchar),
                 'cumulus__none'
@@ -43,7 +47,8 @@ CREATE TABLE glioma__cube_patient_llm_gene_progression AS (
             "braf_v600e",
             "idh_mutant",
             "progression",
-            "tumor_size_mass_effect",
+            "progression_bin",
+            "symptom_burden",
             "visual_status",
             concat_ws(
                 '-',
@@ -52,7 +57,8 @@ CREATE TABLE glioma__cube_patient_llm_gene_progression AS (
                 COALESCE("braf_v600e",''),
                 COALESCE("idh_mutant",''),
                 COALESCE("progression",''),
-                COALESCE("tumor_size_mass_effect",''),
+                COALESCE("progression_bin",''),
+                COALESCE("symptom_burden",''),
                 COALESCE("visual_status",'')
             ) AS id
         FROM null_replacement
@@ -63,7 +69,8 @@ CREATE TABLE glioma__cube_patient_llm_gene_progression AS (
             "braf_v600e",
             "idh_mutant",
             "progression",
-            "tumor_size_mass_effect",
+            "progression_bin",
+            "symptom_burden",
             "visual_status"
             )
     )
@@ -75,7 +82,8 @@ CREATE TABLE glioma__cube_patient_llm_gene_progression AS (
             p."braf_v600e",
             p."idh_mutant",
             p."progression",
-            p."tumor_size_mass_effect",
+            p."progression_bin",
+            p."symptom_burden",
             p."visual_status"
     FROM powerset AS p
     WHERE 

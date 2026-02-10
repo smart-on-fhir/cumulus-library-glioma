@@ -8,9 +8,9 @@ CREATE TABLE glioma__cube_patient_llm_dx_progression AS (
                 'cumulus__none'
             ) AS age_at_dx,
             coalesce(
-                cast(grade_display AS varchar),
+                cast(grade_code AS varchar),
                 'cumulus__none'
-            ) AS grade_display,
+            ) AS grade_code,
             coalesce(
                 cast(histology AS varchar),
                 'cumulus__none'
@@ -19,6 +19,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_progression AS (
                 cast(progression AS varchar),
                 'cumulus__none'
             ) AS progression,
+            coalesce(
+                cast(progression_bin AS varchar),
+                'cumulus__none'
+            ) AS progression_bin,
             coalesce(
                 cast(regrowth_pattern AS varchar),
                 'cumulus__none'
@@ -47,9 +51,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_progression AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
             "age_at_dx",
-            "grade_display",
+            "grade_code",
             "histology",
             "progression",
+            "progression_bin",
             "regrowth_pattern",
             "symptom_burden",
             "tumor_location",
@@ -58,9 +63,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_progression AS (
             concat_ws(
                 '-',
                 COALESCE("age_at_dx",''),
-                COALESCE("grade_display",''),
+                COALESCE("grade_code",''),
                 COALESCE("histology",''),
                 COALESCE("progression",''),
+                COALESCE("progression_bin",''),
                 COALESCE("regrowth_pattern",''),
                 COALESCE("symptom_burden",''),
                 COALESCE("tumor_location",''),
@@ -71,9 +77,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_progression AS (
         GROUP BY
             cube(
             "age_at_dx",
-            "grade_display",
+            "grade_code",
             "histology",
             "progression",
+            "progression_bin",
             "regrowth_pattern",
             "symptom_burden",
             "tumor_location",
@@ -85,9 +92,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_progression AS (
     SELECT
         p.cnt_subject_ref AS cnt,
             p."age_at_dx",
-            p."grade_display",
+            p."grade_code",
             p."histology",
             p."progression",
+            p."progression_bin",
             p."regrowth_pattern",
             p."symptom_burden",
             p."tumor_location",

@@ -20,6 +20,7 @@ select      distinct
             hgnc_name,
             hgvs_variant,
             progression.progression,
+            progression.progression_bin,
             progression.regrowth_pattern,
             progression.symptom_burden,
             progression.visual_status,

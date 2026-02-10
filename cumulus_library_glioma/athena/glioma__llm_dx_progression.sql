@@ -10,6 +10,7 @@ select  distinct
         dx.tumor_region,
         dx.tumor_size_mass_effect,
         dx.nf1_status,
+        progression.progression_bin,
         progression.progression,
         progression.regrowth_pattern,
         progression.symptom_burden,

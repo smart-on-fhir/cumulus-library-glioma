@@ -19,6 +19,7 @@ select  distinct
         tx.enc_period_start_day             as treatment_date,
         progression.enc_period_start_day    as response_date,
         progression.progression,
+        progression.progression_bin,
         progression.regrowth_pattern,
         progression.symptom_burden,
         progression.visual_status,
