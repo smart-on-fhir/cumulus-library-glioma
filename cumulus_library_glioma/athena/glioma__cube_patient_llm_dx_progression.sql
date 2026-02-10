@@ -1,4 +1,4 @@
-CREATE TABLE glioma__cube_patient_llm_dx_response AS (
+CREATE TABLE glioma__cube_patient_llm_dx_progression AS (
     WITH
     null_replacement AS (
         SELECT
@@ -16,6 +16,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_response AS (
                 'cumulus__none'
             ) AS histology,
             coalesce(
+                cast(progression AS varchar),
+                'cumulus__none'
+            ) AS progression,
+            coalesce(
                 cast(regrowth_pattern AS varchar),
                 'cumulus__none'
             ) AS regrowth_pattern,
@@ -28,10 +32,6 @@ CREATE TABLE glioma__cube_patient_llm_dx_response AS (
                 'cumulus__none'
             ) AS tumor_location,
             coalesce(
-                cast(tumor_region AS varchar),
-                'cumulus__none'
-            ) AS tumor_region,
-            coalesce(
                 cast(tumor_size_mass_effect AS varchar),
                 'cumulus__none'
             ) AS tumor_size_mass_effect,
@@ -39,7 +39,7 @@ CREATE TABLE glioma__cube_patient_llm_dx_response AS (
                 cast(visual_status AS varchar),
                 'cumulus__none'
             ) AS visual_status
-        FROM glioma__llm_dx_response
+        FROM glioma__llm_dx_progression
         
     ),
 
@@ -49,10 +49,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_response AS (
             "age_at_dx",
             "grade_display",
             "histology",
+            "progression",
             "regrowth_pattern",
             "symptom_burden",
             "tumor_location",
-            "tumor_region",
             "tumor_size_mass_effect",
             "visual_status",
             concat_ws(
@@ -60,10 +60,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_response AS (
                 COALESCE("age_at_dx",''),
                 COALESCE("grade_display",''),
                 COALESCE("histology",''),
+                COALESCE("progression",''),
                 COALESCE("regrowth_pattern",''),
                 COALESCE("symptom_burden",''),
                 COALESCE("tumor_location",''),
-                COALESCE("tumor_region",''),
                 COALESCE("tumor_size_mass_effect",''),
                 COALESCE("visual_status",'')
             ) AS id
@@ -73,10 +73,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_response AS (
             "age_at_dx",
             "grade_display",
             "histology",
+            "progression",
             "regrowth_pattern",
             "symptom_burden",
             "tumor_location",
-            "tumor_region",
             "tumor_size_mass_effect",
             "visual_status"
             )
@@ -87,10 +87,10 @@ CREATE TABLE glioma__cube_patient_llm_dx_response AS (
             p."age_at_dx",
             p."grade_display",
             p."histology",
+            p."progression",
             p."regrowth_pattern",
             p."symptom_burden",
             p."tumor_location",
-            p."tumor_region",
             p."tumor_size_mass_effect",
             p."visual_status"
     FROM powerset AS p
