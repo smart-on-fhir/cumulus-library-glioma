@@ -14,7 +14,7 @@
 |-------------------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Pydantic Schema         | [pydantic_schema](pydantic_schema)               |                                                                                                                                  |
 | diagnosis               | [diagnosis.py](pydantic_schema/diagnosis.py)     | [glioma__llm_dx.sql](../athena/glioma__llm_dx.sql)                                                                               |
-| molecular drivers       | [genes.py](pydantic_schema/genes.py)             | [glioma__llm_gene.sql](../athena/glioma__llm_gene_deprecated.sql)                                                                |
+| molecular drivers       | [genes.py](pydantic_schema/genes.py)             | [glioma__llm_gene.sql](../athena/glioma__llm_gene.sql)                                                                |
 | genetic tests           | [genes.py](pydantic_schema/genes.py)             | [glioma__llm_variant.sql](../athena/glioma__llm_variant.sql)                                                                     |
 | medication              | [drug_glioma.py](pydantic_schema/drug_glioma.py) | [glioma__llm_rx_chemo.sql](../athena/glioma__llm_rx_chemo.sql); [glioma__llm_rx_target.sql](../athena/glioma__llm_rx_target.sql) |
 | procedure               | [surgery.py](pydantic_schema/surgery.py)         | [glioma__llm_surgery.sql](../athena/glioma__llm_surgery.sql)                                                                     |
