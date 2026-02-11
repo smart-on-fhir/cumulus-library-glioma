@@ -18,11 +18,13 @@ select  distinct
         tx.days_since)                      as response_days_since_tx,
         tx.enc_period_start_day             as treatment_date,
         progression.enc_period_start_day    as response_date,
-        progression.progression,
         progression.progression_bin,
-        progression.regrowth_pattern,
-        progression.symptom_burden,
+        progression.progression,
+        progression.visual_status_bin,
         progression.visual_status,
+        progression.symptom_burden_bin,
+        progression.symptom_burden,
+        progression.regrowth_pattern,
         progression.neurocognitive_risk,
         progression.has_prior_radiotherapy,
         tx.subject_ref,
@@ -30,8 +32,7 @@ select  distinct
         progression.encounter_ref
 from    progression,
         glioma__llm_tx   as tx
-where   progression.progression != 'NOT_MENTIONED'
-and     tx.subject_ref = progression.subject_ref
+where   tx.subject_ref = progression.subject_ref
 and     tx.tx_modality = progression.therapy_modality
 and     tx.enc_period_start_day < progression.enc_period_start_day
 ;
