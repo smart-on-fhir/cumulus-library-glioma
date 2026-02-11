@@ -17,14 +17,16 @@ with unpack as
             nlp.encounter_ref,
             nlp.subject_ref
     from    glioma__nlp_progression_gpt_oss_120b as nlp
-    LEFT JOIN UNNEST(nlp.result.glioma_progression_mention)  AS t(progress) ON TRUE
-    LEFT JOIN UNNEST(progress.symptom_burden.symptom_burden) AS u(sb)       ON TRUE
+    LEFT
+    JOIN    UNNEST(nlp.result.glioma_progression_mention)  AS t(progress) ON TRUE
+    LEFT
+    JOIN    UNNEST(progress.symptom_burden.symptom_burden) AS u(sb)       ON TRUE
 ),
 tabular as
 (
     select
-            coalesce(age_years, -1 )                        as age_at_progression,
             coalesce(progression, 'NOT_MENTIONED' )         as progression,
+            coalesce(age_years, -1 )                        as age_at_progression,
             coalesce(regrowth_pattern, 'NOT_MENTIONED')     as regrowth_pattern,
             coalesce(symptom_burden, 'NOT_MENTIONED')       as symptom_burden,
             coalesce(visual_status, 'NOT_MENTIONED')        as visual_status,
@@ -39,26 +41,29 @@ tabular as
             subject_ref
     from    unpack
 ),
-positive as
+-- positive for disease progression =
+-- radiographic, functional, or both
+pos_prog as
 (
     select  subject_ref
     from    tabular
     where   progression in ('BOTH', 'RADIOGRAPHIC', 'FUNCTIONAL')
 ),
-negative as
+-- negative for disease progression
+-- "no confirmed evidence of disease progression"
+neg_prog as
 (
-    select  tabular.subject_ref
-    from    tabular
-    left join
-            positive
-    on      tabular.subject_ref = positive.subject_ref
-    where   positive.subject_ref    IS NULL
-    and     tabular.progression in ('NONE', 'NOT_MENTIONED', 'SUSPECTED')
+    select      tabular.subject_ref
+    from        tabular
+    left join   pos_prog
+    on          tabular.subject_ref = pos_prog.subject_ref
+    where       pos_prog.subject_ref    IS NULL
+    and         tabular.progression in ('NONE', 'NOT_MENTIONED', 'SUSPECTED')
 ),
 stable as
 (
-    select  age_at_progression,
-            progression,
+    select  progression,
+            age_at_progression,
             regrowth_pattern,
             symptom_burden,
             visual_status,
@@ -72,13 +77,13 @@ stable as
             encounter_ref,
             tabular.subject_ref
     from    tabular,
-            negative
-    where   tabular.subject_ref = negative.subject_ref
+            neg_prog
+    where   tabular.subject_ref = neg_prog.subject_ref
 ),
 both_radiographic as
 (
-    select  age_at_progression,
-            'RADIOGRAPHIC'  as progression,
+    select  'RADIOGRAPHIC'  as progression,
+            age_at_progression,
             regrowth_pattern,
             symptom_burden,
             visual_status,
@@ -96,8 +101,8 @@ both_radiographic as
 ),
 both_functional as
 (
-    select  age_at_progression,
-            'FUNCTIONAL'  as progression,
+    select  'FUNCTIONAL'  as progression,
+            age_at_progression,
             regrowth_pattern,
             symptom_burden,
             visual_status,
@@ -115,8 +120,8 @@ both_functional as
 ),
 both_progression as
 (
-    select  age_at_progression,
-            progression,
+    select  progression,
+            age_at_progression,
             regrowth_pattern,
             symptom_burden,
             visual_status,
@@ -132,15 +137,54 @@ both_progression as
     from    tabular
     where   progression = 'BOTH'
 ),
-any_progression as
+discrete_progression as
 (
-    select * from both_radiographic
+    select  'STABLE'       as progression_bin, *
+    from    stable
     UNION ALL
-    select * from both_functional
+    select  'PROGRESSION'  as progression_bin, *
+    from    both_radiographic
     UNION ALL
-    select * from both_progression
+    select  'PROGRESSION'  as progression_bin, *
+    from    both_functional
+    UNION ALL
+    select  'PROGRESSION'  as progression_bin, *
+    from    both_progression
+),
+discrete_visual_status as
+(
+    select  'IMPROVING' as visual_status_bin, *
+    from    discrete_progression
+    where   visual_status
+    in      ('STABLE', 'IMPROVING')
+    UNION ALL
+    select  'DECLINING'  as visual_status_bin, *
+    from    discrete_progression
+    where   visual_status
+    in      ('SEVERE_LOSS', 'DECLINING')
+),
+pos_symptom as
+(
+    select  'PRESENT'  as symptom_burden_bin, *
+    from    discrete_visual_status
+    where   symptom_burden      !='NOT_MENTIONED'
+    or      visual_status_bin    ='DECLINING'
+),
+neg_symptom as
+(
+    select  'NONE'  as symptom_burden_bin, sx.*
+    from    discrete_visual_status as sx
+    left
+    join    pos_symptom
+    on      pos_symptom.subject_ref = sx.subject_ref
+    where   pos_symptom.subject_ref IS NULL
+    and     sx.symptom_burden = 'NOT_MENTIONED'
+),
+discrete_symptom_burden as
+(
+    select * from pos_symptom
+    UNION ALL
+    select * from neg_symptom
 )
-select  distinct 'STABLE'       as progression_bin, * from stable
-UNION ALL
-select  distinct 'PROGRESSION'  as progression_bin, * from any_progression
+select distinct * from discrete_symptom_burden
 ;
