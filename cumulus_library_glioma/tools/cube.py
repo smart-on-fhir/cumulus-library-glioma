@@ -228,16 +228,6 @@ def make_casedef() -> list[Path]:
                               'note_code',
                               'note_display',
                               'note_system']),
-
-        # Comorbidities
-        # https://github.com/smart-on-fhir/cumulus-library-glioma/issues/21
-        #
-        # cube_patient(source_table='glioma__cohort_casedef_dx',
-        #              table_cols=['dx_category_code',
-        #                          'dx_code',
-        #                          'dx_display'],
-        #              table_name='glioma__cube_patient_casedef_dx_comorbidity'),
-
     ]
 
 #-----------------------------------------------------------------------------
