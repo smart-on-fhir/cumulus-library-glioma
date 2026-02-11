@@ -134,6 +134,7 @@ merged as
             source,
             tx_modality,
             tx_class as tx_class_source,
+            trim(
             upper(
                 regexp_replace(
                 regexp_replace(
@@ -147,7 +148,7 @@ merged as
                     'TOP1', 'TOPOISOMERASE'),
                     '\bvinca\b','VINCA_ALKALOID'),
                     '_',' ')
-                    ) AS tx_class,
+                    )) AS tx_class,
             tx_specific
     from union_all
 )
