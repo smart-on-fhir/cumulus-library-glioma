@@ -24,7 +24,7 @@ positive as
 (
     select  subject_ref
     from    tabular
-    where   progression in ('BOTH', 'RADIOGRAPHIC', 'FUNCTIONAL', 'SUSPECTED')
+    where   progression in ('BOTH', 'RADIOGRAPHIC', 'FUNCTIONAL')
 ),
 negative as
 (
@@ -34,7 +34,7 @@ negative as
             positive
     on      tabular.subject_ref = positive.subject_ref
     where   positive.subject_ref    IS NULL
-    and     tabular.progression in ('NONE', 'NOT_MENTIONED')
+    and     tabular.progression in ('NONE', 'NOT_MENTIONED', 'SUSPECTED')
 ),
 stable as
 (
@@ -94,7 +94,7 @@ both_functional as
     from    tabular
     where   progression in ('BOTH', 'FUNCTIONAL')
 ),
-other_progression as
+both_progression as
 (
     select  age_at_progression,
             progression,
@@ -111,7 +111,7 @@ other_progression as
             encounter_ref,
             subject_ref
     from    tabular
-    where   progression in ('BOTH', 'SUSPECTED')
+    where   progression = 'BOTH'
 ),
 any_progression as
 (
@@ -119,7 +119,7 @@ any_progression as
     UNION ALL
     select * from both_functional
     UNION ALL
-    select * from other_progression
+    select * from both_progression
 )
 select  distinct 'STABLE'       as progression_bin, * from stable
 UNION ALL
