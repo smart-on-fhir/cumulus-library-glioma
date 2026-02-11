@@ -137,8 +137,13 @@ study_prefix = "glioma"
     "athena/glioma__llm_tx_response.sql",
 ]
 
-"glioma LLM (response after 30 days)" = [
+"glioma LLM (response after 14, 30 days)" = [
+    "athena/glioma__llm_tx_response_14_days.sql",
     "athena/glioma__llm_tx_response_30_days.sql",
+]
+
+"glioma LLM (response after 30 days for nadine matches)" = [
+    "athena/glioma__llm_tx_response_30_days_nadine.sql",
 ]
 
 "cube LLM"= [
@@ -150,6 +155,7 @@ study_prefix = "glioma"
 	"athena/glioma__cube_patient_llm_rx_target.sql",
 	"athena/glioma__cube_patient_llm_tx.sql",
 	"athena/glioma__cube_patient_llm_tx_response_30_days.sql",
+    "athena/glioma__cube_patient_llm_tx_response_30_days_nadine.sql",
 	"athena/glioma__cube_patient_llm_gene.sql",
 	"athena/glioma__cube_patient_llm_gene_progression.sql",
 ]
@@ -194,6 +200,7 @@ count_list = [
     "glioma__cube_patient_llm_progression",
     "glioma__cube_patient_llm_tx",
     "glioma__cube_patient_llm_tx_response_30_days",
+    "glioma__cube_patient_llm_tx_response_30_days_nadine",
 ]
 
 meta_list = [
