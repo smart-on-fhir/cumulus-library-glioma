@@ -2,7 +2,7 @@
 
 `examples` folder contains 3 **DEID** (de-identified) real **consented** pLGG cases from [CHOP](https://www.chop.edu/).
 1. [case_C114759_with_BRAF_fusion.txt](examples/case_C114759_with_BRAF_fusion.txt)
-2. [case_C136530.txt](examples/case_C136530_with_BRAF_fusion.txt)
+2. [case_C136530_with_BRAF_fusion.txt](examples/case_C136530_with_BRAF_fusion.txt)
 2. [case_C77613.txt](examples/case_C77613.txt)
 
 `examples` folder also contains [_txt_, _html_, _fhir_] clinical notes synthetic notes (medical transcription samples.)  
