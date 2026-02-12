@@ -305,7 +305,8 @@ def make_llm_variables() -> list[Path]:
                                  'behavior_code',
                                  'nf1_status']),
 
-        cube_patient(source_table='glioma__llm_dx_progression',  # requires LLM
+        cube_patient(source_table='glioma__llm_dx_progression',
+                     table_name='glioma__cube_patient_llm_dx_progression',
                      table_cols=[
                          'age_at_dx',
                          'histology',
@@ -317,6 +318,19 @@ def make_llm_variables() -> list[Path]:
                          'regrowth_pattern',
                          'symptom_burden',
                          'visual_status'
+                     ]),
+
+        cube_patient(source_table='glioma__llm_dx_progression',
+                     table_name='glioma__cube_patient_llm_dx_progression_bin',
+                     table_cols=[
+                         'age_at_dx',
+                         'histology',
+                         'grade_code',
+                         'tumor_location',
+                         'tumor_size_mass_effect',
+                         'progression_bin',
+                         'symptom_burden_bin',
+                         'visual_status_bin',
                      ]),
 
         cube_patient(source_table='glioma__llm_surgery',
@@ -353,6 +367,7 @@ def make_llm_variables() -> list[Path]:
                                  'rx_treatment_discontinued']),
 
         cube_patient(source_table='glioma__llm_tx_response_30_days',
+                     table_name='glioma__cube_patient_llm_tx_response_30_days',
                      table_cols=['tx_modality',
                                  'tx_class',
                                  'tx_specific',
@@ -362,7 +377,17 @@ def make_llm_variables() -> list[Path]:
                                  'symptom_burden',
                                  'visual_status']),
 
+        cube_patient(source_table='glioma__llm_tx_response_30_days',
+                     table_name='glioma__cube_patient_llm_tx_response_30_days_bin',
+                     table_cols=['tx_modality',
+                                 'tx_class',
+                                 'tx_specific',
+                                 'progression_bin',
+                                 'symptom_burden_bin',
+                                 'visual_status_bin']),
+
         cube_patient(source_table='glioma__llm_tx_response_30_days_nadine',
+                     table_name='glioma__cube_patient_llm_tx_response_30_days_nadine',
                      table_cols=['tx_modality',
                                  'tx_class',
                                  'progression',
@@ -370,6 +395,15 @@ def make_llm_variables() -> list[Path]:
                                  'regrowth_pattern',
                                  'symptom_burden',
                                  'visual_status']),
+
+        cube_patient(source_table='glioma__llm_tx_response_30_days_nadine',
+                     table_name='glioma__cube_patient_llm_tx_response_30_days_nadine_bin',
+                     table_cols=['tx_modality',
+                                 'tx_class',
+                                 'tx_specific',
+                                 'progression_bin',
+                                 'symptom_burden_bin',
+                                 'visual_status_bin']),
 
         cube_patient(source_table='glioma__llm_gene',
                      table_cols=['braf_altered',
@@ -380,6 +414,7 @@ def make_llm_variables() -> list[Path]:
                                  'hgnc_name']),
 
         cube_patient(source_table='glioma__llm_gene_progression',
+                     table_name='glioma__cube_patient_llm_gene_progression',
                      table_cols=['braf_altered',
                                  'braf_v600e',
                                  'braf_fusion',
@@ -387,7 +422,17 @@ def make_llm_variables() -> list[Path]:
                                  'progression',
                                  'progression_bin',
                                  'symptom_burden',
-                                 'visual_status'])
+                                 'visual_status']),
+
+        cube_patient(source_table='glioma__llm_gene_progression',
+                     table_name='glioma__cube_patient_llm_gene_progression_bin',
+                     table_cols=['braf_altered',
+                                 'braf_v600e',
+                                 'braf_fusion',
+                                 'idh_mutant',
+                                 'progression_bin',
+                                 'symptom_burden_bin',
+                                 'visual_status_bin'])
 
     ]
 
