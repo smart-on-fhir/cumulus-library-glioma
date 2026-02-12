@@ -353,5 +353,110 @@ Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FH
     LIKELY PATHOGENIC
     NOT_MENTIONED
 
+## glioma__cube_patient_llm_rx_chemo
 
+| column                      | type    | LLM Prompt                                                |
+|-----------------------------|---------|-----------------------------------------------------------| 
+| `cnt`                       | int     | count ( distinct `subject_ref`)                           |
+| `rx_class`                  | varchar | Glioma chemotherapy drug class                            | 
+| `rx_regimen`                | varchar | Glioma chemotherapy regimen                               | 
+| `rx_status`                 | varchar | Glioma chemotherapy status (active/completed/stopped/etc) |
+| `rx_treatment_response`     | varchar | Response to therapy                                       |
+| `rx_treatment_phase`        | varchar | Glioma chemotherapy treatment phase                       |
+| `rx_toxicity_severity`      | varchar | What was the toxicity severity of glioma chemotherapy?    |
+| `rx_treatment_discontinued` | varchar | Therapy discontinued reason                               |
+
+### _rx_treatment_response_ 
+    COMPLETE_RESPONSE
+    PARTIAL_RESPONSE
+    MINOR_RESPONSE
+    STABLE_DISEASE
+    PROGRESSIVE_DISEASE
+    MIXED_RESPONSE
+    PSEUDOPROGRESSION
+    NOT_EVALUABLE
+    NOT_MENTIONED
+
+### _rx_class_ (chemo)
+    ALKYLATING_AGENT    # e.g., temozolomide, lomustine (protocol-dependent)
+    PLATINUM_AGENT      # e.g., carboplatin, cisplatin
+    VINCA_ALKALOID      # e.g., vincristine, vinblastine
+    TOP1_INHIBITOR      # e.g., irinotecan
+    ANTIMETABOLITE      # e.g., methotrexate (less common, context-dependent)
+    MULTI_AGENT_CHEMOTHERAPY # protocol bundle when class not decomposed
+    OTHER
+    NOT_MENTIONED
+
+### _rx_regimen_ (chemo)
+    TPCV # thioguanine/procarbazine/CCNU/vincristine (legacy)
+    CARBOPLATIN
+    CARBOPLATIN_VINCRISTINE
+    VINBLASTINE 
+    BEVACIZUMAB_IRINOTECAN
+    BEVACIZUMAB
+    OTHER
+    NOT_MENTIONED
+
+### _rx_status_
+    ACTIVE = "Medication order is active (currently prescribed and intended for ongoing use)."
+    INTENDED = "Medication is planned/ordered/prescribed but therapy has not yet started."
+    COMPLETED = "Medication course is finished (all doses given or intended duration completed)."
+    STOPPED = "Medication was stopped or permanently discontinued before completion."
+    CANCELED = "Medication order was canceled/withdrawn before any doses were administered."
+    ON_HOLD = "Medication is temporarily paused (on-hold, suspended, or interrupted)."
+    NONE = "None of the above"
+    NOT_MENTIONED = "Medication status was not mentioned."
+
+###  _rx_toxicity_severity_
+    MILD
+    MODERATE
+    SEVERE
+    DOSE_LIMITING
+    OTHER
+    NOT_MENTIONED
+
+
+### _rx_treatment_discontinued_    
+    PROGRESSION
+    TOXICITY
+    LACK_OF_RESPONSE
+    COMPLETED_PLANNED_THERAPY
+    PATIENT_PREFERENCE
+    TRANSITION_TO_TRIAL
+    OTHER
+    NOT_MENTIONED
+
+### _rx_treatment_phase_ 
+    INDUCTION
+    MAINTENANCE
+    RESCUE
+    NONE
+    NOT_MENTIONED
+
+## glioma__cube_patient_llm_rx_target
+
+| column                      | type    | LLM Prompt                                                    |
+|-----------------------------|---------|---------------------------------------------------------------| 
+| `cnt`                       | int     | count ( distinct `subject_ref`)                               |
+| `rx_class`                  | varchar | Glioma targeted therapy                                       |
+| `rx_status`                 | varchar | Glioma targeted therapy status (active/completed/stopped/etc) |
+| `rx_treatment_response`     | varchar | What was the glioma targeted therapy treatment response?      |
+| `rx_treatment_phase`        | varchar | Glioma targeted therapy treatment phase                       |
+| `rx_toxicity_severity`      | varchar | What was the toxicity severity of glioma targeted therapy?    |
+| `rx_treatment_discontinued` | varchar | Was glioma targeted therapy discontinued, and why             |
+
+### _rx_class (targeted therapy)_
+    MEK_INHIBITOR
+    BRAF_INHIBITOR
+    BRAF_MEK_COMBINATION
+    PAN_RAF_INHIBITOR
+    FGFR_INHIBITOR
+    NTRK_INHIBITOR
+    ALK_INHIBITOR
+    ROS1_INHIBITOR
+    RET_INHIBITOR
+    MTOR_INHIBITOR
+    IDH_INHIBITOR
+    OTHER
+    NOT_MENTIONED
 
