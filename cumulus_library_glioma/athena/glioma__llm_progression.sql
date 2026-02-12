@@ -1,4 +1,4 @@
-create TABLE glioma__llm_progression as
+create TABLE glioma__llm_progression_symptom as
 with unpack as
 (
     select
@@ -151,40 +151,69 @@ discrete_progression as
     select  'PROGRESSION'  as progression_bin, *
     from    both_progression
 ),
-discrete_visual_status as
-(
-    select  'IMPROVING' as visual_status_bin, *
-    from    discrete_progression
-    where   visual_status
-    in      ('STABLE', 'IMPROVING')
-    UNION ALL
-    select  'DECLINING'  as visual_status_bin, *
-    from    discrete_progression
+decline_visual as (
+    select  'DECLINING'  as visual_status_bin,
+            tabular.subject_ref,
+            tabular.note_ref
+    from    tabular
     where   visual_status
     in      ('SEVERE_LOSS', 'DECLINING')
 ),
+improve_visual as (
+    select  'IMPROVING' as visual_status_bin,
+            tabular.subject_ref,
+            tabular.note_ref
+    from    tabular
+    left    join
+            decline_visual
+    on      decline_visual.subject_ref = tabular.subject_ref
+    where   decline_visual.subject_ref IS NULL
+    and     tabular.visual_status
+    in      ('STABLE', 'IMPROVING')
+),
+discrete_visual_status as
+(
+    select  *   from    decline_visual
+    UNION ALL
+    select  *   from    improve_visual
+),
 pos_symptom as
 (
-    select  'PRESENT'  as symptom_burden_bin, *
-    from    discrete_visual_status
-    where   symptom_burden      !='NOT_MENTIONED'
-    or      visual_status_bin    ='DECLINING'
+    select  'SYMPTOM_PRESENT'  as symptom_burden_bin,
+            tabular.subject_ref,
+            tabular.note_ref
+    from    tabular
+    where   symptom_burden !='NOT_MENTIONED'
 ),
 neg_symptom as
 (
-    select  'NONE'  as symptom_burden_bin, sx.*
-    from    discrete_visual_status as sx
+    select  'NO_SYMPTOMS'  as symptom_burden_bin,
+            tabular.subject_ref,
+            tabular.note_ref
+    from    tabular
     left
     join    pos_symptom
-    on      pos_symptom.subject_ref = sx.subject_ref
+    on      pos_symptom.subject_ref = tabular.subject_ref
     where   pos_symptom.subject_ref IS NULL
-    and     sx.symptom_burden = 'NOT_MENTIONED'
 ),
 discrete_symptom_burden as
 (
     select * from pos_symptom
     UNION ALL
     select * from neg_symptom
+),
+left_join as
+(
+    select  coalesce(s.symptom_burden_bin, 'NOT_MENTIONED')   as symptom_burden_bin,
+            coalesce(v.visual_status_bin, 'NOT_MENTIONED')    as visual_status_bin,
+            p.*
+    from    discrete_progression as p
+    left
+    join    discrete_visual_status as v
+    on      p.note_ref = v.note_ref
+    left
+    join    discrete_symptom_burden as s
+    on      p.note_ref = s.note_ref
 )
-select distinct * from discrete_symptom_burden
+select distinct * from left_join
 ;
