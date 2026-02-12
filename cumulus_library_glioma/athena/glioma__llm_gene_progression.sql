@@ -24,7 +24,9 @@ left_join as
                 progression.progression_bin,
                 progression.regrowth_pattern,
                 progression.symptom_burden,
+                progression.symptom_burden_bin,
                 progression.visual_status,
+                progression.visual_status_bin,
                 progression.neurocognitive_risk,
                 progression.has_prior_radiotherapy,
                 progression.subject_ref
