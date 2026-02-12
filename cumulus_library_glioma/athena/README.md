@@ -76,15 +76,11 @@ Stratified by demographics (age at diagnosis, gender, race) and diagnosis (code,
 | `rx_system`        | varchar | FHIR MedicationRequest.medication.system                                |
 
 ## glioma__cube_patient_casedef_rx_variable
-(+) `valueset` computable phenotype for drug class 
+
+(+) adds `valueset` extends  `glioma__cube_patient_casedef_rx`
 
 | column             | type    | description                                   |
 |--------------------|---------|-----------------------------------------------|
-| `cnt`              | bigint  | count(distinct `subject_ref`)                 |
-| `rx_category_code` | varchar | FHIR MedicationRequest.category.code          |
-| `rx_code`          | varchar | FHIR MedicationRequest.medication.code        |
-| `rx_display`       | varchar | FHIR MedicationRequest.medication.display     |
-| `rx_system`        | varchar | FHIR MedicationRequest.medication.system      |
 | `valueset`         | varchar | computable phenotype valuesets for drug class | 
 
 ---
@@ -120,7 +116,6 @@ Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FH
 # study population "all patients who visited at least 3x during the study period with at least 90 days of history"
 
 ## glioma__cube_patient_study_population
-
 | column         | type    | description                                                             |
 |----------------|---------|-------------------------------------------------------------------------| 
 | `cnt`          | int     | count(distinct `subject_ref`)                                           |
@@ -130,7 +125,6 @@ Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FH
 | `race_display` | varchar | Patient Reported Race                                                   |
 
 ## glioma__cube_patient_study_population_dx
-
 | column             | type    | description                  |
 |--------------------|---------|------------------------------| 
 | `dx_category_code` | varchar | FHIR Condition.category.code |
@@ -176,19 +170,92 @@ Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FH
 | `proc_display` | varchar | FHIR Procedure.code.display |
 | `proc_system`  | varchar | FHIR Procedure.code.system  |
 
+--- 
+# "LLM enabled computable phenotypes"
+
+## glioma__cube_patient_llm_dx
+
+| column                   | type    | LLM Prompt                                                                 |
+|--------------------------|---------|----------------------------------------------------------------------------| 
+| `cnt`                    | int     | count( distinct `subject_ref`)                                             |
+| `age_at_dx`              | int     | age at diagnosis of glioma                                                 |
+| `grade_code`             | varchar | ICD-0 grade reflects how closely the tumor cells resemble normal tissue.   |
+| `histology`              | varchar | Glioma histology, if stated                                                |
+| `behavior_code`          | varchar | IC2D-O behavior code (e.g., /3 = malignant primary site)                   |
+| `tumor_location`         | varchar | Primary tumor anatomic location                                            |
+| `tumor_region`           | varchar | Tumor region or anatomic compartment (e.g., posterior fossa, diencephalic) |
+| `tumor_size_mass_effect` | varchar | Whether MRI/CT describes mass effect or hydrocephalus                      |
 
 
-## FHIR Case Definition
-	"glioma__cube_encounter_casedef",
-	"glioma__cube_patient_casedef",
-	"glioma__cube_patient_casedef_rx",
-	"glioma__cube_patient_casedef_rx_variable",
-	"glioma__cube_patient_casedef_proc",
-	"glioma__cube_patient_casedef_lab",
-	"glioma__cube_patient_sample_casedef",
-	"glioma__cube_note_sample_casedef",
-	"glioma__cube_patient_sample_casedef_peri_post",
-	"glioma__cube_note_sample_casedef_peri_post",
+### _grade_code_
+```
+1 = Well differentiated;
+2 = Moderately differentiated
+3 = Poorly differentiated
+4 = Undifferentiated / Anaplastic
+9 = Grade cannot be assessed
+```
+
+### _histology_
+```    
+PILOCYTIC_ASTROCYTOMA
+PILOMYXOID_ASTROCYTOMA
+DIFFUSE_ASTROCYTOMA
+GANGLIOGLIOMA
+DNET # (Dysembryoplastic neuroepithelial tumor)
+OTHER_LGG = "OTHER_LGG"
+UNKNOWN = "UNKNOWN"
+NOT_MENTIONED
+```
+
+### _tumor_location_
+```    
+CEREBELLUM
+BRAINSTEM
+OPTIC_PATHWAY
+HYPOTHALAMUS 
+OPTIC_PATHWAY_HYPOTHALAMIC
+THALAMUS
+OTHER
+NOT_MENTIONED
+```
+
+### _tumor_region_
+```    
+POSTERIOR_FOSSA
+DIENCEPHALIC
+CEREBRAL_HEMISPHERE
+SPINAL
+OTHER
+NOT_MENTIONED
+```
+
+### _tumor_size_mass_effect_
+```    
+MASS_EFFECT_PRESENT
+HYDROCEPHALUS
+MIDLINE_SHIFT
+IMPENDING_HERNIATION
+OTHER
+NONE
+NOT_MENTIONED
+```
+
+### _behavior_code_
+```
+BENIGN = "/0"
+UNCERTAIN = "/1"
+IN_SITU = "/2"
+MALIGNANT_PRIMARY = "/3"
+MALIGNANT_METASTATIC = "/6"
+MALIGNANT_RECURRENT = "/9"
+```
+
+
+
+### _nf1_status_
+
+
 
 ## LLM enabled computable phenotypes
     "glioma__cube_patient_llm_dx",
