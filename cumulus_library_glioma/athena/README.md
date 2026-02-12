@@ -4,7 +4,7 @@ CUBE(s) are simply the CUBE keyword in a group by "**CUBE**" clause resulting in
 * https://prestodb.io/docs/current/sql/select.html#group-by-clause
 * https://en.wikipedia.org/wiki/Power_set
 
-## SQL Tables as CSV
+# SQL Tables as CSV
 
 CSV table naming conventions
 
@@ -24,53 +24,45 @@ CSV table naming conventions
 | peri_post         | sample LGG cohort _during or after_ first LGG diagnosis |
 | post              | sample LGG cohort _after_ first LGG diagnosis           |
 
-### glioma__cube_encounter_casedef
+---
+# "Patients matching glioma case definition"
 
-Count distinct **FHIR encounter** in cohort matching LGG case definition.    
+## glioma__cube_encounter_casedef
+
+Count distinct **FHIR encounter** in cohort matching glioma case definition.    
 Stratified by FHIR Encounter class, type, and serviceType.   
 
-| column                     | type     | description                                   |
-|----------------------------|----------|-----------------------------------------------|
-| `cnt`                      | bigint   | count(distinct `encounter`)                   |
-| `enc_class_code`           | varchar  | FHIR Encounter.class [AMB, EMER, OBSENC, IMP] |
-| `enc_period_ordinal`       | varchar  | Calculated FHIR Encounter sequence number     |
-| `enc_servicetype_display`  | varchar  | FHIR Encounter.serviceType display            |
-| `enc_type_display`         | varchar  | FHIR Encounter.type display                   |
+| column                    | type    | description                                                          |
+|---------------------------|---------|----------------------------------------------------------------------|
+| `cnt`                     | bigint  | count(distinct `encounter`)                                          |
+| `age_at_dx_min`           | int     | age at diagnosis of glioma                                           |
+| `age_at_visit`            | int     | age at visit (encounter)                                             |
+| `dx_category_code`        | varchar | FHIR Condition.category [`encounter-diagnosis`, `problem-list-item`] |
+| `enc_class_code`          | varchar | FHIR Encounter.class [AMB, EMER, OBSENC, IMP]                        |
+| `enc_period_ordinal`      | varchar | Calculated FHIR Encounter sequence number                            |
+| `enc_servicetype_display` | varchar | FHIR Encounter.serviceType display                                   |
+| `enc_type_display`        | varchar | FHIR Encounter.type display                                          |
 
-### glioma__cube_patient_casedef
+## glioma__cube_patient_casedef
 
-Count distinct **FHIR Patient** in cohort matching LGG case definition.    
+Count distinct **FHIR Patient** in cohort matching glioma case definition.    
 Stratified by demographics (age at diagnosis, gender, race) and diagnosis (code, display, system). 
 
-| column             | type    | description                                                                    |
-|--------------------|---------|--------------------------------------------------------------------------------|
-| `cnt`              | int     | count(distinct `subject`)                                                      |
-| `age_at_dx_min`    | int     | patient age at the time of visit. Each patient can have multiple age_at_visit  |
-| `dx_category_code` | varchar | FHIR Condition.category [`encounter-diagnosis`, `problem-list-item`]           |
-| `dx_code`          | varchar | FHIR Condition.code code                                                       |
-| `dx_display`       | varchar | FHIR Condition.code display                                                    |
-| `dx_system`        | varchar | FHIR Condition.code system                                                     |
-| `gender`           | varchar | HL7 Administrative Sex                                                         |
-| `race_display`     | varchar | Patient Reported Race                                                          |
+| column             | type    | description                                                          |
+|--------------------|---------|----------------------------------------------------------------------|
+| `cnt`              | int     | count(distinct `subject`)                                            |
+| `age_at_dx_min`    | int     | age at diagnosis of glioma                                           |
+| `dx_category_code` | varchar | FHIR Condition.category [`encounter-diagnosis`, `problem-list-item`] |
+| `dx_code`          | varchar | FHIR Condition.code code                                             |
+| `dx_display`       | varchar | FHIR Condition.code display                                          |
+| `dx_system`        | varchar | FHIR Condition.code system                                           |
+| `gender`           | varchar | HL7 Administrative Sex                                               |
+| `race_display`     | varchar | Patient Reported Race                                                ||
 
+---
+# RX "medication requests and/or administration for glioma cases"
 
-### glioma__cube_patient_dx
-Diagnoses other than pLGG within patient cases. Essentially, "comorbidities" (co-occuring diagnosis).  
-
-| column             | type    | description                                                                    |
-|--------------------|---------|--------------------------------------------------------------------------------|
-| `cnt`              | int     | count(distinct `subject`)                                                      |
-| `age_at_dx_min`    | int     | patient age at the time of visit. Each patient can have multiple age_at_visit  |
-| `dx_category_code` | varchar | FHIR Condition.category [`encounter-diagnosis`, `problem-list-item`]           |
-| `dx_code`          | varchar | FHIR Condition.code code                                                       |
-| `dx_display`       | varchar | FHIR Condition.code display                                                    |
-| `dx_system`        | varchar | FHIR Condition.code system                                                     |
-| `gender`           | varchar | HL7 Administrative Sex                                                         |
-| `race_display`     | varchar | Patient Reported Race                                                          |
-
-### glioma__cube_patient_rx
-
-Medication requests -- prescriptions with potential administration -- within patient cases.
+## glioma__cube_patient_casedef_rx 
 
 | column             | type    | description                                                             |
 |--------------------|---------|-------------------------------------------------------------------------|
@@ -83,20 +75,22 @@ Medication requests -- prescriptions with potential administration -- within pat
 | `rx_display`       | varchar | FHIR MedicationRequest.medication.display                               |
 | `rx_system`        | varchar | FHIR MedicationRequest.medication.system                                |
 
-### glioma__cube_note_sample_casedef_peri_post
-Count distinct note_ref ( **FHIR DocumentReference** or **FHIR DiagnosticReport)** in cohort matching LGG case definition.    
-Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FHIR DiagnosticReport.code) .   
+## glioma__cube_patient_casedef_rx_variable
+(+) `valueset` computable phenotype for drug class 
 
-| column          | type    | description                                   |
-|-----------------|---------|-----------------------------------------------|
-| `cnt`           | int  | count(distinct `subject_ref`)                 |
-| `note_code`     | varchar | FHIR DocumentReference.type code              |
-| `note_display`  | varchar | FHIR DocumentReference.type display           |
-| `note_system`   | varchar | FHIR DocumentReference.type system            |
-| `class_display` | varchar | FHIR Encounter.class [AMB, EMER, OBSENC, IMP] |
+| column             | type    | description                                   |
+|--------------------|---------|-----------------------------------------------|
+| `cnt`              | bigint  | count(distinct `subject_ref`)                 |
+| `rx_category_code` | varchar | FHIR MedicationRequest.category.code          |
+| `rx_code`          | varchar | FHIR MedicationRequest.medication.code        |
+| `rx_display`       | varchar | FHIR MedicationRequest.medication.display     |
+| `rx_system`        | varchar | FHIR MedicationRequest.medication.system      |
+| `valueset`         | varchar | computable phenotype valuesets for drug class | 
 
+---
+# sample "clinical notes starting when glioma was first diagnosed until most recent visit"
 
-### glioma__cube_patient_dx
+## glioma__cube_patient_casedef
 
 | column             | type    | description                                                             |
 |--------------------|---------|-------------------------------------------------------------------------|
@@ -109,9 +103,108 @@ Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FH
 | `dx_display`       | varchar | FHIR Condition.code.display                                             |
 | `dx_system`        | varchar | FHIR Condition.code.system                                              |
 
+## glioma__cube_note_sample_casedef_peri_post
+
+Count distinct note_ref ( **FHIR DocumentReference** or **FHIR DiagnosticReport)** in cohort matching LGG case definition.    
+Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FHIR DiagnosticReport.code) .   
+
+| column          | type    | description                                   |
+|-----------------|---------|-----------------------------------------------|
+| `cnt`           | int     | count(distinct `subject_ref`)                 |
+| `note_code`     | varchar | FHIR DocumentReference.type code              |
+| `note_display`  | varchar | FHIR DocumentReference.type display           |
+| `note_system`   | varchar | FHIR DocumentReference.type system            |
+| `class_display` | varchar | FHIR Encounter.class [AMB, EMER, OBSENC, IMP] |
+
+
+# study population "all patients who visited at least 3x during the study period with at least 90 days of history"
+
+## glioma__cube_patient_study_population
+
+| column         | type    | description                                                             |
+|----------------|---------|-------------------------------------------------------------------------| 
+| `cnt`          | int     | count(distinct `subject_ref`)                                           |
+| `site`         | varchar | [ `CHOP` (Philadelphia) and `BCH` (Boston)]                             | 
+| `age_at_visit` | int     | patient age at the time of visit. Each patient can have 1+ age_at_visit |
+| `gender`       | varchar | HL7 Administrative Sex                                                  |
+| `race_display` | varchar | Patient Reported Race                                                   |
+
+## glioma__cube_patient_study_population_dx
+
+| column             | type    | description                  |
+|--------------------|---------|------------------------------| 
+| `dx_category_code` | varchar | FHIR Condition.category.code |
+| `dx_code`          | varchar | FHIR Condition.code.code     |
+| `dx_display`       | varchar | FHIR Condition.code.display  |
+| `dx_system`        | varchar | FHIR Condition.code.system   |
+
+## glioma__cube_patient_study_population_rx
+| column             | type    | description                               |
+|--------------------|---------|-------------------------------------------| 
+| `rx_category_code` | varchar | FHIR MedicationRequest.category.code      |
+| `rx_code`          | varchar | FHIR MedicationRequest.medication.code    |
+| `rx_display`       | varchar | FHIR MedicationRequest.medication.display |
+| `rx_system`        | varchar | FHIR MedicationRequest.medication.system  |
+
+## glioma__cube_patient_study_population_lab
+
+| column                    | type    | description                                      |
+|---------------------------|---------|--------------------------------------------------|
+| `lab_observation_code`    | varchar | FHIR Observation `code` or `component` (code)    |
+| `lab_observation_display` | varchar | FHIR Observation `code` or `component` (display) |
+| `lab_observation_system`  | varchar | FHIR Observation `code` or `component` (system)  |
+
+## glioma__cube_patient_study_population_doc
+| column             | type    | description                                   |
+|--------------------|---------|-----------------------------------------------|
+| `doc_type_code`    | varchar | FHIR DocumentReference.type code              |
+| `doc_type_display` | varchar | FHIR DocumentReference.type display           |
+| `doc_type_system`  | varchar | FHIR DocumentReference.type system            |
+| `class_display`    | varchar | FHIR Encounter.class [AMB, EMER, OBSENC, IMP] |
+
+## glioma__cube_patient_study_population_diag
+| column                       | type    | description                                   |
+|------------------------------|---------|-----------------------------------------------|
+| `diag_category_display_best` | varchar | FHIR DocumentReference.category.display       |
+| `diag_category_system`       | varchar | FHIR DocumentReference.category.system        |
+| `enc_class_code`             | varchar | FHIR Encounter.class [AMB, EMER, OBSENC, IMP] |
+
+## glioma__cube_patient_study_population_proc
+| column         | type    | description                 |
+|----------------|---------|-----------------------------|
+| `proc_code`    | varchar | FHIR Procedure.code.code    |
+| `proc_display` | varchar | FHIR Procedure.code.display |
+| `proc_system`  | varchar | FHIR Procedure.code.system  |
 
 
 
+## FHIR Case Definition
+	"glioma__cube_encounter_casedef",
+	"glioma__cube_patient_casedef",
+	"glioma__cube_patient_casedef_rx",
+	"glioma__cube_patient_casedef_rx_variable",
+	"glioma__cube_patient_casedef_proc",
+	"glioma__cube_patient_casedef_lab",
+	"glioma__cube_patient_sample_casedef",
+	"glioma__cube_note_sample_casedef",
+	"glioma__cube_patient_sample_casedef_peri_post",
+	"glioma__cube_note_sample_casedef_peri_post",
 
+## LLM enabled computable phenotypes
+    "glioma__cube_patient_llm_dx",
+    "glioma__cube_patient_llm_dx_progression",
+    "glioma__cube_patient_llm_dx_progression_bin",
+    "glioma__cube_patient_llm_rx_chemo",
+    "glioma__cube_patient_llm_rx_target",
+    "glioma__cube_patient_llm_gene",
+    "glioma__cube_patient_llm_gene_progression",
+    "glioma__cube_patient_llm_gene_progression_bin",
+    "glioma__cube_patient_llm_surgery",
+    "glioma__cube_patient_llm_progression",
+    "glioma__cube_patient_llm_tx",
+    "glioma__cube_patient_llm_tx_response_30_days",
+    "glioma__cube_patient_llm_tx_response_30_days_bin",
+    "glioma__cube_patient_llm_tx_response_30_days_nadine",
+    "glioma__cube_patient_llm_tx_response_30_days_nadine_bin",
 
 
