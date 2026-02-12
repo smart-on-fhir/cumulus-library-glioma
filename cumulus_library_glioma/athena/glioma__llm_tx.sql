@@ -26,7 +26,12 @@ surgery as
 (
     select  'LLM'               as source,
             'SURGERY'           as tx_modality,
-            surgical_type       as tx_class,
+            case surgical_type
+            when 'OTHER'
+            then 'OTHER SURGERY'
+            when 'RESECTION'
+            then extent_of_resection
+            else surgical_type  end as tx_class,
             extent_of_resection as tx_specific,
             subject_ref,
             encounter_ref
@@ -37,7 +42,12 @@ llm_rx_chemo as
 (
     select  'LLM'           as source,
             'CHEMOTHERAPY'  as tx_modality,
-            rx_class        as tx_class,
+            case rx_class
+            when 'OTHER'
+            then 'CHEMOTHERAPY'
+            when 'MULTI_AGENT_CHEMOTHERAPY'
+            then 'CHEMOTHERAPY'
+            else rx_class end   as tx_class,
             rx_regimen      as tx_specific,
             subject_ref,
             encounter_ref
@@ -48,7 +58,10 @@ llm_rx_target as
 (
     select  'LLM'               as source,
             'TARGETED_THERAPY'  as tx_modality,
-            rx_class            as tx_class,
+            case rx_class
+            when 'OTHER'
+            then 'OTHER TARGETED'
+            else rx_class end   as tx_class,
             NULL                as tx_specific,
             subject_ref,
             encounter_ref
@@ -59,8 +72,15 @@ fhir_rx_chemo as
 (
     select  'FHIR'          as source,
             'CHEMOTHERAPY'  as tx_modality,
-            valueset        as tx_class,
-            rx_display      as tx_specific,
+            case valueset
+            when 'vsac_rx_chemo'
+            then 'CHEMOTHERAPY'
+            when 'vsac_rx_chemo_advanced'
+            then 'CHEMOTHERAPY'
+            when 'vsac_rx_class_platinum'
+            then 'PLATINUM'
+            else valueset end   as tx_class,
+            rx_display          as tx_specific,
             subject_ref,
             encounter_ref
     from    glioma__cohort_casedef_rx_variable
