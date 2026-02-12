@@ -1,4 +1,4 @@
-create TABLE glioma__llm_progression_symptom as
+create TABLE glioma__llm_progression as
 with unpack as
 (
     select
