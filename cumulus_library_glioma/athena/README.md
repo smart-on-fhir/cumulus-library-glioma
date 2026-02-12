@@ -179,99 +179,179 @@ Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FH
 |--------------------------|---------|----------------------------------------------------------------------------| 
 | `cnt`                    | int     | count( distinct `subject_ref`)                                             |
 | `age_at_dx`              | int     | age at diagnosis of glioma                                                 |
-| `grade_code`             | varchar | ICD-0 grade reflects how closely the tumor cells resemble normal tissue.   |
+| `grade_code`             | int     | ICD-0 grade reflects how closely the tumor cells resemble normal tissue.   |
 | `histology`              | varchar | Glioma histology, if stated                                                |
 | `behavior_code`          | varchar | IC2D-O behavior code (e.g., /3 = malignant primary site)                   |
 | `tumor_location`         | varchar | Primary tumor anatomic location                                            |
 | `tumor_region`           | varchar | Tumor region or anatomic compartment (e.g., posterior fossa, diencephalic) |
 | `tumor_size_mass_effect` | varchar | Whether MRI/CT describes mass effect or hydrocephalus                      |
-
+| `nf1_status`             | varchar | Whether NF1 is present                                                     |
 
 ### _grade_code_
-```
-1 = Well differentiated;
-2 = Moderately differentiated
-3 = Poorly differentiated
-4 = Undifferentiated / Anaplastic
-9 = Grade cannot be assessed
-```
+    1 = Well differentiated;
+    2 = Moderately differentiated
+    3 = Poorly differentiated
+    4 = Undifferentiated / Anaplastic
+    9 = Grade cannot be assessed
 
 ### _histology_
-```    
-PILOCYTIC_ASTROCYTOMA
-PILOMYXOID_ASTROCYTOMA
-DIFFUSE_ASTROCYTOMA
-GANGLIOGLIOMA
-DNET # (Dysembryoplastic neuroepithelial tumor)
-OTHER_LGG = "OTHER_LGG"
-UNKNOWN = "UNKNOWN"
-NOT_MENTIONED
-```
+    PILOCYTIC_ASTROCYTOMA
+    PILOMYXOID_ASTROCYTOMA
+    DIFFUSE_ASTROCYTOMA
+    GANGLIOGLIOMA
+    DNET # (Dysembryoplastic neuroepithelial tumor)
+    OTHER_LGG
+    UNKNOWN
+    NOT_MENTIONED
 
-### _tumor_location_
-```    
-CEREBELLUM
-BRAINSTEM
-OPTIC_PATHWAY
-HYPOTHALAMUS 
-OPTIC_PATHWAY_HYPOTHALAMIC
-THALAMUS
-OTHER
-NOT_MENTIONED
-```
+
+### _tumor_location_ 
+    CEREBELLUM
+    BRAINSTEM
+    OPTIC_PATHWAY
+    HYPOTHALAMUS 
+    OPTIC_PATHWAY_HYPOTHALAMIC
+    THALAMUS
+    OTHER
+    NOT_MENTIONED
+
 
 ### _tumor_region_
-```    
-POSTERIOR_FOSSA
-DIENCEPHALIC
-CEREBRAL_HEMISPHERE
-SPINAL
-OTHER
-NOT_MENTIONED
-```
+    POSTERIOR_FOSSA
+    DIENCEPHALIC
+    CEREBRAL_HEMISPHERE
+    SPINAL
+    OTHER
+    NOT_MENTIONED
+
 
 ### _tumor_size_mass_effect_
-```    
-MASS_EFFECT_PRESENT
-HYDROCEPHALUS
-MIDLINE_SHIFT
-IMPENDING_HERNIATION
-OTHER
-NONE
-NOT_MENTIONED
-```
+    
+    MASS_EFFECT_PRESENT
+    HYDROCEPHALUS
+    MIDLINE_SHIFT
+    IMPENDING_HERNIATION
+    OTHER
+    NONE
+    NOT_MENTIONED
+
 
 ### _behavior_code_
-```
-BENIGN = "/0"
-UNCERTAIN = "/1"
-IN_SITU = "/2"
-MALIGNANT_PRIMARY = "/3"
-MALIGNANT_METASTATIC = "/6"
-MALIGNANT_RECURRENT = "/9"
-```
-
+    BENIGN = "/0"
+    UNCERTAIN = "/1"
+    IN_SITU = "/2"
+    MALIGNANT_PRIMARY = "/3"
+    MALIGNANT_METASTATIC = "/6"
+    MALIGNANT_RECURRENT = "/9"
 
 
 ### _nf1_status_
+    POSITIVE
+    SUSPECTED
+    NEGATIVE
+    MENTIONED_BUT_UNKNOWN
+    NOT_MENTIONED
+
+## glioma__cube_patient_llm_progression
+
+| column             | type    | LLM Prompt                                                                |
+|--------------------|---------|---------------------------------------------------------------------------| 
+| `cnt`              | int     | count ( distinct `subject_ref`)                                           |
+| `progression`      | varchar | Radiographic / functional progression status as stated                    | 
+| `regrowth_pattern` | varchar | Pattern of regrowth on/off therapy (progression vs rebound vs resistance) |
+| `symptom_burden`   | varchar | Symptoms attributed to the tumor; may include multiple                    |
+| `therapy_modality` | varchar | Previously received modalities (surgery / chemo / targeted / RT / trial)  |
+| `visual_status`    | varchar | Directionality of visual function over time                               |
+
+### _progression_ 
+    RADIOGRAPHIC
+    FUNCTIONAL
+    SUSPECTED
+    BOTH
+    NONE
+    NOT_MENTIONED
 
 
+### _regrowth_pattern_
+    PROGRESSION
+    REBOUND_AFTER_STOPPING_TARGETED
+    RESISTANCE_ON_TARGETED
+    PSEUDOPROGRESSION_SUSPECTED
+    OTHER
+    NOT_MENTIONED
 
-## LLM enabled computable phenotypes
-    "glioma__cube_patient_llm_dx",
-    "glioma__cube_patient_llm_dx_progression",
-    "glioma__cube_patient_llm_dx_progression_bin",
-    "glioma__cube_patient_llm_rx_chemo",
-    "glioma__cube_patient_llm_rx_target",
-    "glioma__cube_patient_llm_gene",
-    "glioma__cube_patient_llm_gene_progression",
-    "glioma__cube_patient_llm_gene_progression_bin",
-    "glioma__cube_patient_llm_surgery",
-    "glioma__cube_patient_llm_progression",
-    "glioma__cube_patient_llm_tx",
-    "glioma__cube_patient_llm_tx_response_30_days",
-    "glioma__cube_patient_llm_tx_response_30_days_bin",
-    "glioma__cube_patient_llm_tx_response_30_days_nadine",
-    "glioma__cube_patient_llm_tx_response_30_days_nadine_bin",
+
+### _symptom_burden_
+    SEIZURES
+    HEADACHE
+    FOCAL_NEURO_DEFICIT
+    VISUAL_SYMPTOMS
+    ENDOCRINE_SYMPTOMS
+    INCREASED_ICP
+    OTHER
+    NOT_MENTIONED
+
+### _therapy_modality_ 
+    OBSERVATION
+    SURGERY
+    CHEMOTHERAPY
+    TARGETED_THERAPY
+    RADIOTHERAPY
+    CLINICAL_TRIAL
+    NOT_MENTIONED
+
+### _therapy_modality_ 
+    OBSERVATION
+    SURGERY
+    CHEMOTHERAPY
+    TARGETED_THERAPY
+    RADIOTHERAPY
+    CLINICAL_TRIAL
+    NOT_MENTIONED
+
+### _visual_status_
+    DECLINING
+    SEVERE_LOSS
+    STABLE
+    IMPROVING 
+    OTHER
+    NOT_MENTIONED
+
+## glioma__cube_patient_llm_gene
+
+### molecular drivers
+
+| column                 | type | LLM Prompt                                          |
+|------------------------|------|-----------------------------------------------------| 
+| `braf_altered`         | bool | **BRAF** alteration is present (any type).          | 
+| `braf_v600e`           | bool | **BRAF** V600E mutation is present                  |
+| `braf_fusion`          | bool | **BRAF** fusion (e.g., KIAA1549-BRAF) is present    |
+| `idh_mutant`           | bool | IDH1 or IDH2 mutation is present                    |
+| `h3k27m_mutant`        | bool | Histone H3 K27M (H3-3A or H3C2) mutation is present |
+| `tp53_altered`         | bool | TP53 mutation or loss is present                    |
+| `cdkn2a_deleted`       | bool | CDKN2A deletion is present                          |
+| `nf1_mapk_activation`  | bool | NF1 MAPK activation is present                      |
+| `other_raf_alteration` | bool | Other RAF alteration is present                     | 
+| `fgfr_alteration`      | bool | FGFR alteration is present                          | 
+| `ntrk_fusion`          | bool | NTRK fusion is present                              | 
+| `alk_fusion`           | bool | ALK fusion is present                               | 
+| `ros1_fusion`          | bool | ROS1 fusion is present                              | 
+
+### genetic variants
+
+| column           | type    | LLM Prompt                                                        |
+|------------------|---------|-------------------------------------------------------------------| 
+| `hgnc_name`      | varchar | HGNC/HUGO gene naming convention                                  |
+| `hgvs_variant`   | varchar | HGVS variant string (e.g., NM_004333.6(BRAF):c.1799T>A).          |
+| `interpretation` | varchar | Clinical interpretation of genetic variant or genetic test result |
+
+### _interpretation_
+    BENIGN
+    LIKELY BENIGN
+    VARIANT OF UNKNOWN SIGNIFICANCE
+    PATHOGENIC
+    LIKELY PATHOGENIC
+    NOT_MENTIONED
+
 
 
