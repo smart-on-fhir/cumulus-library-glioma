@@ -1,4 +1,4 @@
-CREATE TABLE glioma__cube_patient_llm_dx AS (
+CREATE TABLE glioma__cube_patient_llm_dx_progression AS (
     WITH
     null_replacement AS (
         SELECT
@@ -8,10 +8,6 @@ CREATE TABLE glioma__cube_patient_llm_dx AS (
                 'cumulus__none'
             ) AS age_at_dx,
             coalesce(
-                cast(behavior_code AS varchar),
-                'cumulus__none'
-            ) AS behavior_code,
-            coalesce(
                 cast(grade_code AS varchar),
                 'cumulus__none'
             ) AS grade_code,
@@ -20,22 +16,34 @@ CREATE TABLE glioma__cube_patient_llm_dx AS (
                 'cumulus__none'
             ) AS histology,
             coalesce(
-                cast(nf1_status AS varchar),
+                cast(progression AS varchar),
                 'cumulus__none'
-            ) AS nf1_status,
+            ) AS progression,
+            coalesce(
+                cast(progression_bin AS varchar),
+                'cumulus__none'
+            ) AS progression_bin,
+            coalesce(
+                cast(regrowth_pattern AS varchar),
+                'cumulus__none'
+            ) AS regrowth_pattern,
+            coalesce(
+                cast(symptom_burden AS varchar),
+                'cumulus__none'
+            ) AS symptom_burden,
             coalesce(
                 cast(tumor_location AS varchar),
                 'cumulus__none'
             ) AS tumor_location,
             coalesce(
-                cast(tumor_region AS varchar),
-                'cumulus__none'
-            ) AS tumor_region,
-            coalesce(
                 cast(tumor_size_mass_effect AS varchar),
                 'cumulus__none'
-            ) AS tumor_size_mass_effect
-        FROM glioma__llm_dx
+            ) AS tumor_size_mass_effect,
+            coalesce(
+                cast(visual_status AS varchar),
+                'cumulus__none'
+            ) AS visual_status
+        FROM glioma__llm_dx_progression
         
     ),
 
@@ -43,48 +51,56 @@ CREATE TABLE glioma__cube_patient_llm_dx AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
             "age_at_dx",
-            "behavior_code",
             "grade_code",
             "histology",
-            "nf1_status",
+            "progression",
+            "progression_bin",
+            "regrowth_pattern",
+            "symptom_burden",
             "tumor_location",
-            "tumor_region",
             "tumor_size_mass_effect",
+            "visual_status",
             concat_ws(
                 '-',
                 COALESCE("age_at_dx",''),
-                COALESCE("behavior_code",''),
                 COALESCE("grade_code",''),
                 COALESCE("histology",''),
-                COALESCE("nf1_status",''),
+                COALESCE("progression",''),
+                COALESCE("progression_bin",''),
+                COALESCE("regrowth_pattern",''),
+                COALESCE("symptom_burden",''),
                 COALESCE("tumor_location",''),
-                COALESCE("tumor_region",''),
-                COALESCE("tumor_size_mass_effect",'')
+                COALESCE("tumor_size_mass_effect",''),
+                COALESCE("visual_status",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
             "age_at_dx",
-            "behavior_code",
             "grade_code",
             "histology",
-            "nf1_status",
+            "progression",
+            "progression_bin",
+            "regrowth_pattern",
+            "symptom_burden",
             "tumor_location",
-            "tumor_region",
-            "tumor_size_mass_effect"
+            "tumor_size_mass_effect",
+            "visual_status"
             )
     )
 
     SELECT
         p.cnt_subject_ref AS cnt,
             p."age_at_dx",
-            p."behavior_code",
             p."grade_code",
             p."histology",
-            p."nf1_status",
+            p."progression",
+            p."progression_bin",
+            p."regrowth_pattern",
+            p."symptom_burden",
             p."tumor_location",
-            p."tumor_region",
-            p."tumor_size_mass_effect"
+            p."tumor_size_mass_effect",
+            p."visual_status"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

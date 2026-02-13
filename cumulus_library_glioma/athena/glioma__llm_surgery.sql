@@ -10,3 +10,5 @@ select      distinct
             nlp.encounter_ref,
             nlp.subject_ref
 from        glioma__nlp_surgical_gpt_oss_120b as nlp
+where       task_version = 1
+;

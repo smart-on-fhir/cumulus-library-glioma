@@ -117,20 +117,51 @@ study_prefix = "glioma"
     "athena/glioma__sample_casedef_task_progression.sql",
 ]
 
-"glioma LLM (dx, rx, surgery, progression)" = [
+"glioma LLM (dx, gene, rx, surgery, gene, progression )" = [
     "athena/glioma__llm_dx.sql",
     "athena/glioma__llm_rx_chemo.sql",
     "athena/glioma__llm_rx_target.sql",
+    "athena/glioma__llm_gene.sql",
     "athena/glioma__llm_surgery.sql",
     "athena/glioma__llm_progression.sql",
 ]
 
+"glioma LLM (merge treatment, tabular )" = [
+    "athena/glioma__llm_tx.sql",
+    "athena/glioma__llm_tabular.sql",
+]
+
+"glioma LLM (dx|gene progression, tx response)" = [
+    "athena/glioma__llm_dx_progression.sql",
+    "athena/glioma__llm_gene_progression.sql",
+    "athena/glioma__llm_tx_response.sql",
+]
+
+"glioma LLM (response after 14, 30 days)" = [
+    "athena/glioma__llm_tx_response_14_days.sql",
+    "athena/glioma__llm_tx_response_30_days.sql",
+]
+
+"glioma LLM (response after 30 days for nadine matches)" = [
+    "athena/glioma__llm_tx_response_30_days_nadine.sql",
+]
+
 "cube LLM"= [
-    "athena/glioma__cube_patient_llm_dx.sql",
-    "athena/glioma__cube_patient_llm_rx_chemo.sql",
-    "athena/glioma__cube_patient_llm_rx_target.sql",
-    "athena/glioma__cube_patient_llm_surgery.sql",
-    "athena/glioma__cube_patient_llm_progression.sql",
+	"athena/glioma__cube_patient_llm_dx.sql",
+	"athena/glioma__cube_patient_llm_dx_progression.sql",
+    "athena/glioma__cube_patient_llm_dx_progression_bin.sql",
+	"athena/glioma__cube_patient_llm_surgery.sql",
+	"athena/glioma__cube_patient_llm_progression.sql",
+	"athena/glioma__cube_patient_llm_rx_chemo.sql",
+	"athena/glioma__cube_patient_llm_rx_target.sql",
+	"athena/glioma__cube_patient_llm_tx.sql",
+	"athena/glioma__cube_patient_llm_tx_response_30_days.sql",
+    "athena/glioma__cube_patient_llm_tx_response_30_days_bin.sql",
+	"athena/glioma__cube_patient_llm_tx_response_30_days_nadine.sql",
+    "athena/glioma__cube_patient_llm_tx_response_30_days_nadine_bin.sql",
+	"athena/glioma__cube_patient_llm_gene.sql",
+	"athena/glioma__cube_patient_llm_gene_progression.sql",
+    "athena/glioma__cube_patient_llm_gene_progression_bin.sql",
 ]
 
 ## -----------------------------------------------------------------------------
@@ -164,10 +195,20 @@ count_list = [
 
     # LLM Variables
     "glioma__cube_patient_llm_dx",
+    "glioma__cube_patient_llm_dx_progression",
+    "glioma__cube_patient_llm_dx_progression_bin",
     "glioma__cube_patient_llm_rx_chemo",
     "glioma__cube_patient_llm_rx_target",
+    "glioma__cube_patient_llm_gene",
+    "glioma__cube_patient_llm_gene_progression",
+    "glioma__cube_patient_llm_gene_progression_bin",
     "glioma__cube_patient_llm_surgery",
     "glioma__cube_patient_llm_progression",
+    "glioma__cube_patient_llm_tx",
+    "glioma__cube_patient_llm_tx_response_30_days",
+    "glioma__cube_patient_llm_tx_response_30_days_bin",
+    "glioma__cube_patient_llm_tx_response_30_days_nadine",
+    "glioma__cube_patient_llm_tx_response_30_days_nadine_bin",
 ]
 
 meta_list = [

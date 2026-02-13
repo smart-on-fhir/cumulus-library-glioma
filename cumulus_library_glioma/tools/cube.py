@@ -228,16 +228,6 @@ def make_casedef() -> list[Path]:
                               'note_code',
                               'note_display',
                               'note_system']),
-
-        # Comorbidities
-        # https://github.com/smart-on-fhir/cumulus-library-glioma/issues/21
-        #
-        # cube_patient(source_table='glioma__cohort_casedef_dx',
-        #              table_cols=['dx_category_code',
-        #                          'dx_code',
-        #                          'dx_display'],
-        #              table_name='glioma__cube_patient_casedef_dx_comorbidity'),
-
     ]
 
 #-----------------------------------------------------------------------------
@@ -251,8 +241,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
                      table_cols=['variable',
                                  'code',
                                  'system',
-                                 'display'],
-                     min_subject=10),
+                                 'display']),
 
         # Count Encounters for Any/All coded Glioma Study Variable
         cube_encounter(source_table='glioma__cohort_variable_union',
@@ -261,8 +250,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
                                  'enc_class_code',
                                  'enc_period_ordinal',
                                  'age_at_visit',
-                                 'gender'],
-                       min_subject=10),
+                                 'gender']),
 
         # Glioma specific DiagnosticReports types
         cube_patient(source_table='glioma__cohort_variable_wide',
@@ -270,8 +258,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
                      table_cols=['diag_brain_mri',
                                  'diag_head_neck',
                                  'diag_pathology',
-                                 'diag_radiology'],
-                     min_subject=10),
+                                 'diag_radiology']),
 
         # Neurology [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
@@ -280,16 +267,14 @@ def make_fhir_variables_deprecated() -> list[Path]:
                                  'dx_neuro',
                                  'dx_neurofibromatosis',
                                  'dx_neuropathy',
-                                 'proc_neurosurgery'],
-                     min_subject=10),
+                                 'proc_neurosurgery']),
 
         # Endocrine [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
                      table_name='glioma__cube_patient_variable_wide_endo',
                      table_cols=['dx_endo_diabetes',
                                  'rx_endo_diabetes',
-                                 'rx_endo_therapy'],
-                     min_subject=10),
+                                 'rx_endo_therapy']),
 
         # Cancer [dx, rx]
         cube_patient(source_table='glioma__cohort_variable_wide',
@@ -302,8 +287,7 @@ def make_fhir_variables_deprecated() -> list[Path]:
                                  'rx_chemo_bevacizumab',
                                  'rx_chemo_platinum',
                                  'rx_chemo_platinum_carboplatin',
-                                 'rx_chemo_vincristine'],
-                     min_subject=10),
+                                 'rx_chemo_vincristine']),
     ]
 
 #-----------------------------------------------------------------------------
@@ -312,13 +296,42 @@ def make_fhir_variables_deprecated() -> list[Path]:
 def make_llm_variables() -> list[Path]:
     return [
         cube_patient(source_table='glioma__llm_dx',
-                     table_cols=['age_at_diagnosis',
+                     table_cols=['age_at_dx',
+                                 'histology',
                                  'tumor_location',
                                  'tumor_region',
                                  'tumor_size_mass_effect',
                                  'grade_code',
                                  'behavior_code',
                                  'nf1_status']),
+
+        cube_patient(source_table='glioma__llm_dx_progression',
+                     table_name='glioma__cube_patient_llm_dx_progression',
+                     table_cols=[
+                         'age_at_dx',
+                         'histology',
+                         'grade_code',
+                         'tumor_location',
+                         'tumor_size_mass_effect',
+                         'progression',
+                         'progression_bin',
+                         'regrowth_pattern',
+                         'symptom_burden',
+                         'visual_status'
+                     ]),
+
+        cube_patient(source_table='glioma__llm_dx_progression',
+                     table_name='glioma__cube_patient_llm_dx_progression_bin',
+                     table_cols=[
+                         'age_at_dx',
+                         'histology',
+                         'grade_code',
+                         'tumor_location',
+                         'tumor_size_mass_effect',
+                         'progression_bin',
+                         'symptom_burden_bin',
+                         'visual_status_bin',
+                     ]),
 
         cube_patient(source_table='glioma__llm_surgery',
                      table_cols=['surgical_type',
@@ -328,15 +341,13 @@ def make_llm_variables() -> list[Path]:
         cube_patient(source_table='glioma__llm_progression',
                      table_cols=['age_at_progression',
                                  'progression',
+                                 'progression_bin',
                                  'regrowth_pattern',
                                  'symptom_burden',
                                  'visual_status',
                                  'neurocognitive_risk',
-                                 'endocrine_status',
-                                 'therapy_line_number',
                                  'therapy_modality',
-                                 'clinical_trial_status',
-                                 'has_prior_radiotherapy']),
+                                 'clinical_trial_status']),
 
         cube_patient(source_table='glioma__llm_rx_chemo',
                      table_cols=['rx_regimen',
@@ -355,21 +366,74 @@ def make_llm_variables() -> list[Path]:
                                  'rx_toxicity_severity',
                                  'rx_treatment_discontinued']),
 
-        # cube_patient(source_table='glioma__llm_variant',
-        #              table_cols=['has_mention',
-        #                          'hgnc_name',
-        #                          'hgvs_variant',
-        #                          'interpretation']),
-        #
-        # cube_patient(source_table='glioma__llm_gene',
-        #              table_cols=['has_mention',
-        #                          'braf_altered',
-        #                          'braf_v600e',
-        #                          'braf_fusion',
-        #                          'idh_mutant',
-        #                          'h3k27m_mutant',
-        #                          'tp53_altered',
-        #                          'cdkn2a_deleted'])
+        cube_patient(source_table='glioma__llm_tx_response_30_days',
+                     table_name='glioma__cube_patient_llm_tx_response_30_days',
+                     table_cols=['tx_modality',
+                                 'tx_class',
+                                 'tx_specific',
+                                 'progression',
+                                 'progression_bin',
+                                 'regrowth_pattern',
+                                 'symptom_burden',
+                                 'visual_status']),
+
+        cube_patient(source_table='glioma__llm_tx_response_30_days',
+                     table_name='glioma__cube_patient_llm_tx_response_30_days_bin',
+                     table_cols=['tx_modality',
+                                 'tx_class',
+                                 'tx_specific',
+                                 'progression_bin',
+                                 'symptom_burden_bin',
+                                 'visual_status_bin']),
+
+        cube_patient(source_table='glioma__llm_tx_response_30_days_nadine',
+                     table_name='glioma__cube_patient_llm_tx_response_30_days_nadine',
+                     table_cols=['tx_modality',
+                                 'tx_class',
+                                 'progression',
+                                 'progression_bin',
+                                 'regrowth_pattern',
+                                 'symptom_burden',
+                                 'visual_status']),
+
+        cube_patient(source_table='glioma__llm_tx_response_30_days_nadine',
+                     table_name='glioma__cube_patient_llm_tx_response_30_days_nadine_bin',
+                     table_cols=['tx_modality',
+                                 'tx_class',
+                                 'tx_specific',
+                                 'progression_bin',
+                                 'symptom_burden_bin',
+                                 'visual_status_bin']),
+
+        cube_patient(source_table='glioma__llm_gene',
+                     table_cols=['braf_altered',
+                                 'braf_v600e',
+                                 'braf_fusion',
+                                 'idh_mutant',
+                                 'variant_interpretation',
+                                 'hgnc_name']),
+
+        cube_patient(source_table='glioma__llm_gene_progression',
+                     table_name='glioma__cube_patient_llm_gene_progression',
+                     table_cols=['braf_altered',
+                                 'braf_v600e',
+                                 'braf_fusion',
+                                 'idh_mutant',
+                                 'progression',
+                                 'progression_bin',
+                                 'symptom_burden',
+                                 'visual_status']),
+
+        cube_patient(source_table='glioma__llm_gene_progression',
+                     table_name='glioma__cube_patient_llm_gene_progression_bin',
+                     table_cols=['braf_altered',
+                                 'braf_v600e',
+                                 'braf_fusion',
+                                 'idh_mutant',
+                                 'progression_bin',
+                                 'symptom_burden_bin',
+                                 'visual_status_bin'])
+
     ]
 
 #-----------------------------------------------------------------------------
@@ -385,7 +449,3 @@ if __name__ == "__main__":
 
     file_list = make_llm_variables()
     print(manifest.as_toml_parallel(file_list, 'cube LLM'))
-
-    #fhir_cube_files = make_fhir_variables_deprecated()
-    #print(manifest.as_toml_parallel(fhir_cube_files, 'cube FHIR'))
-
