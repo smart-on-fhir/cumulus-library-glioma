@@ -460,3 +460,45 @@ Stratified by FHIR Encounter.class and "type" (FHIR DocumentReference.type or FH
     OTHER
     NOT_MENTIONED
 
+---
+# "LLM treatment responses after at least 30 days" 
+
+## glioma__cube_patient_llm_tx_response_30_days
+| column             | type    | LLM Prompt                                                                |
+|--------------------|---------|---------------------------------------------------------------------------| 
+| `cnt`              | int     | count ( distinct `subject_ref`)                                           |
+| `progression`      | varchar | Radiographic / functional progression status as stated                    | 
+| `regrowth_pattern` | varchar | Pattern of regrowth on/off therapy (progression vs rebound vs resistance) |
+| `symptom_burden`   | varchar | Symptoms attributed to the tumor; may include multiple                    |
+| `therapy_modality` | varchar | Previously received modalities (surgery / chemo / targeted / RT / trial)  |
+| `visual_status`    | varchar | Directionality of visual function over time                               |
+| `tx_modality`      | varchar | Previously received modalities (surgery / chemo / targeted / RT / trial)  |
+| `tx_class`         | varchar | from rx_chemo or rx_target or surgery                                     |
+
+## glioma__cube_patient_llm_tx_response_30_days_nadine
+
+Match "Nadine"
+```
+    histology = 'PILOCYTIC_ASTROCYTOMA'
+    tumor_location = 'OPTIC_PATHWAY_HYPOTHALAMIC'
+    tumor_size_mass_effect = 'HYDROCEPHALUS'
+    braf_altered = 'positive'
+    hgnc_name = 'BRAF'    
+```
+
+## glioma__cube_patient_llm_tx_response_30_days_bin
+| column               | type    | computable phenotype                                                                                             |
+|----------------------|---------|------------------------------------------------------------------------------------------------------------------|
+| `progression_bin`    | varchar | **PROGRESSION** if evidence after 30+ days, otherwise **STABLE**                                                 |
+| `symptom_burden_bin` | varchar | **SYMPTOM_PRESENT** if evidence after 30+ days, otherwise **NOT_MENTIONED**                                      |
+| `visual_status_bin`  | varchar | **DECLINING** if evidence after 30+ days, else **IMPROVIING** if evidence of improvement, else **NOT_MENTIONED** |  
+
+## glioma__cube_patient_llm_tx_response_30_days_nadine_bin
+
+* `glioma__cube_patient_llm_tx_response_30_days_nadine`
+* `glioma__cube_patient_llm_tx_response_30_days_bin`
+
+
+
+
+
